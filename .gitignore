@@ -61,5 +61,11 @@ fastlane/test_output
 # OS X
 .DS_Store
 
+# Certificates
+
+certs/
+profiles/
+
+
 # AppCode
 .idea/
