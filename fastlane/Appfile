@@ -1,0 +1,44 @@
+# app_identifier("[[APP_IDENTIFIER]]") # The bundle identifier of your app
+# apple_id("[[APPLE_ID]]") # Your Apple email address
+
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
+
+# default 번들 ID
+app_identifier("kr.teamnobar.nobar-ios-debug")
+
+# Your Apple email address
+apple_id("elesahich@gmail.com")
+
+# Developer Portal Team ID
+team_id("BWM6S332K8") 
+
+# fastfile에 가기전에 app_identifier가 설정
+for_platform :ios do
+
+    # debug, alpha: 위에서 정한 default 번들 ID를 사용 
+    
+#    for_lane :sync_codesign_beta do
+#      app_identifier 'com.jake.Kimp.beta'
+#    end
+  
+    for_lane :renew_codesign_develop do
+        app_identifier 'kr.teamnobar.nobar-ios-develop'
+    end
+
+    for_lane :sync_codesign_develop do
+      app_identifier 'kr.teamnobar.nobar-ios-develop'
+    end
+
+    # release
+
+    for_lane :renew_codesign_release do
+        app_identifier 'kr.teamnobar.nobar-ios-release'
+    end
+
+    for_lane :sync_codesign_release do
+      app_identifier 'kr.teamnobar.nobar-ios-release'
+    end
+
+  end

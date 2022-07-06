@@ -1,0 +1,49 @@
+#:wq:wq This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = "julz-mjej-effz-gxr"
+
+platform :ios do
+  
+  # match 갱신 - git에 push (certificate, profile visioning)
+
+  private_lane :renew_codesign do|options|
+    match(type:options[:type], force_for_new_devices: true)
+  end
+
+  lane :renew_codesign_debug do
+    renew_codesign(type:"development")
+  end
+  
+  lane :renew_codesign_release do
+    renew_codesign(type:"appstore")
+  end
+
+  # match 로드 (certificate, profile visioning)
+
+  private_lane :sync_codesign do|options|
+    match(type:options[:type], readonly: true)
+  end
+
+  lane :sync_codesign_debug do 
+    sync_codesign(type:"development")
+  end
+
+  lane :sync_codesign_release do
+    sync_codesign(type:"appstore")
+  end
+end
