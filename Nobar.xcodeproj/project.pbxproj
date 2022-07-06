@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3C823002287518C20031C1DA /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C823001287518C20031C1DA /* Environment.swift */; };
-		3C823008287519C50031C1DA /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C823007287519C50031C1DA /* Identifiable.swift */; };
 		3C82300C28751AF90031C1DA /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C82300B28751AF90031C1DA /* UIViewController+Extensions.swift */; };
+		3CDE20112875F23E00680B8C /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE20102875F23E00680B8C /* Identifiable.swift */; };
 		3CE5989F28748092004AFD05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5989E28748092004AFD05 /* AppDelegate.swift */; };
 		3CE598A128748092004AFD05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE598A028748092004AFD05 /* SceneDelegate.swift */; };
 		3CE598A328748092004AFD05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE598A228748092004AFD05 /* ViewController.swift */; };
@@ -40,8 +40,8 @@
 
 /* Begin PBXFileReference section */
 		3C823001287518C20031C1DA /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
-		3C823007287519C50031C1DA /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		3C82300B28751AF90031C1DA /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		3CDE20102875F23E00680B8C /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		3CE5989B28748092004AFD05 /* Nobar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nobar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CE5989E28748092004AFD05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CE598A028748092004AFD05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				3C823005287519A60031C1DA /* UI */,
-				3C823006287519B00031C1DA /* Protocols */,
+				3CDE20122875F24000680B8C /* Protocols */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -165,14 +165,6 @@
 			children = (
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		3C823006287519B00031C1DA /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				3C823007287519C50031C1DA /* Identifiable.swift */,
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		3C82300928751A450031C1DA /* Networks */ = {
@@ -188,6 +180,14 @@
 			children = (
 			);
 			path = APIRouter;
+			sourceTree = "<group>";
+		};
+		3CDE20122875F24000680B8C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3CDE20102875F23E00680B8C /* Identifiable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		3CE5989228748092004AFD05 = {
@@ -372,9 +372,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CE598A328748092004AFD05 /* ViewController.swift in Sources */,
+				3CDE20112875F23E00680B8C /* Identifiable.swift in Sources */,
 				3C823002287518C20031C1DA /* Environment.swift in Sources */,
 				3CE5989F28748092004AFD05 /* AppDelegate.swift in Sources */,
-				3C823008287519C50031C1DA /* Identifiable.swift in Sources */,
 				3C82300C28751AF90031C1DA /* UIViewController+Extensions.swift in Sources */,
 				3CE598A128748092004AFD05 /* SceneDelegate.swift in Sources */,
 			);
@@ -551,7 +551,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BWM6S332K8;
@@ -569,7 +569,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "kr.teamnobar.nobar-ios-debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development kr.teamnobar.nobar-ios-debug";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore kr.teamnobar.nobar-ios-debug";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
