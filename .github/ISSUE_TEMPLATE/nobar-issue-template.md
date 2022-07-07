@@ -1,7 +1,7 @@
 ---
 name: Nobar Issue Template
 about: "Nobar Feature Issue Template. \U0001F4A1"
-title: ''
+title: '[FEAT]'
 labels: ''
 assignees: ''
 
