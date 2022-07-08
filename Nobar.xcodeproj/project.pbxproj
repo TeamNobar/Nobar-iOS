@@ -9,10 +9,38 @@
 /* Begin PBXBuildFile section */
 		3C823002287518C20031C1DA /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C823001287518C20031C1DA /* Environment.swift */; };
 		3C82300C28751AF90031C1DA /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C82300B28751AF90031C1DA /* UIViewController+Extensions.swift */; };
+		3CD436CF28771B060044AE04 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD436CE28771B060044AE04 /* Theme.swift */; };
+		3CD436D128772E2A0044AE04 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD436D028772E2A0044AE04 /* APIRouter.swift */; };
+		3CD436D428772EBE0044AE04 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3CD436D328772EBE0044AE04 /* Alamofire */; };
+		3CD436D728772EE90044AE04 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3CD436D628772EE90044AE04 /* SnapKit */; };
+		3CD436DA28772FE10044AE04 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3CD436D928772FE10044AE04 /* FirebaseAnalytics */; };
+		3CD436DC28772FE10044AE04 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3CD436DB28772FE10044AE04 /* FirebaseCrashlytics */; };
+		3CD436DE28772FE10044AE04 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 3CD436DD28772FE10044AE04 /* FirebaseMessaging */; };
+		3CD436E1287730AF0044AE04 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 3CD436E0287730AF0044AE04 /* RxGesture */; };
+		3CD436E4287730D70044AE04 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3CD436E3287730D70044AE04 /* RxCocoa */; };
+		3CD436E6287730D70044AE04 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 3CD436E5287730D70044AE04 /* RxRelay */; };
+		3CD436E8287730D70044AE04 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3CD436E7287730D70044AE04 /* RxSwift */; };
+		3CD436EB2877312F0044AE04 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3CD436EA2877312F0044AE04 /* Then */; };
+		3CD436EE287731530044AE04 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3CD436ED287731530044AE04 /* Lottie */; };
+		3CD436F12877317C0044AE04 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3CD436F02877317C0044AE04 /* Kingfisher */; };
+		3CD436F7287738DD0044AE04 /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD436F6287738DD0044AE04 /* UIStoryboard+Extensions.swift */; };
+		3CD436F92877390A0044AE04 /* StoryboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD436F82877390A0044AE04 /* StoryboardRouter.swift */; };
+		3CD436FB2877395C0044AE04 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD436FA2877395C0044AE04 /* UICollectionView+Extensions.swift */; };
+		3CD436FE2877D11C0044AE04 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD436FD2877D11C0044AE04 /* AppRouter.swift */; };
+		3CD437002877D3FD0044AE04 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD436FF2877D3FD0044AE04 /* BaseRouter.swift */; };
+		3CD437022877D4880044AE04 /* NBTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD437012877D4880044AE04 /* NBTabbarController.swift */; };
+		3CD437072877DC6D0044AE04 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CD437062877DC6D0044AE04 /* Search.storyboard */; };
+		3CD437092877DC760044AE04 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CD437082877DC760044AE04 /* MyPage.storyboard */; };
+		3CD4370D2877DC910044AE04 /* WritingNote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CD4370C2877DC910044AE04 /* WritingNote.storyboard */; };
+		3CD4370F2877E8310044AE04 /* TabbarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD4370E2877E8310044AE04 /* TabbarRouter.swift */; };
+		3CD437112877EBCC0044AE04 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD437102877EBCC0044AE04 /* SearchViewController.swift */; };
+		3CD437132877EC530044AE04 /* WritingNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD437122877EC530044AE04 /* WritingNoteViewController.swift */; };
+		3CD437152877EC780044AE04 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD437142877EC780044AE04 /* MyPageViewController.swift */; };
+		3CD437172877EC860044AE04 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD437162877EC860044AE04 /* BaseViewController.swift */; };
 		3CDE20112875F23E00680B8C /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE20102875F23E00680B8C /* Identifiable.swift */; };
 		3CE5989F28748092004AFD05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5989E28748092004AFD05 /* AppDelegate.swift */; };
 		3CE598A128748092004AFD05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE598A028748092004AFD05 /* SceneDelegate.swift */; };
-		3CE598A328748092004AFD05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE598A228748092004AFD05 /* ViewController.swift */; };
+		3CE598A328748092004AFD05 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE598A228748092004AFD05 /* MainViewController.swift */; };
 		3CE598A628748092004AFD05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CE598A428748092004AFD05 /* Main.storyboard */; };
 		3CE598A828748093004AFD05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CE598A728748093004AFD05 /* Assets.xcassets */; };
 		3CE598AB28748093004AFD05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CE598A928748093004AFD05 /* LaunchScreen.storyboard */; };
@@ -41,11 +69,27 @@
 /* Begin PBXFileReference section */
 		3C823001287518C20031C1DA /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		3C82300B28751AF90031C1DA /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		3CD436CE28771B060044AE04 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		3CD436D028772E2A0044AE04 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		3CD436F6287738DD0044AE04 /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extensions.swift"; sourceTree = "<group>"; };
+		3CD436F82877390A0044AE04 /* StoryboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardRouter.swift; sourceTree = "<group>"; };
+		3CD436FA2877395C0044AE04 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		3CD436FD2877D11C0044AE04 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		3CD436FF2877D3FD0044AE04 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
+		3CD437012877D4880044AE04 /* NBTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBTabbarController.swift; sourceTree = "<group>"; };
+		3CD437062877DC6D0044AE04 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		3CD437082877DC760044AE04 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
+		3CD4370C2877DC910044AE04 /* WritingNote.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WritingNote.storyboard; sourceTree = "<group>"; };
+		3CD4370E2877E8310044AE04 /* TabbarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarRouter.swift; sourceTree = "<group>"; };
+		3CD437102877EBCC0044AE04 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		3CD437122877EC530044AE04 /* WritingNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingNoteViewController.swift; sourceTree = "<group>"; };
+		3CD437142877EC780044AE04 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		3CD437162877EC860044AE04 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		3CDE20102875F23E00680B8C /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		3CE5989B28748092004AFD05 /* Nobar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nobar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CE5989E28748092004AFD05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CE598A028748092004AFD05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3CE598A228748092004AFD05 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3CE598A228748092004AFD05 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3CE598A528748092004AFD05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3CE598A728748093004AFD05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3CE598AA28748093004AFD05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,6 +106,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CD436F12877317C0044AE04 /* Kingfisher in Frameworks */,
+				3CD436E8287730D70044AE04 /* RxSwift in Frameworks */,
+				3CD436D428772EBE0044AE04 /* Alamofire in Frameworks */,
+				3CD436DC28772FE10044AE04 /* FirebaseCrashlytics in Frameworks */,
+				3CD436DE28772FE10044AE04 /* FirebaseMessaging in Frameworks */,
+				3CD436E4287730D70044AE04 /* RxCocoa in Frameworks */,
+				3CD436EB2877312F0044AE04 /* Then in Frameworks */,
+				3CD436EE287731530044AE04 /* Lottie in Frameworks */,
+				3CD436D728772EE90044AE04 /* SnapKit in Frameworks */,
+				3CD436E1287730AF0044AE04 /* RxGesture in Frameworks */,
+				3CD436E6287730D70044AE04 /* RxRelay in Frameworks */,
+				3CD436DA28772FE10044AE04 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				3C82300B28751AF90031C1DA /* UIViewController+Extensions.swift */,
+				3CD436F6287738DD0044AE04 /* UIStoryboard+Extensions.swift */,
+				3CD436FA2877395C0044AE04 /* UICollectionView+Extensions.swift */,
 			);
 			path = GlobalExtensions;
 			sourceTree = "<group>";
@@ -112,7 +170,11 @@
 		3C822FFD2875177F0031C1DA /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				3C822FFF287517940031C1DA /* MainHome */,
+				3CD436FC28773DE50044AE04 /* Common */,
+				3C822FFF287517940031C1DA /* Main */,
+				3CD437032877DC390044AE04 /* Search */,
+				3CD437042877DC4A0044AE04 /* WritingNote */,
+				3CD437052877DC510044AE04 /* MyPage */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -125,13 +187,13 @@
 			path = plists;
 			sourceTree = "<group>";
 		};
-		3C822FFF287517940031C1DA /* MainHome */ = {
+		3C822FFF287517940031C1DA /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				3CE598A228748092004AFD05 /* ViewController.swift */,
 				3CE598A428748092004AFD05 /* Main.storyboard */,
+				3CE598A228748092004AFD05 /* MainViewController.swift */,
 			);
-			path = MainHome;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		3C823000287518A60031C1DA /* Configuration */ = {
@@ -156,6 +218,7 @@
 			children = (
 				3C823005287519A60031C1DA /* UI */,
 				3CDE20122875F24000680B8C /* Protocols */,
+				3CD436F82877390A0044AE04 /* StoryboardRouter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -163,6 +226,7 @@
 		3C823005287519A60031C1DA /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				3CD436CE28771B060044AE04 /* Theme.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -178,8 +242,48 @@
 		3C82300A28751A4B0031C1DA /* APIRouter */ = {
 			isa = PBXGroup;
 			children = (
+				3CD436D028772E2A0044AE04 /* APIRouter.swift */,
 			);
 			path = APIRouter;
+			sourceTree = "<group>";
+		};
+		3CD436FC28773DE50044AE04 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				3CD436FF2877D3FD0044AE04 /* BaseRouter.swift */,
+				3CD436FD2877D11C0044AE04 /* AppRouter.swift */,
+				3CD4370E2877E8310044AE04 /* TabbarRouter.swift */,
+				3CD437012877D4880044AE04 /* NBTabbarController.swift */,
+				3CD437162877EC860044AE04 /* BaseViewController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		3CD437032877DC390044AE04 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				3CD437062877DC6D0044AE04 /* Search.storyboard */,
+				3CD437102877EBCC0044AE04 /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		3CD437042877DC4A0044AE04 /* WritingNote */ = {
+			isa = PBXGroup;
+			children = (
+				3CD4370C2877DC910044AE04 /* WritingNote.storyboard */,
+				3CD437122877EC530044AE04 /* WritingNoteViewController.swift */,
+			);
+			path = WritingNote;
+			sourceTree = "<group>";
+		};
+		3CD437052877DC510044AE04 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				3CD437082877DC760044AE04 /* MyPage.storyboard */,
+				3CD437142877EC780044AE04 /* MyPageViewController.swift */,
+			);
+			path = MyPage;
 			sourceTree = "<group>";
 		};
 		3CDE20122875F24000680B8C /* Protocols */ = {
@@ -256,6 +360,20 @@
 			dependencies = (
 			);
 			name = Nobar;
+			packageProductDependencies = (
+				3CD436D328772EBE0044AE04 /* Alamofire */,
+				3CD436D628772EE90044AE04 /* SnapKit */,
+				3CD436D928772FE10044AE04 /* FirebaseAnalytics */,
+				3CD436DB28772FE10044AE04 /* FirebaseCrashlytics */,
+				3CD436DD28772FE10044AE04 /* FirebaseMessaging */,
+				3CD436E0287730AF0044AE04 /* RxGesture */,
+				3CD436E3287730D70044AE04 /* RxCocoa */,
+				3CD436E5287730D70044AE04 /* RxRelay */,
+				3CD436E7287730D70044AE04 /* RxSwift */,
+				3CD436EA2877312F0044AE04 /* Then */,
+				3CD436ED287731530044AE04 /* Lottie */,
+				3CD436F02877317C0044AE04 /* Kingfisher */,
+			);
 			productName = Nobar;
 			productReference = 3CE5989B28748092004AFD05 /* Nobar.app */;
 			productType = "com.apple.product-type.application";
@@ -328,6 +446,16 @@
 				Base,
 			);
 			mainGroup = 3CE5989228748092004AFD05;
+			packageReferences = (
+				3CD436D228772EBE0044AE04 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				3CD436D528772EE90044AE04 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				3CD436D828772FE10044AE04 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3CD436DF287730AF0044AE04 /* XCRemoteSwiftPackageReference "RxGesture" */,
+				3CD436E2287730D70044AE04 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				3CD436E92877312F0044AE04 /* XCRemoteSwiftPackageReference "Then" */,
+				3CD436EC287731530044AE04 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				3CD436EF2877317C0044AE04 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 3CE5989C28748092004AFD05 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -345,7 +473,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CE598AB28748093004AFD05 /* LaunchScreen.storyboard in Resources */,
+				3CD4370D2877DC910044AE04 /* WritingNote.storyboard in Resources */,
+				3CD437092877DC760044AE04 /* MyPage.storyboard in Resources */,
 				3CE598A828748093004AFD05 /* Assets.xcassets in Resources */,
+				3CD437072877DC6D0044AE04 /* Search.storyboard in Resources */,
 				3CE598A628748092004AFD05 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,12 +502,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CE598A328748092004AFD05 /* ViewController.swift in Sources */,
+				3CE598A328748092004AFD05 /* MainViewController.swift in Sources */,
+				3CD437152877EC780044AE04 /* MyPageViewController.swift in Sources */,
 				3CDE20112875F23E00680B8C /* Identifiable.swift in Sources */,
 				3C823002287518C20031C1DA /* Environment.swift in Sources */,
+				3CD437172877EC860044AE04 /* BaseViewController.swift in Sources */,
+				3CD437022877D4880044AE04 /* NBTabbarController.swift in Sources */,
+				3CD437132877EC530044AE04 /* WritingNoteViewController.swift in Sources */,
 				3CE5989F28748092004AFD05 /* AppDelegate.swift in Sources */,
+				3CD436FB2877395C0044AE04 /* UICollectionView+Extensions.swift in Sources */,
+				3CD4370F2877E8310044AE04 /* TabbarRouter.swift in Sources */,
 				3C82300C28751AF90031C1DA /* UIViewController+Extensions.swift in Sources */,
+				3CD436D128772E2A0044AE04 /* APIRouter.swift in Sources */,
+				3CD437002877D3FD0044AE04 /* BaseRouter.swift in Sources */,
+				3CD437112877EBCC0044AE04 /* SearchViewController.swift in Sources */,
+				3CD436F7287738DD0044AE04 /* UIStoryboard+Extensions.swift in Sources */,
+				3CD436FE2877D11C0044AE04 /* AppRouter.swift in Sources */,
+				3CD436F92877390A0044AE04 /* StoryboardRouter.swift in Sources */,
 				3CE598A128748092004AFD05 /* SceneDelegate.swift in Sources */,
+				3CD436CF28771B060044AE04 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,7 +695,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BWM6S332K8;
@@ -569,7 +713,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "kr.teamnobar.nobar-ios-debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore kr.teamnobar.nobar-ios-debug";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development kr.teamnobar.nobar-ios-debug";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -721,6 +865,136 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3CD436D228772EBE0044AE04 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.1;
+			};
+		};
+		3CD436D528772EE90044AE04 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+		3CD436D828772FE10044AE04 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.2.0;
+			};
+		};
+		3CD436DF287730AF0044AE04 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.4;
+			};
+		};
+		3CD436E2287730D70044AE04 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
+		3CD436E92877312F0044AE04 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		3CD436EC287731530044AE04 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.4.0;
+			};
+		};
+		3CD436EF2877317C0044AE04 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3CD436D328772EBE0044AE04 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CD436D228772EBE0044AE04 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		3CD436D628772EE90044AE04 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CD436D528772EE90044AE04 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		3CD436D928772FE10044AE04 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CD436D828772FE10044AE04 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		3CD436DB28772FE10044AE04 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CD436D828772FE10044AE04 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		3CD436DD28772FE10044AE04 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CD436D828772FE10044AE04 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		3CD436E0287730AF0044AE04 /* RxGesture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CD436DF287730AF0044AE04 /* XCRemoteSwiftPackageReference "RxGesture" */;
+			productName = RxGesture;
+		};
+		3CD436E3287730D70044AE04 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CD436E2287730D70044AE04 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		3CD436E5287730D70044AE04 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CD436E2287730D70044AE04 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		3CD436E7287730D70044AE04 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CD436E2287730D70044AE04 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		3CD436EA2877312F0044AE04 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CD436E92877312F0044AE04 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		3CD436ED287731530044AE04 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CD436EC287731530044AE04 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		3CD436F02877317C0044AE04 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CD436EF2877317C0044AE04 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3CE5989328748092004AFD05 /* Project object */;
 }

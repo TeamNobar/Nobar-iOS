@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  Nobar
 //
 //  Created by Ian on 2022/07/05.
@@ -7,11 +7,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class MainViewController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
+    
   }
 }
-
