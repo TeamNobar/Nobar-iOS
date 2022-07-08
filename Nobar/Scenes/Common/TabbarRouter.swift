@@ -46,7 +46,7 @@ final class TabbarRouter: BaseRouter {
   let tabbarController: UITabBarController
   private var childRouter: [TabRouterChild: UINavigationController]
   
-  init(tabBarController: UITabBarController) {
+  init(with tabBarController: UITabBarController) {
     self.tabbarController = tabBarController
     self.childRouter = [:]
   }
@@ -66,7 +66,7 @@ extension TabbarRouter {
   private func configureTabbar() {
     self.tabbarController.viewControllers = childRouter
       .sorted(by: { $0.0.rawValue < $1.0.rawValue })
-      .map { $0.value }
+      .compactMap { $0.value }
     self.tabbarController.selectedIndex = 1
   }
   
@@ -89,8 +89,6 @@ extension TabbarRouter {
       $0.tabBarItem.image = UIImage(named: TabRouterChild.main.imageName)
     }
     store(with: navigationController, as: .main)
-    
-    navigationController.show(viewController, sender: self)
   }
   
   private func setupSearchViewController() {
@@ -101,8 +99,6 @@ extension TabbarRouter {
       $0.tabBarItem.image = UIImage(named: TabRouterChild.search.imageName)
     }
     store(with: navigationController, as: .search)
-    
-    navigationController.show(viewController, sender: self)
   }
   
   private func setupWritingNoteViewController() {
@@ -113,8 +109,6 @@ extension TabbarRouter {
       $0.tabBarItem.image = UIImage(named: TabRouterChild.writingNote.imageName)
     }
     store(with: navigationController, as: .writingNote)
-    
-    navigationController.show(viewController, sender: self)
   }
   
   private func setupMyPageViewController() {
@@ -125,9 +119,6 @@ extension TabbarRouter {
       $0.tabBarItem.image = UIImage(named: TabRouterChild.mypage.imageName)
     }
     store(with: navigationController, as: .mypage)
-    
-    navigationController.show(viewController, sender: self)
-    
   }
 }
 

@@ -30,7 +30,7 @@ extension AppRouter {
 // MARK: - Private functions
 extension AppRouter {
   private func showTabbar() {
-    let tabbarRouter = TabbarRouter(tabBarController: self.tabbarController)
+    let tabbarRouter = TabbarRouter(with: tabbarController)
     tabbarRouter.start()
   }
 }
