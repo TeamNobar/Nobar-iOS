@@ -13,7 +13,7 @@ private enum AppRouterChild {
 }
 
 final class AppRouter: BaseRouter {
-  let tabbarController: UITabBarController
+  var tabbarController: UITabBarController
   
   init(tabbarController: UITabBarController) {
     self.tabbarController = tabbarController
