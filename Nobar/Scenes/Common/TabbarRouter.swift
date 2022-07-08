@@ -67,7 +67,7 @@ extension TabbarRouter {
     self.tabbarController.viewControllers = childRouter
       .sorted(by: { $0.0.rawValue < $1.0.rawValue })
       .compactMap { $0.value }
-    self.tabbarController.selectedIndex = 1
+    self.tabbarController.selectedIndex = 0
   }
   
   private func store(with navigationController: UINavigationController, as type: TabRouterChild) {
