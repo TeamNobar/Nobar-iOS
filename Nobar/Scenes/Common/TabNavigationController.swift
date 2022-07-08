@@ -7,31 +7,24 @@
 
 import UIKit
 
-private enum TabRouterChild: Int {
-  case main
-  case search
-  case writingNote
-  case mypage
-}
-
-final class TabNavigationController: UITabBarController { }
+final class NBTabbarController: UITabBarController { }
 
 // MARK: - Initialize
-extension TabNavigationController {
+extension NBTabbarController {
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    self.delegate = self
+        
+    self.setTabbarAppearance()
   }
 }
 
-extension TabNavigationController {
-  func start() {
-    
+// MARK: - Private functions
+extension NBTabbarController {
+  private func setTabbarAppearance() {
+    let appearance = UITabBarAppearance()
+    appearance.configureWithOpaqueBackground()
+    appearance.backgroundColor = .white
+    self.tabBar.standardAppearance = appearance
+    self.tabBar.scrollEdgeAppearance = appearance
   }
-}
-
-
-extension TabNavigationController: UITabBarControllerDelegate {
-  
 }

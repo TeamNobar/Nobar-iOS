@@ -18,11 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   ) {
     guard let scene = (scene as? UIWindowScene) else { return }
 
-    // tabbar도 커스텀 해서 맥이시고요
-    appRouter = AppRouter(tabbarController: UITabBarController())
+    appRouter = AppRouter(tabbarController: NBTabbarController())
+    appRouter?.start()
+    
     window = UIWindow(windowScene: scene)
     window?.rootViewController = appRouter?.tabbarController
-    appRouter?.start()
     window?.makeKeyAndVisible()
   }
 }

@@ -10,6 +10,7 @@ import UIKit
 enum StoryboardRouter: String {
   case main = "Main"
   case search = "Search"
+  case writingNote = "WritingNote"
   case mypage = "MyPage"
   
   var instance: UIStoryboard {

@@ -20,10 +20,6 @@ final class AppRouter: BaseRouter {
   }
 }
 
-// MARK: - lifeCycles
-extension AppRouter {
-}
-
 // MARK: - Public functions
 extension AppRouter {
   func start() {
@@ -34,6 +30,7 @@ extension AppRouter {
 // MARK: - Private functions
 extension AppRouter {
   private func showTabbar() {
-    
+    let tabbarRouter = TabbarRouter(tabBarController: self.tabbarController)
+    tabbarRouter.start()
   }
 }
