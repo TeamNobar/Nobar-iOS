@@ -14,13 +14,14 @@ private enum AppRouterChild {
 
 final class AppRouter: BaseRouter {
   let tabbarController: UITabBarController
+  
+  init(tabbarController: UITabBarController) {
+    self.tabbarController = tabbarController
+  }
 }
 
 // MARK: - lifeCycles
 extension AppRouter {
-  init(tabbarController: UITabBarController) {
-    self.tabbarController = tabbarController
-  }
 }
 
 // MARK: - Public functions
