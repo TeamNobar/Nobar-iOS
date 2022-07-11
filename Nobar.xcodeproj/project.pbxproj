@@ -66,6 +66,7 @@
 		6AAD37E4287C7E9D0030646C /* applyShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37E3287C7E9D0030646C /* applyShadow.swift */; };
 		6AAD37E6287C7EFE0030646C /* calculatePastTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37E5287C7EFE0030646C /* calculatePastTime.swift */; };
 		6AAD37EA287C7FBA0030646C /* PanDirectionGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37E9287C7FB90030646C /* PanDirectionGesture.swift */; };
+		6AAD37EC287C807E0030646C /* showToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37EB287C807E0030646C /* showToastMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,7 @@
 		6AAD37E3287C7E9D0030646C /* applyShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = applyShadow.swift; sourceTree = "<group>"; };
 		6AAD37E5287C7EFE0030646C /* calculatePastTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculatePastTime.swift; sourceTree = "<group>"; };
 		6AAD37E9287C7FB90030646C /* PanDirectionGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanDirectionGesture.swift; sourceTree = "<group>"; };
+		6AAD37EB287C807E0030646C /* showToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showToastMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +278,7 @@
 				6AAD37E3287C7E9D0030646C /* applyShadow.swift */,
 				6AAD37E5287C7EFE0030646C /* calculatePastTime.swift */,
 				6AAD37E9287C7FB90030646C /* PanDirectionGesture.swift */,
+				6AAD37EB287C807E0030646C /* showToastMessage.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				3CA17C1128789A2200E67B27 /* Color.swift in Sources */,
 				3CDE20112875F23E00680B8C /* Identifiable.swift in Sources */,
 				3C823002287518C20031C1DA /* Environment.swift in Sources */,
+				6AAD37EC287C807E0030646C /* showToastMessage.swift in Sources */,
 				6AAD37E4287C7E9D0030646C /* applyShadow.swift in Sources */,
 				3CD437172877EC860044AE04 /* BaseViewController.swift in Sources */,
 				3CD437022877D4880044AE04 /* NBTabbarController.swift in Sources */,
