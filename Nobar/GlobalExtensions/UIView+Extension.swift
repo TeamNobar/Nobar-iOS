@@ -5,7 +5,7 @@
 //  Created by 이유진 on 2022/07/11.
 //
 
-import Foundation
+import UIKit
 
 extension UIView {
     
@@ -15,6 +15,17 @@ extension UIView {
     
     func removeAllSubViews() {
         self.subviews.forEach { $0.removeFromSuperview() }
+    }
+    
+    func dismissKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer =
+            UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        self.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        self.endEditing(true)
     }
   
 }
