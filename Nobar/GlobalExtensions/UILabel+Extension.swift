@@ -8,9 +8,14 @@
 import UIKit
 
 extension UILabel {
-    func setAttributedText(defaultText: String, containText: String? = nil,
-                           font: UIFont? = nil, color: UIColor? = nil,
-                           kernValue: CGFloat? = nil, lineSpacing: CGFloat? = nil) {
+    func setAttributedText(
+        defaultText: String,
+        containText: String? = nil,
+        font: UIFont? = nil,
+        color: UIColor? = nil,
+        kernValue: CGFloat? = nil,
+        lineSpacing: CGFloat? = nil
+    ) {
         let mutableAttributedText = NSMutableAttributedString(string: defaultText)
         
         if let font = font {
@@ -35,7 +40,10 @@ extension UILabel {
         self.attributedText = mutableAttributedText
     }
     
-    func addSpacing(kernValue: CGFloat = -0.6, lineSpacing: CGFloat = 0) {
+    func addSpacing(
+        kernValue: CGFloat = -0.6,
+        lineSpacing: CGFloat = 0
+    ) {
         if let labelText = text, labelText.count > 0 {
             let attributedString = NSMutableAttributedString(string: labelText)
             let paragraphStyle = NSMutableParagraphStyle()
