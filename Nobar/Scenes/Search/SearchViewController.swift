@@ -180,7 +180,7 @@ extension SearchViewController {
 // MARK: - CollectionView Compositional Layout functions
 
 extension SearchViewController {
-  private func createLayout() -> UICollectionViewCompositionalLayout {
+  private func getLayoutRecentSection() -> NSCollectionLayoutSection {
     let estimatedWidth: CGFloat = 50
     let absoluteHeight: CGFloat = 36
 
@@ -198,8 +198,37 @@ extension SearchViewController {
     let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "SearchHeaderView", alignment: .topLeading)
     section.boundarySupplementaryItems = [header]
 
-    let layout = UICollectionViewCompositionalLayout(section: section)
-    return layout
+    return section
+  }
+
+  private func getLayoutRecommendSection() -> NSCollectionLayoutSection {
+    let itemSize = NSCollectionLayoutSize(widthDimension:
+        .fractionalWidth(1), heightDimension: .absolute(50))
+    let item = NSCollectionLayoutItem(layoutSize: itemSize)
+    item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 26, bottom: 0, trailing: 0)
+
+    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(250))
+    let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 5)
+
+    let section = NSCollectionLayoutSection(group: group)
+    section.orthogonalScrollingBehavior = .continuous
+
+    let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
+    let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "SearchHeaderView", alignment: .topLeading)
+    section.boundarySupplementaryItems = [header]
+
+    return section
+  }
+
+  private func createCompositionLayout() -> UICollectionViewCompositionalLayout {
+    return UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
+
+      switch sectionNumber {
+      case 0: return self.getLayoutRecentSection()
+      case 1: return self.getLayoutRecommendSection()
+      default: return self.getLayoutRecentSection()
+      }
+    }
   }
 }
 
