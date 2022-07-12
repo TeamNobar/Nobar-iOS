@@ -12,6 +12,8 @@ import SnapKit
 
 final class SearchViewController: BaseViewController {
 
+  private var dummyKeywords: [String] = ["브랜디", "선라이즈피치", "피치크러쉬", "카시스 오렌지", "은비쨩", "칵테일어쩌구", "밀푀유나베", "피치어쩌구", "리큐르", "채원쨩??"]
+
   private let searchView = UIView().then {
     $0.backgroundColor = .white
   }
@@ -148,9 +150,15 @@ final class SearchViewController: BaseViewController {
     }
     searchTextField.leftView = leftView
   }
+
+  private func setDelegation() {
+    searchKeywordCollectionView.delegate = self
+    searchKeywordCollectionView.dataSource = self
+  }
 }
 
-// MARK: Action Functions
+// MARK: - Action Functions
+
 extension SearchViewController {
 
   @objc
@@ -194,6 +202,44 @@ extension SearchViewController {
     return layout
   }
 }
+
+// MARK: - CollectionView Delegate functions
+
+extension SearchViewController: UICollectionViewDelegate {
+
+}
+
+extension SearchViewController: UICollectionViewDataSource {
+
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
+    return 1
+  }
+
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 10
+  }
+
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = searchKeywordCollectionView.dequeueReusableCell(ofType: RecentCollectionViewCell.self, at: indexPath)
+
+    cell.update(data: dummyKeywords[indexPath.row])
+    return cell
+  }
+
+  func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+
+    if kind == SearchHeaderView.className {
+      let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SearchHeaderView.className, for: indexPath)
+      if let headerView = headerView as? SearchHeaderView {
+        headerView.configUI(type: .recent)
+      }
+      return headerView
+    } else {
+      return UICollectionReusableView()
+    }
+  }
+}
+
 // TODO: 유진언니 PR Merge 후에 Extension 파일에 추가할 예정
 extension UITextField {
 
