@@ -64,6 +64,7 @@
 		4D057167287D36BD00CB656A /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057166287D36BD00CB656A /* SearchHeaderView.swift */; };
 		4D05716A287D4CDC00CB656A /* RecentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057169287D4CDC00CB656A /* RecentCollectionViewCell.swift */; };
 		4D05716C287D4D5600CB656A /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D05716B287D4D5600CB656A /* RecommendCollectionViewCell.swift */; };
+		4D3554B7287DEA670063F725 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3554B6287DEA670063F725 /* SearchModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,7 @@
 		4D057166287D36BD00CB656A /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
 		4D057169287D4CDC00CB656A /* RecentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCollectionViewCell.swift; sourceTree = "<group>"; };
 		4D05716B287D4D5600CB656A /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
+		4D3554B6287DEA670063F725 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +319,7 @@
 		3CD437032877DC390044AE04 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				4D3554B5287DE9DA0063F725 /* Model */,
 				4D057170287DC2FB00CB656A /* Component */,
 				4D057168287D434700CB656A /* Cell */,
 				3CD437062877DC6D0044AE04 /* Search.storyboard */,
@@ -417,6 +420,14 @@
 				4D057166287D36BD00CB656A /* SearchHeaderView.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		4D3554B5287DE9DA0063F725 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4D3554B6287DEA670063F725 /* SearchModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -598,6 +609,7 @@
 				3CD437132877EC530044AE04 /* WritingNoteViewController.swift in Sources */,
 				3CE5989F28748092004AFD05 /* AppDelegate.swift in Sources */,
 				3CD436FB2877395C0044AE04 /* UICollectionView+Extensions.swift in Sources */,
+				4D3554B7287DEA670063F725 /* SearchModel.swift in Sources */,
 				3CD4370F2877E8310044AE04 /* TabbarRouter.swift in Sources */,
 				4D057167287D36BD00CB656A /* SearchHeaderView.swift in Sources */,
 				3C82300C28751AF90031C1DA /* UIViewController+Extensions.swift in Sources */,
