@@ -32,13 +32,13 @@ final class SearchViewController: BaseViewController {
 
   private lazy var searchTextField = UITextField().then {
     $0.placeholder = " 칵테일 이름, 재료 이름"
-    $0.setPlaceholderAttributes(Color.gray02, Pretendard.size13.bold())
+    $0.setPlaceholderAttributes(Color.gray03, Pretendard.size13.bold())
     $0.backgroundColor = Color.gray01
     $0.font = Pretendard.size13.bold()
-    $0.textColor = Color.gray05
+    $0.textColor = Color.gray03
     $0.tintColor = Color.navy01
 
-    $0.layer.borderColor = Color.gray02.cgColor
+    $0.layer.borderColor = Color.gray04.cgColor
     $0.layer.borderWidth = 0.4
     $0.layer.cornerRadius = 6
 
