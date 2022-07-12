@@ -6,7 +6,7 @@
 
 <details>
 
-<summary> 💬 💬 💬 </summary>
+<summary> 🍷 🍷 🍷</summary>
 
 
 ---
@@ -349,12 +349,9 @@ if (name == "Hello") {
 
 ## 🍹🍹🍹 Git Convention
 
-
-🍷  [아요노바의 깃 컨벤션이 자세하게 보고 싶다면?](https://www.notion.so/Git-Convention-341d8604c74c4aa2badbb1299d9680e5)
-
 <details>
 
-<summary> 💬 💬 💬 </summary>
+<summary> 🍷 🍷 🍷 </summary>
 <div markdown="1">
 
 ## 1.1. Rules
@@ -480,7 +477,7 @@ feature/#17-description소문자로만쓰기
 
 <details>
 
-<summary> 💬 💬 💬 </summary>
+<summary> 🍷 🍷 🍷 </summary>
 <div markdown="1">
 
 <br>
