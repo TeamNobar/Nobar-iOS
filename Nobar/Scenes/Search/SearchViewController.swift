@@ -18,6 +18,7 @@ final class SearchViewController: BaseViewController {
 
   private lazy var backButton = UIButton().then {
     $0.setImage(ImageFactory.btnBackSearch, for: .normal)
+    $0.addTarget(self, action: #selector(didClickOnBackButton(_:)), for: .touchUpInside)
   }
 
   private let searchIconImage = UIImageView().then {
@@ -26,6 +27,7 @@ final class SearchViewController: BaseViewController {
 
   private lazy var clearTextButton = UIButton().then {
     $0.setImage(ImageFactory.icnX, for: .normal)
+    $0.addTarget(self, action: #selector(didClickOnClearButton(_:)), for: .touchUpInside)
   }
 
   private lazy var searchTextField = UITextField().then {
@@ -109,10 +111,24 @@ final class SearchViewController: BaseViewController {
     }
     searchTextField.leftView = leftView
   }
+}
+
+// MARK: Action Functions
+extension SearchViewController {
 
   @objc
   private func textFieldDidChange(_ sender: UITextField) {
     searchTextField.rightViewMode = searchTextField.hasText ? .always : .never
+  }
+
+  @objc
+  private func didClickOnClearButton(_ sender: UIButton) {
+    searchTextField.text = ""
+  }
+
+  @objc
+  private func didClickOnBackButton(_ sender: UIButton) {
+    self.navigationController?.popViewController(animated: true)
   }
 }
 
