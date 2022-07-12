@@ -1,8 +1,8 @@
 ![Group 33781 copy](https://user-images.githubusercontent.com/51031771/178424193-9c7bf16d-3597-43cf-b71b-5460181dc795.png)
 
+![Slide 16_9 - 7](https://user-images.githubusercontent.com/51031771/178426643-b89914d5-99f5-49a7-84ca-4b29bccecba4.png)
 
 
-![Slide 16_9 - 7](https://user-images.githubusercontent.com/51031771/178425536-456f03e2-a84e-432f-8f34-bcb09e3fc670.png)
 
 
 <details>
@@ -348,7 +348,7 @@ if (name == "Hello") {
 <br>
 <br>
 
-![Slide 16_9 - 8](https://user-images.githubusercontent.com/51031771/178425596-dffd59f2-3f19-4849-975b-e573149af2f9.png)
+![Slide 16_9 - 8](https://user-images.githubusercontent.com/51031771/178426674-b5a4f115-2020-4210-b050-9d2c5e3fef15.png)
 
 <details>
 
