@@ -45,7 +45,6 @@
 		3CD437092877DC760044AE04 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CD437082877DC760044AE04 /* MyPage.storyboard */; };
 		3CD4370D2877DC910044AE04 /* WritingNote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CD4370C2877DC910044AE04 /* WritingNote.storyboard */; };
 		3CD4370F2877E8310044AE04 /* TabbarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD4370E2877E8310044AE04 /* TabbarRouter.swift */; };
-		3CD437112877EBCC0044AE04 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD437102877EBCC0044AE04 /* SearchViewController.swift */; };
 		3CD437132877EC530044AE04 /* WritingNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD437122877EC530044AE04 /* WritingNoteViewController.swift */; };
 		3CD437152877EC780044AE04 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD437142877EC780044AE04 /* MyPageViewController.swift */; };
 		3CD437172877EC860044AE04 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD437162877EC860044AE04 /* BaseViewController.swift */; };
@@ -59,6 +58,8 @@
 		3CE598B628748093004AFD05 /* NobarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE598B528748093004AFD05 /* NobarTests.swift */; };
 		3CE598C028748093004AFD05 /* NobarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE598BF28748093004AFD05 /* NobarUITests.swift */; };
 		3CE598C228748093004AFD05 /* NobarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE598C128748093004AFD05 /* NobarUITestsLaunchTests.swift */; };
+		4D057161287C1AC400CB656A /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057160287C1AC300CB656A /* SearchResultViewController.swift */; };
+		4D057163287CF49A00CB656A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057162287CF49900CB656A /* SearchViewController.swift */; };
 		4D057165287CFF1500CB656A /* Adjusted+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057164287CFF1400CB656A /* Adjusted+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -106,7 +107,6 @@
 		3CD437082877DC760044AE04 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		3CD4370C2877DC910044AE04 /* WritingNote.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WritingNote.storyboard; sourceTree = "<group>"; };
 		3CD4370E2877E8310044AE04 /* TabbarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarRouter.swift; sourceTree = "<group>"; };
-		3CD437102877EBCC0044AE04 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3CD437122877EC530044AE04 /* WritingNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingNoteViewController.swift; sourceTree = "<group>"; };
 		3CD437142877EC780044AE04 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		3CD437162877EC860044AE04 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +124,8 @@
 		3CE598BB28748093004AFD05 /* NobarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NobarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CE598BF28748093004AFD05 /* NobarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NobarUITests.swift; sourceTree = "<group>"; };
 		3CE598C128748093004AFD05 /* NobarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NobarUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4D057160287C1AC300CB656A /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		4D057162287CF49900CB656A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4D057164287CFF1400CB656A /* Adjusted+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Adjusted+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -310,7 +312,8 @@
 			isa = PBXGroup;
 			children = (
 				3CD437062877DC6D0044AE04 /* Search.storyboard */,
-				3CD437102877EBCC0044AE04 /* SearchViewController.swift */,
+				4D057162287CF49900CB656A /* SearchViewController.swift */,
+				4D057160287C1AC300CB656A /* SearchResultViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CE598A328748092004AFD05 /* MainViewController.swift in Sources */,
+				4D057161287C1AC400CB656A /* SearchResultViewController.swift in Sources */,
 				3CD437152877EC780044AE04 /* MyPageViewController.swift in Sources */,
 				3CA17C1128789A2200E67B27 /* Color.swift in Sources */,
 				3CDE20112875F23E00680B8C /* Identifiable.swift in Sources */,
@@ -571,10 +575,10 @@
 				3CD4370F2877E8310044AE04 /* TabbarRouter.swift in Sources */,
 				3C82300C28751AF90031C1DA /* UIViewController+Extensions.swift in Sources */,
 				4D057165287CFF1500CB656A /* Adjusted+Extension.swift in Sources */,
+				4D057163287CF49A00CB656A /* SearchViewController.swift in Sources */,
 				3CD436D128772E2A0044AE04 /* APIRouter.swift in Sources */,
 				3CA17C0B2878920B00E67B27 /* Font.swift in Sources */,
 				3CD437002877D3FD0044AE04 /* BaseRouter.swift in Sources */,
-				3CD437112877EBCC0044AE04 /* SearchViewController.swift in Sources */,
 				3CA17C1328789BAE00E67B27 /* ImageFactory.swift in Sources */,
 				3CD436F7287738DD0044AE04 /* UIStoryboard+Extensions.swift in Sources */,
 				3CD436FE2877D11C0044AE04 /* AppRouter.swift in Sources */,
