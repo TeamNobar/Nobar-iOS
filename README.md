@@ -1,16 +1,13 @@
 ![Group 33780@3x](https://user-images.githubusercontent.com/51031771/178420813-8e56eb7d-70c1-4317-86db-a497cb0ceeb9.png)
 
+
 ## 🍹 Code Convention
 
 
 <details>
 
 <summary> 💬 💬 💬 </summary>
-# iOS Code Convention
 
-[Code Convention Reference](https://www.notion.so/Code-Convention-Reference-7adb03f86f204032b6e2c657bf898cef)
-
-## 👀 **Overview**
 
 ---
 
