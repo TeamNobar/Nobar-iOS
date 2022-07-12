@@ -1,7 +1,8 @@
 ![Group 33781 copy](https://user-images.githubusercontent.com/51031771/178424193-9c7bf16d-3597-43cf-b71b-5460181dc795.png)
 
 
-## 🍹 Code Convention
+
+![Slide 16_9 - 7](https://user-images.githubusercontent.com/51031771/178425536-456f03e2-a84e-432f-8f34-bcb09e3fc670.png)
 
 
 <details>
@@ -347,7 +348,7 @@ if (name == "Hello") {
 <br>
 <br>
 
-## 🍹 Git Convention
+![Slide 16_9 - 8](https://user-images.githubusercontent.com/51031771/178425596-dffd59f2-3f19-4849-975b-e573149af2f9.png)
 
 <details>
 
@@ -472,70 +473,6 @@ feature/#17-description소문자로만쓰기
 
 <br>
 <br>
-
-## 🍹 Foldering
-
-<details>
-
-<summary> 🍷 🍷 🍷 </summary>
-<div markdown="1">
-
-<br>
-
-```
-🍷 Nobar-iOS
-     ├── App
-     │   ├── Configuration
-     │   │   └── Environment.swift
-     │   └── RootDelegates
-     │       ├── AppDelegate.swift
-     │       └── SceneDelegate.swift
-     ├── GlobalExtensions
-     │   ├── UICollectionView+Extensions.swift
-     │   ├── UIStoryboard+Extensions.swift
-     │   └── UIViewController+Extensions.swift
-     ├── Networks
-     │   └── APIRouter
-     │       └── APIRouter.swift
-     ├── Resources
-     │   ├── Assets.xcassets
-     │   │   ├── AccentColor.colorset
-     │   │   ├── AppIcon.appiconset
-     │   │   └── Contents.json
-     │   ├── Base.lproj
-     │   │   └── LaunchScreen.storyboard
-     │   └── plists
-     │       └── Info.plist
-     ├── Scenes
-     │   ├── Common
-     │   │   ├── AppRouter.swift
-     │   │   ├── BaseRouter.swift
-     │   │   ├── BaseViewController.swift
-     │   │   ├── NBTabbarController.swift
-     │   │   └── TabbarRouter.swift
-     │   ├── Main
-     │   │   ├── Base.lproj
-     │   │   └── MainViewController.swift
-     │   ├── MyPage
-     │   │   ├── MyPage.storyboard
-     │   │   └── MyPageViewController.swift
-     │   ├── Search
-     │   │   ├── Search.storyboard
-     │   │   └── SearchViewController.swift
-     │   └── WritingNote
-     │       ├── WritingNote.storyboard
-     │       └── WritingNoteViewController.swift
-     └── Utils
-         ├── Protocols
-         │   └── Identifiable.swift
-         ├── StoryboardRouter.swift
-         └── UI
-             └── Theme.swift
-        
-```
-
-</div>
-</details>
 
 
 ![Group 33781 2](https://user-images.githubusercontent.com/51031771/178424234-d18dbec6-4de3-481d-81d9-8ce2df7c7339.png)
