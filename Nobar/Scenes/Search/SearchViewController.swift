@@ -145,7 +145,31 @@ extension SearchViewController {
   }
 }
 
+// MARK: - CollectionView Compositional Layout functions
 
+extension SearchViewController {
+  private func createLayout() -> UICollectionViewCompositionalLayout {
+    let estimatedWidth: CGFloat = 50
+    let absoluteHeight: CGFloat = 36
+
+    let size = NSCollectionLayoutSize(widthDimension: .estimated(estimatedWidth), heightDimension: .absolute(absoluteHeight))
+
+    let item = NSCollectionLayoutItem(layoutSize: size)
+    let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
+
+    let section = NSCollectionLayoutSection(group: group)
+    section.interGroupSpacing = 8
+    section.orthogonalScrollingBehavior = .continuous
+    section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 26, bottom: 24, trailing: 26)
+
+    let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
+    let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "SearchHeaderView", alignment: .topLeading)
+    section.boundarySupplementaryItems = [header]
+
+    let layout = UICollectionViewCompositionalLayout(section: section)
+    return layout
+  }
+}
 // TODO: 유진언니 PR Merge 후에 Extension 파일에 추가할 예정
 extension UITextField {
 
