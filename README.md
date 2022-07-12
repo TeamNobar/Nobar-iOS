@@ -173,10 +173,6 @@ class MyViewController: UIViewController, UITableViewDataSource, UIScrollViewDel
 
 로직에 주석이 필요했다면 코드만으로는 설명이 어렵다는 방증입니다. 이런 경우는 로직을 한번 되돌아 보는 것을 추천드려요.
 
-예시는 다음과 같습니다.
-
-![스크린샷 2022-07-07 오전 12.34.15.png](iOS%20Code%20Convention%2041d3a673186640e38c8017db6c3aa8e8/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-07-07_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_12.34.15.png)
-
 ### ▶️ 임포트
 
 - 모듈 임포트는 `알파벳 순`으로 정렬합니다.
