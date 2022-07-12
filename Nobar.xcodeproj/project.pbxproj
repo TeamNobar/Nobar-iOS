@@ -190,6 +190,7 @@
 		3C822FFB287517440031C1DA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3CA17C14287A6B4600E67B27 /* Utils */,
 				3CA17BF72878909600E67B27 /* Font */,
 				3CE598A728748093004AFD05 /* Assets.xcassets */,
 				3CE598A928748093004AFD05 /* LaunchScreen.storyboard */,
@@ -313,6 +314,17 @@
 				3CA17BF8287890E100E67B27 /* Pretendard-Thin.otf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		3CA17C14287A6B4600E67B27 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3CD436CE28771B060044AE04 /* Theme.swift */,
+				3CA17C0A2878920B00E67B27 /* Font.swift */,
+				3CA17C1028789A2200E67B27 /* Color.swift */,
+				3CA17C1228789BAE00E67B27 /* ImageFactory.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		3CD436FC28773DE50044AE04 /* Common */ = {

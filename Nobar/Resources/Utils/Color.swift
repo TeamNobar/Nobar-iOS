@@ -8,44 +8,31 @@
 import UIKit
 
 enum Color {
-  static var gray01: UIColor {
-    return .findProperColor(lightModeColor: ._gray01, darkModeColor: ._gray01)
-  }
+  case gray01
+  case gray02
+  case gray03
+  case gray04
+  case gray05
+  case black
+  case white
+  case navy01
+  case pink01
+  case gray_navigationbar
   
-  static var gray02: UIColor {
-    return .findProperColor(lightModeColor: ._gray02, darkModeColor: ._gray02)
-  }
-
-  static var gray03: UIColor {
-    return .findProperColor(lightModeColor: ._gray03, darkModeColor: ._gray03)
-  }
-
-  static var gray04: UIColor {
-    return .findProperColor(lightModeColor: ._gray04, darkModeColor: ._gray04)
-  }
-
-  static var gray05: UIColor {
-    return .findProperColor(lightModeColor: ._gray05, darkModeColor: ._gray05)
-  }
-  
-  static var black: UIColor {
-    return .findProperColor(lightModeColor: ._black, darkModeColor: ._black)
-  }
-
-  static var white: UIColor {
-    return .findProperColor(lightModeColor: ._white, darkModeColor: ._white)
-  }
-  
-  static var navy01: UIColor {
-    return .findProperColor(lightModeColor: ._navy01, darkModeColor: ._navy01)
-  }
-
-  static var pink01: UIColor {
-    return .findProperColor(lightModeColor: ._pink01, darkModeColor: ._pink01)
-  }
-
-  static var gray_navigationbar: UIColor {
-    return .findProperColor(lightModeColor: ._gray_navigationbar, darkModeColor: ._gray_navigationbar)
+  func getColor() -> UIColor {
+    switch self {
+    case .gray01: return .findProperColor(lightModeColor: ._gray01, darkModeColor: ._gray01)
+    case .gray02: return .findProperColor(lightModeColor: ._gray02, darkModeColor: ._gray02)
+    case .gray03: return .findProperColor(lightModeColor: ._gray03, darkModeColor: ._gray03)
+    case .gray04: return .findProperColor(lightModeColor: ._gray04, darkModeColor: ._gray04)
+    case .gray05: return .findProperColor(lightModeColor: ._gray05, darkModeColor: ._gray05)
+    case .black: return .findProperColor(lightModeColor: ._black, darkModeColor: ._black)
+    case .white: return .findProperColor(lightModeColor: ._white, darkModeColor: ._white)
+    case .navy01: return .findProperColor(lightModeColor: ._navy01, darkModeColor: ._navy01)
+    case .pink01: return .findProperColor(lightModeColor: ._pink01, darkModeColor: ._pink01)
+    case .gray_navigationbar:
+      return .findProperColor(lightModeColor: ._gray_navigationbar, darkModeColor: ._gray_navigationbar)
+    }
   }
 }
 
