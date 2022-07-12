@@ -1,7 +1,7 @@
-![Group 33780@3x](https://user-images.githubusercontent.com/51031771/178420813-8e56eb7d-70c1-4317-86db-a497cb0ceeb9.png)
+![Group 33781](https://user-images.githubusercontent.com/51031771/178422740-b77b03d3-30f0-4996-a5b5-68032d503515.png)
 
 
-## 🍹 Code Convention
+## 🍹🍹🍹 Code Convention
 
 
 <details>
@@ -347,18 +347,21 @@ if (name == "Hello") {
 <br>
 <br>
 
-## 🌼🌼🌼 Git Convention
+## 🍹🍹🍹 Git Convention
 
-🔥 [참고자료](https://github.com/TeamMyDaily/4most-Android/wiki/1.-Git-사용법)
 
-🔥 [감자들의 깃 컨벤션이 자세하게 보고 싶다면?](https://huree-can-do-it.notion.site/code-convention-5d1c99ce79754b2eb9d82a75f14ff507)
+🍷  [아요노바의 깃 컨벤션이 자세하게 보고 싶다면?](https://www.notion.so/Git-Convention-341d8604c74c4aa2badbb1299d9680e5)
 
 <details>
 
 <summary> 💬 💬 💬 </summary>
 <div markdown="1">
 
-### Git Flow
+## 1.1. Rules
+
+### **1.1.1. Git Flow**
+
+기본적으로 Git Flow 전략을 이용한다. 작업 시작 시 선행되어야 할 작업은 다음과 같다.
 
 ```
 1. Issue를 생성한다.
@@ -369,60 +372,97 @@ if (name == "Hello") {
 6. 종료된 Issue와 Pull Request의 Label과 Project를 관리한다.
 ```
 
-### Commit Message Convention
+### **1.1.2. Etc.**
 
+협업 시 준수해야 할 규칙은 다음과 같다.
 
-    - FEAT : 새로운 기능 구현
-    - ADD : Feat 이외의 부수적인 코드 추가, 라이브러리 추가, 새로운 View나 Activity 생성
-    - CHORE : 그 이외의 잡일/ 버전 코드 수정, 패키지 구조 변경, 파일 이동, 가독성이나 변수명, reformat 등
-    - FIX : 버그, 오류 해결
-    - DEL : 쓸모없는 코드 및 파일 삭제
-    - MOD : xml (스토리보드) 파일만 수정한 경우
-    - DOCS : README나 WIKI 등의 문서 개정
-    - REFACTOR : 내부 로직은 변경 하지 않고 기존의 코드를 개선하는 리팩토링 시
-
-
-<details>
-<summary>`Prefix` 가 헷갈릴 때 참고해주세요!</summary>
-<div markdown="2">
-
-```swift
-[ADD] 홈 테이블뷰 높이 관련 코드 추가(#1)
-[FEAT] 홈 기능 구현**(#2)
-[CHORE] 홈 셀 레이아웃 코드 수정(#2)
-[MOVE] 홈 폴더 파일 이동(#2)
-[FIX] 홈 셀 리로드 버그 해결(#3)
-[DEL] 필요없는 주석 삭제(#2)
 ```
-</div>
-</details>
-
-
-### Branch Naming
-
-`<prefix 소문자로>/<이슈번호>-<관련설명>`
-
-*→ 대소문자 꼭 지켜주세요!*
-
-```swift
-feature/2-HomeLayout
-feature/10-HomeService
+1. develop에서의 작업은 원칙적으로 금지한다. 단, README 작성은 develop Branch에서 수행한다.
+2. 자신이 담당한 부분 이외에 다른 팀원이 담당한 부분을 수정할 때에는 Slack을 통해 변경 사항을 전달한다.
+3. 본인의 Pull Request는 본인이 Merge한다.
+4. 빠른 협업 속도를 위해 Pull Request가 올라온 이후 24시간 내에 Code Review를 수행한다.
+5. Commit, Push, Merge, Pull Request 등 모든 작업은 앱이 정상적으로 실행되는 지 확인 후 수행한다.
+6. README 수정을 위한 Commit 도배는 금지한다. 미리보기는 Preview를 통해 확인한다.
 ```
 
-### Issue
+## **1.2. Branch**
 
-- Template 사용
-- 라벨 달기
-- 프로젝트 칸반보드 체크 필수
+협업 시 준수해야 할 규칙은 다음과 같다.
 
-### Pull Request
+## 📍Git Branch
 
-- Template 사용 (내용 꼼꼼하게 작성)
-- Code Review 24시간 내로
+### **Branch Naming Rule**
 
-### Merge
+Branch를 생성하기 전 Issue를 먼저 작성한다.
 
-- Approved 걸고 코리 받으면 자기자신이 Click
+ Issue 작성 후 생성되는 번호와 Issue의 간략한 설명 등을 조합하여 Branch의 이름을 결정한다. `<Prefix>/<Issue_Number>-<Description>` 의 양식을 따른다.
+
+- `main` : 개발이 완료된 산출물이 저장될 공간
+- `develop` : feature 브랜치에서 구현된 기능들이 merge될 브랜치
+- `feature` : 기능을 개발하는 브랜치, 이슈별/작업별로 브랜치를 생성하여 기능을 개발한다
+- `release` : 릴리즈를 준비하는 브랜치, 릴리즈 직전 QA 기간에 사용한다
+- `bug` : 버그를 수정하는 브랜치
+- `hotfix` : 정말 급하게, 데모데이 직전에 에러가 난 경우 사용하는 브렌치
+
+### **예시**
+
+```
+feature/#17-description소문자로만쓰기 
+```
+
+## 📍Commit Message
+
+- [HOTFIX] : issue나, QA에서 급한 버그 수정에 사용
+- [FIX] : 버그, 오류 해결
+- [ADD] : Feat 이외의 부수적인 코드 추가, 라이브러리 추가, 새로운 파일 생성 시
+- [FEAT] : 새로운 기능 구현
+- [DEL] : 쓸모없는 코드 삭제
+- [DOCS] : README나 WIKI 등의 문서 개정
+- [MOD] : storyboard 파일,UI 수정한 경우
+- [CHORE] : 코드 수정, 내부 파일 수정
+- [CORRECT] : 주로 문법의 오류나 타입의 변경, 이름 변경 등에 사용합니다.
+- [MOVE] : 프로젝트 내 파일이나 코드의 이동
+- [RENAME] : 파일 이름 변경이 있을 때 사용합니다.
+- [IMPROVE] : 향상이 있을 때 사용합니다.
+- [REFACTOR] : 전면 수정이 있을 때 사용합니다
+- [MERGE]: 다른브렌치를 merge 할 때 사용합니다.
+
+**예시**
+
+```
+[FEAT] 레이아웃 구현(#17)
+```
+
+## 📍PR Merge는 1 approve 받은 후
+
+## 📍 Code Review
+
+<aside>
+🐾 ***담당자가 지정되면 “나이거 언제까지 해줄게 “까지는 얘기해주기!***
+
+</aside>
+
+**Reviewee**
+
+- 리뷰를 **합리적, 중립적**으로 받아들여야 함 (무조건 싫어, 좋아는 곤란)
+- 반영이 어려우면 왜 어려운지, **합리적인 이유**를 대야 함
+- **피드백은 반영 해도 되고 안해도됨 but.책임은 결정한 사람이 진다.**
+- 반영하지 않는 것에 대한것은 합당한 이유가 반드시 존재하여야 함.
+
+**Reviewer**
+
+- **온화한 뉘앙스❤️🤍**
+- **유효한 리뷰**가 될 수 있도록 염두에 두고 리뷰
+    - 유효한 리뷰란?
+        1. 날카로운(?) 질문 - 스펙에 대한 확인, 작성자의 의도 확인
+        2. 오류 지적
+        3. 오타, 부적절한 네이밍
+        4. 스펙에 대한 잘못된 이해 (해당 스펙에 대한 Domain Knowledge 필요)
+        5. 다른 모듈로의 영향성 지적
+        6. 보다 나은 성능, 구조의 대안 제시
+        7. 자료 구조, 처리 방식 (동기/비동기 등) 별도의 툴 제안
+        8. 두루뭉술한것 보다는 코드 example을 주는 것이 좋음
+
 
 </aside>
 
@@ -436,7 +476,7 @@ feature/10-HomeService
 <br>
 <br>
 
-## 🌼🌼🌼🌼 Foldering
+## 🍹🍹🍹 Foldering
 
 <details>
 
@@ -446,51 +486,54 @@ feature/10-HomeService
 <br>
 
 ```
-   🗂 Tabling-iOS
-           │
-           │
-           |── 📂 Global
-           │        │
-           │        |── 📁 Base
-           │        |── 📁 Constant
-           │        |── 📁 Extension
-           │        └── 📁 Protocol
-           │
-           │── 📂 Source
-           │        |── 📁 Model
-           │        |── 📁 Network
-           │        └── 📁 Screen
-           │                  │
-           │                  |── TabbarController
-           │                  |── 📁 Yujin
-           │                  |        |── 📁 VC   
-           │                  |        |── 📁 Cell
-           │                  |        └── 📁 Component
-           │                  |── 📁 Namjoon
-           │                  |        |── 📁 VC
-           │                  |        |── 📁 Cell
-           │                  |        └── 📁 Component 
-           │                  |── 📁 Ruhee
-           │                  |        |── 📁 VC 
-           │                  |        |── 📁 Cell 
-           │                  |        └── 📁 Component
-           │                  |
-           │                  └── 📁 MyPage
-           │
-           └── 📂 Resource
-                     |
-                     |── 📁 Support
-                     |        |── AppDelegate.swift     
-                     |        └── SceneDelegate.swift
-                     |
-                     |── 📁 Storyboard
-                     |        |── LaunchScreen.storyboard    
-                     |        |── Main.storyboard    
-                     |        |── NamjoonMain.storyboard    
-                     |        └── YujinMain.storyboard
-                     |
-                     |── Assets.xcassets
-                     └── Info.plist
+🍷 Nobar-iOS
+     ├── App
+     │   ├── Configuration
+     │   │   └── Environment.swift
+     │   └── RootDelegates
+     │       ├── AppDelegate.swift
+     │       └── SceneDelegate.swift
+     ├── GlobalExtensions
+     │   ├── UICollectionView+Extensions.swift
+     │   ├── UIStoryboard+Extensions.swift
+     │   └── UIViewController+Extensions.swift
+     ├── Networks
+     │   └── APIRouter
+     │       └── APIRouter.swift
+     ├── Resources
+     │   ├── Assets.xcassets
+     │   │   ├── AccentColor.colorset
+     │   │   ├── AppIcon.appiconset
+     │   │   └── Contents.json
+     │   ├── Base.lproj
+     │   │   └── LaunchScreen.storyboard
+     │   └── plists
+     │       └── Info.plist
+     ├── Scenes
+     │   ├── Common
+     │   │   ├── AppRouter.swift
+     │   │   ├── BaseRouter.swift
+     │   │   ├── BaseViewController.swift
+     │   │   ├── NBTabbarController.swift
+     │   │   └── TabbarRouter.swift
+     │   ├── Main
+     │   │   ├── Base.lproj
+     │   │   └── MainViewController.swift
+     │   ├── MyPage
+     │   │   ├── MyPage.storyboard
+     │   │   └── MyPageViewController.swift
+     │   ├── Search
+     │   │   ├── Search.storyboard
+     │   │   └── SearchViewController.swift
+     │   └── WritingNote
+     │       ├── WritingNote.storyboard
+     │       └── WritingNoteViewController.swift
+     └── Utils
+         ├── Protocols
+         │   └── Identifiable.swift
+         ├── StoryboardRouter.swift
+         └── UI
+             └── Theme.swift
         
 ```
 
