@@ -12,6 +12,13 @@ import SnapKit
 
 final class SearchViewController: BaseViewController {
 
+  enum SectionType: Int {
+    case recent = 0
+    case recommend = 1
+  }
+
+  private var sectionType: SectionType?
+
   private var dummyKeywords: [String] = ["브랜디", "선라이즈피치", "피치크러쉬", "카시스 오렌지", "은비쨩", "칵테일어쩌구", "밀푀유나베", "피치어쩌구", "리큐르", "채원쨩??"]
 
   private let searchView = UIView().then {
@@ -64,13 +71,14 @@ final class SearchViewController: BaseViewController {
   }
 
   private lazy var searchKeywordCollectionView: UICollectionView = {
-    let layout = createLayout()
+    let layout = createCompositionLayout()
     layout.configuration.interSectionSpacing = 0
 
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.showsHorizontalScrollIndicator = false
     collectionView.showsVerticalScrollIndicator = false
     collectionView.register(cell: RecentCollectionViewCell.self)
+    collectionView.register(cell: RecommendCollectionViewCell.self)
     return collectionView
   }()
 
@@ -241,27 +249,58 @@ extension SearchViewController: UICollectionViewDelegate {
 extension SearchViewController: UICollectionViewDataSource {
 
   func numberOfSections(in collectionView: UICollectionView) -> Int {
-    return 1
+    return 2
   }
 
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 10
+    guard let sectionType = SectionType(rawValue: section) else { return 1 }
+
+    switch sectionType {
+    case .recent:
+      return dummyKeywords.count
+    case .recommend:
+      return 5
+    }
+
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = searchKeywordCollectionView.dequeueReusableCell(ofType: RecentCollectionViewCell.self, at: indexPath)
+    guard let sectionType = SectionType(rawValue: indexPath.section) else {
+      return UICollectionViewCell()
+    }
 
-    cell.update(data: dummyKeywords[indexPath.row])
-    return cell
+    switch sectionType {
+    case .recent:
+      let cell = searchKeywordCollectionView.dequeueReusableCell(ofType: RecentCollectionViewCell.self, at: indexPath)
+
+      cell.update(data: dummyKeywords[indexPath.row])
+      return cell
+    case .recommend:
+      let cell = searchKeywordCollectionView.dequeueReusableCell(ofType: RecommendCollectionViewCell.self, at: indexPath)
+
+      cell.update(data: SearchModel.dummyRecommendList[indexPath.row])
+      return cell
+    }
   }
 
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 
     if kind == SearchHeaderView.className {
       let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SearchHeaderView.className, for: indexPath)
-      if let headerView = headerView as? SearchHeaderView {
-        headerView.configUI(type: .recent)
+
+      guard let headerView = headerView as? SearchHeaderView else { return UICollectionReusableView() }
+
+      guard let sectionType = SectionType(rawValue: indexPath.section) else {
+        return UICollectionViewCell()
       }
+
+      switch sectionType {
+      case .recent:
+        headerView.configUI(type: .recent)
+      case .recommend:
+        headerView.configUI(type: .recommend)
+      }
+
       return headerView
     } else {
       return UICollectionReusableView()
