@@ -1,7 +1,7 @@
 ![Group 33781 copy](https://user-images.githubusercontent.com/51031771/178424193-9c7bf16d-3597-43cf-b71b-5460181dc795.png)
 
 
-## 🍹🍹🍹 Code Convention
+## 🍹 Code Convention
 
 
 <details>
@@ -347,7 +347,7 @@ if (name == "Hello") {
 <br>
 <br>
 
-## 🍹🍹🍹 Git Convention
+## 🍹 Git Convention
 
 <details>
 
@@ -473,7 +473,7 @@ feature/#17-description소문자로만쓰기
 <br>
 <br>
 
-## 🍹🍹🍹 Foldering
+## 🍹 Foldering
 
 <details>
 
