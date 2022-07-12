@@ -61,6 +61,7 @@
 		4D057161287C1AC400CB656A /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057160287C1AC300CB656A /* SearchResultViewController.swift */; };
 		4D057163287CF49A00CB656A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057162287CF49900CB656A /* SearchViewController.swift */; };
 		4D057165287CFF1500CB656A /* Adjusted+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057164287CFF1400CB656A /* Adjusted+Extension.swift */; };
+		4D057167287D36BD00CB656A /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057166287D36BD00CB656A /* SearchHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		4D057160287C1AC300CB656A /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		4D057162287CF49900CB656A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4D057164287CFF1400CB656A /* Adjusted+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Adjusted+Extension.swift"; sourceTree = "<group>"; };
+		4D057166287D36BD00CB656A /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +313,7 @@
 		3CD437032877DC390044AE04 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				4D057170287DC2FB00CB656A /* Component */,
 				3CD437062877DC6D0044AE04 /* Search.storyboard */,
 				4D057162287CF49900CB656A /* SearchViewController.swift */,
 				4D057160287C1AC300CB656A /* SearchResultViewController.swift */,
@@ -392,6 +395,14 @@
 				3CE598C128748093004AFD05 /* NobarUITestsLaunchTests.swift */,
 			);
 			path = NobarUITests;
+			sourceTree = "<group>";
+		};
+		4D057170287DC2FB00CB656A /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				4D057166287D36BD00CB656A /* SearchHeaderView.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -573,6 +584,7 @@
 				3CE5989F28748092004AFD05 /* AppDelegate.swift in Sources */,
 				3CD436FB2877395C0044AE04 /* UICollectionView+Extensions.swift in Sources */,
 				3CD4370F2877E8310044AE04 /* TabbarRouter.swift in Sources */,
+				4D057167287D36BD00CB656A /* SearchHeaderView.swift in Sources */,
 				3C82300C28751AF90031C1DA /* UIViewController+Extensions.swift in Sources */,
 				4D057165287CFF1500CB656A /* Adjusted+Extension.swift in Sources */,
 				4D057163287CF49A00CB656A /* SearchViewController.swift in Sources */,
