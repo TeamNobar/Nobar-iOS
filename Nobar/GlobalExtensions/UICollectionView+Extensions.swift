@@ -17,8 +17,13 @@ extension UICollectionView {
     else {
       return T()
     }
-    
+
     return cell
+  }
+
+  func register<T: UICollectionViewCell>(cell: T.Type,
+                                         forCellWithReuseIdentifier reuseIdentifier: String = T.className) {
+    register(cell, forCellWithReuseIdentifier: reuseIdentifier)
   }
 }
 
