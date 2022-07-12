@@ -50,6 +50,11 @@ final class SearchViewController: BaseViewController {
     $0.becomeFirstResponder()
   }
 
+  private lazy var underline = UIView().then {
+    $0.backgroundColor = Color.gray02
+    $0.makeShadow(color: UIColor(red: 0, green: 0, blue: 0, alpha: 0.2), opacity: 1, offset: CGSize(width: 1, height: 1), radius: 2)
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     render()
@@ -82,6 +87,14 @@ final class SearchViewController: BaseViewController {
       $0.leading.equalTo(backButton.snp.trailing)
       $0.trailing.equalToSuperview().inset(54)
     }
+
+    searchView.addSubview(underline)
+    underline.snp.makeConstraints {
+      $0.top.equalTo(searchTextField.snp.bottom).offset(20)
+      $0.leading.trailing.equalToSuperview()
+      $0.height.equalTo(0.4)
+    }
+
   }
 
   private func configUI() {
@@ -157,3 +170,24 @@ extension UITextField {
       self.rightView = paddingView
       self.rightViewMode = .always
   }
+}
+
+extension NSObject {
+    static var className: String {
+        return String(describing: self)
+    }
+}
+
+extension UIView {
+  @discardableResult
+  func makeShadow(color: UIColor,
+                  opacity: Float,
+                  offset: CGSize,
+                  radius: CGFloat) -> Self {
+    layer.shadowColor = color.cgColor
+    layer.shadowOpacity = opacity
+    layer.shadowOffset = offset
+    layer.shadowRadius = radius
+    return self
+  }
+}
