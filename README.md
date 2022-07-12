@@ -1,4 +1,4 @@
-![Group 33781](https://user-images.githubusercontent.com/51031771/178422740-b77b03d3-30f0-4996-a5b5-68032d503515.png)
+![Group 33781 copy](https://user-images.githubusercontent.com/51031771/178424193-9c7bf16d-3597-43cf-b71b-5460181dc795.png)
 
 
 ## 🍹🍹🍹 Code Convention
@@ -539,3 +539,4 @@ feature/#17-description소문자로만쓰기
 
 </div>
 </details>
+![Group 33781 2](https://user-images.githubusercontent.com/51031771/178424234-d18dbec6-4de3-481d-81d9-8ce2df7c7339.png)
