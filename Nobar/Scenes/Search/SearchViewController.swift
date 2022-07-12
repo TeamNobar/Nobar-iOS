@@ -55,10 +55,28 @@ final class SearchViewController: BaseViewController {
     $0.makeShadow(color: UIColor(red: 0, green: 0, blue: 0, alpha: 0.2), opacity: 1, offset: CGSize(width: 1, height: 1), radius: 2)
   }
 
+  private let emptyLabel = UILabel().then {
+    $0.text = "최근 검색어가 아직 없어요"
+    $0.textColor = Color.gray03
+    $0.font = Pretendard.size13.regular()
+  }
+
+  private lazy var searchKeywordCollectionView: UICollectionView = {
+    let layout = createLayout()
+    layout.configuration.interSectionSpacing = 0
+
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    collectionView.showsHorizontalScrollIndicator = false
+    collectionView.showsVerticalScrollIndicator = false
+    collectionView.register(cell: RecentCollectionViewCell.self)
+    return collectionView
+  }()
+
   override func viewDidLoad() {
     super.viewDidLoad()
     render()
     configUI()
+    setDelegation()
   }
 
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -95,12 +113,18 @@ final class SearchViewController: BaseViewController {
       $0.height.equalTo(0.4)
     }
 
+    view.addSubview(searchKeywordCollectionView)
+    searchKeywordCollectionView.snp.makeConstraints {
+      $0.top.equalTo(underline.snp.bottom)
+      $0.leading.trailing.bottom.equalToSuperview()
+    }
   }
 
   private func configUI() {
     view.backgroundColor = .white
     navigationController?.navigationBar.isHidden = true
     setCustomTextField()
+    searchKeywordCollectionView.register(SearchHeaderView.self, forSupplementaryViewOfKind: SearchHeaderView.className, withReuseIdentifier: SearchHeaderView.className)
   }
 
   private func setCustomTextField() {
