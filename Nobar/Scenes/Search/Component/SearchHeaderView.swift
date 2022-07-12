@@ -90,6 +90,11 @@ final class SearchHeaderView: UICollectionReusableView {
       $0.bottom.equalToSuperview().inset(15)
       $0.trailing.equalToSuperview().inset(26)
     }
+
+    titleLabel.snp.remakeConstraints {
+      $0.top.bottom.equalToSuperview().inset(15)
+      $0.leading.equalToSuperview().inset(26)
+    }
   }
 
   private func addSeparateLine() {
