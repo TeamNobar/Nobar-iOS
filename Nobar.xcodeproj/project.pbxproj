@@ -63,6 +63,7 @@
 		4D057165287CFF1500CB656A /* Adjusted+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057164287CFF1400CB656A /* Adjusted+Extension.swift */; };
 		4D057167287D36BD00CB656A /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057166287D36BD00CB656A /* SearchHeaderView.swift */; };
 		4D05716A287D4CDC00CB656A /* RecentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057169287D4CDC00CB656A /* RecentCollectionViewCell.swift */; };
+		4D05716C287D4D5600CB656A /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D05716B287D4D5600CB656A /* RecommendCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		4D057164287CFF1400CB656A /* Adjusted+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Adjusted+Extension.swift"; sourceTree = "<group>"; };
 		4D057166287D36BD00CB656A /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
 		4D057169287D4CDC00CB656A /* RecentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCollectionViewCell.swift; sourceTree = "<group>"; };
+		4D05716B287D4D5600CB656A /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -404,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				4D057169287D4CDC00CB656A /* RecentCollectionViewCell.swift */,
+				4D05716B287D4D5600CB656A /* RecommendCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				3C823002287518C20031C1DA /* Environment.swift in Sources */,
 				3CD437172877EC860044AE04 /* BaseViewController.swift in Sources */,
 				3CD437022877D4880044AE04 /* NBTabbarController.swift in Sources */,
+				4D05716C287D4D5600CB656A /* RecommendCollectionViewCell.swift in Sources */,
 				3CD437132877EC530044AE04 /* WritingNoteViewController.swift in Sources */,
 				3CE5989F28748092004AFD05 /* AppDelegate.swift in Sources */,
 				3CD436FB2877395C0044AE04 /* UICollectionView+Extensions.swift in Sources */,
