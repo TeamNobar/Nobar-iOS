@@ -59,6 +59,7 @@
 		3CE598B628748093004AFD05 /* NobarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE598B528748093004AFD05 /* NobarTests.swift */; };
 		3CE598C028748093004AFD05 /* NobarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE598BF28748093004AFD05 /* NobarUITests.swift */; };
 		3CE598C228748093004AFD05 /* NobarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE598C128748093004AFD05 /* NobarUITestsLaunchTests.swift */; };
+		4D057165287CFF1500CB656A /* Adjusted+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057164287CFF1400CB656A /* Adjusted+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		3CE598BB28748093004AFD05 /* NobarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NobarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CE598BF28748093004AFD05 /* NobarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NobarUITests.swift; sourceTree = "<group>"; };
 		3CE598C128748093004AFD05 /* NobarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NobarUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4D057164287CFF1400CB656A /* Adjusted+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Adjusted+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 				3C82300B28751AF90031C1DA /* UIViewController+Extensions.swift */,
 				3CD436F6287738DD0044AE04 /* UIStoryboard+Extensions.swift */,
 				3CD436FA2877395C0044AE04 /* UICollectionView+Extensions.swift */,
+				4D057164287CFF1400CB656A /* Adjusted+Extension.swift */,
 			);
 			path = GlobalExtensions;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				3CD436FB2877395C0044AE04 /* UICollectionView+Extensions.swift in Sources */,
 				3CD4370F2877E8310044AE04 /* TabbarRouter.swift in Sources */,
 				3C82300C28751AF90031C1DA /* UIViewController+Extensions.swift in Sources */,
+				4D057165287CFF1500CB656A /* Adjusted+Extension.swift in Sources */,
 				3CD436D128772E2A0044AE04 /* APIRouter.swift in Sources */,
 				3CA17C0B2878920B00E67B27 /* Font.swift in Sources */,
 				3CD437002877D3FD0044AE04 /* BaseRouter.swift in Sources */,
