@@ -62,6 +62,7 @@
 		4D057163287CF49A00CB656A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057162287CF49900CB656A /* SearchViewController.swift */; };
 		4D057165287CFF1500CB656A /* Adjusted+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057164287CFF1400CB656A /* Adjusted+Extension.swift */; };
 		4D057167287D36BD00CB656A /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057166287D36BD00CB656A /* SearchHeaderView.swift */; };
+		4D05716A287D4CDC00CB656A /* RecentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057169287D4CDC00CB656A /* RecentCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,7 @@
 		4D057162287CF49900CB656A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4D057164287CFF1400CB656A /* Adjusted+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Adjusted+Extension.swift"; sourceTree = "<group>"; };
 		4D057166287D36BD00CB656A /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
+		4D057169287D4CDC00CB656A /* RecentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				4D057170287DC2FB00CB656A /* Component */,
+				4D057168287D434700CB656A /* Cell */,
 				3CD437062877DC6D0044AE04 /* Search.storyboard */,
 				4D057162287CF49900CB656A /* SearchViewController.swift */,
 				4D057160287C1AC300CB656A /* SearchResultViewController.swift */,
@@ -395,6 +398,14 @@
 				3CE598C128748093004AFD05 /* NobarUITestsLaunchTests.swift */,
 			);
 			path = NobarUITests;
+			sourceTree = "<group>";
+		};
+		4D057168287D434700CB656A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4D057169287D4CDC00CB656A /* RecentCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		4D057170287DC2FB00CB656A /* Component */ = {
@@ -589,6 +600,7 @@
 				4D057165287CFF1500CB656A /* Adjusted+Extension.swift in Sources */,
 				4D057163287CF49A00CB656A /* SearchViewController.swift in Sources */,
 				3CD436D128772E2A0044AE04 /* APIRouter.swift in Sources */,
+				4D05716A287D4CDC00CB656A /* RecentCollectionViewCell.swift in Sources */,
 				3CA17C0B2878920B00E67B27 /* Font.swift in Sources */,
 				3CD437002877D3FD0044AE04 /* BaseRouter.swift in Sources */,
 				3CA17C1328789BAE00E67B27 /* ImageFactory.swift in Sources */,
