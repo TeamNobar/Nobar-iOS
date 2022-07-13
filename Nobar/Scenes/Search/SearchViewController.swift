@@ -47,7 +47,7 @@ final class SearchViewController: BaseViewController {
     $0.textColor = Color.gray03.getColor()
     $0.tintColor = Color.navy01.getColor()
 
-    $0.layer.borderColor = Color.gray04.cgColor
+    $0.layer.borderColor = Color.gray04.getColor().cgColor
     $0.layer.borderWidth = 0.4
     $0.layer.cornerRadius = 6
 
@@ -61,7 +61,7 @@ final class SearchViewController: BaseViewController {
 
   private lazy var underline = UIView().then {
     $0.backgroundColor = Color.gray02.getColor()
-    $0.makeShadow(color: UIColor(red: 0, green: 0, blue: 0, alpha: 0.2), opacity: 1, offset: CGSize(width: 1, height: 1), radius: 2)
+    $0.layer.applyShadow(color: .black, alpha: 0.2, x: 1, y: 1, blur: 2, spread: 0)
   }
 
   private let emptyLabel = UILabel().then {
@@ -305,45 +305,5 @@ extension SearchViewController: UICollectionViewDataSource {
     } else {
       return UICollectionReusableView()
     }
-  }
-}
-
-// TODO: 유진언니 PR Merge 후에 Extension 파일에 추가할 예정
-extension UITextField {
-
-  /// placeholder 컬러, 폰트 변경 메서드
-  func setPlaceholderAttributes(_ placeholderColor: UIColor, _ placeholderFont: UIFont) {
-    attributedPlaceholder = NSAttributedString(string: placeholder ?? "", attributes: [
-      .foregroundColor: placeholderColor,
-      .font: placeholderFont].compactMapValues { $0 }
-    )
-  }
-
-  /// UITextField 왼쪽에 여백 주는 메서드
-  func addLeftPadding(_ amount: CGFloat) {
-      let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
-      self.leftView = paddingView
-      self.leftViewMode = .always
-  }
-
-  /// UITextField 오른쪽에 여백 주는 메서드
-  func addRightPadding(_ amount: CGFloat) {
-      let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
-      self.rightView = paddingView
-      self.rightViewMode = .always
-  }
-}
-
-extension UIView {
-  @discardableResult
-  func makeShadow(color: UIColor,
-                  opacity: Float,
-                  offset: CGSize,
-                  radius: CGFloat) -> Self {
-    layer.shadowColor = color.cgColor
-    layer.shadowOpacity = opacity
-    layer.shadowOffset = offset
-    layer.shadowRadius = radius
-    return self
   }
 }
