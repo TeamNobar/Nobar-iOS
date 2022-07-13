@@ -69,6 +69,7 @@
 		6AAD37EA287C7FBA0030646C /* PanDirectionGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37E9287C7FB90030646C /* PanDirectionGesture.swift */; };
 		6AAD37EC287C807E0030646C /* showToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37EB287C807E0030646C /* showToastMessage.swift */; };
 		6AAD37F3287F213C0030646C /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37F2287F213B0030646C /* HomeHeaderView.swift */; };
+		6AAD37F5287F38290030646C /* CocktailCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37F4287F38280030646C /* CocktailCVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +144,7 @@
 		6AAD37E9287C7FB90030646C /* PanDirectionGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanDirectionGesture.swift; sourceTree = "<group>"; };
 		6AAD37EB287C807E0030646C /* showToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showToastMessage.swift; sourceTree = "<group>"; };
 		6AAD37F2287F213B0030646C /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
+		6AAD37F4287F38280030646C /* CocktailCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailCVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				6AAD37F2287F213B0030646C /* HomeHeaderView.swift */,
+				6AAD37F4287F38280030646C /* CocktailCVC.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -628,6 +631,7 @@
 				3CD436FE2877D11C0044AE04 /* AppRouter.swift in Sources */,
 				3CD436F92877390A0044AE04 /* StoryboardRouter.swift in Sources */,
 				3CE598A128748092004AFD05 /* SceneDelegate.swift in Sources */,
+				6AAD37F5287F38290030646C /* CocktailCVC.swift in Sources */,
 				3CA17C18287A71E300E67B27 /* CGFloat+Extensions.swift in Sources */,
 				6AAD37F3287F213C0030646C /* HomeHeaderView.swift in Sources */,
 				6AAD37E2287C7B250030646C /* UILabel+Extension.swift in Sources */,
