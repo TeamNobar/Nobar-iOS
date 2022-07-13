@@ -7,7 +7,12 @@
 
 import UIKit
 
-final class NBTabbarController: UITabBarController { }
+final class NBTabbarController: UITabBarController {
+  private let newLine = UIView().then {
+    $0.backgroundColor = Color.gray01.getColor()
+    $0.frame.size = CGSize(width: UIScreen.main.bounds.size.width, height: 1)
+  }
+}
 
 // MARK: - Initialize
 extension NBTabbarController {
@@ -24,6 +29,7 @@ extension NBTabbarController {
     let appearance = UITabBarAppearance()
     appearance.configureWithOpaqueBackground()
     appearance.backgroundColor = .white
+    self.tabBar.insertSubview(newLine, at: 1)
     self.tabBar.standardAppearance = appearance
     self.tabBar.scrollEdgeAppearance = appearance
   }
