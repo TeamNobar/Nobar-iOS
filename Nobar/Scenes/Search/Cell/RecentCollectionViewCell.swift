@@ -10,7 +10,7 @@ import UIKit
 import Then
 import SnapKit
 
-class RecentCollectionViewCell: UICollectionViewCell {
+final class RecentCollectionViewCell: UICollectionViewCell {
 
   private let keywordLabel = UILabel().then {
     $0.textColor = .black

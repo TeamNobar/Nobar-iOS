@@ -10,7 +10,7 @@ import UIKit
 import Then
 import SnapKit
 
-class RecommendCollectionViewCell: UICollectionViewCell {
+final class RecommendCollectionViewCell: UICollectionViewCell {
 
   private let numberLabel = UILabel().then {
     $0.text = "1"
