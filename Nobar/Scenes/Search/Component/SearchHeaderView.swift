@@ -20,24 +20,24 @@ final class SearchHeaderView: UICollectionReusableView {
   }
 
   private var titleLabel = UILabel().then {
-    $0.textColor = Color.pink01
+    $0.textColor = Color.pink01.getColor()
     $0.font = Pretendard.size17.semibold()
   }
 
   private var deleteButton = UIButton().then {
     $0.setTitle("전체 삭제", for: .normal)
-    $0.setTitleColor(Color.gray03, for: .normal)
+    $0.setTitleColor(Color.gray03.getColor(), for: .normal)
     $0.titleLabel?.font = Pretendard.size13.medium()
   }
 
   private var dateLabel = UILabel().then {
     $0.text = "2022.07.07 기준"
-    $0.textColor = Color.gray03
+    $0.textColor = Color.gray03.getColor()
     $0.font = Pretendard.size13.regular()
   }
 
   private let topLine = UIView().then {
-    $0.backgroundColor = Color.gray02
+    $0.backgroundColor = Color.gray02.getColor()
   }
 
   override init(frame: CGRect) {

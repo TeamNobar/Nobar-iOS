@@ -41,11 +41,11 @@ final class SearchViewController: BaseViewController {
 
   private lazy var searchTextField = UITextField().then {
     $0.placeholder = " 칵테일 이름, 재료 이름"
-    $0.setPlaceholderAttributes(Color.gray03, Pretendard.size13.bold())
-    $0.backgroundColor = Color.gray01
+    $0.setPlaceholderAttributes(Color.gray03.getColor(), Pretendard.size13.bold())
+    $0.backgroundColor = Color.gray01.getColor()
     $0.font = Pretendard.size13.bold()
-    $0.textColor = Color.gray03
-    $0.tintColor = Color.navy01
+    $0.textColor = Color.gray03.getColor()
+    $0.tintColor = Color.navy01.getColor()
 
     $0.layer.borderColor = Color.gray04.cgColor
     $0.layer.borderWidth = 0.4
@@ -60,13 +60,13 @@ final class SearchViewController: BaseViewController {
   }
 
   private lazy var underline = UIView().then {
-    $0.backgroundColor = Color.gray02
+    $0.backgroundColor = Color.gray02.getColor()
     $0.makeShadow(color: UIColor(red: 0, green: 0, blue: 0, alpha: 0.2), opacity: 1, offset: CGSize(width: 1, height: 1), radius: 2)
   }
 
   private let emptyLabel = UILabel().then {
     $0.text = "최근 검색어가 아직 없어요"
-    $0.textColor = Color.gray03
+    $0.textColor = Color.gray03.getColor()
     $0.font = Pretendard.size13.regular()
   }
 
@@ -332,12 +332,6 @@ extension UITextField {
       self.rightView = paddingView
       self.rightViewMode = .always
   }
-}
-
-extension NSObject {
-    static var className: String {
-        return String(describing: self)
-    }
 }
 
 extension UIView {

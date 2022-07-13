@@ -41,9 +41,9 @@ final class RecentCollectionViewCell: UICollectionViewCell {
   }
 
   private func configUI() {
-    backgroundColor = Color.gray01
+    backgroundColor = Color.gray01.getColor()
     layer.borderWidth = 0.4
-    layer.borderColor = Color.gray02.cgColor
+    layer.borderColor = Color.gray02.getColor().cgColor
     layer.cornerRadius = 19
     makeShadow(color: UIColor(red: 0, green: 0, blue: 0, alpha: 0.05), opacity: 1, offset: CGSize(width: 1, height: 1), radius: 2)
   }
