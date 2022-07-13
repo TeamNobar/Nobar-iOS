@@ -11,3 +11,4 @@ struct BaseRecipe: Decodable {
   var url: String
   var recipes: [String]
 }
+
