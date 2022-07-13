@@ -19,8 +19,7 @@ final class MainViewController: BaseViewController {
   private let logoImageView = UIImageView().then {
     $0.image = ImageFactory.logo
   }
-  
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     
