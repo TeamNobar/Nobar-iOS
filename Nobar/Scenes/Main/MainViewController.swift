@@ -7,8 +7,20 @@
 
 import UIKit
 
+import Then
+import SnapKit
+
 final class MainViewController: BaseViewController {
 
+  private let logoView = UIView().then {
+    $0.backgroundColor = .white
+  }
+  
+  private let logoImageView = UIImageView().then {
+    $0.image = ImageFactory.logo
+  }
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
