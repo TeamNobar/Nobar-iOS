@@ -77,5 +77,11 @@ class CocktailCVC: UICollectionViewCell {
     layer.cornerRadius = 10
     self.layer.applyShadow(alpha: 0.05, x: 1.0, y: 1.0, blur: 2.0, spread: 0.0)
   }
+  
+  func setData(data: CocktailModel){
+    cocktailNameLabel.text = data.cocktailName
+    cocktailEngNameLabel.text = data.cocktailEngName
+    baseLabel.text = data.base
+  }
 
 }
