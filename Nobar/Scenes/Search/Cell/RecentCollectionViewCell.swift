@@ -31,7 +31,11 @@ final class RecentCollectionViewCell: UICollectionViewCell {
   override func prepareForReuse() {
     keywordLabel.text = ""
   }
+}
 
+// MARK: - UI & Layout
+extension RecentCollectionViewCell {
+  
   private func render() {
     addSubview(keywordLabel)
     keywordLabel.snp.makeConstraints {

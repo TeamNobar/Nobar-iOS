@@ -41,21 +41,24 @@ final class RecommendCollectionViewCell: UICollectionViewCell {
   override func prepareForReuse() {
     keywordLabel.text = ""
   }
+}
+
+// MARK: - UI & Layout
+extension RecommendCollectionViewCell {
 
   private func render() {
-    addSubview(numberLabel)
+    addSubviews([numberLabel, keywordLabel, upImageView])
+
     numberLabel.snp.makeConstraints {
       $0.leading.equalToSuperview()
       $0.top.bottom.equalToSuperview().inset(16)
     }
 
-    addSubview(keywordLabel)
     keywordLabel.snp.makeConstraints {
       $0.leading.equalTo(numberLabel.snp.trailing).offset(16)
       $0.top.bottom.equalToSuperview().inset(16)
     }
 
-    addSubview(upImageView)
     upImageView.snp.makeConstraints {
       $0.width.equalTo(22)
       $0.height.equalTo(24)
