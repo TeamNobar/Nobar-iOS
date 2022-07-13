@@ -52,7 +52,6 @@ final class SearchHeaderView: UICollectionReusableView {
 
 // MARK: - UI & Layout
 extension SearchHeaderView {
-  
   private func render() {
     addSubview(titleLabel)
     titleLabel.snp.makeConstraints {

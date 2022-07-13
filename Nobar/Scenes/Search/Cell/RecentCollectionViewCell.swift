@@ -35,7 +35,6 @@ final class RecentCollectionViewCell: UICollectionViewCell {
 
 // MARK: - UI & Layout
 extension RecentCollectionViewCell {
-  
   private func render() {
     addSubview(keywordLabel)
     keywordLabel.snp.makeConstraints {

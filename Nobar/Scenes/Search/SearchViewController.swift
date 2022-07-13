@@ -77,8 +77,6 @@ final class SearchViewController: BaseViewController {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.showsHorizontalScrollIndicator = false
     collectionView.showsVerticalScrollIndicator = false
-    collectionView.register(cell: RecentCollectionViewCell.self)
-    collectionView.register(cell: RecommendCollectionViewCell.self)
     return collectionView
   }()
 
@@ -87,28 +85,55 @@ final class SearchViewController: BaseViewController {
     render()
     configUI()
     setDelegation()
+    setRegistration()
+  }
+
+  override func setupConstraints() {
+    setLayout()
+    setTextFieldLayout()
   }
 
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
       view.endEditing(true)
   }
+}
 
+// MARK: - UI & Layout
+extension SearchViewController {
   private func render() {
-    view.addSubview(searchView)
+    view.addSubviews([searchView, searchKeywordCollectionView])
+    searchView.addSubviews([backButton, searchTextField, underline])
+  }
+
+  private func configUI() {
+    view.backgroundColor = .white
+    navigationController?.navigationBar.isHidden = true
+    setTextFieldElement()
+  }
+
+  private func setTextFieldElement() {
+    let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 28, height: 36))
+    rightView.addSubview(clearTextButton)
+    searchTextField.rightView = rightView
+
+    let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 43, height: 36))
+    leftView.addSubview(searchIconImage)
+    searchTextField.leftView = leftView
+  }
+
+  private func setLayout() {
     searchView.snp.makeConstraints {
       $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
       $0.leading.trailing.equalToSuperview()
       $0.height.equalTo(62)
     }
 
-    searchView.addSubview(backButton)
     backButton.snp.makeConstraints {
       $0.top.equalToSuperview().inset(2)
       $0.leading.equalToSuperview().inset(10)
       $0.width.height.equalTo(44)
     }
 
-    searchView.addSubview(searchTextField)
     searchTextField.snp.makeConstraints {
       $0.top.equalToSuperview().inset(6)
       $0.bottom.equalToSuperview().inset(20)
@@ -116,59 +141,51 @@ final class SearchViewController: BaseViewController {
       $0.trailing.equalToSuperview().inset(54)
     }
 
-    searchView.addSubview(underline)
     underline.snp.makeConstraints {
       $0.top.equalTo(searchTextField.snp.bottom).offset(20)
       $0.leading.trailing.equalToSuperview()
       $0.height.equalTo(0.4)
     }
 
-    view.addSubview(searchKeywordCollectionView)
     searchKeywordCollectionView.snp.makeConstraints {
       $0.top.equalTo(underline.snp.bottom)
       $0.leading.trailing.bottom.equalToSuperview()
     }
   }
 
-  private func configUI() {
-    view.backgroundColor = .white
-    navigationController?.navigationBar.isHidden = true
-    setCustomTextField()
-    searchKeywordCollectionView.register(SearchHeaderView.self, forSupplementaryViewOfKind: SearchHeaderView.className, withReuseIdentifier: SearchHeaderView.className)
-  }
-
-  private func setCustomTextField() {
-    let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 28, height: 36))
-    rightView.addSubview(clearTextButton)
+  private func setTextFieldLayout() {
     clearTextButton.snp.makeConstraints {
       $0.width.height.equalTo(20)
       $0.top.equalToSuperview().inset(8)
       $0.leading.equalToSuperview()
       $0.trailing.equalToSuperview().inset(8)
     }
-    searchTextField.rightView = rightView
 
-    let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 43, height: 36))
-    leftView.addSubview(searchIconImage)
     searchIconImage.snp.makeConstraints {
       $0.width.height.equalTo(19)
       $0.top.equalToSuperview().inset(9)
       $0.leading.equalToSuperview().inset(16)
       $0.trailing.equalToSuperview().inset(8)
     }
-    searchTextField.leftView = leftView
   }
+}
 
+// MARK: - Private Funtions
+extension SearchViewController {
   private func setDelegation() {
     searchKeywordCollectionView.delegate = self
     searchKeywordCollectionView.dataSource = self
   }
+
+  private func setRegistration() {
+    searchKeywordCollectionView.register(SearchHeaderView.self, forSupplementaryViewOfKind: SearchHeaderView.className, withReuseIdentifier: SearchHeaderView.className)
+    searchKeywordCollectionView.register(cell: RecentCollectionViewCell.self)
+    searchKeywordCollectionView.register(cell: RecommendCollectionViewCell.self)
+  }
 }
 
 // MARK: - Action Functions
-
 extension SearchViewController {
-
   @objc
   private func textFieldDidChange(_ sender: UITextField) {
     searchTextField.rightViewMode = searchTextField.hasText ? .always : .never
@@ -186,7 +203,6 @@ extension SearchViewController {
 }
 
 // MARK: - CollectionView Compositional Layout functions
-
 extension SearchViewController {
   private func getLayoutRecentSection() -> NSCollectionLayoutSection {
     let estimatedWidth: CGFloat = 50
@@ -230,7 +246,6 @@ extension SearchViewController {
 
   private func createCompositionLayout() -> UICollectionViewCompositionalLayout {
     return UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
-
       switch sectionNumber {
       case 0: return self.getLayoutRecentSection()
       case 1: return self.getLayoutRecommendSection()
@@ -241,13 +256,12 @@ extension SearchViewController {
 }
 
 // MARK: - CollectionView Delegate functions
-
 extension SearchViewController: UICollectionViewDelegate {
 
 }
 
 extension SearchViewController: UICollectionViewDataSource {
-
+  
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     return 2
   }

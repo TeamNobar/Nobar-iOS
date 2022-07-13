@@ -45,7 +45,6 @@ final class RecommendCollectionViewCell: UICollectionViewCell {
 
 // MARK: - UI & Layout
 extension RecommendCollectionViewCell {
-
   private func render() {
     addSubviews([numberLabel, keywordLabel, upImageView])
 
