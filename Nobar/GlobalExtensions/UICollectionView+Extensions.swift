@@ -21,8 +21,10 @@ extension UICollectionView {
     return cell
   }
 
-  func register<T: UICollectionViewCell>(cell: T.Type,
-                                         forCellWithReuseIdentifier reuseIdentifier: String = T.className) {
+  func register<T: UICollectionViewCell>(
+    cell: T.Type,
+    forCellWithReuseIdentifier reuseIdentifier: String = T.className
+  ) {
     register(cell, forCellWithReuseIdentifier: reuseIdentifier)
   }
 }
