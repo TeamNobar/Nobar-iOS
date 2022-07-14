@@ -41,6 +41,39 @@ final class MainViewController: BaseViewController {
     super.viewDidLoad()
   }
   
+  override func setupConstraints() {
+    super.setupConstraints()
+    render()
+    setLayout()
+    
+  }
+  
+  private func render() {
+    view.addSubviews([logoView,
+                      homeCollectionView])
+    logoView.addSubview(logoImageView)
+  }
+  
+  private func setLayout() {
+    logoView.snp.makeConstraints {
+      $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+      $0.leading.trailing.equalToSuperview()
+      $0.height.equalTo(46)
+    }
+    
+    logoImageView.snp.makeConstraints {
+      $0.top.equalToSuperview().offset(10)
+      $0.leading.equalToSuperview().offset(28)
+      $0.width.equalTo(120)
+      $0.height.equalTo(24)
+    }
+    
+    homeCollectionView.snp.makeConstraints {
+      $0.top.equalTo(logoImageView.snp.bottom)
+      $0.leading.trailing.bottom.equalToSuperview()
+    }
+  }
+  
 }
 
 extension MainViewController {
