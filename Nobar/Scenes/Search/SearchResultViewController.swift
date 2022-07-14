@@ -143,7 +143,6 @@ extension SearchResultViewController {
       else { return }
       self.performQuery(with: searchText)
     }
-    searchAutoResultCollectionView.layoutIfNeeded()
   }
 
   @objc private func didClickOnBackButton(_ sender: UIButton) {
@@ -217,8 +216,12 @@ extension SearchResultViewController {
     let filteredCocktail = self.dummyCocktail.filter { $0.hasPrefix(searchText ?? "") }
     let filteredIngredient = self.dummyIngredient.filter { $0.hasPrefix(searchText ?? "") }
 
-    let fiveCocktail = Array(filteredCocktail.prefix(5))
+    var fiveCocktail = Array(filteredCocktail.prefix(5))
     let fiveIngredient = Array(filteredIngredient.prefix(5))
+
+    if fiveCocktail.isEmpty {
+      fiveCocktail.append(" ")
+    }
 
     snapshot = NSDiffableDataSourceSnapshot<Section, String>()
     snapshot.appendSections([.cocktail, .ingredient])
