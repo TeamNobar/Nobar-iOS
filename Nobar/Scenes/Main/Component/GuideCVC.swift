@@ -57,5 +57,9 @@ class GuideCVC: UICollectionViewCell {
     layer.applyShadow(alpha: 0.5, x: 1, y: 1, blur: 2, spread: 0)
   }
   
+  private func setData(data: GuideModel){
+    thumbnailImageView.image = UIImage(named: data.thumbnailImageName)
+    titleLabel.text = data.titleName
+  }
 
 }
