@@ -45,5 +45,5 @@ final class RecommendCVC: UICollectionViewCell {
     backgroundColor = Color.navy01.getColor()
     layer.cornerRadius = 2
   }
-
+  
 }
