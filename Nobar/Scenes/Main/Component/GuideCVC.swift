@@ -10,7 +10,7 @@ import UIKit
 import Then
 import SnapKit
 
-class GuideCVC: UICollectionViewCell {
+final class GuideCVC: UICollectionViewCell {
   
   private let thumbnailImageView = UIImageView()
   

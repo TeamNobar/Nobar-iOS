@@ -10,7 +10,7 @@ import UIKit
 import Then
 import SnapKit
 
-class CocktailCVC: UICollectionViewCell {
+final class CocktailCVC: UICollectionViewCell {
 
   private let cocktailNameLabel = UILabel().then {
     $0.textColor = Color.black.getColor()
