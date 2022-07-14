@@ -72,6 +72,7 @@
 		6AAD37F5287F38290030646C /* CocktailCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37F4287F38280030646C /* CocktailCVC.swift */; };
 		6AAD37F7287F6D7A0030646C /* CocktailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37F6287F6D790030646C /* CocktailModel.swift */; };
 		6AAD37FB287FFA240030646C /* GuideCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37FA287FFA240030646C /* GuideCVC.swift */; };
+		6AAD37FE288005940030646C /* GuideModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37FD288005940030646C /* GuideModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,7 @@
 		6AAD37F4287F38280030646C /* CocktailCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailCVC.swift; sourceTree = "<group>"; };
 		6AAD37F6287F6D790030646C /* CocktailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailModel.swift; sourceTree = "<group>"; };
 		6AAD37FA287FFA240030646C /* GuideCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideCVC.swift; sourceTree = "<group>"; };
+		6AAD37FD288005940030646C /* GuideModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -447,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				6AAD37F6287F6D790030646C /* CocktailModel.swift */,
+				6AAD37FD288005940030646C /* GuideModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				3CD436D128772E2A0044AE04 /* APIRouter.swift in Sources */,
 				3CA17C0B2878920B00E67B27 /* Font.swift in Sources */,
 				3CD437002877D3FD0044AE04 /* BaseRouter.swift in Sources */,
+				6AAD37FE288005940030646C /* GuideModel.swift in Sources */,
 				3CD437112877EBCC0044AE04 /* SearchViewController.swift in Sources */,
 				6AAD37DE287C75240030646C /* UIScreen+Extension.swift in Sources */,
 				3CA17C1328789BAE00E67B27 /* ImageFactory.swift in Sources */,
