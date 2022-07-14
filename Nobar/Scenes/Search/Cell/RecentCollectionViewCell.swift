@@ -13,7 +13,7 @@ import SnapKit
 final class RecentCollectionViewCell: UICollectionViewCell {
 
   private let keywordLabel = UILabel().then {
-    $0.textColor = .black
+    $0.textColor = Color.black.getColor()
     $0.font = Pretendard.size13.semibold()
   }
 

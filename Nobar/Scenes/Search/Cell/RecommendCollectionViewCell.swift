@@ -14,13 +14,13 @@ final class RecommendCollectionViewCell: UICollectionViewCell {
 
   private let numberLabel = UILabel().then {
     $0.text = "1"
-    $0.textColor = .black
+    $0.textColor = Color.black.getColor()
     $0.font = Pretendard.size15.regular()
   }
 
   private let keywordLabel = UILabel().then {
     $0.text = "추천 검색어 어쩌구"
-    $0.textColor = .black
+    $0.textColor = Color.black.getColor()
     $0.font = Pretendard.size15.regular()
   }
 

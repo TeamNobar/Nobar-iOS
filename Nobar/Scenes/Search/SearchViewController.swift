@@ -22,7 +22,7 @@ final class SearchViewController: BaseViewController {
   private var dummyKeywords: [String] = ["브랜디", "선라이즈피치", "피치크러쉬", "카시스 오렌지", "은비쨩", "칵테일어쩌구", "밀푀유나베", "피치어쩌구", "리큐르", "채원쨩??"]
 
   private let searchView = UIView().then {
-    $0.backgroundColor = .white
+    $0.backgroundColor = Color.white.getColor()
   }
 
   private lazy var backButton = UIButton().then {
@@ -106,7 +106,7 @@ extension SearchViewController {
   }
 
   private func configUI() {
-    view.backgroundColor = .white
+    view.backgroundColor = Color.white.getColor()
     navigationController?.navigationBar.isHidden = true
     setTextFieldElement()
   }
