@@ -146,9 +146,11 @@ extension SearchViewController {
 extension SearchViewController {
   @objc private func judgeHasText(_ sender: UITextField) {
     if searchTextField.hasText {
-      let searchResultViewController = SearchResultViewController()
-      searchResultViewController.firstKeyword = self.searchTextField.text
-      navigationController?.pushViewController(searchResultViewController, animated: false)
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        let searchResultViewController = SearchResultViewController()
+        searchResultViewController.firstKeyword = self.searchTextField.text
+        self.navigationController?.pushViewController(searchResultViewController, animated: false)
+      }
     }
   }
 
