@@ -19,14 +19,30 @@ final class MainViewController: BaseViewController {
   private let logoImageView = UIImageView().then {
     $0.image = ImageFactory.logo
   }
+  
+  private lazy var homeCollectionView: UICollectionView = {
+       let layout = getLayout()
+       layout.configuration.interSectionSpacing = 0
+
+       let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+       collectionView.showsHorizontalScrollIndicator = false
+       collectionView.showsVerticalScrollIndicator = false
+    collectionView.register(CocktailCVC.self, forCellWithReuseIdentifier: CocktailCVC.identifier)
+       return collectionView
+  }()
+  
 
   override func viewDidLoad() {
     super.viewDidLoad()
   }
+  
+  override func setupConstraints() {
+    <#code#>
+  }
 }
 
 extension MainViewController {
-  static func getLayout() -> UICollectionViewCompositionalLayout {
+  private func getLayout() -> UICollectionViewCompositionalLayout {
     UICollectionViewCompositionalLayout { (section, env) -> NSCollectionLayoutSection? in
       switch section {
       case 0:
@@ -48,7 +64,7 @@ extension MainViewController {
         var section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 26, bottom: 12, trailing: 26)
         
-        section = addHeaderView(section: section)
+        section = self.addHeaderView(section: section)
         
         return section
       case 1:
@@ -68,7 +84,7 @@ extension MainViewController {
         section.interGroupSpacing = 12
         section.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 26, bottom: 12, trailing: 26)
         
-        section = addHeaderView(section: section)
+        section = self.addHeaderView(section: section)
         
         return section
       default:
@@ -87,7 +103,7 @@ extension MainViewController {
         var section = NSCollectionLayoutSection(group: group)
 
         section.orthogonalScrollingBehavior = .continuous
-        section = addHeaderView(section: section)
+        section = self.addHeaderView(section: section)
         
         return section
       
@@ -95,7 +111,7 @@ extension MainViewController {
     }
   }
   
-  private static func addHeaderView(section: NSCollectionLayoutSection) -> NSCollectionLayoutSection{
+  private func addHeaderView(section: NSCollectionLayoutSection) -> NSCollectionLayoutSection{
     let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
     let headerSupplementary = NSCollectionLayoutBoundarySupplementaryItem(
       layoutSize: headerSize,
@@ -106,3 +122,4 @@ extension MainViewController {
     return section
   }
 }
+
