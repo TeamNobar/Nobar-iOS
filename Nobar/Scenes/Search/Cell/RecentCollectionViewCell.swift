@@ -13,7 +13,7 @@ import SnapKit
 final class RecentCollectionViewCell: UICollectionViewCell {
 
   private let keywordLabel = UILabel().then {
-    $0.textColor = .black
+    $0.textColor = Color.black.getColor()
     $0.font = Pretendard.size13.semibold()
   }
 
@@ -51,7 +51,7 @@ extension RecentCollectionViewCell {
     layer.applyShadow(color: .black, alpha: 0.05, x: 1, y: 1, blur: 2, spread: 0)
   }
 
-  func update(data: String) {
-    keywordLabel.text = data
+  func updateKeyword(_ keyword: String) {
+    keywordLabel.text = keyword
   }
 }
