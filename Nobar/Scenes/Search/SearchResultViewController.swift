@@ -90,5 +90,16 @@ extension SearchResultViewController {
     navigationController?.navigationBar.isHidden = true
   }
 }
+
+// MARK: - Action Functions
+extension SearchResultViewController {
+  @objc private func judgeHasText(_ sender: UITextField) {
+    if searchTextField.hasText == false {
+      navigationController?.popViewController(animated: false)
+    }
+  }
+
+  @objc private func didClickOnBackButton(_ sender: UIButton) {
+    self.navigationController?.popViewController(animated: false)
   }
 }
