@@ -135,22 +135,24 @@ extension SearchViewController {
     searchKeywordCollectionView.register(cell: RecentCollectionViewCell.self)
     searchKeywordCollectionView.register(cell: RecommendCollectionViewCell.self)
   }
+
+  private func initTextField() {
+    searchTextField.text = ""
+    searchTextField.rightViewMode = .never
+  }
 }
 
 // MARK: - Action Functions
 extension SearchViewController {
-  @objc
-  private func textFieldDidChange(_ sender: UITextField) {
-    searchTextField.rightViewMode = searchTextField.hasText ? .always : .never
+  @objc private func judgeHasText(_ sender: UITextField) {
+    if searchTextField.hasText {
+      let searchResultViewController = SearchResultViewController()
+      searchResultViewController.firstKeyword = self.searchTextField.text
+      navigationController?.pushViewController(searchResultViewController, animated: false)
+    }
   }
 
-  @objc
-  private func didClickOnClearButton(_ sender: UIButton) {
-    searchTextField.text = ""
-  }
-
-  @objc
-  private func didClickOnBackButton(_ sender: UIButton) {
+  @objc private func didClickOnBackButton(_ sender: UIButton) {
     self.navigationController?.popViewController(animated: true)
   }
 }
