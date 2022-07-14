@@ -174,13 +174,13 @@ extension SearchViewController {
     section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 26, bottom: 24, trailing: 26)
 
     let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
-    let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "SearchHeaderView", alignment: .topLeading)
+    let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: SearchHeaderView.className, alignment: .topLeading)
     section.boundarySupplementaryItems = [header]
 
     return section
   }
 
-  private func getLayoutRecommendSection() -> NSCollectionLayoutSection {
+  func getLayoutListSection() -> NSCollectionLayoutSection {
     let itemSize = NSCollectionLayoutSize(widthDimension:
         .fractionalWidth(1), heightDimension: .absolute(50))
     let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -193,7 +193,7 @@ extension SearchViewController {
     section.orthogonalScrollingBehavior = .continuous
 
     let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
-    let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "SearchHeaderView", alignment: .topLeading)
+    let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: SearchHeaderView.className, alignment: .topLeading)
     section.boundarySupplementaryItems = [header]
 
     return section
@@ -203,7 +203,7 @@ extension SearchViewController {
     return UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
       switch sectionNumber {
       case 0: return self.getLayoutRecentSection()
-      case 1: return self.getLayoutRecommendSection()
+      case 1: return self.getLayoutListSection()
       default: return self.getLayoutRecentSection()
       }
     }
