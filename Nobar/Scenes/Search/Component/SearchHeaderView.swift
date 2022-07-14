@@ -57,7 +57,7 @@ extension SearchHeaderView {
     addSubview(titleLabel)
     titleLabel.snp.makeConstraints {
       $0.top.bottom.equalToSuperview().inset(15)
-      $0.leading.equalToSuperview()
+      $0.leading.equalToSuperview().inset(26)
     }
   }
 
@@ -65,16 +65,17 @@ extension SearchHeaderView {
     switch type {
     case .recent:
       titleLabel.text = "최근 검색어"
-      self.addDeleteButton()
+      addDeleteButton()
+      remakeTitleLayout()
     case .recommend:
       titleLabel.text = "추천 검색어"
-      self.addDateLabel()
-      self.addSeparateLine()
+      addDateLabel()
+      addSeparateLine()
     case .cocktail:
       titleLabel.text = "칵테일 레시피"
     case .ingredient:
       titleLabel.text = "재료"
-      self.addSeparateLine()
+      addSeparateLine()
     }
   }
 
@@ -94,11 +95,6 @@ extension SearchHeaderView {
       $0.bottom.equalToSuperview().inset(15)
       $0.trailing.equalToSuperview().inset(26)
     }
-
-    titleLabel.snp.remakeConstraints {
-      $0.top.bottom.equalToSuperview().inset(15)
-      $0.leading.equalToSuperview().inset(26)
-    }
   }
 
   private func addSeparateLine() {
@@ -106,6 +102,13 @@ extension SearchHeaderView {
     topLine.snp.makeConstraints {
       $0.top.leading.trailing.equalToSuperview()
       $0.height.equalTo(0.8)
+    }
+  }
+
+  private func remakeTitleLayout() {
+    titleLabel.snp.remakeConstraints {
+      $0.top.bottom.equalToSuperview().inset(15)
+      $0.leading.equalToSuperview()
     }
   }
 }
