@@ -39,11 +39,11 @@ final class MainViewController: BaseViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    render()
   }
   
   override func setupConstraints() {
     super.setupConstraints()
-    render()
     setLayout()
     
   }
@@ -73,6 +73,11 @@ final class MainViewController: BaseViewController {
       $0.leading.trailing.bottom.equalToSuperview()
     }
   }
+  
+  private func setDelegation() {
+      homeCollectionView.delegate = self
+      homeCollectionView.dataSource = self
+    }
   
 }
 
