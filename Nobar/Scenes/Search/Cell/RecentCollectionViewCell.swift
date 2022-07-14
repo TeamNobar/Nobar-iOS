@@ -52,6 +52,6 @@ extension RecentCollectionViewCell {
   }
 
   func updateKeyword(_ keyword: String) {
-    keywordLabel.text = data
+    keywordLabel.text = keyword
   }
 }
