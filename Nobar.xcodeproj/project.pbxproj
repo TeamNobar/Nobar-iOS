@@ -65,6 +65,10 @@
 		E547D9B0287DEBA000806886 /* infoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E547D9AE287DEBA000806886 /* infoTableViewCell.xib */; };
 		E547D9B328805A9D00806886 /* headerReadyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547D9B128805A9D00806886 /* headerReadyTableViewCell.swift */; };
 		E547D9B428805A9D00806886 /* headerReadyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E547D9B228805A9D00806886 /* headerReadyTableViewCell.xib */; };
+		E547D9BB28805F5E00806886 /* ingredientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547D9B928805F5D00806886 /* ingredientsTableViewCell.swift */; };
+		E547D9BC28805F5E00806886 /* ingredientsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E547D9BA28805F5E00806886 /* ingredientsTableViewCell.xib */; };
+		E547D9C0288061A400806886 /* ingredientItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547D9BE288061A400806886 /* ingredientItemCollectionViewCell.swift */; };
+		E547D9C1288061A400806886 /* ingredientItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E547D9BF288061A400806886 /* ingredientItemCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +139,10 @@
 		E547D9AE287DEBA000806886 /* infoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = infoTableViewCell.xib; sourceTree = "<group>"; };
 		E547D9B128805A9D00806886 /* headerReadyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = headerReadyTableViewCell.swift; sourceTree = "<group>"; };
 		E547D9B228805A9D00806886 /* headerReadyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = headerReadyTableViewCell.xib; sourceTree = "<group>"; };
+		E547D9B928805F5D00806886 /* ingredientsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ingredientsTableViewCell.swift; sourceTree = "<group>"; };
+		E547D9BA28805F5E00806886 /* ingredientsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ingredientsTableViewCell.xib; sourceTree = "<group>"; };
+		E547D9BE288061A400806886 /* ingredientItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ingredientItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		E547D9BF288061A400806886 /* ingredientItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ingredientItemCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,6 +453,9 @@
 		E547D9A9287DE8F700806886 /* ingredients */ = {
 			isa = PBXGroup;
 			children = (
+				E547D9BD2880612900806886 /* ingredientItem */,
+				E547D9B928805F5D00806886 /* ingredientsTableViewCell.swift */,
+				E547D9BA28805F5E00806886 /* ingredientsTableViewCell.xib */,
 			);
 			path = ingredients;
 			sourceTree = "<group>";
@@ -468,6 +479,15 @@
 			children = (
 			);
 			path = record;
+			sourceTree = "<group>";
+		};
+		E547D9BD2880612900806886 /* ingredientItem */ = {
+			isa = PBXGroup;
+			children = (
+				E547D9BE288061A400806886 /* ingredientItemCollectionViewCell.swift */,
+				E547D9BF288061A400806886 /* ingredientItemCollectionViewCell.xib */,
+			);
+			path = ingredientItem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -602,6 +622,7 @@
 				3CA17C02287890E100E67B27 /* Pretendard-Bold.otf in Resources */,
 				3CA17C04287890E100E67B27 /* Pretendard-ExtraLight.otf in Resources */,
 				3CA17C07287890E100E67B27 /* Pretendard-SemiBold.otf in Resources */,
+				E547D9C1288061A400806886 /* ingredientItemCollectionViewCell.xib in Resources */,
 				3CD4370D2877DC910044AE04 /* WritingNote.storyboard in Resources */,
 				3CA17C01287890E100E67B27 /* Pretendard-Thin.otf in Resources */,
 				3CA17C06287890E100E67B27 /* Pretendard-Light.otf in Resources */,
@@ -613,6 +634,7 @@
 				E547D9B0287DEBA000806886 /* infoTableViewCell.xib in Resources */,
 				3CD437092877DC760044AE04 /* MyPage.storyboard in Resources */,
 				3CE598A828748093004AFD05 /* Assets.xcassets in Resources */,
+				E547D9BC28805F5E00806886 /* ingredientsTableViewCell.xib in Resources */,
 				3CD437072877DC6D0044AE04 /* Search.storyboard in Resources */,
 				E547D9B428805A9D00806886 /* headerReadyTableViewCell.xib in Resources */,
 				3CE598A628748092004AFD05 /* Main.storyboard in Resources */,
@@ -652,6 +674,7 @@
 				3CD437132877EC530044AE04 /* WritingNoteViewController.swift in Sources */,
 				3CE5989F28748092004AFD05 /* AppDelegate.swift in Sources */,
 				3CD436FB2877395C0044AE04 /* UICollectionView+Extensions.swift in Sources */,
+				E547D9BB28805F5E00806886 /* ingredientsTableViewCell.swift in Sources */,
 				3CD4370F2877E8310044AE04 /* TabbarRouter.swift in Sources */,
 				3C82300C28751AF90031C1DA /* UIViewController+Extensions.swift in Sources */,
 				3CD436D128772E2A0044AE04 /* APIRouter.swift in Sources */,
@@ -663,6 +686,7 @@
 				3CD436F7287738DD0044AE04 /* UIStoryboard+Extensions.swift in Sources */,
 				3CD436FE2877D11C0044AE04 /* AppRouter.swift in Sources */,
 				3CD436F92877390A0044AE04 /* StoryboardRouter.swift in Sources */,
+				E547D9C0288061A400806886 /* ingredientItemCollectionViewCell.swift in Sources */,
 				3CE598A128748092004AFD05 /* SceneDelegate.swift in Sources */,
 				3CD436CF28771B060044AE04 /* Theme.swift in Sources */,
 			);
