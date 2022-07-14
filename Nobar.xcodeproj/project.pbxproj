@@ -247,6 +247,7 @@
 		3C822FFF287517940031C1DA /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				6AAD37FC288005590030646C /* Model */,
 				6AAD37F1287F21170030646C /* Component */,
 				3CE598A428748092004AFD05 /* Main.storyboard */,
 				3CE598A228748092004AFD05 /* MainViewController.swift */,
@@ -437,10 +438,17 @@
 			children = (
 				6AAD37F2287F213B0030646C /* HomeHeaderView.swift */,
 				6AAD37F4287F38280030646C /* CocktailCVC.swift */,
-				6AAD37F6287F6D790030646C /* CocktailModel.swift */,
 				6AAD37FA287FFA240030646C /* GuideCVC.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		6AAD37FC288005590030646C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6AAD37F6287F6D790030646C /* CocktailModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
