@@ -36,21 +36,32 @@ final class SearchResultViewController: BaseViewController {
     $0.layer.applyShadow(color: .black, alpha: 0.2, x: 1, y: 1, blur: 2, spread: 0)
   }
 
+  private lazy var searchAutoResultCollectionView: UICollectionView = {
+    let layout = createCompositionLayout()
+
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    collectionView.showsHorizontalScrollIndicator = false
+    collectionView.showsVerticalScrollIndicator = false
+    return collectionView
+  }()
+
   override func viewDidLoad() {
     super.viewDidLoad()
     render()
     configUI()
-  }
-
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    searchTextField.text = firstKeyword
-    searchTextField.rightViewMode = .always
+    setTextField()
+    setRegistration()
+    setDataSource()
+    setSnapshot()
   }
 
   override func setupConstraints() {
     super.setupConstraints()
     setLayout()
+  }
+
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+      view.endEditing(true)
   }
 }
 
@@ -58,7 +69,7 @@ final class SearchResultViewController: BaseViewController {
 extension SearchResultViewController {
 
   private func render() {
-    view.addSubviews([searchView])
+    view.addSubviews([searchView, searchAutoResultCollectionView])
     searchView.addSubviews([backButton, searchTextField, underline])
   }
 
@@ -87,11 +98,29 @@ extension SearchResultViewController {
       $0.leading.trailing.equalToSuperview()
       $0.height.equalTo(0.4)
     }
+
+    searchAutoResultCollectionView.snp.makeConstraints {
+      $0.top.equalTo(underline.snp.bottom)
+      $0.leading.trailing.bottom.equalToSuperview()
+    }
   }
 
   private func configUI() {
     view.backgroundColor = .white
     navigationController?.navigationBar.isHidden = true
+  }
+}
+
+// MARK: - Private Functions
+extension SearchResultViewController {
+  private func setTextField() {
+    searchTextField.text = firstKeyword
+    searchTextField.rightViewMode = .always
+  }
+  
+  private func setRegistration() {
+    searchAutoResultCollectionView.register(SearchHeaderView.self, forSupplementaryViewOfKind: SearchHeaderView.className, withReuseIdentifier: SearchHeaderView.className)
+    searchAutoResultCollectionView.register(cell: SearchAutoResultCollectionViewCell.self)
   }
 }
 
