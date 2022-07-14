@@ -40,6 +40,7 @@ final class MainViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     render()
+    setDelegation()
   }
   
   override func setupConstraints() {
