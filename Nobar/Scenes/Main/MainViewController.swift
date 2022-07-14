@@ -12,10 +12,10 @@ import SnapKit
 
 final class MainViewController: BaseViewController {
   enum SectionType: Int {
-      case archive = 0
-      case guide = 1
-      case recommend = 2
-    }
+    case archive = 0
+    case guide = 1
+    case recommend = 2
+  }
   
   private let logoView = UIView().then {
     $0.backgroundColor = .white
@@ -134,3 +134,75 @@ extension MainViewController {
   }
 }
 
+
+extension MainViewController: UICollectionViewDelegate{
+  
+}
+
+extension MainViewController: UICollectionViewDataSource{
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
+    return 2
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    guard let sectionType = SectionType(rawValue: section) else { return 1 }
+    
+    switch sectionType {
+    case .archive:
+      return CocktailModel.dummyCocktailList.count
+    case .guide:
+      return GuideModel.dummyGuideList.count
+    case .recommend:
+      return RecommendModel.dummyRecommendList.count
+    }
+    
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    guard let sectionType = SectionType(rawValue: indexPath.section) else {
+      return UICollectionViewCell()
+    }
+    
+    switch sectionType {
+    case .archive:
+      let cell = homeCollectionView.dequeueReusableCell(ofType: CocktailCVC.self, at: indexPath)
+      cell.setData(data: CocktailModel.dummyCocktailList[indexPath.row])
+      return cell
+    case .guide:
+      let cell = homeCollectionView.dequeueReusableCell(ofType: GuideCVC.self, at: indexPath)
+      cell.setData(data: GuideModel.dummyGuideList[indexPath.row])
+      return cell
+    case .recommend:
+      let cell = homeCollectionView.dequeueReusableCell(ofType: RecommendCVC.self, at: indexPath)
+      
+      cell.setData(data: RecommendModel.dummyRecommendList[indexPath.row])
+      return cell
+    }
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    
+    if kind == "HomeHeaderView" {
+      let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HomeHeaderView", for: indexPath)
+      
+      guard let headerView = headerView as? HomeHeaderView else { return UICollectionReusableView() }
+      
+      guard let sectionType = SectionType(rawValue: indexPath.section) else {
+        return UICollectionViewCell()
+      }
+      
+      switch sectionType {
+      case .archive:
+        headerView.configUI(type: .archive)
+      case .guide:
+        headerView.configUI(type: .guide)
+      case .recommend:
+        headerView.configUI(type: .recommend)
+      }
+      
+      return headerView
+    } else {
+      return UICollectionReusableView()
+    }
+  }
+}

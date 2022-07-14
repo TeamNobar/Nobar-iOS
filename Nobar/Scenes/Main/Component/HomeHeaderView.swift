@@ -10,9 +10,9 @@ import UIKit
 import Then
 import SnapKit
 
-final class SearchHeaderView: UICollectionReusableView {
+final class HomeHeaderView: UICollectionReusableView {
   
-  enum SeachHeaderType {
+  enum HomeHeaderType {
     case archive
     case guide
     case recommend
@@ -46,7 +46,7 @@ final class SearchHeaderView: UICollectionReusableView {
 }
 
 // MARK: - UI & Layout
-extension SearchHeaderView {
+extension HomeHeaderView {
   
   private func render() {
     addSubviews([
@@ -63,7 +63,7 @@ extension SearchHeaderView {
     }
   }
   
-  func configUI(type: SeachHeaderType) {
+  func configUI(type: HomeHeaderType) {
     switch type {
     case .archive:
       subTitleLabel.text = "소제목소제목소제목"
