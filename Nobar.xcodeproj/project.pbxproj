@@ -74,6 +74,7 @@
 		6AAD37FB287FFA240030646C /* GuideCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37FA287FFA240030646C /* GuideCVC.swift */; };
 		6AAD37FE288005940030646C /* GuideModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37FD288005940030646C /* GuideModel.swift */; };
 		6AAD38002880086C0030646C /* RecommendCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37FF2880086A0030646C /* RecommendCVC.swift */; };
+		6AAD380228800A4D0030646C /* RecommendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD380128800A4C0030646C /* RecommendModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +154,7 @@
 		6AAD37FA287FFA240030646C /* GuideCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideCVC.swift; sourceTree = "<group>"; };
 		6AAD37FD288005940030646C /* GuideModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideModel.swift; sourceTree = "<group>"; };
 		6AAD37FF2880086A0030646C /* RecommendCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCVC.swift; sourceTree = "<group>"; };
+		6AAD380128800A4C0030646C /* RecommendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -453,6 +455,7 @@
 			children = (
 				6AAD37F6287F6D790030646C /* CocktailModel.swift */,
 				6AAD37FD288005940030646C /* GuideModel.swift */,
+				6AAD380128800A4C0030646C /* RecommendModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 				3CD436F92877390A0044AE04 /* StoryboardRouter.swift in Sources */,
 				3CE598A128748092004AFD05 /* SceneDelegate.swift in Sources */,
 				6AAD37F5287F38290030646C /* CocktailCVC.swift in Sources */,
+				6AAD380228800A4D0030646C /* RecommendModel.swift in Sources */,
 				3CA17C18287A71E300E67B27 /* CGFloat+Extensions.swift in Sources */,
 				6AAD37F3287F213C0030646C /* HomeHeaderView.swift in Sources */,
 				6AAD37E2287C7B250030646C /* UILabel+Extension.swift in Sources */,
