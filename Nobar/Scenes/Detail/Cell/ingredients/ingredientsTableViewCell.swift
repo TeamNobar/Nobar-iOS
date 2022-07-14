@@ -9,6 +9,11 @@ import UIKit
 
 class ingredientsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var ingredientsCollectionView: UICollectionView!
+    var selectIngredients: (() -> ())?
+    static let identifier = "ingredientsTableViewCell"
+    var identifiers = [ingredientItemCollectionViewCell.identifier]
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

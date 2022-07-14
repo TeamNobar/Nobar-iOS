@@ -29,13 +29,16 @@
                     </collectionView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Oms-5w-DaV" secondAttribute="bottom" id="1HT-t0-wkT"/>
                     <constraint firstItem="Oms-5w-DaV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="FQg-6D-bFk"/>
-                    <constraint firstItem="Oms-5w-DaV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ioG-cS-s8n"/>
-                    <constraint firstItem="Oms-5w-DaV" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="og3-uj-pwE"/>
                     <constraint firstItem="Oms-5w-DaV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uR0-hP-5fs"/>
+                    <constraint firstAttribute="trailing" secondItem="Oms-5w-DaV" secondAttribute="trailing" id="vD5-Pr-BOK"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="ingredientsCollectionView" destination="Oms-5w-DaV" id="5P8-wf-bjR"/>
+            </connections>
             <point key="canvasLocation" x="131.15942028985509" y="87.723214285714278"/>
         </tableViewCell>
     </objects>
