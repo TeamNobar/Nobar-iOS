@@ -11,6 +11,11 @@ import Then
 import SnapKit
 
 final class MainViewController: BaseViewController {
+  enum SectionType: Int {
+      case archive = 0
+      case guide = 1
+      case recommend = 2
+    }
   
   private let logoView = UIView().then {
     $0.backgroundColor = .white
