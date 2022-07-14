@@ -51,7 +51,7 @@ extension RecentCollectionViewCell {
     layer.applyShadow(color: .black, alpha: 0.05, x: 1, y: 1, blur: 2, spread: 0)
   }
 
-  func update(data: String) {
+  func updateKeyword(_ keyword: String) {
     keywordLabel.text = data
   }
 }

@@ -89,6 +89,7 @@ final class SearchViewController: BaseViewController {
   }
 
   override func setupConstraints() {
+    super.setupConstraints()
     setLayout()
     setTextFieldLayout()
   }

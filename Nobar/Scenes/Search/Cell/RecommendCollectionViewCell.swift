@@ -66,7 +66,7 @@ extension RecommendCollectionViewCell {
     }
   }
 
-  func update(data: SearchModel) {
+  func updateModel(_ model: SearchModel) {
     numberLabel.text = "\(data.order)"
     keywordLabel.text = data.recommendKeyword
   }
