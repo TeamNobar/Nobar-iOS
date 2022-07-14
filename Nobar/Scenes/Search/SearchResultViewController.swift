@@ -23,9 +23,9 @@ final class SearchResultViewController: BaseViewController {
   private var snapshot: NSDiffableDataSourceSnapshot<Section, String>!
 
   // TODO: 나중에 서버에서 한꺼번에 리스트로 받아옴
-  private var dummyCocktail: [String] = ["브랜디", "선라이즈피치", "피치크러쉬", "카시스 오렌지", "은비쨩", "칵테일어쩌구", "피치만 나와라", "피치어쩌구", "리큐르", "채원쨩"]
+  private var dummyCocktail: [String] = ["브랜디", "선라이즈피치", "피치크러쉬", "카시스 오렌지", "은비쨩", "칵테일어쩌구", "피치만 나와라", "피치어쩌구", "리큐르", "채원쨩", "피치1", "피치2", "피치3", "피치4"]
 
-  private var dummyIngredient: [String] = ["여긴재료", "주스도있고요", "재료들이", "오렌지주스", "은비쨩", "재료어쩌구", "피치만 나와라", "피치어쩌구", "리큐르", "채원쨩"]
+  private var dummyIngredient: [String] = ["여긴재료", "주스도있고요", "재료들이", "오렌지주스", "은비쨩", "재료어쩌구", "리큐르", "채원쨩"]
 
   private let searchView = UIView().then {
     $0.backgroundColor = .white
@@ -61,7 +61,7 @@ final class SearchResultViewController: BaseViewController {
     setTextField()
     setRegistration()
     setDataSource()
-    setSnapshot()
+    performQuery(with: firstKeyword)
   }
 
   override func setupConstraints() {
@@ -138,7 +138,12 @@ extension SearchResultViewController {
   @objc private func judgeHasText(_ sender: UITextField) {
     if searchTextField.hasText == false {
       navigationController?.popViewController(animated: false)
+    } else {
+      guard let searchText = searchTextField.text?.lowercased()
+      else { return }
+      self.performQuery(with: searchText)
     }
+    searchAutoResultCollectionView.layoutIfNeeded()
   }
 
   @objc private func didClickOnBackButton(_ sender: UIButton) {
@@ -174,13 +179,7 @@ extension SearchResultViewController {
 
       guard let cell = self.searchAutoResultCollectionView.dequeueReusableCell(withReuseIdentifier: SearchAutoResultCollectionViewCell.className, for: indexPath) as? SearchAutoResultCollectionViewCell else { preconditionFailure() }
 
-      guard let sections = Section(rawValue: indexPath.section) else { return nil }
-      switch sections {
-      case .cocktail:
-        cell.updateResult(self.dummyCocktail[indexPath.row])
-      case .ingredient:
-        cell.updateResult(self.dummyIngredient[indexPath.row])
-      }
+      cell.updateResult(keyword)
       return cell
     }
 
@@ -201,11 +200,17 @@ extension SearchResultViewController {
     }
   }
 
-  private func setSnapshot() {
+  private func performQuery(with searchText: String?) {
+    let filteredCocktail = self.dummyCocktail.filter { $0.hasPrefix(searchText ?? "") }
+    let filteredIngredient = self.dummyIngredient.filter { $0.hasPrefix(searchText ?? "") }
+
+    let fiveCocktail = Array(filteredCocktail.prefix(5))
+    let fiveIngredient = Array(filteredIngredient.prefix(5))
+
     snapshot = NSDiffableDataSourceSnapshot<Section, String>()
     snapshot.appendSections([.cocktail, .ingredient])
-    snapshot.appendItems(dummyCocktail, toSection: .cocktail)
-    snapshot.appendItems(dummyIngredient, toSection: .ingredient)
+    snapshot.appendItems(fiveCocktail, toSection: .cocktail)
+    snapshot.appendItems(fiveIngredient, toSection: .ingredient)
     dataSource.apply(snapshot, animatingDifferences: true)
   }
 }
