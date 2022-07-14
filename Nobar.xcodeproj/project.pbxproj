@@ -68,6 +68,7 @@
 		4D3554B7287DEA670063F725 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3554B6287DEA670063F725 /* SearchModel.swift */; };
 		4D3554B9287E56280063F725 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3554B8287E56280063F725 /* NSObject+Extension.swift */; };
 		4D3554BB287EAAE60063F725 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3554BA287EAAE60063F725 /* SearchTextField.swift */; };
+		4D38B5BB28800C8D00CD33ED /* SearchAutoResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D38B5BA28800C8D00CD33ED /* SearchAutoResultCollectionViewCell.swift */; };
 		6AAD37DC287C71FA0030646C /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37DB287C71F90030646C /* UIView+Extension.swift */; };
 		6AAD37DE287C75240030646C /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37DD287C75240030646C /* UIScreen+Extension.swift */; };
 		6AAD37E0287C7A720030646C /* UITextfield+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37DF287C7A720030646C /* UITextfield+Extension.swift */; };
@@ -149,6 +150,7 @@
 		4D3554B6287DEA670063F725 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		4D3554B8287E56280063F725 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		4D3554BA287EAAE60063F725 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		4D38B5BA28800C8D00CD33ED /* SearchAutoResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAutoResultCollectionViewCell.swift; sourceTree = "<group>"; };
 		6AAD37DB287C71F90030646C /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		6AAD37DD287C75240030646C /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		6AAD37DF287C7A720030646C /* UITextfield+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextfield+Extension.swift"; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 			children = (
 				4D057169287D4CDC00CB656A /* RecentCollectionViewCell.swift */,
 				4D05716B287D4D5600CB656A /* RecommendCollectionViewCell.swift */,
+				4D38B5BA28800C8D00CD33ED /* SearchAutoResultCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -654,6 +657,7 @@
 				3CE5989F28748092004AFD05 /* AppDelegate.swift in Sources */,
 				3CD436FB2877395C0044AE04 /* UICollectionView+Extensions.swift in Sources */,
 				6AAD37DC287C71FA0030646C /* UIView+Extension.swift in Sources */,
+				4D38B5BB28800C8D00CD33ED /* SearchAutoResultCollectionViewCell.swift in Sources */,
 				4D3554B7287DEA670063F725 /* SearchModel.swift in Sources */,
 				3CD4370F2877E8310044AE04 /* TabbarRouter.swift in Sources */,
 				6AAD37E0287C7A720030646C /* UITextfield+Extension.swift in Sources */,
