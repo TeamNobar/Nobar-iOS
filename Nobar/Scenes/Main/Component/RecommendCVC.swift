@@ -46,4 +46,9 @@ final class RecommendCVC: UICollectionViewCell {
     layer.cornerRadius = 2
   }
   
+  private func setData(data: RecommendModel){
+    titleLabel.text = data.title
+    backgroundColor = UIColor(hex: data.color)
+  }
+  
 }
