@@ -12,7 +12,16 @@ import SnapKit
 
 final class SearchResultViewController: BaseViewController {
 
+  enum Section: Int, CaseIterable {
+    case cocktail = 0
+    case ingredient = 1
+  }
+
   var firstKeyword: String?
+  private var sections: Section?
+  private var dataSource: UICollectionViewDiffableDataSource<Section, String>!
+  private var snapshot: NSDiffableDataSourceSnapshot<Section, String>!
+
   // TODO: 나중에 서버에서 한꺼번에 리스트로 받아옴
   private var dummyCocktail: [String] = ["브랜디", "선라이즈피치", "피치크러쉬", "카시스 오렌지", "은비쨩", "칵테일어쩌구", "피치만 나와라", "피치어쩌구", "리큐르", "채원쨩"]
 
@@ -136,3 +145,68 @@ extension SearchResultViewController {
     self.navigationController?.popViewController(animated: false)
   }
 }
+
+// MARK: - Compositional Layout
+extension SearchResultViewController {
+  private func createCompositionLayout() -> UICollectionViewCompositionalLayout {
+    let layout = UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
+      
+      let searchViewController = SearchViewController()
+      let section = searchViewController.getLayoutListSection()
+
+      guard let sections = Section(rawValue: sectionNumber) else { return nil }
+      switch sections {
+      case .cocktail:
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0)
+      case .ingredient:
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 250, trailing: 0)
+      }
+      return section
+    }
+    return layout
+  }
+}
+
+// MARK: - Diffable DataSource
+extension SearchResultViewController {
+  private func setDataSource() {
+    self.dataSource = UICollectionViewDiffableDataSource<Section, String>(collectionView: self.searchAutoResultCollectionView) { (collectionview, indexPath, keyword) -> UICollectionViewCell? in
+
+      guard let cell = self.searchAutoResultCollectionView.dequeueReusableCell(withReuseIdentifier: SearchAutoResultCollectionViewCell.className, for: indexPath) as? SearchAutoResultCollectionViewCell else { preconditionFailure() }
+
+      guard let sections = Section(rawValue: indexPath.section) else { return nil }
+      switch sections {
+      case .cocktail:
+        cell.updateResult(self.dummyCocktail[indexPath.row])
+      case .ingredient:
+        cell.updateResult(self.dummyIngredient[indexPath.row])
+      }
+      return cell
+    }
+
+    self.dataSource.supplementaryViewProvider = {
+      collectionView, kind, indexPath in
+
+      guard kind == SearchHeaderView.className else { return nil }
+      let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SearchHeaderView.className, for: indexPath) as? SearchHeaderView
+
+      guard let sections = Section(rawValue: indexPath.section) else { return nil }
+      switch sections {
+      case .cocktail:
+        view?.configUI(type: .cocktail)
+      case .ingredient:
+        view?.configUI(type: .ingredient)
+      }
+      return view
+    }
+  }
+
+  private func setSnapshot() {
+    snapshot = NSDiffableDataSourceSnapshot<Section, String>()
+    snapshot.appendSections([.cocktail, .ingredient])
+    snapshot.appendItems(dummyCocktail, toSection: .cocktail)
+    snapshot.appendItems(dummyIngredient, toSection: .ingredient)
+    dataSource.apply(snapshot, animatingDifferences: true)
+  }
+}
+
