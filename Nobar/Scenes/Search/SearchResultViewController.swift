@@ -155,9 +155,15 @@ extension SearchResultViewController {
 extension SearchResultViewController {
   private func createCompositionLayout() -> UICollectionViewCompositionalLayout {
     let layout = UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
-      
-      let searchViewController = SearchViewController()
-      let section = searchViewController.getLayoutListSection()
+      let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                            heightDimension: .fractionalHeight(1))
+      let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+      let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                             heightDimension: .absolute(50))
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
+
+      let section = NSCollectionLayoutSection(group: group)
 
       guard let sections = Section(rawValue: sectionNumber) else { return nil }
       switch sections {
@@ -166,6 +172,13 @@ extension SearchResultViewController {
       case .ingredient:
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 250, trailing: 0)
       }
+
+      let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: .absolute(50))
+      let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
+                                                               elementKind: SearchHeaderView.className,
+                                                               alignment: .topLeading)
+      section.boundarySupplementaryItems = [header]
       return section
     }
     return layout

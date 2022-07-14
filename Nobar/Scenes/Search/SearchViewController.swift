@@ -182,7 +182,7 @@ extension SearchViewController {
     return section
   }
 
-  func getLayoutListSection() -> NSCollectionLayoutSection {
+  func getLayoutRecommendSection() -> NSCollectionLayoutSection {
     let itemSize = NSCollectionLayoutSize(widthDimension:
         .fractionalWidth(1), heightDimension: .absolute(50))
     let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -205,7 +205,7 @@ extension SearchViewController {
     return UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
       switch sectionNumber {
       case 0: return self.getLayoutRecentSection()
-      case 1: return self.getLayoutListSection()
+      case 1: return self.getLayoutRecommendSection()
       default: return self.getLayoutRecentSection()
       }
     }

@@ -39,7 +39,7 @@ extension SearchAutoResultCollectionViewCell {
     addSubviews([autoResultLabel])
 
     autoResultLabel.snp.makeConstraints {
-      $0.leading.equalToSuperview()
+      $0.leading.equalToSuperview().inset(26)
       $0.top.bottom.equalToSuperview().inset(16)
     }
   }
