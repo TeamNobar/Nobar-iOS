@@ -52,6 +52,7 @@ final class CocktailCVC: UICollectionViewCell {
     addSubviews([
     cocktailNameLabel,
     cocktailEngNameLabel,
+    tagImageView,
     baseLabel
     ])
     cocktailNameLabel.snp.makeConstraints {

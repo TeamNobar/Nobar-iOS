@@ -41,6 +41,7 @@ final class MainViewController: BaseViewController {
     super.viewDidLoad()
     render()
     setDelegation()
+    setRegistration()
   }
   
   override func setupConstraints() {
@@ -78,6 +79,13 @@ final class MainViewController: BaseViewController {
   private func setDelegation() {
       homeCollectionView.delegate = self
       homeCollectionView.dataSource = self
+    }
+  
+  private func setRegistration() {
+    homeCollectionView.register(HomeHeaderView.self, forSupplementaryViewOfKind: "HomeHeaderView", withReuseIdentifier: "HomeHeaderView")
+    homeCollectionView.register(CocktailCVC.self, forCellWithReuseIdentifier: "CocktailCVC")
+    homeCollectionView.register(GuideCVC.self, forCellWithReuseIdentifier: "GuideCVC")
+    homeCollectionView.register(RecommendCVC.self, forCellWithReuseIdentifier: "RecommendCVC")
     }
   
 }
@@ -180,7 +188,7 @@ extension MainViewController: UICollectionViewDelegate{
 
 extension MainViewController: UICollectionViewDataSource{
   func numberOfSections(in collectionView: UICollectionView) -> Int {
-    return 2
+    return 3
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -213,7 +221,6 @@ extension MainViewController: UICollectionViewDataSource{
       return cell
     case .recommend:
       let cell = homeCollectionView.dequeueReusableCell(ofType: RecommendCVC.self, at: indexPath)
-      
       cell.setData(data: RecommendModel.dummyRecommendList[indexPath.row])
       return cell
     }
