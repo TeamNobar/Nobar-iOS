@@ -30,33 +30,8 @@ final class SearchViewController: BaseViewController {
     $0.addTarget(self, action: #selector(didClickOnBackButton(_:)), for: .touchUpInside)
   }
 
-  private let searchIconImage = UIImageView().then {
-    $0.image = ImageFactory.icnSearch
-  }
-
-  private lazy var clearTextButton = UIButton().then {
-    $0.setImage(ImageFactory.icnX, for: .normal)
-    $0.addTarget(self, action: #selector(didClickOnClearButton(_:)), for: .touchUpInside)
-  }
-
-  private lazy var searchTextField = UITextField().then {
-    $0.placeholder = " 칵테일 이름, 재료 이름"
-    $0.setPlaceholderAttributes(Color.gray03.getColor(), Pretendard.size13.bold())
-    $0.backgroundColor = Color.gray01.getColor()
-    $0.font = Pretendard.size13.bold()
-    $0.textColor = Color.gray03.getColor()
-    $0.tintColor = Color.navy01.getColor()
-
-    $0.layer.borderColor = Color.gray04.getColor().cgColor
-    $0.layer.borderWidth = 0.4
-    $0.layer.cornerRadius = 6
-
-    $0.clearButtonMode = .never
-    $0.leftViewMode = .always
-    $0.rightViewMode = .never
-    $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-
-    $0.becomeFirstResponder()
+  private lazy var searchTextField = SearchTextField().then {
+    $0.addTarget(self, action: #selector(judgeHasText(_:)), for: .editingChanged)
   }
 
   private lazy var underline = UIView().then {
@@ -88,9 +63,14 @@ final class SearchViewController: BaseViewController {
     setRegistration()
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      initTextField()
+  }
+
   override func setupConstraints() {
+    super.setupConstraints()
     setLayout()
-    setTextFieldLayout()
   }
 
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -108,17 +88,6 @@ extension SearchViewController {
   private func configUI() {
     view.backgroundColor = .white
     navigationController?.navigationBar.isHidden = true
-    setTextFieldElement()
-  }
-
-  private func setTextFieldElement() {
-    let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 28, height: 36))
-    rightView.addSubview(clearTextButton)
-    searchTextField.rightView = rightView
-
-    let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 43, height: 36))
-    leftView.addSubview(searchIconImage)
-    searchTextField.leftView = leftView
   }
 
   private func setLayout() {
@@ -150,22 +119,6 @@ extension SearchViewController {
     searchKeywordCollectionView.snp.makeConstraints {
       $0.top.equalTo(underline.snp.bottom)
       $0.leading.trailing.bottom.equalToSuperview()
-    }
-  }
-
-  private func setTextFieldLayout() {
-    clearTextButton.snp.makeConstraints {
-      $0.width.height.equalTo(20)
-      $0.top.equalToSuperview().inset(8)
-      $0.leading.equalToSuperview()
-      $0.trailing.equalToSuperview().inset(8)
-    }
-
-    searchIconImage.snp.makeConstraints {
-      $0.width.height.equalTo(19)
-      $0.top.equalToSuperview().inset(9)
-      $0.leading.equalToSuperview().inset(16)
-      $0.trailing.equalToSuperview().inset(8)
     }
   }
 }
