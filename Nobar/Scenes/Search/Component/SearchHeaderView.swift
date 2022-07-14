@@ -34,6 +34,7 @@ final class SearchHeaderView: UICollectionReusableView {
     $0.text = "2022.07.07 기준"
     $0.textColor = Color.gray03.getColor()
     $0.font = Pretendard.size13.regular()
+    $0.addSpacing(kernValue: -0.78, lineSpacing: 0)
   }
 
   private let topLine = UIView().then {
