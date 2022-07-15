@@ -12,6 +12,8 @@ import SnapKit
 
 final class SearchTextField: UITextField {
 
+  var didClickOnClearButtonClosure: (() -> Void)?
+
   private let searchIconImage = UIImageView().then {
     $0.image = ImageFactory.icnSearch
   }
@@ -86,7 +88,7 @@ extension SearchTextField {
 // MARK: - Action Functions
 extension SearchTextField {
   @objc private func didClickOnClearButton(_ sender: UIButton) {
-    self.text = ""
+    self.didClickOnClearButtonClosure?()
   }
 
   @objc

@@ -125,6 +125,10 @@ extension SearchResultViewController {
   private func setTextField() {
     searchTextField.text = firstKeyword
     searchTextField.rightViewMode = .always
+    searchTextField.didClickOnClearButtonClosure = {
+      self.searchTextField.text?.removeAll()
+      self.navigationController?.popViewController(animated: false)
+    }
   }
   
   private func setRegistration() {
@@ -139,8 +143,9 @@ extension SearchResultViewController {
     if searchTextField.hasText == false {
       navigationController?.popViewController(animated: false)
     } else {
-      guard let searchText = searchTextField.text?.lowercased()
+      guard let searchText = searchTextField.text
       else { return }
+      
       self.performQuery(with: searchText)
     }
   }
@@ -214,8 +219,10 @@ extension SearchResultViewController {
   }
 
   private func performQuery(with searchText: String?) {
-    let filteredCocktail = self.dummyCocktail.filter { $0.hasPrefix(searchText ?? "") }
-    let filteredIngredient = self.dummyIngredient.filter { $0.hasPrefix(searchText ?? "") }
+    guard let searchText = searchText else { return }
+
+    let filteredCocktail = self.dummyCocktail.filter { $0.hasPrefix(searchText) }
+    let filteredIngredient = self.dummyIngredient.filter { $0.hasPrefix(searchText) }
 
     var fiveCocktail = Array(filteredCocktail.prefix(5))
     let fiveIngredient = Array(filteredIngredient.prefix(5))
@@ -231,4 +238,3 @@ extension SearchResultViewController {
     dataSource.apply(snapshot, animatingDifferences: true)
   }
 }
-
