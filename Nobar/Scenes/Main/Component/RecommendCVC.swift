@@ -34,6 +34,12 @@ final class RecommendCVC: UICollectionViewCell {
     titleLabel.text = ""
   }
 
+}
+
+// MARK: - UI & Layout
+
+extension RecommendCVC {
+  
   private func render() {
     addSubview(titleLabel)
     titleLabel.snp.makeConstraints {

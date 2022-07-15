@@ -35,6 +35,11 @@ final class GuideCVC: UICollectionViewCell {
   override func prepareForReuse() {
     titleLabel.text = ""
   }
+}
+
+// MARK: - UI & Layout
+
+extension GuideCVC {
 
   private func render() {
     addSubviews([

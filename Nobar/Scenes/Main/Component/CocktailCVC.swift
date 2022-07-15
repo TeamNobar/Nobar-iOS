@@ -49,6 +49,11 @@ final class CocktailCVC: UICollectionViewCell {
     cocktailEngNameLabel.text = ""
     baseLabel.text = ""
   }
+}
+
+// MARK: - UI & Layout
+
+extension CocktailCVC {
 
   private func render() {
     addSubviews([

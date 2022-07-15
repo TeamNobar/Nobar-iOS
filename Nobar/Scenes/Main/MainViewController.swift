@@ -29,13 +29,25 @@ final class MainViewController: BaseViewController {
     let layout = getLayout()
     layout.configuration.interSectionSpacing = 0
     
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    let collectionView = UICollectionView(frame: .zero,
+                                          collectionViewLayout: layout)
     collectionView.showsHorizontalScrollIndicator = false
     collectionView.showsVerticalScrollIndicator = false
     collectionView.register(CocktailCVC.self, forCellWithReuseIdentifier: CocktailCVC.identifier)
     return collectionView
   }()
   
+  override func setupConstraints() {
+    super.setupConstraints()
+    setLayout()
+    
+  }
+  
+}
+
+// MARK: - Initialize
+
+extension MainViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -44,11 +56,11 @@ final class MainViewController: BaseViewController {
     setRegistration()
   }
   
-  override func setupConstraints() {
-    super.setupConstraints()
-    setLayout()
-    
-  }
+}
+
+// MARK: - Private functions
+
+extension MainViewController {
   
   private func render() {
     view.addSubviews([logoView,
@@ -84,13 +96,20 @@ final class MainViewController: BaseViewController {
     }
   
   private func setRegistration() {
-    homeCollectionView.register(HomeHeaderView.self, forSupplementaryViewOfKind: "HomeHeaderView", withReuseIdentifier: "HomeHeaderView")
-    homeCollectionView.register(CocktailCVC.self, forCellWithReuseIdentifier: "CocktailCVC")
-    homeCollectionView.register(GuideCVC.self, forCellWithReuseIdentifier: "GuideCVC")
-    homeCollectionView.register(RecommendCVC.self, forCellWithReuseIdentifier: "RecommendCVC")
+    homeCollectionView.register(HomeHeaderView.self,
+                                forSupplementaryViewOfKind: "HomeHeaderView",
+                                withReuseIdentifier: "HomeHeaderView")
+    homeCollectionView.register(CocktailCVC.self,
+                                forCellWithReuseIdentifier: "CocktailCVC")
+    homeCollectionView.register(GuideCVC.self,
+                                forCellWithReuseIdentifier: "GuideCVC")
+    homeCollectionView.register(RecommendCVC.self,
+                                forCellWithReuseIdentifier: "RecommendCVC")
     }
   
 }
+
+// MARK: - CollectionView Flow Layout
 
 extension MainViewController {
   private func getArchiveSectionLayout() -> NSCollectionLayoutSection {
@@ -101,21 +120,29 @@ extension MainViewController {
       heightDimension: .fractionalHeight(1)
     )
     let item = NSCollectionLayoutItem(layoutSize: itemSize)
-    item.contentInsets = NSDirectionalEdgeInsets(top: 4.5, leading: 4.5, bottom: 4.5, trailing: 4.5)
+    item.contentInsets = NSDirectionalEdgeInsets(top: 4.5,
+                                                 leading: 4.5,
+                                                 bottom: 4.5,
+                                                 trailing: 4.5)
     
     let groupSize = NSCollectionLayoutSize(
       widthDimension: .fractionalWidth(1.0),
       heightDimension: .estimated(120.0)
     )
-    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+                                                   subitems: [item])
     
     var section = NSCollectionLayoutSection(group: group)
-    section.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 26, bottom: 12, trailing: 26)
+    section.contentInsets = NSDirectionalEdgeInsets(top: 12,
+                                                    leading: 26,
+                                                    bottom: 12,
+                                                    trailing: 26)
     
     section = self.addHeaderView(section: section)
     
     return section
   }
+  
   private func getGuideSectionLayout() -> NSCollectionLayoutSection {
     let itemSize = NSCollectionLayoutSize(
       widthDimension: .fractionalWidth(1.0),
@@ -127,11 +154,15 @@ extension MainViewController {
       widthDimension: .absolute(172),
       heightDimension: .absolute(138)
     )
-    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+                                                   subitems: [item])
     
     var section = NSCollectionLayoutSection(group: group)
     section.interGroupSpacing = 12
-    section.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 26, bottom: 12, trailing: 26)
+    section.contentInsets = NSDirectionalEdgeInsets(top: 12,
+                                                    leading: 26,
+                                                    bottom: 12,
+                                                    trailing: 26)
     section.orthogonalScrollingBehavior = .continuous
     
     section = self.addHeaderView(section: section)
@@ -150,11 +181,15 @@ extension MainViewController {
       widthDimension: .absolute(323),
       heightDimension: .absolute(80)
     )
-    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+                                                   subitems: [item])
     
     var section = NSCollectionLayoutSection(group: group)
     section.interGroupSpacing = 12
-    section.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 26, bottom: 12, trailing: 26)
+    section.contentInsets = NSDirectionalEdgeInsets(top: 12,
+                                                    leading: 26,
+                                                    bottom: 12,
+                                                    trailing: 26)
     
     section = self.addHeaderView(section: section)
     
@@ -173,7 +208,8 @@ extension MainViewController {
   }
   
   private func addHeaderView(section: NSCollectionLayoutSection) -> NSCollectionLayoutSection{
-    let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
+    let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                            heightDimension: .absolute(50))
     let headerSupplementary = NSCollectionLayoutBoundarySupplementaryItem(
       layoutSize: headerSize,
       elementKind: "HomeHeaderView",
@@ -184,17 +220,20 @@ extension MainViewController {
   }
 }
 
-
+// MARK: - CollectionViewDelegate
 extension MainViewController: UICollectionViewDelegate{
   
 }
+
+// MARK: - CollectionViewDataSource
 
 extension MainViewController: UICollectionViewDataSource{
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     return 3
   }
   
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  func collectionView(_ collectionView: UICollectionView,
+                      numberOfItemsInSection section: Int) -> Int {
     guard let sectionType = SectionType(rawValue: section) else { return 1 }
     
     switch sectionType {
@@ -208,31 +247,39 @@ extension MainViewController: UICollectionViewDataSource{
     
   }
   
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+  func collectionView(_ collectionView: UICollectionView,
+                      cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let sectionType = SectionType(rawValue: indexPath.section) else {
       return UICollectionViewCell()
     }
     
     switch sectionType {
     case .archive:
-      let cell = homeCollectionView.dequeueReusableCell(ofType: CocktailCVC.self, at: indexPath)
+      let cell = homeCollectionView.dequeueReusableCell(ofType: CocktailCVC.self,
+                                                        at: indexPath)
       cell.setData(data: CocktailModel.dummyCocktailList[indexPath.row])
       return cell
     case .guide:
-      let cell = homeCollectionView.dequeueReusableCell(ofType: GuideCVC.self, at: indexPath)
+      let cell = homeCollectionView.dequeueReusableCell(ofType: GuideCVC.self,
+                                                        at: indexPath)
       cell.setData(data: GuideModel.dummyGuideList[indexPath.row])
       return cell
     case .recommend:
-      let cell = homeCollectionView.dequeueReusableCell(ofType: RecommendCVC.self, at: indexPath)
+      let cell = homeCollectionView.dequeueReusableCell(ofType: RecommendCVC.self,
+                                                        at: indexPath)
       cell.setData(data: RecommendModel.dummyRecommendList[indexPath.row])
       return cell
     }
   }
   
-  func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+  func collectionView(_ collectionView: UICollectionView,
+                      viewForSupplementaryElementOfKind kind: String,
+                      at indexPath: IndexPath) -> UICollectionReusableView {
     
     if kind == "HomeHeaderView" {
-      let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HomeHeaderView", for: indexPath)
+      let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                       withReuseIdentifier: "HomeHeaderView",
+                                                                       for: indexPath)
       
       guard let headerView = headerView as? HomeHeaderView else { return UICollectionReusableView() }
       
