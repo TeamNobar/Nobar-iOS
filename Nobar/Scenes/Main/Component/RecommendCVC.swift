@@ -44,15 +44,12 @@ final class RecommendCVC: UICollectionViewCell {
   }
 
   private func configUI() {
-//    backgroundColor = UIColor(hex: "#0029BC")
-    backgroundColor = UIColor(hex: "#0029BC")
     layer.cornerRadius = 12
   }
   
   func setData(data: RecommendModel){
     titleLabel.text = data.title
-//    backgroundColor = UIColor(hex: data.color)
-//    self.backgroundColor = UIColor(hex: "#0A2588")
+    backgroundColor = UIColor(hex: data.color)
   }
   
 }
