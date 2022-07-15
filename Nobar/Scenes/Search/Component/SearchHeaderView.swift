@@ -109,7 +109,7 @@ extension SearchHeaderView {
     addSubview(topLine)
     topLine.snp.makeConstraints {
       $0.top.leading.trailing.equalToSuperview()
-      $0.height.equalTo(0.8)
+      $0.height.equalTo(1)
     }
   }
 
