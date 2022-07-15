@@ -271,10 +271,23 @@ extension SearchViewController: UICollectionViewDataSource {
       case .recommend:
         headerView.configUI(type: .recommend)
       }
-
+      
+      headerView.delegate = self
       return headerView
     } else {
       return UICollectionReusableView()
     }
+  }
+}
+
+// MARK: - HeaderViewDelegate
+extension SearchViewController: HeaderViewDelegate {
+  func didClickOnDeleteButton() {
+    self.dummyKeywords.removeAll()
+    self.searchKeywordCollectionView.reloadSections([0])
+  }
+
+  func didClickOnTotalResultButton() {
+    // TODO: 전체 결과 창으로 화면전환
   }
 }

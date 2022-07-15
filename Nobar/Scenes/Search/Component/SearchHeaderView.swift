@@ -10,7 +10,14 @@ import UIKit
 import Then
 import SnapKit
 
+protocol HeaderViewDelegate: AnyObject {
+  func didClickOnDeleteButton()
+  func didClickOnTotalResultButton()
+}
+
 final class SearchHeaderView: UICollectionReusableView {
+
+  var delegate: HeaderViewDelegate?
 
   enum SeachHeaderType {
     case recent
@@ -24,10 +31,11 @@ final class SearchHeaderView: UICollectionReusableView {
     $0.font = Pretendard.size17.semibold()
   }
 
-  private var deleteButton = UIButton().then {
+  private lazy var deleteButton = UIButton().then {
     $0.setTitle("전체 삭제", for: .normal)
     $0.setTitleColor(Color.gray03.getColor(), for: .normal)
     $0.titleLabel?.font = Pretendard.size13.medium()
+    $0.addTarget(self, action: #selector(didClickOnDeleteButton(_:)), for: .touchUpInside)
   }
 
   private var dateLabel = UILabel().then {
@@ -110,5 +118,17 @@ extension SearchHeaderView {
       $0.top.bottom.equalToSuperview().inset(15)
       $0.leading.equalToSuperview()
     }
+  }
+}
+
+// MARK: - Action Functions
+extension SearchHeaderView {
+  @objc private func didClickOnDeleteButton(_ sender: UIButton) {
+    delegate?.didClickOnDeleteButton()
+    self.deleteButton.isHidden = true
+  }
+  
+  @objc private func didClickOnTotalResultButton(_ sender: UIButton) {
+    delegate?.didClickOnTotalResultButton()
   }
 }
