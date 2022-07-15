@@ -16,6 +16,7 @@ final class RecommendCVC: UICollectionViewCell {
     $0.textColor = Color.white.getColor()
     $0.font = Pretendard.size17.bold()
     $0.lineBreakMode = .byWordWrapping
+    $0.numberOfLines = 2
   }
 
   override init(frame: CGRect) {
@@ -37,18 +38,21 @@ final class RecommendCVC: UICollectionViewCell {
     addSubview(titleLabel)
     titleLabel.snp.makeConstraints {
       $0.leading.equalToSuperview().offset(20)
+      $0.trailing.equalToSuperview().inset(80)
       $0.centerY.equalToSuperview()
     }
   }
 
   private func configUI() {
-    backgroundColor = Color.navy01.getColor()
-    layer.cornerRadius = 2
+//    backgroundColor = UIColor(hex: "#0029BC")
+    backgroundColor = UIColor(hex: "#0029BC")
+    layer.cornerRadius = 12
   }
   
   func setData(data: RecommendModel){
     titleLabel.text = data.title
-    backgroundColor = UIColor(hex: data.color)
+//    backgroundColor = UIColor(hex: data.color)
+//    self.backgroundColor = UIColor(hex: "#0A2588")
   }
   
 }

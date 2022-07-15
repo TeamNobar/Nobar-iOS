@@ -15,9 +15,9 @@ struct GuideModel {
 extension GuideModel {
   static let dummyGuideList: [GuideModel] = [
     GuideModel(thumbnailImageName: "dummy1", titleName: "칵테일 가이드 콘텐츠 02"),
+    GuideModel(thumbnailImageName: "dummy2", titleName: "칵테일 가이드 콘텐츠 02"),
     GuideModel(thumbnailImageName: "dummy1", titleName: "칵테일 가이드 콘텐츠 02"),
-    GuideModel(thumbnailImageName: "dummy1", titleName: "칵테일 가이드 콘텐츠 02"),
-    GuideModel(thumbnailImageName: "dummy1", titleName: "칵테일 가이드 콘텐츠 02"),
+    GuideModel(thumbnailImageName: "dummy2", titleName: "칵테일 가이드 콘텐츠 02"),
     GuideModel(thumbnailImageName: "dummy1", titleName: "칵테일 가이드 콘텐츠 02")
   ]
 }

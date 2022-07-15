@@ -15,6 +15,8 @@ final class CocktailCVC: UICollectionViewCell {
   private let cocktailNameLabel = UILabel().then {
     $0.textColor = Color.black.getColor()
     $0.font = Pretendard.size16.bold()
+    $0.lineBreakMode = .byWordWrapping
+    $0.numberOfLines = 2
   }
   
   private let cocktailEngNameLabel = UILabel().then {
@@ -56,12 +58,11 @@ final class CocktailCVC: UICollectionViewCell {
     baseLabel
     ])
     cocktailNameLabel.snp.makeConstraints {
-      $0.top.leading.equalToSuperview().inset(12)
-      $0.centerY.equalToSuperview()
+      $0.top.leading.trailing.equalToSuperview().inset(12)
     }
     cocktailEngNameLabel.snp.makeConstraints{
       $0.top.equalTo(cocktailNameLabel.snp.bottom).offset(8)
-      $0.leading.equalTo(cocktailNameLabel.snp.leading)
+      $0.leading.trailing.equalToSuperview().inset(12)
     }
     tagImageView.snp.makeConstraints{
       $0.leading.bottom.equalToSuperview().inset(12)

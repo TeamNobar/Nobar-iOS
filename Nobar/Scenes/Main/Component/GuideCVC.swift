@@ -18,6 +18,7 @@ final class GuideCVC: UICollectionViewCell {
     $0.textColor = Color.black.getColor()
     $0.font = Pretendard.size13.bold()
     $0.lineBreakMode = .byWordWrapping
+    $0.numberOfLines = 2
   }
 
   override init(frame: CGRect) {
@@ -47,14 +48,14 @@ final class GuideCVC: UICollectionViewCell {
     }
     titleLabel.snp.makeConstraints{
       $0.top.equalTo(thumbnailImageView.snp.bottom).offset(8)
-      $0.leading.trailing.equalTo(thumbnailImageView.snp.leading)
+      $0.leading.trailing.equalToSuperview().inset(12)
     }
   }
 
   private func configUI() {
     backgroundColor = Color.gray01.getColor()
-    layer.cornerRadius = 2
-    layer.applyShadow(alpha: 0.5, x: 1, y: 1, blur: 2, spread: 0)
+    layer.cornerRadius = 10
+    layer.applyShadow(color: UIColor(red: 0, green: 0, blue: 0, alpha: 1), alpha: 0.05, x: 1, y: 1, blur: 2, spread: 0)
   }
   
  func setData(data: GuideModel){

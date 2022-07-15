@@ -57,6 +57,8 @@ final class MainViewController: BaseViewController {
   }
   
   private func setLayout() {
+    navigationController?.navigationBar.isHidden = true
+    
     logoView.snp.makeConstraints {
       $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
       $0.leading.trailing.equalToSuperview()
@@ -71,7 +73,7 @@ final class MainViewController: BaseViewController {
     }
     
     homeCollectionView.snp.makeConstraints {
-      $0.top.equalTo(logoImageView.snp.bottom)
+      $0.top.equalTo(logoView.snp.bottom)
       $0.leading.trailing.bottom.equalToSuperview()
     }
   }
@@ -99,7 +101,7 @@ extension MainViewController {
       heightDimension: .fractionalHeight(1)
     )
     let item = NSCollectionLayoutItem(layoutSize: itemSize)
-    item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 4.5, bottom: 0, trailing: 4.5)
+    item.contentInsets = NSDirectionalEdgeInsets(top: 4.5, leading: 4.5, bottom: 4.5, trailing: 4.5)
     
     let groupSize = NSCollectionLayoutSize(
       widthDimension: .fractionalWidth(1.0),
@@ -130,6 +132,7 @@ extension MainViewController {
     var section = NSCollectionLayoutSection(group: group)
     section.interGroupSpacing = 12
     section.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 26, bottom: 12, trailing: 26)
+    section.orthogonalScrollingBehavior = .continuous
     
     section = self.addHeaderView(section: section)
     
@@ -144,8 +147,8 @@ extension MainViewController {
     let item = NSCollectionLayoutItem(layoutSize: itemSize)
     
     let groupSize = NSCollectionLayoutSize(
-      widthDimension: .absolute(172),
-      heightDimension: .absolute(138)
+      widthDimension: .absolute(323),
+      heightDimension: .absolute(80)
     )
     let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
     
