@@ -47,4 +47,8 @@ extension SearchAutoResultCollectionViewCell {
   func updateResult(_ result: String) {
     autoResultLabel.text = result
   }
+
+  func updateAttributedText(_ keyword: String) {
+    autoResultLabel.applyFont(to: keyword, with: Pretendard.size15.bold())
+  }
 }

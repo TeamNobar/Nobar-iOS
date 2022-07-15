@@ -192,6 +192,7 @@ extension SearchResultViewController {
       guard let cell = self.searchAutoResultCollectionView.dequeueReusableCell(withReuseIdentifier: SearchAutoResultCollectionViewCell.className, for: indexPath) as? SearchAutoResultCollectionViewCell else { preconditionFailure() }
 
       cell.updateResult(keyword)
+      cell.updateAttributedText(self.searchTextField.text ?? "")
       return cell
     }
 
