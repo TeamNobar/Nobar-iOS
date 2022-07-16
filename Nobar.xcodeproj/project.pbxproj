@@ -70,6 +70,8 @@
 		E547D9C0288061A400806886 /* ingredientItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547D9BE288061A400806886 /* ingredientItemCollectionViewCell.swift */; };
 		E547D9C1288061A400806886 /* ingredientItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E547D9BF288061A400806886 /* ingredientItemCollectionViewCell.xib */; };
 		E547D9C32882B85C00806886 /* DetailDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547D9C22882B85B00806886 /* DetailDataModel.swift */; };
+		E547D9C628833E7A00806886 /* headerMakeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547D9C428833E7900806886 /* headerMakeTableViewCell.swift */; };
+		E547D9C728833E7A00806886 /* headerMakeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E547D9C528833E7A00806886 /* headerMakeTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +147,8 @@
 		E547D9BE288061A400806886 /* ingredientItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ingredientItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		E547D9BF288061A400806886 /* ingredientItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ingredientItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		E547D9C22882B85B00806886 /* DetailDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDataModel.swift; sourceTree = "<group>"; };
+		E547D9C428833E7900806886 /* headerMakeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = headerMakeTableViewCell.swift; sourceTree = "<group>"; };
+		E547D9C528833E7A00806886 /* headerMakeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = headerMakeTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -466,6 +470,8 @@
 		E547D9AA287DE91900806886 /* headerMake */ = {
 			isa = PBXGroup;
 			children = (
+				E547D9C428833E7900806886 /* headerMakeTableViewCell.swift */,
+				E547D9C528833E7A00806886 /* headerMakeTableViewCell.xib */,
 			);
 			path = headerMake;
 			sourceTree = "<group>";
@@ -624,6 +630,7 @@
 				3CE598AB28748093004AFD05 /* LaunchScreen.storyboard in Resources */,
 				3CA17C02287890E100E67B27 /* Pretendard-Bold.otf in Resources */,
 				3CA17C04287890E100E67B27 /* Pretendard-ExtraLight.otf in Resources */,
+				E547D9C728833E7A00806886 /* headerMakeTableViewCell.xib in Resources */,
 				3CA17C07287890E100E67B27 /* Pretendard-SemiBold.otf in Resources */,
 				E547D9C1288061A400806886 /* ingredientItemCollectionViewCell.xib in Resources */,
 				3CD4370D2877DC910044AE04 /* WritingNote.storyboard in Resources */,
@@ -680,6 +687,7 @@
 				E547D9BB28805F5E00806886 /* ingredientsTableViewCell.swift in Sources */,
 				3CD4370F2877E8310044AE04 /* TabbarRouter.swift in Sources */,
 				E547D9C32882B85C00806886 /* DetailDataModel.swift in Sources */,
+				E547D9C628833E7A00806886 /* headerMakeTableViewCell.swift in Sources */,
 				3C82300C28751AF90031C1DA /* UIViewController+Extensions.swift in Sources */,
 				3CD436D128772E2A0044AE04 /* APIRouter.swift in Sources */,
 				3CA17C0B2878920B00E67B27 /* Font.swift in Sources */,
