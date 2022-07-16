@@ -72,6 +72,8 @@
 		E547D9C32882B85C00806886 /* DetailDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547D9C22882B85B00806886 /* DetailDataModel.swift */; };
 		E547D9C628833E7A00806886 /* headerMakeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547D9C428833E7900806886 /* headerMakeTableViewCell.swift */; };
 		E547D9C728833E7A00806886 /* headerMakeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E547D9C528833E7A00806886 /* headerMakeTableViewCell.xib */; };
+		E547D9CA2883404700806886 /* stepsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547D9C82883404700806886 /* stepsTableViewCell.swift */; };
+		E547D9CB2883404700806886 /* stepsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E547D9C92883404700806886 /* stepsTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +151,8 @@
 		E547D9C22882B85B00806886 /* DetailDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDataModel.swift; sourceTree = "<group>"; };
 		E547D9C428833E7900806886 /* headerMakeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = headerMakeTableViewCell.swift; sourceTree = "<group>"; };
 		E547D9C528833E7A00806886 /* headerMakeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = headerMakeTableViewCell.xib; sourceTree = "<group>"; };
+		E547D9C82883404700806886 /* stepsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stepsTableViewCell.swift; sourceTree = "<group>"; };
+		E547D9C92883404700806886 /* stepsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = stepsTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -479,6 +483,8 @@
 		E547D9AB287DE92500806886 /* steps */ = {
 			isa = PBXGroup;
 			children = (
+				E547D9C82883404700806886 /* stepsTableViewCell.swift */,
+				E547D9C92883404700806886 /* stepsTableViewCell.xib */,
 			);
 			path = steps;
 			sourceTree = "<group>";
@@ -634,6 +640,7 @@
 				3CA17C07287890E100E67B27 /* Pretendard-SemiBold.otf in Resources */,
 				E547D9C1288061A400806886 /* ingredientItemCollectionViewCell.xib in Resources */,
 				3CD4370D2877DC910044AE04 /* WritingNote.storyboard in Resources */,
+				E547D9CB2883404700806886 /* stepsTableViewCell.xib in Resources */,
 				3CA17C01287890E100E67B27 /* Pretendard-Thin.otf in Resources */,
 				3CA17C06287890E100E67B27 /* Pretendard-Light.otf in Resources */,
 				3CA17C09287890E100E67B27 /* Pretendard-Regular.otf in Resources */,
@@ -685,6 +692,7 @@
 				3CE5989F28748092004AFD05 /* AppDelegate.swift in Sources */,
 				3CD436FB2877395C0044AE04 /* UICollectionView+Extensions.swift in Sources */,
 				E547D9BB28805F5E00806886 /* ingredientsTableViewCell.swift in Sources */,
+				E547D9CA2883404700806886 /* stepsTableViewCell.swift in Sources */,
 				3CD4370F2877E8310044AE04 /* TabbarRouter.swift in Sources */,
 				E547D9C32882B85C00806886 /* DetailDataModel.swift in Sources */,
 				E547D9C628833E7A00806886 /* headerMakeTableViewCell.swift in Sources */,
