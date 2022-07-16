@@ -77,7 +77,7 @@ private extension UIColor {
   }
   
   static var _skyblue01: UIColor {
-    UIColor(red: 250, green: 251, blue: 255, alpha: 1)
+    UIColor(red: 0.980, green: 0.984, blue: 1, alpha: 1)
   }
 
   static var _gray_navigationbar: UIColor {
