@@ -15,7 +15,17 @@ class ingredientItemCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "ingredientItemCollectionViewCell"
     
+    // 초기화 해주는 작업을 해당 메서드 안에서 진행
     override func awakeFromNib() {
         super.awakeFromNib()
+        // Initialization code
+    }
+
+    // 각 Cell 별로 다른 정보가 표시되어야 하므로, 값을 넣어주는 함수를 생성
+    func setData(_ cocktailData: CocktailDetailDataModel) {
+        cocktailNameLabel.text = cocktailData.CocktailName
+        cocktailEnNameLabel.text = cocktailData.CocktailEnName
     }
 }
+
+
