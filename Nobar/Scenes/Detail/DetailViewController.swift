@@ -16,5 +16,4 @@ final class DetailViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
   }
-    
 }
