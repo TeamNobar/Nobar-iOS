@@ -17,6 +17,7 @@ enum Color {
   case white
   case navy01
   case pink01
+  case skyblue01
   case gray_navigationbar
   
   func getColor() -> UIColor {
@@ -30,6 +31,7 @@ enum Color {
     case .white: return .findProperColor(lightModeColor: ._white, darkModeColor: ._white)
     case .navy01: return .findProperColor(lightModeColor: ._navy01, darkModeColor: ._navy01)
     case .pink01: return .findProperColor(lightModeColor: ._pink01, darkModeColor: ._pink01)
+    case .skyblue01: return .findProperColor(lightModeColor: ._skyblue01, darkModeColor: ._skyblue01)
     case .gray_navigationbar:
       return .findProperColor(lightModeColor: ._gray_navigationbar, darkModeColor: ._gray_navigationbar)
     }
@@ -76,6 +78,10 @@ private extension UIColor {
 
   static var _gray_navigationbar: UIColor {
     UIColor(red: 0.921, green: 0.921, blue: 0.921, alpha: 1)
+  }
+
+  static var _skyblue01: UIColor {
+    UIColor(red: 0.979, green: 0.985, blue: 1, alpha: 1)
   }
 }
 
