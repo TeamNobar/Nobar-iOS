@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C01FCC5287E4A2400BE23E6 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C01FCC4287E4A2400BE23E6 /* Recipe.swift */; };
+		3C01FCC7287E4A6300BE23E6 /* BaseRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C01FCC6287E4A6300BE23E6 /* BaseRecipe.swift */; };
+		3C01FCC9287E4AA000BE23E6 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C01FCC8287E4AA000BE23E6 /* Skill.swift */; };
+		3C01FCCB287E4ADA00BE23E6 /* Glass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C01FCCA287E4ADA00BE23E6 /* Glass.swift */; };
+		3C01FCCD287E4AF800BE23E6 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C01FCCC287E4AF800BE23E6 /* Ingredient.swift */; };
+		3C01FCCF287E4B2800BE23E6 /* TastingNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C01FCCE287E4B2800BE23E6 /* TastingNote.swift */; };
+		3C01FCD1287E4B8E00BE23E6 /* TastingTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C01FCD0287E4B8E00BE23E6 /* TastingTag.swift */; };
+		3C01FCD4287E505A00BE23E6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C01FCD3287E505A00BE23E6 /* Networking.swift */; };
+		3C01FCD8287E50C500BE23E6 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3C01FCD7287E50C500BE23E6 /* RxAlamofire */; };
+		3C01FCDA287E526400BE23E6 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C01FCD9287E526400BE23E6 /* NetworkingService.swift */; };
+		3C01FCDD287E53BF00BE23E6 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C01FCDC287E53BF00BE23E6 /* NetworkLogger.swift */; };
+		3C01FCDF287E588700BE23E6 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C01FCDE287E588700BE23E6 /* Data+Extensions.swift */; };
 		3C823002287518C20031C1DA /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C823001287518C20031C1DA /* Environment.swift */; };
 		3C82300C28751AF90031C1DA /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C82300B28751AF90031C1DA /* UIViewController+Extensions.swift */; };
 		3CA17C01287890E100E67B27 /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3CA17BF8287890E100E67B27 /* Pretendard-Thin.otf */; };
@@ -67,6 +79,7 @@
 		4D05716C287D4D5600CB656A /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D05716B287D4D5600CB656A /* RecommendCollectionViewCell.swift */; };
 		4D3554B7287DEA670063F725 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3554B6287DEA670063F725 /* SearchModel.swift */; };
 		4D3554B9287E56280063F725 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3554B8287E56280063F725 /* NSObject+Extension.swift */; };
+		3CF40A79287E42FC00C44A64 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF40A78287E42FC00C44A64 /* EndPoint.swift */; };
 		6AAD37DC287C71FA0030646C /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37DB287C71F90030646C /* UIView+Extension.swift */; };
 		6AAD37DE287C75240030646C /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37DD287C75240030646C /* UIScreen+Extension.swift */; };
 		6AAD37E0287C7A720030646C /* UITextfield+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37DF287C7A720030646C /* UITextfield+Extension.swift */; };
@@ -103,6 +116,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C01FCC4287E4A2400BE23E6 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		3C01FCC6287E4A6300BE23E6 /* BaseRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRecipe.swift; sourceTree = "<group>"; };
+		3C01FCC8287E4AA000BE23E6 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
+		3C01FCCA287E4ADA00BE23E6 /* Glass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Glass.swift; sourceTree = "<group>"; };
+		3C01FCCC287E4AF800BE23E6 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		3C01FCCE287E4B2800BE23E6 /* TastingNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastingNote.swift; sourceTree = "<group>"; };
+		3C01FCD0287E4B8E00BE23E6 /* TastingTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastingTag.swift; sourceTree = "<group>"; };
+		3C01FCD3287E505A00BE23E6 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		3C01FCD9287E526400BE23E6 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
+		3C01FCDC287E53BF00BE23E6 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
+		3C01FCDE287E588700BE23E6 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 		3C823001287518C20031C1DA /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		3C82300B28751AF90031C1DA /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		3CA17BF8287890E100E67B27 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
@@ -155,6 +179,7 @@
 		4D05716B287D4D5600CB656A /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		4D3554B6287DEA670063F725 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		4D3554B8287E56280063F725 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		3CF40A78287E42FC00C44A64 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		6AAD37DB287C71F90030646C /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		6AAD37DD287C75240030646C /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		6AAD37DF287C7A720030646C /* UITextfield+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextfield+Extension.swift"; sourceTree = "<group>"; };
@@ -183,6 +208,7 @@
 				3CD436D428772EBE0044AE04 /* Alamofire in Frameworks */,
 				3CD436DC28772FE10044AE04 /* FirebaseCrashlytics in Frameworks */,
 				3CD436DE28772FE10044AE04 /* FirebaseMessaging in Frameworks */,
+				3C01FCD8287E50C500BE23E6 /* RxAlamofire in Frameworks */,
 				3CD436E4287730D70044AE04 /* RxCocoa in Frameworks */,
 				3CD436EB2877312F0044AE04 /* Then in Frameworks */,
 				3CD436EE287731530044AE04 /* Lottie in Frameworks */,
@@ -210,6 +236,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C01FCD2287E505200BE23E6 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3C01FCD3287E505A00BE23E6 /* Networking.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		3C01FCD5287E507300BE23E6 /* NetworkingService */ = {
+			isa = PBXGroup;
+			children = (
+				3C01FCD9287E526400BE23E6 /* NetworkingService.swift */,
+			);
+			path = NetworkingService;
+			sourceTree = "<group>";
+		};
+		3C01FCDB287E53AF00BE23E6 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				3C01FCDC287E53BF00BE23E6 /* NetworkLogger.swift */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
 		3C822FFA2875171C0031C1DA /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +294,7 @@
 				6AAD37E1287C7B250030646C /* UILabel+Extension.swift */,
 				4D057164287CFF1400CB656A /* Adjusted+Extension.swift */,
 				4D3554B8287E56280063F725 /* NSObject+Extension.swift */,
+				3C01FCDE287E588700BE23E6 /* Data+Extensions.swift */,
 				6AAD3803288012910030646C /* UIColor+Extension.swift */,
 			);
 			path = GlobalExtensions;
@@ -321,7 +372,10 @@
 		3C82300928751A450031C1DA /* Networks */ = {
 			isa = PBXGroup;
 			children = (
+				3C01FCD2287E505200BE23E6 /* Protocols */,
 				3C82300A28751A4B0031C1DA /* APIRouter */,
+				3C01FCD5287E507300BE23E6 /* NetworkingService */,
+				3C01FCDB287E53AF00BE23E6 /* Logger */,
 			);
 			path = Networks;
 			sourceTree = "<group>";
@@ -330,6 +384,7 @@
 			isa = PBXGroup;
 			children = (
 				3CD436D028772E2A0044AE04 /* APIRouter.swift */,
+				3CF40A78287E42FC00C44A64 /* EndPoint.swift */,
 			);
 			path = APIRouter;
 			sourceTree = "<group>";
@@ -441,6 +496,7 @@
 				3C822FFC287517710031C1DA /* GlobalExtensions */,
 				3C822FFB287517440031C1DA /* Resources */,
 				3C82300928751A450031C1DA /* Networks */,
+				3CF40A7A287E49D000C44A64 /* Model */,
 			);
 			path = Nobar;
 			sourceTree = "<group>";
@@ -483,6 +539,20 @@
 			isa = PBXGroup;
 			children = (
 				4D3554B6287DEA670063F725 /* SearchModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3CF40A7A287E49D000C44A64 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3C01FCC4287E4A2400BE23E6 /* Recipe.swift */,
+				3C01FCC6287E4A6300BE23E6 /* BaseRecipe.swift */,
+				3C01FCC8287E4AA000BE23E6 /* Skill.swift */,
+				3C01FCCA287E4ADA00BE23E6 /* Glass.swift */,
+				3C01FCCC287E4AF800BE23E6 /* Ingredient.swift */,
+				3C01FCCE287E4B2800BE23E6 /* TastingNote.swift */,
+				3C01FCD0287E4B8E00BE23E6 /* TastingTag.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -537,6 +607,7 @@
 				3CD436EA2877312F0044AE04 /* Then */,
 				3CD436ED287731530044AE04 /* Lottie */,
 				3CD436F02877317C0044AE04 /* Kingfisher */,
+				3C01FCD7287E50C500BE23E6 /* RxAlamofire */,
 			);
 			productName = Nobar;
 			productReference = 3CE5989B28748092004AFD05 /* Nobar.app */;
@@ -619,6 +690,7 @@
 				3CD436E92877312F0044AE04 /* XCRemoteSwiftPackageReference "Then" */,
 				3CD436EC287731530044AE04 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				3CD436EF2877317C0044AE04 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				3C01FCD6287E50C500BE23E6 /* XCRemoteSwiftPackageReference "RxAlamofire" */,
 			);
 			productRefGroup = 3CE5989C28748092004AFD05 /* Products */;
 			projectDirPath = "";
@@ -684,16 +756,21 @@
 				3C823002287518C20031C1DA /* Environment.swift in Sources */,
 				6AAD37FB287FFA240030646C /* GuideCVC.swift in Sources */,
 				6AAD37EC287C807E0030646C /* showToastMessage.swift in Sources */,
+				3C01FCC9287E4AA000BE23E6 /* Skill.swift in Sources */,
 				6AAD37E4287C7E9D0030646C /* applyShadow.swift in Sources */,
 				3CD437172877EC860044AE04 /* BaseViewController.swift in Sources */,
 				3CD437022877D4880044AE04 /* NBTabbarController.swift in Sources */,
 				4D05716C287D4D5600CB656A /* RecommendCollectionViewCell.swift in Sources */,
+				3C01FCD4287E505A00BE23E6 /* Networking.swift in Sources */,
+				3CF40A79287E42FC00C44A64 /* EndPoint.swift in Sources */,
 				3CD437132877EC530044AE04 /* WritingNoteViewController.swift in Sources */,
 				3CE5989F28748092004AFD05 /* AppDelegate.swift in Sources */,
+				3C01FCDA287E526400BE23E6 /* NetworkingService.swift in Sources */,
 				3CD436FB2877395C0044AE04 /* UICollectionView+Extensions.swift in Sources */,
 				6AAD37F7287F6D7A0030646C /* CocktailModel.swift in Sources */,
 				6AAD37DC287C71FA0030646C /* UIView+Extension.swift in Sources */,
 				4D3554B7287DEA670063F725 /* SearchModel.swift in Sources */,
+				3C01FCCF287E4B2800BE23E6 /* TastingNote.swift in Sources */,
 				3CD4370F2877E8310044AE04 /* TabbarRouter.swift in Sources */,
 				6AAD37E0287C7A720030646C /* UITextfield+Extension.swift in Sources */,
 				4D057167287D36BD00CB656A /* SearchHeaderView.swift in Sources */,
@@ -704,24 +781,32 @@
 				4D05716A287D4CDC00CB656A /* RecentCollectionViewCell.swift in Sources */,
 				3CA17C0B2878920B00E67B27 /* Font.swift in Sources */,
 				3CD437002877D3FD0044AE04 /* BaseRouter.swift in Sources */,
+				3C01FCDD287E53BF00BE23E6 /* NetworkLogger.swift in Sources */,
+				3CD437112877EBCC0044AE04 /* SearchViewController.swift in Sources */,
 				6AAD37FE288005940030646C /* GuideModel.swift in Sources */,
 				3CD437112877EBCC0044AE04 /* SearchViewController.swift in Sources */,
 				6AAD37DE287C75240030646C /* UIScreen+Extension.swift in Sources */,
 				3CA17C1328789BAE00E67B27 /* ImageFactory.swift in Sources */,
 				3CD436F7287738DD0044AE04 /* UIStoryboard+Extensions.swift in Sources */,
 				3CD436FE2877D11C0044AE04 /* AppRouter.swift in Sources */,
+				3C01FCD1287E4B8E00BE23E6 /* TastingTag.swift in Sources */,
 				6AAD38002880086C0030646C /* RecommendCVC.swift in Sources */,
 				3CD436F92877390A0044AE04 /* StoryboardRouter.swift in Sources */,
 				3CE598A128748092004AFD05 /* SceneDelegate.swift in Sources */,
 				4D3554B9287E56280063F725 /* NSObject+Extension.swift in Sources */,
+				3C01FCC5287E4A2400BE23E6 /* Recipe.swift in Sources */,
 				6AAD37F5287F38290030646C /* CocktailCVC.swift in Sources */,
 				6AAD380228800A4D0030646C /* RecommendModel.swift in Sources */,
 				3CA17C18287A71E300E67B27 /* CGFloat+Extensions.swift in Sources */,
+				3C01FCC7287E4A6300BE23E6 /* BaseRecipe.swift in Sources */,
+				3C01FCCB287E4ADA00BE23E6 /* Glass.swift in Sources */,
 				6AAD37F3287F213C0030646C /* HomeHeaderView.swift in Sources */,
 				6AAD37E2287C7B250030646C /* UILabel+Extension.swift in Sources */,
 				6AAD3804288012910030646C /* UIColor+Extension.swift in Sources */,
 				3CD436CF28771B060044AE04 /* Theme.swift in Sources */,
+				3C01FCDF287E588700BE23E6 /* Data+Extensions.swift in Sources */,
 				6AAD37E6287C7EFE0030646C /* calculatePastTime.swift in Sources */,
+				3C01FCCD287E4AF800BE23E6 /* Ingredient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1068,6 +1153,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3C01FCD6287E50C500BE23E6 /* XCRemoteSwiftPackageReference "RxAlamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxAlamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.0;
+			};
+		};
 		3CD436D228772EBE0044AE04 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -1135,6 +1228,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3C01FCD7287E50C500BE23E6 /* RxAlamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C01FCD6287E50C500BE23E6 /* XCRemoteSwiftPackageReference "RxAlamofire" */;
+			productName = RxAlamofire;
+		};
 		3CD436D328772EBE0044AE04 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3CD436D228772EBE0044AE04 /* XCRemoteSwiftPackageReference "Alamofire" */;
