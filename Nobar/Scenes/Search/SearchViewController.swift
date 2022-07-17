@@ -87,8 +87,8 @@ final class SearchViewController: BaseViewController {
   }
 
   override func viewWillAppear(_ animated: Bool) {
-      super.viewWillAppear(animated)
-      initTextField()
+    super.viewWillAppear(animated)
+    initTextField()
   }
 
   override func setupConstraints() {
@@ -173,17 +173,34 @@ extension SearchViewController {
     searchTextField.text = ""
     searchTextField.rightViewMode = .never
   }
+
+  private func setTextFieldButton() {
+    searchTextField.didClickOnClearButtonClosure = {
+      self.searchTextField.text?.removeAll()
+      self.searchAutoResultCollectionView.removeFromSuperview()
+    }
+  }
+
+  private func setAutoResultCollectionView() {
+    view.addSubview(searchAutoResultCollectionView)
+    searchAutoResultCollectionView.snp.makeConstraints {
+      $0.top.equalTo(underline.snp.bottom)
+      $0.leading.trailing.bottom.equalToSuperview()
+    }
+  }
 }
 
 // MARK: - Action Functions
 extension SearchViewController {
   @objc private func judgeHasText(_ sender: UITextField) {
     if searchTextField.hasText {
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-        let searchResultViewController = SearchResultViewController()
-        searchResultViewController.firstKeyword = self.searchTextField.text
-        self.navigationController?.pushViewController(searchResultViewController, animated: false)
-      }
+      setAutoResultCollectionView()
+      guard let searchText = searchTextField.text else { return }
+
+      self.performQuery(with: searchText)
+
+    } else {
+      searchAutoResultCollectionView.removeFromSuperview()
     }
   }
 
