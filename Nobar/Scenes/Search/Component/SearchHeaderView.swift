@@ -12,7 +12,6 @@ import SnapKit
 
 protocol HeaderViewDelegate: AnyObject {
   func didClickOnDeleteButton()
-  func didClickOnTotalResultButton()
 }
 
 final class SearchHeaderView: UICollectionReusableView {
@@ -50,7 +49,6 @@ final class SearchHeaderView: UICollectionReusableView {
     $0.setTitle("전체 보기", for: .normal)
     $0.setTitleColor(Color.gray03.getColor(), for: .normal)
     $0.titleLabel?.font = Pretendard.size13.medium()
-    $0.addTarget(self, action: #selector(didClickOnTotalResultButton(_:)), for: .touchUpInside)
   }
 
   private let topLine = UIView().then {
@@ -146,9 +144,5 @@ extension SearchHeaderView {
   @objc private func didClickOnDeleteButton(_ sender: UIButton) {
     delegate?.didClickOnDeleteButton()
     self.deleteButton.isHidden = true
-  }
-  
-  @objc private func didClickOnTotalResultButton(_ sender: UIButton) {
-    delegate?.didClickOnTotalResultButton()
   }
 }
