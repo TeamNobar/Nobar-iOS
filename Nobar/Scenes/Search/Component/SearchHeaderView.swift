@@ -17,13 +17,14 @@ protocol HeaderViewDelegate: AnyObject {
 
 final class SearchHeaderView: UICollectionReusableView {
 
-  var delegate: HeaderViewDelegate?
+  weak var delegate: HeaderViewDelegate?
 
   enum SeachHeaderType {
     case recent
     case recommend
     case cocktail
     case ingredient
+    case total
   }
 
   private var titleLabel = UILabel().then {
@@ -43,6 +44,13 @@ final class SearchHeaderView: UICollectionReusableView {
     $0.textColor = Color.gray03.getColor()
     $0.font = Pretendard.size13.regular()
     $0.addSpacing(kernValue: -0.78, lineSpacing: 0)
+  }
+
+  private var totalButton = UIButton().then {
+    $0.setTitle("전체 보기", for: .normal)
+    $0.setTitleColor(Color.gray03.getColor(), for: .normal)
+    $0.titleLabel?.font = Pretendard.size13.medium()
+    $0.addTarget(self, action: #selector(didClickOnTotalResultButton(_:)), for: .touchUpInside)
   }
 
   private let topLine = UIView().then {
@@ -84,6 +92,9 @@ extension SearchHeaderView {
     case .ingredient:
       titleLabel.text = "재료"
       addSeparateLine()
+    case .total:
+      titleLabel.text = "칵테일 레시피"
+      addTotalButton()
     }
   }
 
@@ -110,6 +121,15 @@ extension SearchHeaderView {
     topLine.snp.makeConstraints {
       $0.top.leading.trailing.equalToSuperview()
       $0.height.equalTo(1)
+    }
+  }
+
+  private func addTotalButton() {
+    addSubview(totalButton)
+    totalButton.snp.makeConstraints {
+      $0.top.equalToSuperview().inset(18)
+      $0.bottom.equalToSuperview().inset(15)
+      $0.trailing.equalToSuperview().inset(26)
     }
   }
 
