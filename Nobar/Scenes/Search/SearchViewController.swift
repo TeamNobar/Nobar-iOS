@@ -83,11 +83,13 @@ extension SearchViewController {
   private func render() {
     view.addSubviews([searchView, searchKeywordCollectionView])
     searchView.addSubviews([backButton, searchTextField, underline])
+    searchKeywordCollectionView.addSubview(emptyLabel)
   }
 
   private func configUI() {
     view.backgroundColor = Color.white.getColor()
     navigationController?.navigationBar.isHidden = true
+    emptyLabel.isHidden = true
   }
 
   private func setLayout() {
@@ -119,6 +121,11 @@ extension SearchViewController {
     searchKeywordCollectionView.snp.makeConstraints {
       $0.top.equalTo(underline.snp.bottom)
       $0.leading.trailing.bottom.equalToSuperview()
+    }
+
+    emptyLabel.snp.makeConstraints {
+      $0.top.equalToSuperview().inset(58)
+      $0.leading.equalToSuperview().inset(126)
     }
   }
 }
@@ -285,6 +292,7 @@ extension SearchViewController: HeaderViewDelegate {
   func didClickOnDeleteButton() {
     self.dummyKeywords.removeAll()
     self.searchKeywordCollectionView.reloadSections([0])
+    self.emptyLabel.isHidden = false
   }
 
   func didClickOnTotalResultButton() {
