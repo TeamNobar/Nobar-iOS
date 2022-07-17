@@ -24,6 +24,8 @@ final class SearchViewController: BaseViewController {
 
   private var keywordSectionType: KeywordSectionType?
 
+  private var resultDataSource: UICollectionViewDiffableDataSource<AutoResultSectionType, String>!
+  private var resultSnapshot: NSDiffableDataSourceSnapshot<AutoResultSectionType, String>!
 
   // TODO: 나중에 서버에서 한꺼번에 리스트로 받아옴
   private var dummyKeywords: [String] = ["브랜디", "선라이즈피치", "피치크러쉬", "카시스 오렌지", "은비쨩", "칵테일어쩌구", "밀푀유나베", "피치어쩌구", "리큐르", "채원쨩??"]
@@ -40,6 +42,7 @@ final class SearchViewController: BaseViewController {
   }
 
   private lazy var searchTextField = SearchTextField().then {
+    $0.delegate = self
     $0.addTarget(self, action: #selector(judgeHasText(_:)), for: .editingChanged)
   }
 
@@ -55,8 +58,17 @@ final class SearchViewController: BaseViewController {
   }
 
   private lazy var searchKeywordCollectionView: UICollectionView = {
-    let layout = createCompositionLayout()
+    let layout = createKeywordLayout()
     layout.configuration.interSectionSpacing = 0
+
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    collectionView.showsHorizontalScrollIndicator = false
+    collectionView.showsVerticalScrollIndicator = false
+    return collectionView
+  }()
+
+  private lazy var searchAutoResultCollectionView: UICollectionView = {
+    let layout = createAutoResultLayout()
 
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.showsHorizontalScrollIndicator = false
@@ -70,6 +82,8 @@ final class SearchViewController: BaseViewController {
     configUI()
     setDelegation()
     setRegistration()
+    setTextFieldButton()
+    setDataSource()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -150,6 +164,9 @@ extension SearchViewController {
     searchKeywordCollectionView.register(SearchHeaderView.self, forSupplementaryViewOfKind: SearchHeaderView.className, withReuseIdentifier: SearchHeaderView.className)
     searchKeywordCollectionView.register(cell: RecentCollectionViewCell.self)
     searchKeywordCollectionView.register(cell: RecommendCollectionViewCell.self)
+
+    searchAutoResultCollectionView.register(SearchHeaderView.self, forSupplementaryViewOfKind: SearchHeaderView.className, withReuseIdentifier: SearchHeaderView.className)
+    searchAutoResultCollectionView.register(cell: SearchAutoResultCollectionViewCell.self)
   }
 
   private func initTextField() {
@@ -217,7 +234,7 @@ extension SearchViewController {
     return section
   }
 
-  private func createCompositionLayout() -> UICollectionViewCompositionalLayout {
+  private func createKeywordLayout() -> UICollectionViewCompositionalLayout {
     return UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
       switch sectionNumber {
       case 0: return self.getLayoutRecentSection()
@@ -225,6 +242,37 @@ extension SearchViewController {
       default: return self.getLayoutRecentSection()
       }
     }
+  }
+
+  private func createAutoResultLayout() -> UICollectionViewCompositionalLayout {
+    let layout = UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
+      let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                            heightDimension: .fractionalHeight(1))
+      let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+      let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                             heightDimension: .absolute(50))
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
+
+      let section = NSCollectionLayoutSection(group: group)
+
+      guard let sections = AutoResultSectionType(rawValue: sectionNumber) else { return nil }
+      switch sections {
+      case .cocktail:
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0)
+      case .ingredient:
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 250, trailing: 0)
+      }
+
+      let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: .absolute(50))
+      let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
+                                                               elementKind: SearchHeaderView.className,
+                                                               alignment: .topLeading)
+      section.boundarySupplementaryItems = [header]
+      return section
+    }
+    return layout
   }
 }
 
