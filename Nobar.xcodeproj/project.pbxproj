@@ -74,8 +74,8 @@
 		E547D9C728833E7A00806886 /* headerMakeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E547D9C528833E7A00806886 /* headerMakeTableViewCell.xib */; };
 		E547D9CA2883404700806886 /* stepsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547D9C82883404700806886 /* stepsTableViewCell.swift */; };
 		E547D9CB2883404700806886 /* stepsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E547D9C92883404700806886 /* stepsTableViewCell.xib */; };
-		E547D9CE288340FA00806886 /* recordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547D9CC288340FA00806886 /* recordTableViewCell.swift */; };
-		E547D9CF288340FA00806886 /* recordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E547D9CD288340FA00806886 /* recordTableViewCell.xib */; };
+		E547D9CE288340FA00806886 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547D9CC288340FA00806886 /* RecordTableViewCell.swift */; };
+		E547D9CF288340FA00806886 /* RecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E547D9CD288340FA00806886 /* RecordTableViewCell.xib */; };
 		E547D9D32883F78D00806886 /* headerRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547D9D12883F78D00806886 /* headerRecordTableViewCell.swift */; };
 		E547D9D42883F78D00806886 /* headerRecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E547D9D22883F78D00806886 /* headerRecordTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -157,8 +157,8 @@
 		E547D9C528833E7A00806886 /* headerMakeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = headerMakeTableViewCell.xib; sourceTree = "<group>"; };
 		E547D9C82883404700806886 /* stepsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stepsTableViewCell.swift; sourceTree = "<group>"; };
 		E547D9C92883404700806886 /* stepsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = stepsTableViewCell.xib; sourceTree = "<group>"; };
-		E547D9CC288340FA00806886 /* recordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recordTableViewCell.swift; sourceTree = "<group>"; };
-		E547D9CD288340FA00806886 /* recordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = recordTableViewCell.xib; sourceTree = "<group>"; };
+		E547D9CC288340FA00806886 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
+		E547D9CD288340FA00806886 /* RecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordTableViewCell.xib; sourceTree = "<group>"; };
 		E547D9D12883F78D00806886 /* headerRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = headerRecordTableViewCell.swift; sourceTree = "<group>"; };
 		E547D9D22883F78D00806886 /* headerRecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = headerRecordTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -501,8 +501,8 @@
 		E547D9AC287DE93D00806886 /* record */ = {
 			isa = PBXGroup;
 			children = (
-				E547D9CC288340FA00806886 /* recordTableViewCell.swift */,
-				E547D9CD288340FA00806886 /* recordTableViewCell.xib */,
+				E547D9CC288340FA00806886 /* RecordTableViewCell.swift */,
+				E547D9CD288340FA00806886 /* RecordTableViewCell.xib */,
 			);
 			path = record;
 			sourceTree = "<group>";
@@ -659,7 +659,7 @@
 				3CA17C04287890E100E67B27 /* Pretendard-ExtraLight.otf in Resources */,
 				E547D9C728833E7A00806886 /* headerMakeTableViewCell.xib in Resources */,
 				3CA17C07287890E100E67B27 /* Pretendard-SemiBold.otf in Resources */,
-				E547D9CF288340FA00806886 /* recordTableViewCell.xib in Resources */,
+				E547D9CF288340FA00806886 /* RecordTableViewCell.xib in Resources */,
 				E547D9C1288061A400806886 /* ingredientItemCollectionViewCell.xib in Resources */,
 				3CD4370D2877DC910044AE04 /* WritingNote.storyboard in Resources */,
 				E547D9CB2883404700806886 /* stepsTableViewCell.xib in Resources */,
@@ -712,7 +712,7 @@
 				3CD437172877EC860044AE04 /* BaseViewController.swift in Sources */,
 				3CD437022877D4880044AE04 /* NBTabbarController.swift in Sources */,
 				3CD437132877EC530044AE04 /* WritingNoteViewController.swift in Sources */,
-				E547D9CE288340FA00806886 /* recordTableViewCell.swift in Sources */,
+				E547D9CE288340FA00806886 /* RecordTableViewCell.swift in Sources */,
 				3CE5989F28748092004AFD05 /* AppDelegate.swift in Sources */,
 				3CD436FB2877395C0044AE04 /* UICollectionView+Extensions.swift in Sources */,
 				E547D9BB28805F5E00806886 /* ingredientsTableViewCell.swift in Sources */,

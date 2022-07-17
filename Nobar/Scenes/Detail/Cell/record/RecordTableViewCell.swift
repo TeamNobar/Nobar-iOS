@@ -7,7 +7,7 @@
 
 import UIKit
 
-class recordTableViewCell: UITableViewCell {
+class RecordTableViewCell: UITableViewCell {
 
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var writeNoteButton: UIButton!
