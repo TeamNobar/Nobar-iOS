@@ -6,13 +6,13 @@
 #     https://docs.fastlane.tools/advanced/#appfile
 
 # default 번들 ID
-app_identifier("kr.teamnobar.nobar-ios-debug")
-
-# Your Apple email address
+app_identifier("kr.teamnobar.nobar-ios-release")
 apple_id("elesahich@gmail.com")
 
-# Developer Portal Team ID
 team_id("BWM6S332K8") 
+itc_team_id("121724386")
+
+
 
 # fastfile에 가기전에 app_identifier가 설정
 for_platform :ios do
