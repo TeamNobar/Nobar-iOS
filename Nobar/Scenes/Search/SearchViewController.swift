@@ -19,7 +19,10 @@ final class SearchViewController: BaseViewController {
 
   private var sectionType: SectionType?
 
+  // TODO: 나중에 서버에서 한꺼번에 리스트로 받아옴
   private var dummyKeywords: [String] = ["브랜디", "선라이즈피치", "피치크러쉬", "카시스 오렌지", "은비쨩", "칵테일어쩌구", "밀푀유나베", "피치어쩌구", "리큐르", "채원쨩??"]
+  private var dummyCocktail: [String] = ["브랜디", "선라이즈피치", "피치크러쉬", "카시스 오렌지", "은비쨩", "칵테일어쩌구", "피치만 나와라", "피치어쩌구", "리큐르", "채원쨩", "피치1", "피치2", "피치3", "피치4"]
+  private var dummyIngredient: [String] = ["피피피피", "피치주스도있고요", "재료들이", "오렌지주스", "은비쨩", "재료어쩌구", "리큐르", "채원쨩"]
 
   private let searchView = UIView().then {
     $0.backgroundColor = Color.white.getColor()
