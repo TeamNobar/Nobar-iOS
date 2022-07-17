@@ -7,26 +7,31 @@
 
 import UIKit
 
-import Alamofire
-
 final class MyPageViewController: BaseViewController {
-  private let endPoint = Endpoint<MyPageResponse>(apiRouter: APIRouter.getMyPage)
-  private let networkingService: Networking = NetworkingService()
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    networkingService.request(endPoint) { result in
-      switch result {
-      case .success(let data): break
-      case .failure(let error): break
-      }
+    let segmented = NBSegmentedControl(buttonTitles: ["테이스팅 노트", "나중에 만들 레시피"])
+    segmented.addTarget(self, action: #selector(test(_:)), for: .valueChanged)
+    
+    self.view.addSubview(segmented)
+    
+    segmented.snp.makeConstraints {
+      $0.center.equalToSuperview()
+      $0.width.equalTo(217)
+      $0.height.equalTo(36)
     }
   }
   
   override func setupConstraints() {
     super.setupConstraints()
     
+  }
+}
+
+extension MyPageViewController {
+  @objc private func test(_ sender: NBSegmentedControl) {
+    print(sender.selectedIndex)
   }
 }
 
