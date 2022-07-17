@@ -7,12 +7,12 @@
 
 import UIKit
 
-class ingredientsTableViewCell: UITableViewCell {
+class IngredientsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var ingredientsCollectionView: UICollectionView!
     var selectIngredients: (() -> ())?
     static let identifier = "ingredientsTableViewCell"
-    var identifiers = [ingredientItemCollectionViewCell.identifier]
+    var identifiers = [IngredientItemCollectionViewCell.identifier]
     
     override func awakeFromNib() {
         super.awakeFromNib()

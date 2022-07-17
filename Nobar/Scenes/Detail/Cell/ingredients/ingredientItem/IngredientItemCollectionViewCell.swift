@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ingredientItemCollectionViewCell: UICollectionViewCell {
+class IngredientItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ingredientsTitle: UILabel!
     @IBOutlet weak var categoryImage: UIImageView!
     @IBOutlet weak var categoryLabel: UILabel!

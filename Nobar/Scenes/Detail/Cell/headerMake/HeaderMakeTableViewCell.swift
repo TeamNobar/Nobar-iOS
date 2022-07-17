@@ -1,16 +1,16 @@
 //
-//  headerReadyTableViewCell.swift
+//  headerMakeTableViewCell.swift
 //  Nobar
 //
-//  Created by Sua Han on 2022/07/14.
+//  Created by Sua Han on 2022/07/17.
 //
 
 import UIKit
 
-class headerReadyTableViewCell: UITableViewCell {
+class HeaderMakeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var headerTitleLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

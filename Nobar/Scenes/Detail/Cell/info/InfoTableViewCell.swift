@@ -1,13 +1,13 @@
 //
-//  stepsTableViewCell.swift
+//  infoTableViewCell.swift
 //  Nobar
 //
-//  Created by Sua Han on 2022/07/17.
+//  Created by Sua Han on 2022/07/13.
 //
 
 import UIKit
 
-class stepsTableViewCell: UITableViewCell {
+class InfoTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

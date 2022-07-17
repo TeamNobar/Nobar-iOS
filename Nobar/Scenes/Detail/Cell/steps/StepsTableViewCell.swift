@@ -1,5 +1,5 @@
 //
-//  headerRecordTableViewCell.swift
+//  stepsTableViewCell.swift
 //  Nobar
 //
 //  Created by Sua Han on 2022/07/17.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class headerRecordTableViewCell: UITableViewCell {
+class StepsTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -1,5 +1,5 @@
 //
-//  headerMakeTableViewCell.swift
+//  headerRecordTableViewCell.swift
 //  Nobar
 //
 //  Created by Sua Han on 2022/07/17.
@@ -7,9 +7,7 @@
 
 import UIKit
 
-class headerMakeTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var headerTitleLabel: UILabel!
+class HeaderRecordTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
