@@ -53,7 +53,7 @@ extension RecommendCVC {
     layer.cornerRadius = 12
   }
   
-  func setData(data: RecommendModel){
+  func setData(with data: RecommendModel){
     titleLabel.text = data.title
     backgroundColor = UIColor(hex: data.color)
   }

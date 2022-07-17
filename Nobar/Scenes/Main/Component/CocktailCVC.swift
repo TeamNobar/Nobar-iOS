@@ -11,7 +11,7 @@ import Then
 import SnapKit
 
 final class CocktailCVC: UICollectionViewCell {
-
+  
   private let cocktailNameLabel = UILabel().then {
     $0.textColor = Color.black.getColor()
     $0.font = Pretendard.size16.bold()
@@ -32,18 +32,18 @@ final class CocktailCVC: UICollectionViewCell {
     $0.textColor = Color.pink01.getColor()
     $0.font = Pretendard.size13.bold()
   }
-
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     render()
     configUI()
   }
-
+  
   @available(*, unavailable)
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-
+  
   override func prepareForReuse() {
     cocktailNameLabel.text = ""
     cocktailEngNameLabel.text = ""
@@ -54,13 +54,13 @@ final class CocktailCVC: UICollectionViewCell {
 // MARK: - UI & Layout
 
 extension CocktailCVC {
-
+  
   private func render() {
     addSubviews([
-    cocktailNameLabel,
-    cocktailEngNameLabel,
-    tagImageView,
-    baseLabel
+      cocktailNameLabel,
+      cocktailEngNameLabel,
+      tagImageView,
+      baseLabel
     ])
     cocktailNameLabel.snp.makeConstraints {
       $0.top.leading.trailing.equalToSuperview().inset(12)
@@ -78,17 +78,22 @@ extension CocktailCVC {
       $0.centerY.equalTo(tagImageView)
     }
   }
-
+  
   private func configUI() {
     backgroundColor = Color.skyblue01.getColor()
     layer.cornerRadius = 10
-    self.layer.applyShadow(alpha: 0.05, x: 1.0, y: 1.0, blur: 2.0, spread: 0.0)
+    self.layer.applyShadow(
+      alpha: 0.05,
+      x: 1.0,
+      y: 1.0,
+      blur: 2.0,
+      spread: 0.0)
   }
   
-  func setData(data: CocktailModel){
+  func setData(with data: CocktailModel){
     cocktailNameLabel.text = data.cocktailName
     cocktailEngNameLabel.text = data.cocktailEngName
     baseLabel.text = data.base
   }
-
+  
 }

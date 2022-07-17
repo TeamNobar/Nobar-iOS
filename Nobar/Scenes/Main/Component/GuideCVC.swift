@@ -60,10 +60,16 @@ extension GuideCVC {
   private func configUI() {
     backgroundColor = Color.gray01.getColor()
     layer.cornerRadius = 10
-    layer.applyShadow(color: UIColor(red: 0, green: 0, blue: 0, alpha: 1), alpha: 0.05, x: 1, y: 1, blur: 2, spread: 0)
+    layer.applyShadow(
+      color: Color.black.getColor(),
+      alpha: 0.05,
+      x: 1,
+      y: 1,
+      blur: 2,
+      spread: 0)
   }
   
- func setData(data: GuideModel){
+ func setData(with data: GuideModel){
     thumbnailImageView.image = UIImage(named: data.thumbnailImageName)
     titleLabel.text = data.titleName
   }

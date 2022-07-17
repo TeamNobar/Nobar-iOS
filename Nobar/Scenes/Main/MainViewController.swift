@@ -11,7 +11,7 @@ import Then
 import SnapKit
 
 final class MainViewController: BaseViewController {
-  enum SectionType: Int {
+  enum SectionType: Int, CaseIterable {
     case archive = 0
     case guide = 1
     case recommend = 2
@@ -29,11 +29,14 @@ final class MainViewController: BaseViewController {
     let layout = getLayout()
     layout.configuration.interSectionSpacing = 0
     
-    let collectionView = UICollectionView(frame: .zero,
-                                          collectionViewLayout: layout)
+    let collectionView = UICollectionView(
+      frame: .zero,
+      collectionViewLayout: layout)
     collectionView.showsHorizontalScrollIndicator = false
     collectionView.showsVerticalScrollIndicator = false
-    collectionView.register(CocktailCVC.self, forCellWithReuseIdentifier: CocktailCVC.identifier)
+    collectionView.register(
+      CocktailCVC.self,
+      forCellWithReuseIdentifier: CocktailCVC.identifier)
     return collectionView
   }()
   
@@ -63,8 +66,9 @@ extension MainViewController {
 extension MainViewController {
   
   private func render() {
-    view.addSubviews([logoView,
-                      homeCollectionView])
+    view.addSubviews(
+      [logoView,
+       homeCollectionView])
     logoView.addSubview(logoImageView)
   }
   
@@ -91,9 +95,9 @@ extension MainViewController {
   }
   
   private func setDelegation() {
-      homeCollectionView.delegate = self
-      homeCollectionView.dataSource = self
-    }
+    homeCollectionView.delegate = self
+    homeCollectionView.dataSource = self
+  }
   
   private func setRegistration() {
     homeCollectionView.register(HomeHeaderView.self,
@@ -120,23 +124,26 @@ extension MainViewController {
       heightDimension: .fractionalHeight(1)
     )
     let item = NSCollectionLayoutItem(layoutSize: itemSize)
-    item.contentInsets = NSDirectionalEdgeInsets(top: 4.5,
-                                                 leading: 4.5,
-                                                 bottom: 4.5,
-                                                 trailing: 4.5)
+    item.contentInsets = NSDirectionalEdgeInsets(
+      top: 4.5,
+      leading: 4.5,
+      bottom: 4.5,
+      trailing: 4.5)
     
     let groupSize = NSCollectionLayoutSize(
       widthDimension: .fractionalWidth(1.0),
       heightDimension: .estimated(120.0)
     )
-    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
-                                                   subitems: [item])
+    let group = NSCollectionLayoutGroup.horizontal(
+      layoutSize: groupSize,
+      subitems: [item])
     
     var section = NSCollectionLayoutSection(group: group)
-    section.contentInsets = NSDirectionalEdgeInsets(top: 12,
-                                                    leading: 26,
-                                                    bottom: 12,
-                                                    trailing: 26)
+    section.contentInsets = NSDirectionalEdgeInsets(
+      top: 12,
+      leading: 26,
+      bottom: 12,
+      trailing: 26)
     
     section = self.addHeaderView(section: section)
     
@@ -154,15 +161,17 @@ extension MainViewController {
       widthDimension: .absolute(172),
       heightDimension: .absolute(138)
     )
-    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
-                                                   subitems: [item])
+    let group = NSCollectionLayoutGroup.horizontal(
+      layoutSize: groupSize,
+      subitems: [item])
     
     var section = NSCollectionLayoutSection(group: group)
     section.interGroupSpacing = 12
-    section.contentInsets = NSDirectionalEdgeInsets(top: 12,
-                                                    leading: 26,
-                                                    bottom: 12,
-                                                    trailing: 26)
+    section.contentInsets = NSDirectionalEdgeInsets(
+      top: 12,
+      leading: 26,
+      bottom: 12,
+      trailing: 26)
     section.orthogonalScrollingBehavior = .continuous
     
     section = self.addHeaderView(section: section)
@@ -181,15 +190,17 @@ extension MainViewController {
       widthDimension: .absolute(323),
       heightDimension: .absolute(80)
     )
-    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
-                                                   subitems: [item])
+    let group = NSCollectionLayoutGroup.horizontal(
+      layoutSize: groupSize,
+      subitems: [item])
     
     var section = NSCollectionLayoutSection(group: group)
     section.interGroupSpacing = 12
-    section.contentInsets = NSDirectionalEdgeInsets(top: 12,
-                                                    leading: 26,
-                                                    bottom: 12,
-                                                    trailing: 26)
+    section.contentInsets = NSDirectionalEdgeInsets(
+      top: 12,
+      leading: 26,
+      bottom: 12,
+      trailing: 26)
     
     section = self.addHeaderView(section: section)
     
@@ -208,8 +219,9 @@ extension MainViewController {
   }
   
   private func addHeaderView(section: NSCollectionLayoutSection) -> NSCollectionLayoutSection{
-    let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                            heightDimension: .absolute(50))
+    let headerSize = NSCollectionLayoutSize(
+      widthDimension: .fractionalWidth(1.0),
+      heightDimension: .absolute(50))
     let headerSupplementary = NSCollectionLayoutBoundarySupplementaryItem(
       layoutSize: headerSize,
       elementKind: "HomeHeaderView",
@@ -229,7 +241,7 @@ extension MainViewController: UICollectionViewDelegate{
 
 extension MainViewController: UICollectionViewDataSource{
   func numberOfSections(in collectionView: UICollectionView) -> Int {
-    return 3
+    return SectionType.allCases.count
   }
   
   func collectionView(_ collectionView: UICollectionView,
@@ -257,17 +269,17 @@ extension MainViewController: UICollectionViewDataSource{
     case .archive:
       let cell = homeCollectionView.dequeueReusableCell(ofType: CocktailCVC.self,
                                                         at: indexPath)
-      cell.setData(data: CocktailModel.dummyCocktailList[indexPath.row])
+      cell.setData(with: CocktailModel.dummyCocktailList[indexPath.row])
       return cell
     case .guide:
       let cell = homeCollectionView.dequeueReusableCell(ofType: GuideCVC.self,
                                                         at: indexPath)
-      cell.setData(data: GuideModel.dummyGuideList[indexPath.row])
+      cell.setData(with: GuideModel.dummyGuideList[indexPath.row])
       return cell
     case .recommend:
       let cell = homeCollectionView.dequeueReusableCell(ofType: RecommendCVC.self,
                                                         at: indexPath)
-      cell.setData(data: RecommendModel.dummyRecommendList[indexPath.row])
+      cell.setData(with: RecommendModel.dummyRecommendList[indexPath.row])
       return cell
     }
   }
