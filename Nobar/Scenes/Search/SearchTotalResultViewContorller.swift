@@ -16,8 +16,8 @@ final class SearchTotalResultViewController: BaseViewController {
     case recipe
   }
 
-  private var resultDataSource: UICollectionViewDiffableDataSource<Section, CocktailModel>!
-  private var resultSnapshot: NSDiffableDataSourceSnapshot<Section, CocktailModel>!
+  private var resultDataSource: UICollectionViewDiffableDataSource<Section, SearchCocktailModel>!
+  private var resultSnapshot: NSDiffableDataSourceSnapshot<Section, SearchCocktailModel>!
 
   private lazy var closeButton = UIButton().then {
     $0.setImage(ImageFactory.btnCancel, for: .normal)
@@ -129,7 +129,7 @@ extension SearchTotalResultViewController {
 // MARK: - Diffable DataSource
 extension SearchTotalResultViewController {
   private func setDataSource() {
-    self.resultDataSource = UICollectionViewDiffableDataSource<Section, CocktailModel>(collectionView: self.searchTotalResultCollectionView) { (collectionview, indexPath, keyword) -> UICollectionViewCell? in
+    self.resultDataSource = UICollectionViewDiffableDataSource<Section, SearchCocktailModel>(collectionView: self.searchTotalResultCollectionView) { (collectionview, indexPath, keyword) -> UICollectionViewCell? in
 
       guard let cell = self.searchTotalResultCollectionView.dequeueReusableCell(withReuseIdentifier: SearchTotalResultCollectionViewCell.className, for: indexPath) as? SearchTotalResultCollectionViewCell else { preconditionFailure() }
 
@@ -137,9 +137,9 @@ extension SearchTotalResultViewController {
       return cell
     }
 
-    resultSnapshot = NSDiffableDataSourceSnapshot<Section, CocktailModel>()
+    resultSnapshot = NSDiffableDataSourceSnapshot<Section, SearchCocktailModel>()
     resultSnapshot.appendSections([.recipe])
-    resultSnapshot.appendItems(CocktailModel.dummyCocktailList, toSection: .recipe)
+    resultSnapshot.appendItems(SearchCocktailModel.dummyCocktailList, toSection: .recipe)
     resultDataSource.apply(resultSnapshot, animatingDifferences: true)
   }
 }
