@@ -72,6 +72,11 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="stepBox" destination="0TM-N6-qKQ" id="P62-3c-CCt"/>
+                <outlet property="stepExplain" destination="Dvo-KG-eOU" id="SqX-GF-qHa"/>
+                <outlet property="stepLabel" destination="Sjq-MC-cEj" id="hwc-Rj-pQY"/>
+            </connections>
             <point key="canvasLocation" x="81.884057971014499" y="115.51339285714285"/>
         </tableViewCell>
     </objects>

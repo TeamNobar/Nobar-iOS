@@ -9,6 +9,10 @@ import UIKit
 
 class StepsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var stepBox: UIView!
+    @IBOutlet weak var stepLabel: UILabel!
+    @IBOutlet weak var stepExplain: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
