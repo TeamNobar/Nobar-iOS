@@ -10,13 +10,21 @@ import UIKit
 import Then
 import SnapKit
 
+protocol HeaderViewDelegate: AnyObject {
+  func didClickOnDeleteButton()
+  func didClickOnTotalResultButton()
+}
+
 final class SearchHeaderView: UICollectionReusableView {
+
+  weak var delegate: HeaderViewDelegate?
 
   enum SeachHeaderType {
     case recent
     case recommend
     case cocktail
     case ingredient
+    case total
   }
 
   private var titleLabel = UILabel().then {
@@ -24,16 +32,25 @@ final class SearchHeaderView: UICollectionReusableView {
     $0.font = Pretendard.size17.semibold()
   }
 
-  private var deleteButton = UIButton().then {
+  private lazy var deleteButton = UIButton().then {
     $0.setTitle("전체 삭제", for: .normal)
     $0.setTitleColor(Color.gray03.getColor(), for: .normal)
     $0.titleLabel?.font = Pretendard.size13.medium()
+    $0.addTarget(self, action: #selector(didClickOnDeleteButton(_:)), for: .touchUpInside)
   }
 
   private var dateLabel = UILabel().then {
     $0.text = "2022.07.07 기준"
     $0.textColor = Color.gray03.getColor()
     $0.font = Pretendard.size13.regular()
+    $0.addSpacing(kernValue: -0.78, lineSpacing: 0)
+  }
+
+  private lazy var totalButton = UIButton().then {
+    $0.setTitle("전체 보기", for: .normal)
+    $0.setTitleColor(Color.gray03.getColor(), for: .normal)
+    $0.titleLabel?.font = Pretendard.size13.medium()
+    $0.addTarget(self, action: #selector(didClickOnTotalResultButton(_:)), for: .touchUpInside)
   }
 
   private let topLine = UIView().then {
@@ -56,7 +73,7 @@ extension SearchHeaderView {
     addSubview(titleLabel)
     titleLabel.snp.makeConstraints {
       $0.top.bottom.equalToSuperview().inset(15)
-      $0.leading.equalToSuperview()
+      $0.leading.equalToSuperview().inset(26)
     }
   }
 
@@ -64,16 +81,20 @@ extension SearchHeaderView {
     switch type {
     case .recent:
       titleLabel.text = "최근 검색어"
-      self.addDeleteButton()
+      addDeleteButton()
+      remakeTitleLayout()
     case .recommend:
       titleLabel.text = "추천 검색어"
-      self.addDateLabel()
-      self.addSeparateLine()
+      addDateLabel()
+      addSeparateLine()
     case .cocktail:
       titleLabel.text = "칵테일 레시피"
     case .ingredient:
       titleLabel.text = "재료"
-      self.addSeparateLine()
+      addSeparateLine()
+    case .total:
+      titleLabel.text = "칵테일 레시피"
+      addTotalButton()
     }
   }
 
@@ -93,18 +114,41 @@ extension SearchHeaderView {
       $0.bottom.equalToSuperview().inset(15)
       $0.trailing.equalToSuperview().inset(26)
     }
-
-    titleLabel.snp.remakeConstraints {
-      $0.top.bottom.equalToSuperview().inset(15)
-      $0.leading.equalToSuperview().inset(26)
-    }
   }
 
   private func addSeparateLine() {
     addSubview(topLine)
     topLine.snp.makeConstraints {
       $0.top.leading.trailing.equalToSuperview()
-      $0.height.equalTo(0.8)
+      $0.height.equalTo(1)
     }
+  }
+
+  private func addTotalButton() {
+    addSubview(totalButton)
+    totalButton.snp.makeConstraints {
+      $0.top.equalToSuperview().inset(18)
+      $0.bottom.equalToSuperview().inset(15)
+      $0.trailing.equalToSuperview().inset(26)
+    }
+  }
+
+  private func remakeTitleLayout() {
+    titleLabel.snp.remakeConstraints {
+      $0.top.bottom.equalToSuperview().inset(15)
+      $0.leading.equalToSuperview()
+    }
+  }
+}
+
+// MARK: - Action Functions
+extension SearchHeaderView {
+  @objc private func didClickOnDeleteButton(_ sender: UIButton) {
+    delegate?.didClickOnDeleteButton()
+    self.deleteButton.isHidden = true
+  }
+  
+  @objc private func didClickOnTotalResultButton(_ sender: UIButton) {
+    delegate?.didClickOnTotalResultButton()
   }
 }
