@@ -15,9 +15,40 @@
 
 default_platform(:ios)
 
-ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = "julz-mjej-effz-gxr"
+#ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = "julz-mjej-effz-gxr"
+ENV["SLACK_WEBHOOK_URL"] = "https://hooks.slack.com/services/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"
+
 
 platform :ios do
+
+# 배포
+
+  desc "Push a new release build to the App Store"
+    lane :release do
+      get_certificates
+      get_provisioning_profile
+      cocoapods(use_bundle_exec: false)
+      build_app(workspace: "Nobar.xcworkspace", scheme: "Nobar")
+      upload_to_testflight
+      version = get_version_number
+      send_slack({"version": version })
+  end
+
+  lane :send_slack do |options|
+    slack(
+      message: "앱이 App Store Connect에 성공적으로 업로드 되었습니다.",
+      channel: "#1_ios_distribution",
+      slack_url: ENV["SLACK_WEBHOOK_URL"],
+      payload: {
+        "Version": options[:version]
+      }
+    )
+  end
+
+
+
+
+
   
   # match 갱신 - git에 push (certificate, profile visioning)
 
