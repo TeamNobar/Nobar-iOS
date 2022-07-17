@@ -20,11 +20,12 @@ class ingredientItemCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     // 각 Cell 별로 다른 정보가 표시되어야 하므로, 값을 넣어주는 함수를 생성
-    func setData(_ cocktailData: CocktailDetailDataModel) {
-        cocktailNameLabel.text = cocktailData.CocktailName
-        cocktailEnNameLabel.text = cocktailData.CocktailEnName
+    func setData(_ cocktailData: IngredientDataModel) {
+        ingredientsTitle.text = cocktailData.IngredientName
+        categoryLabel.text = cocktailData.IngredientCategory
+        proofLabel.text = cocktailData.IngredientQuantity
     }
 }
 

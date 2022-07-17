@@ -13,7 +13,6 @@ struct CocktailDetailDataModel {
     let CocktailEnName: String
     /*
     let CocktailBase: String?
-    let Cocktail: String?
     let CocktailVersion: [String]?
     let Cocktailproof: Int?
     let CocktailSkill: String?
@@ -25,10 +24,9 @@ struct CocktailDetailDataModel {
 }
 
 struct IngredientDataModel {
-    let Ingredient1: String
-    let Ingredient2: String
-    let Ingredient3: String
-    let Ingredient4: String
+    let IngredientName: String
+    let IngredientQuantity: String
+    let IngredientCategory: String
 }
 
 extension CocktailDetailDataModel {
@@ -39,6 +37,20 @@ extension CocktailDetailDataModel {
     
 extension IngredientDataModel {
     static let sampleData: [IngredientDataModel] = [
-        IngredientDataModel(Ingredient1:"보드카", Ingredient2:"21%", Ingredient3:"셰이킹", Ingredient4:"칵테일")
+        IngredientDataModel(
+            IngredientName:"다크럼",
+            IngredientQuantity:"40ml",
+            IngredientCategory:"보드카"
+        ),
+        IngredientDataModel(
+            IngredientName:"자몽주스",
+            IngredientQuantity:"300ml",
+            IngredientCategory:"주스"
+        ),
+        IngredientDataModel(
+            IngredientName:"소금",
+            IngredientQuantity:"",  // 이 경우 어떻게 처리하는지?
+            IngredientCategory:"기타"
+        ),
     ]
 }
