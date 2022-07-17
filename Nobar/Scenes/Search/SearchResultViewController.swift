@@ -105,7 +105,7 @@ extension SearchResultViewController {
     underline.snp.makeConstraints {
       $0.top.equalTo(searchTextField.snp.bottom).offset(20)
       $0.leading.trailing.equalToSuperview()
-      $0.height.equalTo(0.4)
+      $0.height.equalTo(1)
     }
 
     searchAutoResultCollectionView.snp.makeConstraints {

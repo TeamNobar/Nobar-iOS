@@ -34,6 +34,7 @@ enum FontType: String {
 }
 
 enum Pretendard {
+  case size9
   case size10
   case size11
   case size12
@@ -48,6 +49,7 @@ enum Pretendard {
   
   var size: CGFloat {
     switch self {
+    case .size9: return 9
     case .size10: return 10
     case .size11: return 11
     case .size12: return 12

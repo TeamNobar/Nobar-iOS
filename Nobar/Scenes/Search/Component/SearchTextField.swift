@@ -46,8 +46,8 @@ extension SearchTextField {
     textColor = Color.gray03.getColor()
     tintColor = Color.navy01.getColor()
 
-    layer.borderColor = Color.gray04.getColor().cgColor
-    layer.borderWidth = 0.4
+    layer.borderColor = Color.gray02.getColor().cgColor
+    layer.borderWidth = 1
     layer.cornerRadius = 6
 
     clearButtonMode = .never
