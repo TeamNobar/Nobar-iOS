@@ -12,12 +12,18 @@ import SnapKit
 
 final class SearchViewController: BaseViewController {
 
-  enum SectionType: Int {
+  enum KeywordSectionType: Int, CaseIterable {
     case recent = 0
     case recommend = 1
   }
 
-  private var sectionType: SectionType?
+  enum AutoResultSectionType: Int, CaseIterable {
+    case cocktail = 0
+    case ingredient = 1
+  }
+
+  private var keywordSectionType: KeywordSectionType?
+
 
   // TODO: 나중에 서버에서 한꺼번에 리스트로 받아옴
   private var dummyKeywords: [String] = ["브랜디", "선라이즈피치", "피치크러쉬", "카시스 오렌지", "은비쨩", "칵테일어쩌구", "밀푀유나베", "피치어쩌구", "리큐르", "채원쨩??"]
