@@ -16,20 +16,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXN-37-Ux4">
-                        <rect key="frame" x="26" y="21.5" width="41.5" height="20.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="우선, 준비해볼까요?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXN-37-Ux4">
+                        <rect key="frame" x="26" y="21" width="323" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="aXN-37-Ux4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="uOW-4n-RMO"/>
                     <constraint firstItem="aXN-37-Ux4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="26" id="vFj-Gc-4ZK"/>
+                    <constraint firstItem="aXN-37-Ux4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="wwE-Dm-yBh"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="132" y="88"/>
+            <connections>
+                <outlet property="headerTitleLabel" destination="aXN-37-Ux4" id="qaB-qY-HeO"/>
+            </connections>
+            <point key="canvasLocation" x="131.15942028985509" y="87.388392857142847"/>
         </tableViewCell>
     </objects>
 </document>

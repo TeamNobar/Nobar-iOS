@@ -9,6 +9,8 @@ import UIKit
 
 class headerMakeTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var headerTitleLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
