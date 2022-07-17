@@ -304,7 +304,12 @@ extension SearchViewController: HeaderViewDelegate {
     self.emptyLabel.isHidden = false
   }
 
-  func didClickOnTotalResultButton() {
-    // TODO: 전체 결과 창으로 화면전환
+extension SearchViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    searchTextField.resignFirstResponder()
+
+    let totalResultViewController = SearchTotalResultViewController()
+    self.navigationController?.pushViewController(totalResultViewController, animated: false)
+    return true
   }
 }
