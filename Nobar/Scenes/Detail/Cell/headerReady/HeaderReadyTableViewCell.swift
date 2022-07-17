@@ -11,6 +11,8 @@ class HeaderReadyTableViewCell: UITableViewCell {
 
     @IBOutlet weak var headerTitleLabel: UILabel!
     
+    static let identifier = "HeaderReadyTableViewCell"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

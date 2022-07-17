@@ -12,6 +12,8 @@ class RecordTableViewCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var writeNoteButton: UIButton!
     
+    static let identifier = "RecordTableViewCell"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

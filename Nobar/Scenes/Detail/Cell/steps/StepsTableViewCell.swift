@@ -13,6 +13,8 @@ class StepsTableViewCell: UITableViewCell {
     @IBOutlet weak var stepLabel: UILabel!
     @IBOutlet weak var stepExplain: UILabel!
     
+    static let identifier = "StepsTableViewCell"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

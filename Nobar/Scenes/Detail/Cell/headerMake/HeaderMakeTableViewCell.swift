@@ -10,6 +10,8 @@ import UIKit
 class HeaderMakeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var headerTitleLabel: UILabel!
+    
+    static let identifier = "HeaderMakeTableViewCell"
 
     override func awakeFromNib() {
         super.awakeFromNib()

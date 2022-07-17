@@ -8,6 +8,8 @@
 import UIKit
 
 class HeaderRecordTableViewCell: UITableViewCell {
+    
+    static let identifier = "HeaderRecordTableViewCell"
 
     override func awakeFromNib() {
         super.awakeFromNib()
