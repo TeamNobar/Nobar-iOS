@@ -89,10 +89,6 @@ private extension UIColor {
     UIColor(red: 0.921, green: 0.921, blue: 0.921, alpha: 1)
   }
 
-  static var _skyblue01: UIColor {
-    UIColor(red: 0.979, green: 0.985, blue: 1, alpha: 1)
-  }
-
   static var _red: UIColor {
     UIColor(red: 0.922, green: 0.341, blue: 0.341, alpha: 1)
   }

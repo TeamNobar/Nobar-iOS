@@ -84,7 +84,7 @@ extension SearchTotalResultCollectionViewCell {
                       spread: 0)
   }
 
-  func updateModel(_ model: CocktailModel) {
+  func updateModel(_ model: SearchCocktailModel) {
     cocktailLabel.text = model.cocktailko
     cocktailEngLabel.text = model.cocktaileng
     baseTagView.tagLabel.text = model.base
