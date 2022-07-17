@@ -46,7 +46,7 @@ final class SearchHeaderView: UICollectionReusableView {
     $0.addSpacing(kernValue: -0.78, lineSpacing: 0)
   }
 
-  private var totalButton = UIButton().then {
+  private lazy var totalButton = UIButton().then {
     $0.setTitle("전체 보기", for: .normal)
     $0.setTitleColor(Color.gray03.getColor(), for: .normal)
     $0.titleLabel?.font = Pretendard.size13.medium()

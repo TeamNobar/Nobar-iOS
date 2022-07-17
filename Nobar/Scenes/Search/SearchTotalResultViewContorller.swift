@@ -21,6 +21,7 @@ final class SearchTotalResultViewController: BaseViewController {
 
   private lazy var closeButton = UIButton().then {
     $0.setImage(ImageFactory.btnCancel, for: .normal)
+    $0.addTarget(self, action: #selector(didClickOnCloseButton(_:)), for: .touchUpInside)
   }
 
   private let titleLabel = UILabel().then {
@@ -90,6 +91,13 @@ extension SearchTotalResultViewController {
 
   private func configUI() {
     view.backgroundColor = Color.white.getColor()
+  }
+}
+
+// MARK: - Action Functions
+extension SearchTotalResultViewController {
+  @objc private func didClickOnCloseButton(_ sender: UIButton) {
+    self.dismiss(animated: true)
   }
 }
 
