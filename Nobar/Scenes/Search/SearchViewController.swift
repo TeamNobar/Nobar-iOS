@@ -303,6 +303,57 @@ extension SearchViewController: HeaderViewDelegate {
     self.searchKeywordCollectionView.reloadSections([0])
     self.emptyLabel.isHidden = false
   }
+}
+
+// MARK: - Diffable DataSource
+extension SearchViewController {
+  private func setDataSource() {
+    self.resultDataSource = UICollectionViewDiffableDataSource<AutoResultSectionType, String>(collectionView: self.searchAutoResultCollectionView) { (collectionview, indexPath, keyword) -> UICollectionViewCell? in
+
+      guard let cell = self.searchAutoResultCollectionView.dequeueReusableCell(withReuseIdentifier: SearchAutoResultCollectionViewCell.className, for: indexPath) as? SearchAutoResultCollectionViewCell else { preconditionFailure() }
+
+      cell.updateResult(keyword)
+      cell.updateAttributedText(self.searchTextField.text ?? "")
+      return cell
+    }
+
+    self.resultDataSource.supplementaryViewProvider = {
+      collectionView, kind, indexPath in
+
+      guard kind == SearchHeaderView.className else { return nil }
+      let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SearchHeaderView.className, for: indexPath) as? SearchHeaderView
+
+      guard let sections = AutoResultSectionType(rawValue: indexPath.section) else { return nil }
+      switch sections {
+      case .cocktail:
+        view?.configUI(type: .cocktail)
+      case .ingredient:
+        view?.configUI(type: .ingredient)
+      }
+      return view
+    }
+  }
+
+  private func performQuery(with searchText: String?) {
+    guard let searchText = searchText else { return }
+
+    let filteredCocktail = self.dummyCocktail.filter { $0.hasPrefix(searchText) }
+    let filteredIngredient = self.dummyIngredient.filter { $0.hasPrefix(searchText) }
+
+    var fiveCocktail = Array(filteredCocktail.prefix(5))
+    let fiveIngredient = Array(filteredIngredient.prefix(5))
+
+    if fiveCocktail.isEmpty {
+      fiveCocktail.append(" ")
+    }
+
+    resultSnapshot = NSDiffableDataSourceSnapshot<AutoResultSectionType, String>()
+    resultSnapshot.appendSections([.cocktail, .ingredient])
+    resultSnapshot.appendItems(fiveCocktail, toSection: .cocktail)
+    resultSnapshot.appendItems(fiveIngredient, toSection: .ingredient)
+    resultDataSource.apply(resultSnapshot, animatingDifferences: true)
+  }
+}
 
 extension SearchViewController: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
