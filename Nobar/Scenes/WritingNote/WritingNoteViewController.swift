@@ -18,7 +18,7 @@ final class WritingNoteViewController: BaseViewController {
   }
   
   private let titleLabel = UILabel().then{
-    $0.text = "작성한 테이스팅 노트"
+    $0.text = "테이스팅 노트 기록하기"
     $0.textColor = Color.black.getColor()
     $0.font = Pretendard.size16.bold()
   }

@@ -71,6 +71,7 @@
 		3CE598B628748093004AFD05 /* NobarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE598B528748093004AFD05 /* NobarTests.swift */; };
 		3CE598C028748093004AFD05 /* NobarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE598BF28748093004AFD05 /* NobarUITests.swift */; };
 		3CE598C228748093004AFD05 /* NobarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE598C128748093004AFD05 /* NobarUITestsLaunchTests.swift */; };
+		3CF40A79287E42FC00C44A64 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF40A78287E42FC00C44A64 /* EndPoint.swift */; };
 		4D057161287C1AC400CB656A /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057160287C1AC300CB656A /* SearchResultViewController.swift */; };
 		4D057163287CF49A00CB656A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057162287CF49900CB656A /* SearchViewController.swift */; };
 		4D057165287CFF1500CB656A /* Adjusted+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057164287CFF1400CB656A /* Adjusted+Extension.swift */; };
@@ -79,7 +80,6 @@
 		4D05716C287D4D5600CB656A /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D05716B287D4D5600CB656A /* RecommendCollectionViewCell.swift */; };
 		4D3554B7287DEA670063F725 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3554B6287DEA670063F725 /* SearchModel.swift */; };
 		4D3554B9287E56280063F725 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3554B8287E56280063F725 /* NSObject+Extension.swift */; };
-		3CF40A79287E42FC00C44A64 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF40A78287E42FC00C44A64 /* EndPoint.swift */; };
 		6AAD37DC287C71FA0030646C /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37DB287C71F90030646C /* UIView+Extension.swift */; };
 		6AAD37DE287C75240030646C /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37DD287C75240030646C /* UIScreen+Extension.swift */; };
 		6AAD37E0287C7A720030646C /* UITextfield+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37DF287C7A720030646C /* UITextfield+Extension.swift */; };
@@ -88,6 +88,7 @@
 		6AAD37E6287C7EFE0030646C /* calculatePastTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37E5287C7EFE0030646C /* calculatePastTime.swift */; };
 		6AAD37EA287C7FBA0030646C /* PanDirectionGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37E9287C7FB90030646C /* PanDirectionGesture.swift */; };
 		6AAD37EC287C807E0030646C /* showToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37EB287C807E0030646C /* showToastMessage.swift */; };
+		6AB399682884127500FA7445 /* TastingNoteHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB399672884127500FA7445 /* TastingNoteHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +164,7 @@
 		3CE598BB28748093004AFD05 /* NobarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NobarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CE598BF28748093004AFD05 /* NobarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NobarUITests.swift; sourceTree = "<group>"; };
 		3CE598C128748093004AFD05 /* NobarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NobarUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3CF40A78287E42FC00C44A64 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		4D057160287C1AC300CB656A /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		4D057162287CF49900CB656A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4D057164287CFF1400CB656A /* Adjusted+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Adjusted+Extension.swift"; sourceTree = "<group>"; };
@@ -171,7 +173,6 @@
 		4D05716B287D4D5600CB656A /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		4D3554B6287DEA670063F725 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		4D3554B8287E56280063F725 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
-		3CF40A78287E42FC00C44A64 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		6AAD37DB287C71F90030646C /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		6AAD37DD287C75240030646C /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		6AAD37DF287C7A720030646C /* UITextfield+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextfield+Extension.swift"; sourceTree = "<group>"; };
@@ -180,6 +181,7 @@
 		6AAD37E5287C7EFE0030646C /* calculatePastTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculatePastTime.swift; sourceTree = "<group>"; };
 		6AAD37E9287C7FB90030646C /* PanDirectionGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanDirectionGesture.swift; sourceTree = "<group>"; };
 		6AAD37EB287C807E0030646C /* showToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showToastMessage.swift; sourceTree = "<group>"; };
+		6AB399672884127500FA7445 /* TastingNoteHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastingNoteHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -425,6 +427,7 @@
 		3CD437042877DC4A0044AE04 /* WritingNote */ = {
 			isa = PBXGroup;
 			children = (
+				6AB39966288411EA00FA7445 /* Cell */,
 				3CD4370C2877DC910044AE04 /* WritingNote.storyboard */,
 				3CD437122877EC530044AE04 /* WritingNoteViewController.swift */,
 			);
@@ -499,6 +502,20 @@
 			path = NobarUITests;
 			sourceTree = "<group>";
 		};
+		3CF40A7A287E49D000C44A64 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3C01FCC4287E4A2400BE23E6 /* Recipe.swift */,
+				3C01FCC6287E4A6300BE23E6 /* BaseRecipe.swift */,
+				3C01FCC8287E4AA000BE23E6 /* Skill.swift */,
+				3C01FCCA287E4ADA00BE23E6 /* Glass.swift */,
+				3C01FCCC287E4AF800BE23E6 /* Ingredient.swift */,
+				3C01FCCE287E4B2800BE23E6 /* TastingNote.swift */,
+				3C01FCD0287E4B8E00BE23E6 /* TastingTag.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4D057168287D434700CB656A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,18 +541,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		3CF40A7A287E49D000C44A64 /* Model */ = {
+		6AB39966288411EA00FA7445 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				3C01FCC4287E4A2400BE23E6 /* Recipe.swift */,
-				3C01FCC6287E4A6300BE23E6 /* BaseRecipe.swift */,
-				3C01FCC8287E4AA000BE23E6 /* Skill.swift */,
-				3C01FCCA287E4ADA00BE23E6 /* Glass.swift */,
-				3C01FCCC287E4AF800BE23E6 /* Ingredient.swift */,
-				3C01FCCE287E4B2800BE23E6 /* TastingNote.swift */,
-				3C01FCD0287E4B8E00BE23E6 /* TastingTag.swift */,
+				6AB399672884127500FA7445 /* TastingNoteHeaderView.swift */,
 			);
-			path = Model;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -727,6 +738,7 @@
 				3C01FCDA287E526400BE23E6 /* NetworkingService.swift in Sources */,
 				3CD436FB2877395C0044AE04 /* UICollectionView+Extensions.swift in Sources */,
 				6AAD37DC287C71FA0030646C /* UIView+Extension.swift in Sources */,
+				6AB399682884127500FA7445 /* TastingNoteHeaderView.swift in Sources */,
 				4D3554B7287DEA670063F725 /* SearchModel.swift in Sources */,
 				3C01FCCF287E4B2800BE23E6 /* TastingNote.swift in Sources */,
 				3CD4370F2877E8310044AE04 /* TabbarRouter.swift in Sources */,
@@ -740,7 +752,6 @@
 				3CA17C0B2878920B00E67B27 /* Font.swift in Sources */,
 				3CD437002877D3FD0044AE04 /* BaseRouter.swift in Sources */,
 				3C01FCDD287E53BF00BE23E6 /* NetworkLogger.swift in Sources */,
-				3CD437112877EBCC0044AE04 /* SearchViewController.swift in Sources */,
 				6AAD37DE287C75240030646C /* UIScreen+Extension.swift in Sources */,
 				3CA17C1328789BAE00E67B27 /* ImageFactory.swift in Sources */,
 				3CD436F7287738DD0044AE04 /* UIStoryboard+Extensions.swift in Sources */,
