@@ -240,7 +240,7 @@ extension SearchViewController: UICollectionViewDataSource {
   }
 
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    guard let sectionType = SectionType(rawValue: section) else { return 1 }
+    guard let sectionType = KeywordSectionType(rawValue: section) else { return 1 }
 
     switch sectionType {
     case .recent:
@@ -252,7 +252,7 @@ extension SearchViewController: UICollectionViewDataSource {
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let sectionType = SectionType(rawValue: indexPath.section) else {
+    guard let sectionType = KeywordSectionType(rawValue: indexPath.section) else {
       return UICollectionViewCell()
     }
 
@@ -277,7 +277,7 @@ extension SearchViewController: UICollectionViewDataSource {
 
       guard let headerView = headerView as? SearchHeaderView else { return UICollectionReusableView() }
 
-      guard let sectionType = SectionType(rawValue: indexPath.section) else {
+      guard let sectionType = KeywordSectionType(rawValue: indexPath.section) else {
         return UICollectionViewCell()
       }
 
