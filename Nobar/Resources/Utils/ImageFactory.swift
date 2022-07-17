@@ -16,4 +16,21 @@ enum ImageFactory {
   static var icnSearch: UIImage? { UIImage(named: "icnSearch") }
   static var icnUp: UIImage? { UIImage(named: "icnUp") }
   static var icnX: UIImage? { UIImage(named: "icnX") }
+  
+    static var logo: UIImage? {
+      UIImage(named: "logo")
+    }
+    
+    static var icnTag: UIImage? {
+      UIImage(named: "icnTag")
+    }
+    
+    static var dummy1: UIImage? {
+      UIImage(named: "dummy1")
+    }
+    
+    static var dummy2: UIImage? {
+      UIImage(named: "dummy2")
+    }
+    
 }

@@ -17,6 +17,7 @@ enum Color {
   case white
   case navy01
   case pink01
+  case skyblue01
   case gray_navigationbar
   case skyblue02
   
@@ -30,6 +31,7 @@ enum Color {
     case .black: return .findProperColor(lightModeColor: ._black, darkModeColor: ._black)
     case .white: return .findProperColor(lightModeColor: ._white, darkModeColor: ._white)
     case .navy01: return .findProperColor(lightModeColor: ._navy01, darkModeColor: ._navy01)
+    case .skyblue01: return .findProperColor(lightModeColor: ._skyblue01, darkModeColor: ._skyblue01)
     case .pink01: return .findProperColor(lightModeColor: ._pink01, darkModeColor: ._pink01)
     case .skyblue02: return .findProperColor(lightModeColor: ._skyblue02, darkModeColor: ._skyblue02)
     case .gray_navigationbar:
@@ -74,6 +76,10 @@ private extension UIColor {
   
   static var _pink01: UIColor {
     UIColor(red: 0.914, green: 0.2, blue: 0.439, alpha: 1)
+  }
+  
+  static var _skyblue01: UIColor {
+    UIColor(red: 0.980, green: 0.984, blue: 1, alpha: 1)
   }
 
   static var _gray_navigationbar: UIColor {
