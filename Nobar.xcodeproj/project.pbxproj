@@ -441,8 +441,8 @@
 		E547D9A6287C868000806886 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				E547D9D02883F76B00806886 /* headerRecord */,
 				E547D9AC287DE93D00806886 /* record */,
+				E547D9D02883F76B00806886 /* headerRecord */,
 				E547D9AB287DE92500806886 /* steps */,
 				E547D9AA287DE91900806886 /* headerMake */,
 				E547D9A9287DE8F700806886 /* ingredients */,

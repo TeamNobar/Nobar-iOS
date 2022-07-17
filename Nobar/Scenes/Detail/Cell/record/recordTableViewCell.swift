@@ -9,6 +9,9 @@ import UIKit
 
 class recordTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var writeNoteButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
