@@ -64,6 +64,7 @@ final class SearchViewController: BaseViewController {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.showsHorizontalScrollIndicator = false
     collectionView.showsVerticalScrollIndicator = false
+    collectionView.keyboardDismissMode = .onDrag
     return collectionView
   }()
 
@@ -73,6 +74,8 @@ final class SearchViewController: BaseViewController {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.showsHorizontalScrollIndicator = false
     collectionView.showsVerticalScrollIndicator = false
+    collectionView.isHidden = true
+    collectionView.keyboardDismissMode = .onDrag
     return collectionView
   }()
 
