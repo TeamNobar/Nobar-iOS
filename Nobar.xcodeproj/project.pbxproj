@@ -73,7 +73,6 @@
 		3CE598C028748093004AFD05 /* NobarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE598BF28748093004AFD05 /* NobarUITests.swift */; };
 		3CE598C228748093004AFD05 /* NobarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE598C128748093004AFD05 /* NobarUITestsLaunchTests.swift */; };
 		3CF40A79287E42FC00C44A64 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF40A78287E42FC00C44A64 /* EndPoint.swift */; };
-		3CF40A79287E42FC00C44A64 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF40A78287E42FC00C44A64 /* EndPoint.swift */; };
 		46625D497AE08F5753883A05 /* Pods_Nobar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A933CDF0C185DB2C90BB843F /* Pods_Nobar.framework */; };
 		4D057161287C1AC400CB656A /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057160287C1AC300CB656A /* SearchResultViewController.swift */; };
 		4D057163287CF49A00CB656A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D057162287CF49900CB656A /* SearchViewController.swift */; };
@@ -572,10 +571,10 @@
 		4D057168287D434700CB656A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				4DBA151E288458F00068A487 /* SearchTotalResultCollectionViewCell.swift */,
 				4D057169287D4CDC00CB656A /* RecentCollectionViewCell.swift */,
 				4D05716B287D4D5600CB656A /* RecommendCollectionViewCell.swift */,
 				4D38B5BA28800C8D00CD33ED /* SearchAutoResultCollectionViewCell.swift */,
+				4DBA151E288458F00068A487 /* SearchTotalResultCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -599,19 +598,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		CE4D87CD1C74D9C83AACE212 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				67EBA53932B4C9CB0EED94B9 /* Pods-Nobar.debug.xcconfig */,
-				4F3374400330F9EB2A23D168 /* Pods-Nobar.release.xcconfig */,
-				7FBA5E93719FAF1B7AA7887E /* Pods-Nobar-NobarUITests.debug.xcconfig */,
-				288561025259F60D2F828E5A /* Pods-Nobar-NobarUITests.release.xcconfig */,
-				D05627346DBEB7E4B065AC2A /* Pods-NobarTests.debug.xcconfig */,
-				9E26C648F5AA54E114C13C50 /* Pods-NobarTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		6AAD37F1287F21170030646C /* Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,6 +617,19 @@
 				6AAD380128800A4C0030646C /* RecommendModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CE4D87CD1C74D9C83AACE212 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				67EBA53932B4C9CB0EED94B9 /* Pods-Nobar.debug.xcconfig */,
+				4F3374400330F9EB2A23D168 /* Pods-Nobar.release.xcconfig */,
+				7FBA5E93719FAF1B7AA7887E /* Pods-Nobar-NobarUITests.debug.xcconfig */,
+				288561025259F60D2F828E5A /* Pods-Nobar-NobarUITests.release.xcconfig */,
+				D05627346DBEB7E4B065AC2A /* Pods-NobarTests.debug.xcconfig */,
+				9E26C648F5AA54E114C13C50 /* Pods-NobarTests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		FE2C118A1DDDEEA41553DA7E /* Frameworks */ = {
