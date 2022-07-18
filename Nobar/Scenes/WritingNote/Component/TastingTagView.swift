@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TastingTagView: UIView {
+final class TastingTagView: UIView {
   
   private var tastePhrase = "맛이 좋아요"
 

@@ -7,6 +7,6 @@
 
 import UIKit
 
-class ScoreCVC: UICollectionViewCell {
+final class ScoreCVC: UICollectionViewCell {
     
 }

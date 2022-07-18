@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TasteCVC: UICollectionViewCell {
+final class TasteCVC: UICollectionViewCell {
   
   private let dummyPhraseList = ["맛이좋아요","맛이쏘쏘쏘","아주별로야","네번쨰문구","다번째문구","여번째문구","일번째문구","여번쨰문구","아번째문구"]
   private var tagViews: [TastingTagView] = []
