@@ -9,7 +9,7 @@ import UIKit
 
 final class EvaluationCVC: UICollectionViewCell {
   
-  private let textView = TastingNoteTextView(frame: <#T##CGRect#>)
+  private let evaluationTextView = TastingNoteTextView()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -22,9 +22,9 @@ final class EvaluationCVC: UICollectionViewCell {
   }
   
   private func setLayout() {
-    addSubview(textView)
+    addSubview(evaluationTextView)
     
-    textView.snp.makeConstraints{
+    evaluationTextView.snp.makeConstraints{
       $0.leading.trailing.equalToSuperview().inset(26)
       $0.top.bottom.equalToSuperview().inset(8)
     }
