@@ -107,6 +107,7 @@
 		6AF3806B2885CEA200CB8F3E /* SelectDateCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF3806A2885CEA200CB8F3E /* SelectDateCVC.swift */; };
 		6AF3806D2885E84A00CB8F3E /* TastingNoteTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF3806C2885E84A00CB8F3E /* TastingNoteTextView.swift */; };
 		6AF3806F2885EDE800CB8F3E /* EvaluationCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF3806E2885EDE700CB8F3E /* EvaluationCVC.swift */; };
+		6AF380712885F0ED00CB8F3E /* ExperienceCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF380702885F0ED00CB8F3E /* ExperienceCVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +219,7 @@
 		6AF3806A2885CEA200CB8F3E /* SelectDateCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateCVC.swift; sourceTree = "<group>"; };
 		6AF3806C2885E84A00CB8F3E /* TastingNoteTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastingNoteTextView.swift; sourceTree = "<group>"; };
 		6AF3806E2885EDE700CB8F3E /* EvaluationCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCVC.swift; sourceTree = "<group>"; };
+		6AF380702885F0ED00CB8F3E /* ExperienceCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceCVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -623,6 +625,7 @@
 				6ABA93E02884A62900084D6D /* ScoreCVC.swift */,
 				6AF3806A2885CEA200CB8F3E /* SelectDateCVC.swift */,
 				6AF3806E2885EDE700CB8F3E /* EvaluationCVC.swift */,
+				6AF380702885F0ED00CB8F3E /* ExperienceCVC.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -860,6 +863,7 @@
 				6AAD3804288012910030646C /* UIColor+Extension.swift in Sources */,
 				3CD436CF28771B060044AE04 /* Theme.swift in Sources */,
 				6ABA93E12884A62900084D6D /* ScoreCVC.swift in Sources */,
+				6AF380712885F0ED00CB8F3E /* ExperienceCVC.swift in Sources */,
 				3C01FCDF287E588700BE23E6 /* Data+Extensions.swift in Sources */,
 				6AAD37E6287C7EFE0030646C /* calculatePastTime.swift in Sources */,
 				6AD0F82E28849A0C00260574 /* SelectCocktailCVC.swift in Sources */,
