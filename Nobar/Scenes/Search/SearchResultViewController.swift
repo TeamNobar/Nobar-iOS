@@ -268,8 +268,9 @@ extension SearchResultViewController: UICollectionViewDataSource {
         headerView.configUI(type: .total)
         headerView.didClickOnTotalButtonClosure = {
           let searchTotalViewController = SearchTotalResultViewController()
-          searchTotalViewController.modalPresentationStyle = .fullScreen
-          self.present(searchTotalViewController, animated: true)
+          let searchNavigationController = UINavigationController(rootViewController: searchTotalViewController)
+          searchNavigationController.modalPresentationStyle = .fullScreen
+          self.present(searchNavigationController, animated: true)
         }
       case .ingredient:
         headerView.configUI(type: .ingredient)
