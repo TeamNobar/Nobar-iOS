@@ -424,8 +424,7 @@ extension SearchViewController: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     searchTextField.resignFirstResponder()
 
-    let resultViewController = SearchResultViewController()
-    resultViewController.searchText = self.searchTextField.text
+    let resultViewController = SearchResultViewController(searchResultText: self.searchTextField.text ?? "")
     self.navigationController?.pushViewController(resultViewController, animated: false)
     return true
   }
