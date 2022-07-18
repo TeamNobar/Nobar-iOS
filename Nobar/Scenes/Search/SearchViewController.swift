@@ -205,7 +205,13 @@ extension SearchViewController {
   }
 
   @objc private func didClickOnBackButton(_ sender: UIButton) {
-    self.navigationController?.popViewController(animated: true)
+    self.searchTextField.text?.removeAll()
+
+    if view.subviews.contains(searchAutoResultCollectionView) {
+      searchAutoResultCollectionView.removeFromSuperview()
+    } else {
+      self.navigationController?.popViewController(animated: true)
+    }
   }
 }
 
@@ -261,7 +267,7 @@ extension SearchViewController {
     }
   }
 
-  private func createAutoResultLayout() -> UICollectionViewCompositionalLayout {
+  func createAutoResultLayout() -> UICollectionViewCompositionalLayout {
     let layout = UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
       let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                             heightDimension: .fractionalHeight(1))
@@ -349,24 +355,18 @@ extension SearchViewController: UICollectionViewDataSource {
       switch sectionType {
       case .recent:
         headerView.configUI(type: .recent)
+        headerView.didClickOnDeleteButtonClosure = {
+          self.dummyKeywords.removeAll()
+          self.searchKeywordCollectionView.reloadSections([0])
+          self.emptyLabel.isHidden = false
+        }
       case .recommend:
         headerView.configUI(type: .recommend)
       }
-      
-      headerView.delegate = self
       return headerView
     } else {
       return UICollectionReusableView()
     }
-  }
-}
-
-// MARK: - HeaderViewDelegate
-extension SearchViewController: HeaderViewDelegate {
-  func didClickOnDeleteButton() {
-    self.dummyKeywords.removeAll()
-    self.searchKeywordCollectionView.reloadSections([0])
-    self.emptyLabel.isHidden = false
   }
 }
 
@@ -424,8 +424,9 @@ extension SearchViewController: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     searchTextField.resignFirstResponder()
 
-    let totalResultViewController = SearchTotalResultViewController()
-    self.navigationController?.pushViewController(totalResultViewController, animated: false)
+    let resultViewController = SearchResultViewController()
+    resultViewController.searchText = self.searchTextField.text
+    self.navigationController?.pushViewController(resultViewController, animated: false)
     return true
   }
 }
