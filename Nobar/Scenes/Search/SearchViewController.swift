@@ -170,8 +170,8 @@ extension SearchViewController {
   }
 
   private func initTextField() {
-    searchTextField.text = ""
     searchTextField.rightViewMode = .never
+    searchTextField.becomeFirstResponder()
   }
 
   private func setTextFieldButton() {
