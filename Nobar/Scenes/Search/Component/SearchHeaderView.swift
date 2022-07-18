@@ -10,14 +10,10 @@ import UIKit
 import Then
 import SnapKit
 
-protocol HeaderViewDelegate: AnyObject {
-  func didClickOnDeleteButton()
-  func didClickOnTotalResultButton()
-}
-
 final class SearchHeaderView: UICollectionReusableView {
 
-  weak var delegate: HeaderViewDelegate?
+  var didClickOnDeleteButtonClosure: (() -> Void)?
+  var didClickOnTotalButtonClosure: (() -> Void)?
 
   enum SeachHeaderType {
     case recent
@@ -50,7 +46,7 @@ final class SearchHeaderView: UICollectionReusableView {
     $0.setTitle("전체 보기", for: .normal)
     $0.setTitleColor(Color.gray03.getColor(), for: .normal)
     $0.titleLabel?.font = Pretendard.size13.medium()
-    $0.addTarget(self, action: #selector(didClickOnTotalResultButton(_:)), for: .touchUpInside)
+    $0.addTarget(self, action: #selector(didClickOnTotalButton(_:)), for: .touchUpInside)
   }
 
   private let topLine = UIView().then {
@@ -95,6 +91,7 @@ extension SearchHeaderView {
     case .total:
       titleLabel.text = "칵테일 레시피"
       addTotalButton()
+      remakeTitleLayout()
     }
   }
 
@@ -129,7 +126,7 @@ extension SearchHeaderView {
     totalButton.snp.makeConstraints {
       $0.top.equalToSuperview().inset(18)
       $0.bottom.equalToSuperview().inset(15)
-      $0.trailing.equalToSuperview().inset(26)
+      $0.trailing.equalToSuperview()
     }
   }
 
@@ -144,11 +141,11 @@ extension SearchHeaderView {
 // MARK: - Action Functions
 extension SearchHeaderView {
   @objc private func didClickOnDeleteButton(_ sender: UIButton) {
-    delegate?.didClickOnDeleteButton()
+    self.didClickOnDeleteButtonClosure?()
     self.deleteButton.isHidden = true
   }
-  
-  @objc private func didClickOnTotalResultButton(_ sender: UIButton) {
-    delegate?.didClickOnTotalResultButton()
+
+  @objc private func didClickOnTotalButton(_ sender: UIButton) {
+    self.didClickOnTotalButtonClosure?()
   }
 }
