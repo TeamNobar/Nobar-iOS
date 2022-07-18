@@ -210,7 +210,7 @@ extension SearchViewController {
     if view.subviews.contains(searchAutoResultCollectionView) {
       searchAutoResultCollectionView.removeFromSuperview()
     } else {
-      self.navigationController?.popViewController(animated: true)
+      self.navigationController?.popViewController(animated: false)
     }
   }
 }
