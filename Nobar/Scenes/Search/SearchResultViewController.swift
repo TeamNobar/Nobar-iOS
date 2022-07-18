@@ -32,7 +32,7 @@ final class SearchResultViewController: BaseViewController {
   }
 
   private lazy var searchTextField = SearchTextField().then {
-    $0.addTarget(self, action: #selector(judgeHasText(_:)), for: .editingChanged)
+    $0.addTarget(self, action: #selector((_:)), for: .editingDidBegin)
   }
 
   private lazy var backButton = UIButton().then {
@@ -123,12 +123,8 @@ extension SearchResultViewController {
 // MARK: - Private Functions
 extension SearchResultViewController {
   private func setTextField() {
-    searchTextField.text = firstKeyword
-    searchTextField.rightViewMode = .always
-    searchTextField.didClickOnClearButtonClosure = {
-      self.searchTextField.text?.removeAll()
-      self.navigationController?.popViewController(animated: false)
-    }
+    searchTextField.resignFirstResponder()
+    searchTextField.text = searchText
   }
   
   private func setRegistration() {
