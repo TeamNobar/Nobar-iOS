@@ -104,6 +104,7 @@
 		6ABA93E12884A62900084D6D /* ScoreCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABA93E02884A62900084D6D /* ScoreCVC.swift */; };
 		6AD0F82E28849A0C00260574 /* SelectCocktailCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD0F82D28849A0C00260574 /* SelectCocktailCVC.swift */; };
 		6AD0F83028849DFE00260574 /* TasteCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD0F82F28849DFE00260574 /* TasteCVC.swift */; };
+		6AF3806B2885CEA200CB8F3E /* SelectDateCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF3806A2885CEA200CB8F3E /* SelectDateCVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +213,7 @@
 		6ABA93E02884A62900084D6D /* ScoreCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCVC.swift; sourceTree = "<group>"; };
 		6AD0F82D28849A0C00260574 /* SelectCocktailCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCocktailCVC.swift; sourceTree = "<group>"; };
 		6AD0F82F28849DFE00260574 /* TasteCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteCVC.swift; sourceTree = "<group>"; };
+		6AF3806A2885CEA200CB8F3E /* SelectDateCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateCVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -614,6 +616,7 @@
 				6AD0F82D28849A0C00260574 /* SelectCocktailCVC.swift */,
 				6AD0F82F28849DFE00260574 /* TasteCVC.swift */,
 				6ABA93E02884A62900084D6D /* ScoreCVC.swift */,
+				6AF3806A2885CEA200CB8F3E /* SelectDateCVC.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -826,6 +829,7 @@
 				3CA17C0B2878920B00E67B27 /* Font.swift in Sources */,
 				3CD437002877D3FD0044AE04 /* BaseRouter.swift in Sources */,
 				3C01FCDD287E53BF00BE23E6 /* NetworkLogger.swift in Sources */,
+				6AF3806B2885CEA200CB8F3E /* SelectDateCVC.swift in Sources */,
 				6AD0F83028849DFE00260574 /* TasteCVC.swift in Sources */,
 				6AAD37FE288005940030646C /* GuideModel.swift in Sources */,
 				6AAD37DE287C75240030646C /* UIScreen+Extension.swift in Sources */,
