@@ -156,7 +156,7 @@ extension SearchViewController {
 
     emptyLabel.snp.makeConstraints {
       $0.top.equalToSuperview().inset(58)
-      $0.leading.equalToSuperview().inset(126)
+      $0.centerX.equalToSuperview()
     }
   }
 }
