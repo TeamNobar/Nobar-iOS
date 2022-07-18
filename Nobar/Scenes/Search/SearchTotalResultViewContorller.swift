@@ -85,10 +85,11 @@ extension SearchTotalResultViewController {
   private func configUI() {
     view.backgroundColor = Color.white.getColor()
     navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
-    navigationItem.title = "검색 결과"
     
-    let titleAttribute = [NSAttributedString.Key.font: Pretendard.size16.bold()]
+    let titleAttribute = [NSAttributedString.Key.font: Pretendard.size16.bold(), NSAttributedString.Key.foregroundColor: Color.black.getColor()]
     self.navigationController?.navigationBar.titleTextAttributes = titleAttribute
+
+    navigationItem.title = "검색 결과"
   }
 }
 
