@@ -107,7 +107,7 @@ final class SearchViewController: BaseViewController {
 // MARK: - UI & Layout
 extension SearchViewController {
   private func render() {
-    view.addSubviews([searchView, searchKeywordCollectionView])
+    view.addSubviews([searchView, searchKeywordCollectionView, searchAutoResultCollectionView])
     searchView.addSubviews([backButton, searchTextField, underline])
     searchKeywordCollectionView.addSubview(emptyLabel)
   }
@@ -149,6 +149,11 @@ extension SearchViewController {
       $0.leading.trailing.bottom.equalToSuperview()
     }
 
+    searchAutoResultCollectionView.snp.makeConstraints {
+      $0.top.equalTo(underline.snp.bottom)
+      $0.leading.trailing.bottom.equalToSuperview()
+    }
+
     emptyLabel.snp.makeConstraints {
       $0.top.equalToSuperview().inset(58)
       $0.leading.equalToSuperview().inset(126)
@@ -180,16 +185,12 @@ extension SearchViewController {
   private func setTextFieldButton() {
     searchTextField.didClickOnClearButtonClosure = {
       self.searchTextField.text?.removeAll()
-      self.searchAutoResultCollectionView.removeFromSuperview()
+      self.searchAutoResultCollectionView.isHidden = true
     }
   }
 
   private func setAutoResultCollectionView() {
-    view.addSubview(searchAutoResultCollectionView)
-    searchAutoResultCollectionView.snp.makeConstraints {
-      $0.top.equalTo(underline.snp.bottom)
-      $0.leading.trailing.bottom.equalToSuperview()
-    }
+    searchAutoResultCollectionView.isHidden = false
   }
 }
 
@@ -203,17 +204,17 @@ extension SearchViewController {
       self.performQuery(with: searchText)
 
     } else {
-      searchAutoResultCollectionView.removeFromSuperview()
+      searchAutoResultCollectionView.isHidden = true
     }
   }
 
   @objc private func didClickOnBackButton(_ sender: UIButton) {
     self.searchTextField.text?.removeAll()
 
-    if view.subviews.contains(searchAutoResultCollectionView) {
-      searchAutoResultCollectionView.removeFromSuperview()
-    } else {
+    if searchAutoResultCollectionView.isHidden {
       self.navigationController?.popViewController(animated: true)
+    } else {
+      searchAutoResultCollectionView.isHidden = true
     }
   }
 }
