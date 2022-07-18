@@ -7,10 +7,8 @@
 
 import UIKit
 
-class tasteCVC: UICollectionViewCell {
-  private let stackView = UIStackView().then{
-    $0.backgroundColor = .red
-  }
+class TasteCVC: UICollectionViewCell {
+  private let stackView = UIStackView()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -26,7 +24,7 @@ class tasteCVC: UICollectionViewCell {
 
 // MARK: - UI & Layout
 
-extension tasteCVC {
+extension TasteCVC {
   
   private func render() {
     addSubview(stackView)
