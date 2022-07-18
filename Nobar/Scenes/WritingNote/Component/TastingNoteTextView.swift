@@ -19,9 +19,9 @@ final class TastingNoteTextView: UITextView {
     $0.textColor = Color.gray03.getColor()
     $0.text = "(0/200자)"
   }
-  init(frame: CGRect) {
-    super.init(frame: frame, textContainer: nil)
-    setLayout()
+  
+  override init(frame: CGRect, textContainer: NSTextContainer?) {
+    super.init(frame: frame, textContainer: textContainer)
   }
   
   @available(*, unavailable)
