@@ -313,7 +313,10 @@ extension SearchViewController {
 
 // MARK: - CollectionView Delegate functions
 extension SearchViewController: UICollectionViewDelegate {
-
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let resultViewController = SearchResultViewController(searchResultText: searchRecentList.safeget(index: indexPath.item) ?? "")
+    navigationController?.pushViewController(resultViewController, animated: false)
+  }
 }
 
 extension SearchViewController: UICollectionViewDataSource {
