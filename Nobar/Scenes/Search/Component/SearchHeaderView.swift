@@ -28,7 +28,7 @@ final class SearchHeaderView: UICollectionReusableView {
     $0.font = Pretendard.size17.semibold()
   }
 
-  private lazy var deleteButton = UIButton().then {
+  lazy var deleteButton = UIButton().then {
     $0.setTitle("전체 삭제", for: .normal)
     $0.setTitleColor(Color.gray03.getColor(), for: .normal)
     $0.titleLabel?.font = Pretendard.size13.medium()
