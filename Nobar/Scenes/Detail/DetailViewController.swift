@@ -56,7 +56,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         return identifiers.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
+      /*
       if indexPath.row == 0 {
           let width = tableView.bounds.width
           let tableHeight = width * (100/375)
@@ -72,12 +72,12 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
           let tableHeight = width * (150/375)
           return tableHeight
       }
-      else if indexPath.row == 2{
+      else if indexPath.row == 3{
           let width = tableView.bounds.width
           let tableHeight = width * (150/375)
           return tableHeight
       }
-        
+      */
         return UITableView.automaticDimension
     }
 }
