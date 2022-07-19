@@ -10,7 +10,7 @@ import UIKit
 final class SelectDateCVC: UICollectionViewCell {
   
   private let grayView = UIView().then {
-    $0.backgroundColor = Color.gray01.getColor()
+    $0.backgroundColor = Color.white.getColor()
   }
   
   private let selectDateLabel = UILabel().then {
@@ -20,6 +20,10 @@ final class SelectDateCVC: UICollectionViewCell {
   
   private let datePicker = UIDatePicker().then {
     $0.tintColor = Color.pink01.getColor()
+    $0.datePickerMode = .date
+    $0.locale = Locale(identifier: "ko_KR")
+
+    
   }
   
   override init(frame: CGRect) {
@@ -39,6 +43,7 @@ final class SelectDateCVC: UICollectionViewCell {
 extension SelectDateCVC {
   
   private func render() {
+  
     addSubview(grayView)
     grayView.addSubviews([selectDateLabel,datePicker])
     
@@ -51,7 +56,8 @@ extension SelectDateCVC {
       $0.centerY.equalToSuperview()
     }
     datePicker.snp.makeConstraints{
-      $0.leading.trailing.equalToSuperview().offset(40)
+//      $0.leading.equalToSuperview().offset(10)
+      $0.centerX.equalToSuperview()
       $0.centerY.equalToSuperview()
       $0.height.equalTo(40)
     }

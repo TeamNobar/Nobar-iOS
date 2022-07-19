@@ -19,7 +19,7 @@ final class TastingNoteHeaderView: UICollectionReusableView {
   
   private let titleLabel = UILabel().then {
     $0.textColor = Color.navy01.getColor()
-    $0.font = Pretendard.size20.black()
+    $0.font = Pretendard.size18.extraBold()
   }
   
   private let notiLabel = UILabel().then {
@@ -44,12 +44,12 @@ extension TastingNoteHeaderView {
   private func render() {
     addSubview(titleLabel)
     titleLabel.snp.makeConstraints {
-      $0.top.equalTo(titleLabel.snp.bottom).offset(2)
-      $0.leading.equalTo(titleLabel.snp.leading)
+      $0.leading.equalToSuperview().offset(26)
+      $0.centerY.equalToSuperview()
     }
   }
   
-  private func configUI(type: TastingNoteHeaderType) {
+ func configUI(type: TastingNoteHeaderType) {
     switch type {
     case .cocktail:
       titleLabel.text = "기록하고 싶은 칵테일을 알려주세요"

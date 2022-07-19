@@ -87,8 +87,6 @@ extension TasteCVC {
   
   
   @objc private func didTapTagView(sender: UITapGestureRecognizer) {
-    print("TagView didTapped")
-    print(sender.view?.tag)
   }
 }
 

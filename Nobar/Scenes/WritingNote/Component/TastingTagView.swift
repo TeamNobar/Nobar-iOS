@@ -34,7 +34,9 @@ final class TastingTagView: UIView {
     addSubviews([iconImageView,tasteLabel])
     
     backgroundColor = Color.gray01.getColor()
-    layer.cornerRadius = 100
+    layer.cornerRadius = 20
+    layer.borderWidth = 1
+    layer.borderColor = Color.gray02.getColor().cgColor
     tasteLabel.text = tastePhrase
     
     self.snp.makeConstraints({
@@ -43,7 +45,7 @@ final class TastingTagView: UIView {
     })
     
     iconImageView.snp.makeConstraints{
-      $0.centerX.equalToSuperview().offset(-40)
+      $0.centerX.equalToSuperview().offset(-33)
       $0.centerY.equalToSuperview()
     }
     

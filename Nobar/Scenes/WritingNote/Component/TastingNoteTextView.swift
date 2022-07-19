@@ -14,14 +14,11 @@ final class TastingNoteTextView: UITextView {
     case experience
   }
   
-  private let characterNumLabel = UILabel().then {
-    $0.font = Pretendard.size10.medium()
-    $0.textColor = Color.gray03.getColor()
-    $0.text = "(0/200자)"
-  }
+ 
   
   override init(frame: CGRect, textContainer: NSTextContainer?) {
     super.init(frame: frame, textContainer: textContainer)
+    setLayout()
   }
   
   @available(*, unavailable)
@@ -30,15 +27,12 @@ final class TastingNoteTextView: UITextView {
   }
   
   private func setLayout() {
+    backgroundColor = Color.gray01.getColor()
     layer.borderWidth = 1
     layer.borderColor = Color.gray02.getColor().cgColor
     layer.cornerRadius = 10
     contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
     font = Pretendard.size14.medium()
     
-    addSubview(characterNumLabel)
-    characterNumLabel.snp.makeConstraints{
-      $0.bottom.trailing.equalToSuperview().inset(8)
-    }
   }
 }

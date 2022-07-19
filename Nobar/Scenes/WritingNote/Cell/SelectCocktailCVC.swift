@@ -30,6 +30,7 @@ final class SelectCocktailCVC: UICollectionViewCell {
 extension SelectCocktailCVC {
   
   private func render() {
+    searchCockTailTextField.resignFirstResponder()
     addSubview(searchCockTailTextField)
     
     searchCockTailTextField.snp.makeConstraints {
