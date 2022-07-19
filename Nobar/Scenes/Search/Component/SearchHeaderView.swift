@@ -21,6 +21,7 @@ final class SearchHeaderView: UICollectionReusableView {
     case cocktail
     case ingredient
     case total
+    case baseResult
   }
 
   private var titleLabel = UILabel().then {
@@ -50,7 +51,28 @@ final class SearchHeaderView: UICollectionReusableView {
   }
 
   private let topLine = UIView().then {
-    $0.backgroundColor = Color.gray02.getColor()
+    $0.backgroundColor = Color.gray02.withAlphaColor(alpha: 0.5)
+  }
+
+  private let filterButton = UIButton().then {
+    var configuration = UIButton.Configuration.plain()
+
+    var container = AttributeContainer()
+    container.font = Pretendard.size11.bold()
+
+    configuration.attributedTitle = AttributedString("가나다 순", attributes: container)
+
+    configuration.baseForegroundColor = Color.gray03.getColor()
+    configuration.image = ImageFactory.icnFilterDown
+
+    configuration.imagePadding = 4
+    configuration.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 7, bottom: 6, trailing: 7)
+    configuration.imagePlacement = .trailing
+
+    $0.configuration = configuration
+    $0.layer.borderWidth = 1
+    $0.layer.borderColor = Color.gray02.withAlphaColor(alpha: 0.5).cgColor
+    $0.layer.cornerRadius = 3
   }
 
   override init(frame: CGRect) {
@@ -92,6 +114,9 @@ extension SearchHeaderView {
       titleLabel.text = "칵테일 레시피"
       addTotalButton()
       remakeTitleLayout()
+    case .baseResult:
+      titleLabel.isHidden = true
+      addFilterButton()
     }
   }
 
@@ -134,6 +159,16 @@ extension SearchHeaderView {
     titleLabel.snp.remakeConstraints {
       $0.top.bottom.equalToSuperview().inset(15)
       $0.leading.equalToSuperview()
+    }
+  }
+
+  private func addFilterButton() {
+    addSubview(filterButton)
+    filterButton.snp.makeConstraints {
+      $0.width.equalTo(69)
+      $0.height.equalTo(27)
+      $0.top.equalToSuperview().inset(21)
+      $0.trailing.equalToSuperview()
     }
   }
 }
