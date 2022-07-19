@@ -37,7 +37,7 @@ final class SearchResultViewController: BaseViewController {
   }
 
   private lazy var underline = UIView().then {
-    $0.backgroundColor = Color.gray02.getColor()
+    $0.backgroundColor = Color.gray02.withAlphaColor(alpha: 0.5)
     $0.layer.applyShadow(color: .black, alpha: 0.2, x: 1, y: 1, blur: 2, spread: 0)
   }
 
@@ -73,8 +73,8 @@ final class SearchResultViewController: BaseViewController {
 extension SearchResultViewController {
 
   private func render() {
-    view.addSubviews([searchView, searchTotalResultCollectionView])
-    searchView.addSubviews([backButton, searchTextField, underline])
+    view.addSubviews([searchView, underline, searchTotalResultCollectionView])
+    searchView.addSubviews([backButton, searchTextField])
   }
 
   private func setLayout() {
@@ -98,13 +98,13 @@ extension SearchResultViewController {
     }
 
     underline.snp.makeConstraints {
-      $0.top.equalTo(searchTextField.snp.bottom).offset(20)
+      $0.top.equalTo(searchView.snp.bottom)
       $0.leading.trailing.equalToSuperview()
       $0.height.equalTo(1)
     }
 
     searchTotalResultCollectionView.snp.makeConstraints {
-      $0.top.equalTo(underline.snp.bottom)
+      $0.top.equalTo(underline.snp.bottom).offset(2)
       $0.leading.trailing.bottom.equalToSuperview()
     }
   }
