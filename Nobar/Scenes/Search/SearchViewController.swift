@@ -64,6 +64,7 @@ final class SearchViewController: BaseViewController {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.showsHorizontalScrollIndicator = false
     collectionView.showsVerticalScrollIndicator = false
+    collectionView.keyboardDismissMode = .onDrag
     return collectionView
   }()
 
@@ -73,6 +74,8 @@ final class SearchViewController: BaseViewController {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.showsHorizontalScrollIndicator = false
     collectionView.showsVerticalScrollIndicator = false
+    collectionView.isHidden = true
+    collectionView.keyboardDismissMode = .onDrag
     return collectionView
   }()
 
@@ -146,9 +149,14 @@ extension SearchViewController {
       $0.leading.trailing.bottom.equalToSuperview()
     }
 
+    searchAutoResultCollectionView.snp.makeConstraints {
+      $0.top.equalTo(underline.snp.bottom)
+      $0.leading.trailing.bottom.equalToSuperview()
+    }
+
     emptyLabel.snp.makeConstraints {
       $0.top.equalToSuperview().inset(58)
-      $0.leading.equalToSuperview().inset(126)
+      $0.centerX.equalToSuperview()
     }
   }
 }
@@ -177,16 +185,12 @@ extension SearchViewController {
   private func setTextFieldButton() {
     searchTextField.didClickOnClearButtonClosure = {
       self.searchTextField.text?.removeAll()
-      self.searchAutoResultCollectionView.removeFromSuperview()
+      self.searchAutoResultCollectionView.isHidden = true
     }
   }
 
   private func setAutoResultCollectionView() {
-    view.addSubview(searchAutoResultCollectionView)
-    searchAutoResultCollectionView.snp.makeConstraints {
-      $0.top.equalTo(underline.snp.bottom).offset(1)
-      $0.leading.trailing.bottom.equalToSuperview()
-    }
+    searchAutoResultCollectionView.isHidden = false
   }
 }
 
@@ -200,17 +204,17 @@ extension SearchViewController {
       self.performQuery(with: searchText)
 
     } else {
-      searchAutoResultCollectionView.removeFromSuperview()
+      searchAutoResultCollectionView.isHidden = true
     }
   }
 
   @objc private func didClickOnBackButton(_ sender: UIButton) {
     self.searchTextField.text?.removeAll()
 
-    if view.subviews.contains(searchAutoResultCollectionView) {
-      searchAutoResultCollectionView.removeFromSuperview()
+    if searchAutoResultCollectionView.isHidden {
+      self.navigationController?.popViewController(animated: true)
     } else {
-      self.navigationController?.popViewController(animated: false)
+      searchAutoResultCollectionView.isHidden = true
     }
   }
 }
@@ -424,8 +428,7 @@ extension SearchViewController: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     searchTextField.resignFirstResponder()
 
-    let resultViewController = SearchResultViewController()
-    resultViewController.searchText = self.searchTextField.text
+    let resultViewController = SearchResultViewController(searchResultText: self.searchTextField.text ?? "")
     self.navigationController?.pushViewController(resultViewController, animated: false)
     return true
   }

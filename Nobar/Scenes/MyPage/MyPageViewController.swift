@@ -7,37 +7,45 @@
 
 import UIKit
 
+import RxSwift
+
 final class MyPageViewController: BaseViewController {
+  private lazy var pageViewController = NBPageViewController(
+    segmentTitles: ["테이스팅 노트", "나중에 만들 레시피"],
+    on: self
+  )
+  
+  private let tastingNoteViewController = TastingNoteViewController()
+  private let makeOnLaterViewcontroller = MakeOnLaterRecipesViewController()
+
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let segmented = NBSegmentedControl(buttonTitles: ["테이스팅 노트", "나중에 만들 레시피"])
-    segmented.addTarget(self, action: #selector(test(_:)), for: .valueChanged)
+    view.addSubview(pageViewController)
     
-    self.view.addSubview(segmented)
+    pageViewController.setTabContentsItem(
+      contentPages: [
+        tastingNoteViewController,
+        makeOnLaterViewcontroller
+      ]
+    )
     
-    segmented.snp.makeConstraints {
-      $0.center.equalToSuperview()
-      $0.width.equalTo(217)
-      $0.height.equalTo(36)
-    }
+    setupNavigationBar()
   }
   
   override func setupConstraints() {
     super.setupConstraints()
     
+    pageViewController.snp.makeConstraints {
+      $0.leading.trailing.equalToSuperview()
+      $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+      $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+    }
   }
 }
 
 extension MyPageViewController {
-  @objc private func test(_ sender: NBSegmentedControl) {
-    print(sender.selectedIndex)
+  private func setupNavigationBar() {
+    navigationItem.titleView = MyPageNavigationView()
   }
-}
-
-// Example
-struct MyPageResponse: Decodable {
-  let nickName: String
-  let laterRecipes: [Recipe]
-  let tastingNotes: [TastingNote]
 }
