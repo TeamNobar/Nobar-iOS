@@ -73,7 +73,7 @@ final class SearchResultViewController: BaseViewController {
 extension SearchResultViewController {
 
   private func render() {
-    view.addSubviews([searchView, underline, searchTotalResultCollectionView])
+    view.addSubviews([searchView, searchTotalResultCollectionView, underline])
     searchView.addSubviews([backButton, searchTextField])
   }
 

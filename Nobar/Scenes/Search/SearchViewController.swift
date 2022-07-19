@@ -104,7 +104,7 @@ final class SearchViewController: BaseViewController {
 // MARK: - UI & Layout
 extension SearchViewController {
   private func render() {
-    view.addSubviews([searchView, underline, searchKeywordCollectionView])
+    view.addSubviews([searchView, searchKeywordCollectionView, searchAutoResultCollectionView, underline])
     searchView.addSubviews([backButton, searchTextField])
     searchKeywordCollectionView.addSubview(emptyLabel)
   }
