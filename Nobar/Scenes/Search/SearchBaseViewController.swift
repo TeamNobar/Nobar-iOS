@@ -251,7 +251,8 @@ extension SearchBaseViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = baseCollectionView.dequeueReusableCell(ofType: BaseCocktailCollectionViewCell.self, at: indexPath)
 
-    cell.updateModel(BaseCocktailModel.dummyBaseList[indexPath.row])
+    guard let item = BaseCocktailModel.dummyBaseList.safeget(index: indexPath.row) else { return cell }
+    cell.updateModel(item)
     return cell
   }
 }

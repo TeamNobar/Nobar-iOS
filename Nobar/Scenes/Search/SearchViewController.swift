@@ -335,12 +335,14 @@ extension SearchViewController: UICollectionViewDataSource {
     case .recent:
       let cell = searchKeywordCollectionView.dequeueReusableCell(ofType: RecentCollectionViewCell.self, at: indexPath)
 
-      cell.updateKeyword(dummyKeywords[indexPath.row])
+      guard let item = dummyKeywords.safeget(index: indexPath.row) else { return cell }
+      cell.updateKeyword(item)
       return cell
     case .recommend:
       let cell = searchKeywordCollectionView.dequeueReusableCell(ofType: RecommendCollectionViewCell.self, at: indexPath)
 
-      cell.updateModel(SearchModel.dummyRecommendList[indexPath.row])
+      guard let item = SearchModel.dummyRecommendList.safeget(index: indexPath.row) else { return cell }
+      cell.updateModel(item)
       return cell
     }
   }

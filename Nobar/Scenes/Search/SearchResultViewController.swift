@@ -251,12 +251,15 @@ extension SearchResultViewController: UICollectionViewDataSource {
     case .cocktail:
       let cell = searchTotalResultCollectionView.dequeueReusableCell(ofType: SearchTotalResultCollectionViewCell.self, at: indexPath)
 
-      cell.updateModel(SearchCocktailModel.dummyCocktailList[indexPath.row])
+      guard let item = SearchCocktailModel.dummyCocktailList.safeget(index: indexPath.row) else { return cell }
+      cell.updateModel(item)
       return cell
     case .ingredient:
       let cell = searchTotalResultCollectionView.dequeueReusableCell(ofType: SearchAutoResultCollectionViewCell.self, at: indexPath)
 
-      cell.updateResult(dummyIngredient[indexPath.row])
+
+      guard let item = dummyIngredient.safeget(index: indexPath.row) else { return cell }
+      cell.updateResult(item)
       cell.updateAttributedText(self.searchText ?? "")
       return cell
     }
