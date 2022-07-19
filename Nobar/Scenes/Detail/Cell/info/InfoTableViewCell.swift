@@ -9,7 +9,23 @@ import UIKit
 
 class InfoTableViewCell: UITableViewCell {
     
-    static let identifier = "InfoTableViewCell"
+  @IBOutlet weak var baseImage: UIImageView!
+  @IBOutlet weak var baseTitleLabel: UILabel!
+  @IBOutlet weak var baseNameLabel: UILabel!
+  
+  @IBOutlet weak var proofImage: UIImageView!
+  @IBOutlet weak var proofTitleLabel: UILabel!
+  @IBOutlet weak var proofNameLabel: UILabel!
+  
+  @IBOutlet weak var skillImage: UIImageView!
+  @IBOutlet weak var skillTitleLabel: UILabel!
+  @IBOutlet weak var skillNameLabel: UILabel!
+  
+  @IBOutlet weak var glassImage: UIImageView!
+  @IBOutlet weak var glassTitleLabel: UILabel!
+  @IBOutlet weak var glassNameLabel: UILabel!
+  
+  static let identifier = "InfoTableViewCell"
 
     override func awakeFromNib() {
         super.awakeFromNib()

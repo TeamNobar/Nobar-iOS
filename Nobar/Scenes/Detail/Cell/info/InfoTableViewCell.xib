@@ -34,6 +34,9 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pus-ij-LQw" userLabel="infoTitleKor01">
                                 <rect key="frame" x="33" y="72" width="35.5" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35.5" id="IHy-98-Vjm"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -141,6 +144,21 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="base" destination="apm-z6-EVT" id="9BJ-Pc-mBT"/>
+                <outlet property="baseImage" destination="87x-W0-Pyy" id="Q6x-u7-lKz"/>
+                <outlet property="baseNameLabel" destination="pus-ij-LQw" id="RON-ye-TW7"/>
+                <outlet property="baseTitleLabel" destination="Iah-XX-rwd" id="uL6-lw-mcD"/>
+                <outlet property="glassImage" destination="EFJ-tN-a0i" id="RnK-LB-Xdq"/>
+                <outlet property="glassNameLabel" destination="bRG-bX-I0C" id="0tz-MR-0EI"/>
+                <outlet property="glassTitleLabel" destination="UHR-ab-Dub" id="vjE-QF-yBH"/>
+                <outlet property="proofImage" destination="xrh-s0-XDB" id="i3B-3q-RZh"/>
+                <outlet property="proofNameLabel" destination="KNY-QH-pht" id="ThY-Fk-RG3"/>
+                <outlet property="proofTitleLabel" destination="NLn-hB-lsG" id="N8j-Yp-QeG"/>
+                <outlet property="skillImage" destination="dF2-uB-T7f" id="LcT-lh-zzp"/>
+                <outlet property="skillNameLabel" destination="zTk-25-SCV" id="jAS-mG-SVf"/>
+                <outlet property="skillTitleLabel" destination="pzI-VE-Fyh" id="vtQ-HJ-4LY"/>
+            </connections>
             <point key="canvasLocation" x="213.768115942029" y="-40.848214285714285"/>
         </tableViewCell>
     </objects>
