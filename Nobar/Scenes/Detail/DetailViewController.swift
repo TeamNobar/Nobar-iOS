@@ -77,7 +77,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
           let tableHeight = width * (150/375)
           return tableHeight
       }
-      */
+       */
+      
         return UITableView.automaticDimension
     }
 }
