@@ -24,7 +24,7 @@ final class SearchTotalResultCollectionViewCell: UICollectionViewCell {
 
   private let infoStackView = UIStackView().then {
     $0.axis = .horizontal
-    $0.spacing = 2
+    $0.spacing = 3
     $0.alignment = .leading
     $0.distribution = .equalSpacing
   }
@@ -66,7 +66,7 @@ extension SearchTotalResultCollectionViewCell {
     }
 
     infoStackView.snp.makeConstraints {
-      $0.top.equalTo(cocktailEngLabel.snp.bottom).offset(13)
+      $0.top.equalTo(cocktailEngLabel.snp.bottom).offset(12)
       $0.leading.equalToSuperview().inset(6)
       $0.bottom.equalToSuperview().inset(7)
     }
@@ -90,6 +90,10 @@ extension SearchTotalResultCollectionViewCell {
     baseTagView.tagLabel.text = model.base
     percentTagView.tagLabel.text = "\(model.percent)도"
     skillTagView.tagLabel.text = model.skill
+
+    if model.kind.count == 5 {
+      kindTagView.remakeLabelConstraints()
+    }
     kindTagView.tagLabel.text = model.kind
   }
 }
