@@ -370,11 +370,8 @@ extension SearchViewController: UICollectionViewDataSource {
       switch sectionType {
       case .recent:
         headerView.configUI(type: .recent)
-
-        if searchRecentList.isEmpty {
-          headerView.deleteButton.isHidden = true
-          emptyLabel.isHidden = false
-        }
+        headerView.deleteButton.isHidden = searchRecentList.isEmpty ? true : false
+        emptyLabel.isHidden = searchRecentList.isEmpty ? false : true
 
         headerView.didClickOnDeleteButtonClosure = {
           self.deleteRecentSearch()
