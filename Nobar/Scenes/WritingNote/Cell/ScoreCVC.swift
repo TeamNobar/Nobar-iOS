@@ -60,7 +60,7 @@ extension ScoreCVC {
   private func initStackView() {
     
     for i in 0..<5 {
-      let imageView = UIImageView(image:ImageFactory.btnScoreFill)
+      let imageView = UIImageView(image:ImageFactory.btnScoreEmpty)
       heartStackView.addArrangedSubview(imageView)
       
     }

@@ -35,7 +35,7 @@ final class TasteCVC: UICollectionViewCell {
     $0.spacing = 8
     $0.backgroundColor = .white
   }
-
+  
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -106,9 +106,9 @@ extension TasteCVC {
           selectedTagNumList.remove(at: idx)
         }
       }
-      }
     }
   }
+}
 
 
 
