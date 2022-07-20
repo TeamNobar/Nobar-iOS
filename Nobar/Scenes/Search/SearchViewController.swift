@@ -314,8 +314,15 @@ extension SearchViewController {
 // MARK: - CollectionView Delegate functions
 extension SearchViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let resultViewController = SearchResultViewController(searchResultText: searchRecentList.safeget(index: indexPath.item) ?? "")
-    navigationController?.pushViewController(resultViewController, animated: false)
+    guard let sectionType = KeywordSectionType(rawValue: indexPath.section) else { return }
+
+    switch sectionType {
+    case .recent:
+      let resultViewController = SearchResultViewController(searchResultText: searchRecentList.safeget(index: indexPath.item) ?? "")
+      navigationController?.pushViewController(resultViewController, animated: false)
+    case .recommend: break
+      // 추천 검색 기능
+    }
   }
 }
 
