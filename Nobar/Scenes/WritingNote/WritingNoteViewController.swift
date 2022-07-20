@@ -188,7 +188,6 @@ extension WritingNoteViewController: UICollectionViewDataSource{
       switch sectionType {
       case .cocktail:
         headerView.configUI(type: .cocktail)
-        print("했냐아아아ㅏㅇ?")
       case .date:
         headerView.configUI(type: .date)
       case .taste:

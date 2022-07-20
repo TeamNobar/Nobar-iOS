@@ -87,6 +87,9 @@ extension TasteCVC {
   
   
   @objc private func didTapTagView(sender: UITapGestureRecognizer) {
+    if let tagView = sender.view as? TastingTagView {
+      tagView.isSelected.toggle()
+    }
   }
 }
 

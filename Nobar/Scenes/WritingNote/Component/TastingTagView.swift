@@ -10,6 +10,17 @@ import UIKit
 final class TastingTagView: UIView {
   
   private var tastePhrase = "맛이 좋아요"
+  
+  var isSelected: Bool = false{
+    willSet(newValue){
+      switch newValue{
+        case true:
+        layoutSelectedTag()
+        case false:
+        layoutUnselectedTag()
+      }
+    }
+  }
 
   private let iconImageView = UIImageView().then{
     $0.image = ImageFactory.tagIconGray
@@ -33,11 +44,7 @@ final class TastingTagView: UIView {
   private func setLayout() {
     addSubviews([iconImageView,tasteLabel])
     
-    backgroundColor = Color.gray01.getColor()
-    layer.cornerRadius = 20
-    layer.borderWidth = 1
-    layer.borderColor = Color.gray02.getColor().cgColor
-    tasteLabel.text = tastePhrase
+    layoutUnselectedTag()
     
     self.snp.makeConstraints({
       $0.width.equalTo(102)
@@ -55,11 +62,26 @@ final class TastingTagView: UIView {
     }
     
   }
-  func setTasteLabel(with phrase: String){
+  public func setTasteLabel(with phrase: String){
     self.tasteLabel.text = phrase
     self.tastePhrase = phrase
   }
   
+  private func layoutSelectedTag(){
+    layer.cornerRadius = 20
+    layer.borderWidth = 1
+    backgroundColor = Color.pink01.getColor().withAlphaComponent(0.15)
+    layer.borderColor = Color.pink01.getColor().cgColor
+    tasteLabel.textColor = Color.pink01.getColor()
+  }
+  
+  private func layoutUnselectedTag(){
+    layer.cornerRadius = 20
+    layer.borderWidth = 1
+    backgroundColor = Color.gray01.getColor()
+    layer.borderColor = Color.gray02.getColor().cgColor
+    tasteLabel.textColor = Color.black.getColor()
+  }
 }
 
 

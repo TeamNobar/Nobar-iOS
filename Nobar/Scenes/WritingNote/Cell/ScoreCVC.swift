@@ -72,7 +72,6 @@ extension ScoreCVC {
 
   @objc func slideHeartSlider(){
     var value = heartSlider.value
-    print(value)
     
     for idx in 0..<5 {
       if value > 0.5 {
