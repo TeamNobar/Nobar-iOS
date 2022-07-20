@@ -18,13 +18,13 @@ struct SegmentInfo {
   
   let nonSelectedItemTitleColor: Color = .skyblue02
   let backgroundColor: Color = .navy01
-  let padding: CGFloat = 4
-  let cornerRadius: CGFloat = 12
-  
+  let padding = 4.f
+  let cornerRadius = 12.f
+  let itemWidth = 105.f
 }
 
 final class NBSegmentedControl: UIControl {
-  private let segmentInfo: SegmentInfo
+  private(set) var segmentInfo: SegmentInfo
   private let buttonTitles: [String]
   private let disposeBag = DisposeBag()
   
@@ -76,7 +76,7 @@ final class NBSegmentedControl: UIControl {
 
 // MARK: - Public functions
 extension NBSegmentedControl {
-  func selectIndex(_ index: Int) {
+  func selectIndex(_ index: Int, shouldAnimate: Bool) {
     guard 0..<selectorButtons.count ~= index else { return }
     
     selectorButtons.forEach { $0.setTitleColor(segmentInfo.nonSelectedItemTitleColor.getColor(), for: .normal) }
@@ -87,6 +87,10 @@ extension NBSegmentedControl {
     sendActions(for: .valueChanged)
     button.setTitleColor(segmentInfo.selectedItemTintColor.getColor(), for: .normal)
     button.titleLabel?.font = Pretendard.size13.medium()
+    
+    guard shouldAnimate else { return }
+    
+    animateSelectedItem(to: buttonWidth * index.f)
   }
 }
 
@@ -141,8 +145,14 @@ extension NBSegmentedControl {
       .asDriver(onErrorDriveWith: .empty())
       .drive { [weak self] index in
         self?.selectedIndex = index
-        self?.selectIndex(index)
+        self?.selectIndex(index, shouldAnimate: false)
       }.disposed(by: self.disposeBag)
+  }
+  
+  private func animateSelectedItem(to point: CGFloat) {
+    UIView.animate(withDuration: 0.3) { [weak self] in
+      self?.selectorView.frame.origin.x = point
+    }
   }
 }
 
@@ -159,9 +169,7 @@ extension NBSegmentedControl {
       delegate?.nbSegmentedControl(self, didChangedOn: selectedIndex)
       sendActions(for: .valueChanged)
       button.setTitleColor(segmentInfo.selectedItemTintColor.getColor(), for: .normal)
-      UIView.animate(withDuration: 0.3) {
-        self.selectorView.frame.origin.x = selectorPosition
-      }
+      animateSelectedItem(to: selectorPosition)
     }
   }
   
@@ -189,11 +197,7 @@ extension NBSegmentedControl {
       self.processSelectedIndex(Int(round(panLocationXCoordinate / containerViewWidth)))
     case .ended:
       let selectorPosition = buttonWidth * selectedIndex.f
-
-      UIView.animate(withDuration: 0.2) { [weak self] in
-        self?.selectorView.frame.origin.x = selectorPosition
-      }
-
+      self.animateSelectedItem(to: selectorPosition)
     default: break
     }
   }

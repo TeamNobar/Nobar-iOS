@@ -46,7 +46,7 @@ extension RecentCollectionViewCell {
   private func configUI() {
     backgroundColor = Color.gray01.getColor()
     layer.borderWidth = 1
-    layer.borderColor = Color.gray02.getColor().cgColor
+    layer.borderColor = Color.gray02.withAlphaColor(alpha: 0.5).cgColor
     layer.cornerRadius = 19
     layer.applyShadow(color: .black, alpha: 0.05, x: 1, y: 1, blur: 2, spread: 0)
   }

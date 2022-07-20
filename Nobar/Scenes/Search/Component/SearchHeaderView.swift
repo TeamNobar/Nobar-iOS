@@ -10,14 +10,10 @@ import UIKit
 import Then
 import SnapKit
 
-protocol HeaderViewDelegate: AnyObject {
-  func didClickOnDeleteButton()
-  func didClickOnTotalResultButton()
-}
-
 final class SearchHeaderView: UICollectionReusableView {
 
-  weak var delegate: HeaderViewDelegate?
+  var didClickOnDeleteButtonClosure: (() -> Void)?
+  var didClickOnTotalButtonClosure: (() -> Void)?
 
   enum SeachHeaderType {
     case recent
@@ -25,6 +21,7 @@ final class SearchHeaderView: UICollectionReusableView {
     case cocktail
     case ingredient
     case total
+    case baseResult
   }
 
   private var titleLabel = UILabel().then {
@@ -32,7 +29,7 @@ final class SearchHeaderView: UICollectionReusableView {
     $0.font = Pretendard.size17.semibold()
   }
 
-  private lazy var deleteButton = UIButton().then {
+  private(set) lazy var deleteButton = UIButton().then {
     $0.setTitle("전체 삭제", for: .normal)
     $0.setTitleColor(Color.gray03.getColor(), for: .normal)
     $0.titleLabel?.font = Pretendard.size13.medium()
@@ -50,11 +47,32 @@ final class SearchHeaderView: UICollectionReusableView {
     $0.setTitle("전체 보기", for: .normal)
     $0.setTitleColor(Color.gray03.getColor(), for: .normal)
     $0.titleLabel?.font = Pretendard.size13.medium()
-    $0.addTarget(self, action: #selector(didClickOnTotalResultButton(_:)), for: .touchUpInside)
+    $0.addTarget(self, action: #selector(didClickOnTotalButton(_:)), for: .touchUpInside)
   }
 
   private let topLine = UIView().then {
-    $0.backgroundColor = Color.gray02.getColor()
+    $0.backgroundColor = Color.gray02.withAlphaColor(alpha: 0.5)
+  }
+
+  private let filterButton = UIButton().then {
+    var configuration = UIButton.Configuration.plain()
+
+    var container = AttributeContainer()
+    container.font = Pretendard.size11.bold()
+
+    configuration.attributedTitle = AttributedString("가나다 순", attributes: container)
+
+    configuration.baseForegroundColor = Color.gray03.getColor()
+    configuration.image = ImageFactory.icnFilterDown
+
+    configuration.imagePadding = 4
+    configuration.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 7, bottom: 6, trailing: 7)
+    configuration.imagePlacement = .trailing
+
+    $0.configuration = configuration
+    $0.layer.borderWidth = 1
+    $0.layer.borderColor = Color.gray02.withAlphaColor(alpha: 0.5).cgColor
+    $0.layer.cornerRadius = 3
   }
 
   override init(frame: CGRect) {
@@ -95,6 +113,10 @@ extension SearchHeaderView {
     case .total:
       titleLabel.text = "칵테일 레시피"
       addTotalButton()
+      remakeTitleLayout()
+    case .baseResult:
+      titleLabel.isHidden = true
+      addFilterButton()
     }
   }
 
@@ -129,7 +151,7 @@ extension SearchHeaderView {
     totalButton.snp.makeConstraints {
       $0.top.equalToSuperview().inset(18)
       $0.bottom.equalToSuperview().inset(15)
-      $0.trailing.equalToSuperview().inset(26)
+      $0.trailing.equalToSuperview()
     }
   }
 
@@ -139,16 +161,26 @@ extension SearchHeaderView {
       $0.leading.equalToSuperview()
     }
   }
+
+  private func addFilterButton() {
+    addSubview(filterButton)
+    filterButton.snp.makeConstraints {
+      $0.width.equalTo(69)
+      $0.height.equalTo(27)
+      $0.top.equalToSuperview().inset(21)
+      $0.trailing.equalToSuperview()
+    }
+  }
 }
 
 // MARK: - Action Functions
 extension SearchHeaderView {
   @objc private func didClickOnDeleteButton(_ sender: UIButton) {
-    delegate?.didClickOnDeleteButton()
+    self.didClickOnDeleteButtonClosure?()
     self.deleteButton.isHidden = true
   }
-  
-  @objc private func didClickOnTotalResultButton(_ sender: UIButton) {
-    delegate?.didClickOnTotalResultButton()
+
+  @objc private func didClickOnTotalButton(_ sender: UIButton) {
+    self.didClickOnTotalButtonClosure?()
   }
 }

@@ -16,8 +16,8 @@ final class SearchTotalResultViewController: BaseViewController {
     case recipe
   }
 
-  private var resultDataSource: UICollectionViewDiffableDataSource<Section, CocktailModel>!
-  private var resultSnapshot: NSDiffableDataSourceSnapshot<Section, CocktailModel>!
+  private var resultDataSource: UICollectionViewDiffableDataSource<Section, SearchCocktailModel>!
+  private var resultSnapshot: NSDiffableDataSourceSnapshot<Section, SearchCocktailModel>!
 
   private lazy var closeButton = UIButton().then {
     $0.setImage(ImageFactory.btnCancel, for: .normal)
@@ -62,23 +62,16 @@ final class SearchTotalResultViewController: BaseViewController {
 extension SearchTotalResultViewController {
 
   private func render() {
-    view.addSubviews([closeButton, titleLabel, underline, searchTotalResultCollectionView])
+    view.addSubviews([underline, searchTotalResultCollectionView])
   }
 
   private func setLayout() {
     closeButton.snp.makeConstraints {
       $0.width.height.equalTo(42)
-      $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-      $0.leading.equalToSuperview().inset(15)
-    }
-
-    titleLabel.snp.makeConstraints {
-      $0.top.equalToSuperview().inset(55)
-      $0.centerX.equalToSuperview()
     }
 
     underline.snp.makeConstraints {
-      $0.top.equalTo(closeButton.snp.bottom).offset(4)
+      $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
       $0.leading.trailing.equalToSuperview()
       $0.height.equalTo(1)
     }
@@ -91,6 +84,12 @@ extension SearchTotalResultViewController {
 
   private func configUI() {
     view.backgroundColor = Color.white.getColor()
+    navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
+    
+    let titleAttribute = [NSAttributedString.Key.font: Pretendard.size16.bold(), NSAttributedString.Key.foregroundColor: Color.black.getColor()]
+    self.navigationController?.navigationBar.titleTextAttributes = titleAttribute
+
+    navigationItem.title = "검색 결과"
   }
 }
 
@@ -129,7 +128,7 @@ extension SearchTotalResultViewController {
 // MARK: - Diffable DataSource
 extension SearchTotalResultViewController {
   private func setDataSource() {
-    self.resultDataSource = UICollectionViewDiffableDataSource<Section, CocktailModel>(collectionView: self.searchTotalResultCollectionView) { (collectionview, indexPath, keyword) -> UICollectionViewCell? in
+    self.resultDataSource = UICollectionViewDiffableDataSource<Section, SearchCocktailModel>(collectionView: self.searchTotalResultCollectionView) { (collectionview, indexPath, keyword) -> UICollectionViewCell? in
 
       guard let cell = self.searchTotalResultCollectionView.dequeueReusableCell(withReuseIdentifier: SearchTotalResultCollectionViewCell.className, for: indexPath) as? SearchTotalResultCollectionViewCell else { preconditionFailure() }
 
@@ -137,9 +136,9 @@ extension SearchTotalResultViewController {
       return cell
     }
 
-    resultSnapshot = NSDiffableDataSourceSnapshot<Section, CocktailModel>()
+    resultSnapshot = NSDiffableDataSourceSnapshot<Section, SearchCocktailModel>()
     resultSnapshot.appendSections([.recipe])
-    resultSnapshot.appendItems(CocktailModel.dummyCocktailList, toSection: .recipe)
+    resultSnapshot.appendItems(SearchCocktailModel.dummyCocktailList, toSection: .recipe)
     resultDataSource.apply(resultSnapshot, animatingDifferences: true)
   }
 }

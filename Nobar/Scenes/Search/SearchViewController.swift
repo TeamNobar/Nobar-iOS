@@ -9,17 +9,36 @@ import UIKit
 
 import Then
 import SnapKit
+import RealmSwift
 
 final class SearchViewController: BaseViewController {
 
-  enum SectionType: Int {
+  enum KeywordSectionType: Int, CaseIterable {
     case recent = 0
     case recommend = 1
   }
 
-  private var sectionType: SectionType?
+  enum AutoResultSectionType: Int, CaseIterable {
+    case cocktail = 0
+    case ingredient = 1
+  }
 
-  private var dummyKeywords: [String] = ["브랜디", "선라이즈피치", "피치크러쉬", "카시스 오렌지", "은비쨩", "칵테일어쩌구", "밀푀유나베", "피치어쩌구", "리큐르", "채원쨩??"]
+  var searchRecentList: [String] = [] {
+    didSet {
+      searchKeywordCollectionView.reloadSections([0])
+    }
+  }
+
+  private var keywordSectionType: KeywordSectionType?
+
+  let realm = try? Realm()
+
+  private var resultDataSource: UICollectionViewDiffableDataSource<AutoResultSectionType, String>!
+  private var resultSnapshot: NSDiffableDataSourceSnapshot<AutoResultSectionType, String>!
+
+  // TODO: 나중에 서버에서 한꺼번에 리스트로 받아옴
+  private var dummyCocktail: [String] = ["브랜디", "선라이즈피치", "피치크러쉬", "카시스 오렌지", "은비쨩", "칵테일어쩌구", "피치만 나와라", "피치어쩌구", "리큐르", "채원쨩", "피치1", "피치2", "피치3", "피치4"]
+  private var dummyIngredient: [String] = ["피피피피", "피치주스도있고요", "재료들이", "오렌지주스", "은비쨩", "재료어쩌구", "리큐르", "채원쨩"]
 
   private let searchView = UIView().then {
     $0.backgroundColor = Color.white.getColor()
@@ -31,11 +50,12 @@ final class SearchViewController: BaseViewController {
   }
 
   private lazy var searchTextField = SearchTextField().then {
+    $0.delegate = self
     $0.addTarget(self, action: #selector(judgeHasText(_:)), for: .editingChanged)
   }
 
   private lazy var underline = UIView().then {
-    $0.backgroundColor = Color.gray02.getColor()
+    $0.backgroundColor = Color.gray02.withAlphaColor(alpha: 0.5)
     $0.layer.applyShadow(color: .black, alpha: 0.2, x: 1, y: 1, blur: 2, spread: 0)
   }
 
@@ -46,12 +66,24 @@ final class SearchViewController: BaseViewController {
   }
 
   private lazy var searchKeywordCollectionView: UICollectionView = {
-    let layout = createCompositionLayout()
+    let layout = createKeywordLayout()
     layout.configuration.interSectionSpacing = 0
 
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.showsHorizontalScrollIndicator = false
     collectionView.showsVerticalScrollIndicator = false
+    collectionView.keyboardDismissMode = .onDrag
+    return collectionView
+  }()
+
+  private lazy var searchAutoResultCollectionView: UICollectionView = {
+    let layout = createAutoResultLayout()
+
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    collectionView.showsHorizontalScrollIndicator = false
+    collectionView.showsVerticalScrollIndicator = false
+    collectionView.isHidden = true
+    collectionView.keyboardDismissMode = .onDrag
     return collectionView
   }()
 
@@ -61,11 +93,14 @@ final class SearchViewController: BaseViewController {
     configUI()
     setDelegation()
     setRegistration()
+    setTextFieldButton()
+    setDataSource()
+    setRealmData()
   }
 
   override func viewWillAppear(_ animated: Bool) {
-      super.viewWillAppear(animated)
-      initTextField()
+    super.viewWillAppear(animated)
+    initTextField()
   }
 
   override func setupConstraints() {
@@ -81,13 +116,15 @@ final class SearchViewController: BaseViewController {
 // MARK: - UI & Layout
 extension SearchViewController {
   private func render() {
-    view.addSubviews([searchView, searchKeywordCollectionView])
-    searchView.addSubviews([backButton, searchTextField, underline])
+    view.addSubviews([searchView, searchKeywordCollectionView, searchAutoResultCollectionView, underline])
+    searchView.addSubviews([backButton, searchTextField])
+    searchKeywordCollectionView.addSubview(emptyLabel)
   }
 
   private func configUI() {
     view.backgroundColor = Color.white.getColor()
     navigationController?.navigationBar.isHidden = true
+    emptyLabel.isHidden = true
   }
 
   private func setLayout() {
@@ -111,14 +148,24 @@ extension SearchViewController {
     }
 
     underline.snp.makeConstraints {
-      $0.top.equalTo(searchTextField.snp.bottom).offset(20)
+      $0.top.equalTo(searchView.snp.bottom)
       $0.leading.trailing.equalToSuperview()
       $0.height.equalTo(1)
     }
 
     searchKeywordCollectionView.snp.makeConstraints {
+      $0.top.equalTo(underline.snp.bottom).offset(2)
+      $0.leading.trailing.bottom.equalToSuperview()
+    }
+
+    searchAutoResultCollectionView.snp.makeConstraints {
       $0.top.equalTo(underline.snp.bottom)
       $0.leading.trailing.bottom.equalToSuperview()
+    }
+
+    emptyLabel.snp.makeConstraints {
+      $0.top.equalToSuperview().inset(58)
+      $0.centerX.equalToSuperview()
     }
   }
 }
@@ -134,11 +181,24 @@ extension SearchViewController {
     searchKeywordCollectionView.register(SearchHeaderView.self, forSupplementaryViewOfKind: SearchHeaderView.className, withReuseIdentifier: SearchHeaderView.className)
     searchKeywordCollectionView.register(cell: RecentCollectionViewCell.self)
     searchKeywordCollectionView.register(cell: RecommendCollectionViewCell.self)
+
+    searchAutoResultCollectionView.register(SearchHeaderView.self, forSupplementaryViewOfKind: SearchHeaderView.className, withReuseIdentifier: SearchHeaderView.className)
+    searchAutoResultCollectionView.register(cell: SearchAutoResultCollectionViewCell.self)
   }
 
   private func initTextField() {
-    searchTextField.text = ""
-    searchTextField.rightViewMode = .never
+    searchTextField.becomeFirstResponder()
+  }
+
+  private func setTextFieldButton() {
+    searchTextField.didClickOnClearButtonClosure = {
+      self.searchTextField.text?.removeAll()
+      self.searchAutoResultCollectionView.isHidden = true
+    }
+  }
+
+  private func setAutoResultCollectionView() {
+    searchAutoResultCollectionView.isHidden = false
   }
 }
 
@@ -146,16 +206,24 @@ extension SearchViewController {
 extension SearchViewController {
   @objc private func judgeHasText(_ sender: UITextField) {
     if searchTextField.hasText {
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-        let searchResultViewController = SearchResultViewController()
-        searchResultViewController.firstKeyword = self.searchTextField.text
-        self.navigationController?.pushViewController(searchResultViewController, animated: false)
-      }
+      setAutoResultCollectionView()
+      guard let searchText = searchTextField.text else { return }
+
+      self.performQuery(with: searchText)
+
+    } else {
+      searchAutoResultCollectionView.isHidden = true
     }
   }
 
   @objc private func didClickOnBackButton(_ sender: UIButton) {
-    self.navigationController?.popViewController(animated: true)
+    self.searchTextField.text?.removeAll()
+
+    if searchAutoResultCollectionView.isHidden {
+      self.navigationController?.popViewController(animated: true)
+    } else {
+      searchAutoResultCollectionView.isHidden = true
+    }
   }
 }
 
@@ -201,7 +269,7 @@ extension SearchViewController {
     return section
   }
 
-  private func createCompositionLayout() -> UICollectionViewCompositionalLayout {
+  private func createKeywordLayout() -> UICollectionViewCompositionalLayout {
     return UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
       switch sectionNumber {
       case 0: return self.getLayoutRecentSection()
@@ -210,11 +278,52 @@ extension SearchViewController {
       }
     }
   }
+
+  func createAutoResultLayout() -> UICollectionViewCompositionalLayout {
+    let layout = UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
+      let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                            heightDimension: .fractionalHeight(1))
+      let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+      let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                             heightDimension: .absolute(50))
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
+
+      let section = NSCollectionLayoutSection(group: group)
+
+      guard let sections = AutoResultSectionType(rawValue: sectionNumber) else { return nil }
+      switch sections {
+      case .cocktail:
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0)
+      case .ingredient:
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 250, trailing: 0)
+      }
+
+      let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: .absolute(50))
+      let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
+                                                               elementKind: SearchHeaderView.className,
+                                                               alignment: .topLeading)
+      section.boundarySupplementaryItems = [header]
+      return section
+    }
+    return layout
+  }
 }
 
 // MARK: - CollectionView Delegate functions
 extension SearchViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    guard let sectionType = KeywordSectionType(rawValue: indexPath.section) else { return }
 
+    switch sectionType {
+    case .recent:
+      let resultViewController = SearchResultViewController(searchResultText: searchRecentList.safeget(index: indexPath.item) ?? "")
+      navigationController?.pushViewController(resultViewController, animated: false)
+    case .recommend: break
+      // 추천 검색 기능
+    }
+  }
 }
 
 extension SearchViewController: UICollectionViewDataSource {
@@ -224,11 +333,11 @@ extension SearchViewController: UICollectionViewDataSource {
   }
 
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    guard let sectionType = SectionType(rawValue: section) else { return 1 }
+    guard let sectionType = KeywordSectionType(rawValue: section) else { return 1 }
 
     switch sectionType {
     case .recent:
-      return dummyKeywords.count
+      return searchRecentList.count
     case .recommend:
       return 5
     }
@@ -236,7 +345,7 @@ extension SearchViewController: UICollectionViewDataSource {
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let sectionType = SectionType(rawValue: indexPath.section) else {
+    guard let sectionType = KeywordSectionType(rawValue: indexPath.section) else {
       return UICollectionViewCell()
     }
 
@@ -244,12 +353,14 @@ extension SearchViewController: UICollectionViewDataSource {
     case .recent:
       let cell = searchKeywordCollectionView.dequeueReusableCell(ofType: RecentCollectionViewCell.self, at: indexPath)
 
-      cell.updateKeyword(dummyKeywords[indexPath.row])
+      guard let item = searchRecentList.safeget(index: indexPath.row) else { return cell }
+      cell.updateKeyword(item)
       return cell
     case .recommend:
       let cell = searchKeywordCollectionView.dequeueReusableCell(ofType: RecommendCollectionViewCell.self, at: indexPath)
 
-      cell.updateModel(SearchModel.dummyRecommendList[indexPath.row])
+      guard let item = SearchModel.dummyRecommendList.safeget(index: indexPath.row) else { return cell }
+      cell.updateModel(item)
       return cell
     }
   }
@@ -261,18 +372,24 @@ extension SearchViewController: UICollectionViewDataSource {
 
       guard let headerView = headerView as? SearchHeaderView else { return UICollectionReusableView() }
 
-      guard let sectionType = SectionType(rawValue: indexPath.section) else {
+      guard let sectionType = KeywordSectionType(rawValue: indexPath.section) else {
         return UICollectionViewCell()
       }
 
       switch sectionType {
       case .recent:
         headerView.configUI(type: .recent)
+        headerView.deleteButton.isHidden = searchRecentList.isEmpty ? true : false
+        emptyLabel.isHidden = searchRecentList.isEmpty ? false : true
+
+        headerView.didClickOnDeleteButtonClosure = {
+          self.deleteRecentSearch()
+          self.searchKeywordCollectionView.reloadSections([0])
+          self.emptyLabel.isHidden = false
+        }
       case .recommend:
         headerView.configUI(type: .recommend)
       }
-      
-      headerView.delegate = self
       return headerView
     } else {
       return UICollectionReusableView()
@@ -280,14 +397,92 @@ extension SearchViewController: UICollectionViewDataSource {
   }
 }
 
-// MARK: - HeaderViewDelegate
-extension SearchViewController: HeaderViewDelegate {
-  func didClickOnDeleteButton() {
-    self.dummyKeywords.removeAll()
-    self.searchKeywordCollectionView.reloadSections([0])
+// MARK: - Diffable DataSource
+extension SearchViewController {
+  private func setDataSource() {
+    self.resultDataSource = UICollectionViewDiffableDataSource<AutoResultSectionType, String>(collectionView: self.searchAutoResultCollectionView) { (collectionview, indexPath, keyword) -> UICollectionViewCell? in
+
+      guard let cell = self.searchAutoResultCollectionView.dequeueReusableCell(withReuseIdentifier: SearchAutoResultCollectionViewCell.className, for: indexPath) as? SearchAutoResultCollectionViewCell else { preconditionFailure() }
+
+      cell.updateResult(keyword)
+      cell.updateAttributedText(self.searchTextField.text ?? "")
+      return cell
+    }
+
+    self.resultDataSource.supplementaryViewProvider = {
+      collectionView, kind, indexPath in
+
+      guard kind == SearchHeaderView.className else { return nil }
+      let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SearchHeaderView.className, for: indexPath) as? SearchHeaderView
+
+      guard let sections = AutoResultSectionType(rawValue: indexPath.section) else { return nil }
+      switch sections {
+      case .cocktail:
+        view?.configUI(type: .cocktail)
+      case .ingredient:
+        view?.configUI(type: .ingredient)
+      }
+      return view
+    }
   }
 
-  func didClickOnTotalResultButton() {
-    // TODO: 전체 결과 창으로 화면전환
+  private func performQuery(with searchText: String?) {
+    guard let searchText = searchText else { return }
+
+    let filteredCocktail = self.dummyCocktail.filter { $0.hasPrefix(searchText) }
+    let filteredIngredient = self.dummyIngredient.filter { $0.hasPrefix(searchText) }
+
+    var fiveCocktail = Array(filteredCocktail.prefix(5))
+    let fiveIngredient = Array(filteredIngredient.prefix(5))
+
+    if fiveCocktail.isEmpty {
+      fiveCocktail.append(" ")
+    }
+
+    resultSnapshot = NSDiffableDataSourceSnapshot<AutoResultSectionType, String>()
+    resultSnapshot.appendSections([.cocktail, .ingredient])
+    resultSnapshot.appendItems(fiveCocktail, toSection: .cocktail)
+    resultSnapshot.appendItems(fiveIngredient, toSection: .ingredient)
+    resultDataSource.apply(resultSnapshot, animatingDifferences: true)
+  }
+}
+
+extension SearchViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    let searchText = self.searchTextField.text ?? ""
+
+    searchTextField.resignFirstResponder()
+    saveRecentSearch(keyword: searchText)
+
+    let resultViewController = SearchResultViewController(searchResultText: searchText)
+    self.navigationController?.pushViewController(resultViewController, animated: false)
+    return true
+  }
+}
+
+// MARK: - Realm Manager
+extension SearchViewController {
+  private func setRealmData() {
+    let savedSearchRecent = realm?.objects(RecentSearchModel.self)
+    savedSearchRecent?.forEach { object in
+      searchRecentList.insert(object.keyword, at: 0)
+    }
+  }
+
+  private func saveRecentSearch(keyword: String) {
+    let recentSearchModel = RecentSearchModel()
+    recentSearchModel.keyword = keyword
+    try? realm?.write {
+      realm?.add(recentSearchModel)
+    }
+    searchRecentList.insert(keyword, at: 0)
+    emptyLabel.isHidden = true
+  }
+
+  private func deleteRecentSearch() {
+    try? realm?.write {
+      realm?.deleteAll()
+    }
+    searchRecentList.removeAll()
   }
 }
