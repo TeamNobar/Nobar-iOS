@@ -9,18 +9,28 @@ import UIKit
 
 final class ScoreCVC: UICollectionViewCell {
   
-  private let slider = UISlider()
+  private let heartSlider = HeartRatingUISlider().then {
+    $0.minimumValue = 0
+    $0.maximumValue = 5
+    $0.value = 0.5
+    $0.minimumTrackTintColor = .clear
+    $0.maximumTrackTintColor = .clear
+    $0.thumbTintColor = .clear
+  }
   
   private var heartImageViews: [UIImageView] = []
   
   private var heartStackView = UIStackView().then{
     $0.axis = .horizontal
+    $0.distribution = .fillEqually
     $0.spacing = 21
   }
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     render()
+    initStackView()
+    initSlider()
   }
   
   @available(*, unavailable)
@@ -35,7 +45,15 @@ final class ScoreCVC: UICollectionViewCell {
 extension ScoreCVC {
   
   private func render() {
-    addSubview(heartStackView)
+    addSubviews([heartStackView,heartSlider])
+    heartStackView.snp.makeConstraints{
+      $0.centerX.centerY.equalToSuperview()
+      $0.height.equalTo(42)
+    }
+    heartSlider.snp.makeConstraints{
+      $0.leading.trailing.equalTo(heartStackView)
+      $0.centerY.equalToSuperview()
+    }
     
   }
   
@@ -44,7 +62,34 @@ extension ScoreCVC {
     for i in 0..<5 {
       let imageView = UIImageView(image:ImageFactory.btnScoreFill)
       heartStackView.addArrangedSubview(imageView)
+      
     }
+  }
+
+  private func initSlider() {
+    heartSlider.addTarget(self, action: #selector(slideHeartSlider), for: UIControl.Event.valueChanged)
+  }
+
+  @objc func slideHeartSlider(){
+    var value = heartSlider.value
+    print(value)
+    
+    for idx in 0..<5 {
+      if value > 0.5 {
+        value -= 1
+        let imageView = heartStackView.subviews[idx] as? UIImageView ?? UIImageView()
+        imageView.image = ImageFactory.btnScoreFill
+      } else if 0 < value && value < 0.5 {
+        value -= 0.5
+        let imageView = heartStackView.subviews[idx] as? UIImageView ?? UIImageView()
+        imageView.image = ImageFactory.btnScoreHalf
+      }else {
+        let imageView = heartStackView.subviews[idx] as? UIImageView ?? UIImageView()
+        imageView.image = ImageFactory.btnScoreEmpty
+      }
+
+    }
+
   }
   
 }
