@@ -32,11 +32,13 @@ final class DetailViewController: BaseViewController {
     private func setupTableView() {
       detailTableView.delegate = self
       detailTableView.dataSource = self
+//      detailTableView.separatorStyle = .none
     }
     
     // 셀 등록 관련 함수 정의
     private func registerXibs() {
       var nib : [UINib] = []
+    
       identifiers.forEach{
           nib.append(UINib(nibName: $0, bundle: nil))
       }
@@ -48,15 +50,12 @@ final class DetailViewController: BaseViewController {
 }
     
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return identifiers.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-      /*
+
       if indexPath.row == 0 {
           let width = tableView.bounds.width
           let tableHeight = width * (100/375)
@@ -77,8 +76,34 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
           let tableHeight = width * (150/375)
           return tableHeight
       }
-       */
-      
-        return UITableView.automaticDimension
+
+      return UITableView.automaticDimension
+    }
+  
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      switch indexPath.row{
+      case 0:
+          guard let cell = detailTableView.dequeueReusableCell(withIdentifier: identifiers[0], for: indexPath) as? InfoTableViewCell else {return UITableViewCell()}
+          return cell
+      case 1:
+          guard let cell = detailTableView.dequeueReusableCell(withIdentifier: identifiers[1], for: indexPath) as? HeaderReadyTableViewCell else {return UITableViewCell()}
+          return cell
+      case 2:
+        guard let cell = detailTableView.dequeueReusableCell(withIdentifier: identifiers[2], for: indexPath) as? IngredientsTableViewCell else { return UITableViewCell() }
+        
+        cell.backgroundColor = .systemRed.withAlphaComponent(0.4)
+      case 3:
+          guard let cell = detailTableView.dequeueReusableCell(withIdentifier: identifiers[3], for: indexPath) as? HeaderMakeTableViewCell else {return UITableViewCell()}
+      case 4:
+          guard let cell = detailTableView.dequeueReusableCell(withIdentifier: identifiers[4], for: indexPath) as? StepsTableViewCell else {return UITableViewCell()}
+      case 5:
+          guard let cell = detailTableView.dequeueReusableCell(withIdentifier: identifiers[5], for: indexPath) as? HeaderRecordTableViewCell else {return UITableViewCell()}
+      case 6:
+          guard let cell = detailTableView.dequeueReusableCell(withIdentifier: identifiers[6], for: indexPath) as? RecordTableViewCell else {return UITableViewCell()}
+      default:
+          let cell = UITableViewCell()
+          return cell
+      }
+    return UITableViewCell()
     }
 }
