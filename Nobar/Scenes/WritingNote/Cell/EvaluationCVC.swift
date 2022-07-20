@@ -9,8 +9,9 @@ import UIKit
 
 final class EvaluationCVC: UICollectionViewCell {
   
-  private let evaluationTextView = TastingNoteTextView()
+  private let placeholder = "맛에 대한 주관적인 평가를 들려주세요"
   
+  private let evaluationTextView = TastingNoteTextView()
   private let characterNumLabel = UILabel().then {
     $0.font = Pretendard.size10.medium()
     $0.textColor = Color.gray03.getColor()
@@ -20,6 +21,8 @@ final class EvaluationCVC: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     setLayout()
+    initTextView()
+    setDelegate()
   }
   
   @available(*, unavailable)
@@ -27,6 +30,10 @@ final class EvaluationCVC: UICollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
+  private func initTextView(){
+    evaluationTextView.text = placeholder
+    evaluationTextView.textColor = Color.gray03.getColor()
+  }
   private func setLayout() {
     addSubviews([evaluationTextView,
                  characterNumLabel])
@@ -41,4 +48,38 @@ final class EvaluationCVC: UICollectionViewCell {
       $0.trailing.equalToSuperview().inset(40)
     }
   }
+  
+  private func setDelegate(){
+      evaluationTextView.delegate = self
+  }
+
+}
+
+extension EvaluationCVC: UITextViewDelegate{
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+          evaluationTextView.textColor = Color.gray03.getColor()
+        }else if textView.text == placeholder {
+          evaluationTextView.textColor = Color.black.getColor()
+          evaluationTextView.text = nil
+        }
+        
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            evaluationTextView.textColor = Color.gray03.getColor()
+          evaluationTextView.text = placeholder
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if evaluationTextView.text.count > 200 {
+          evaluationTextView.deleteBackward()
+        }
+        
+        characterNumLabel.text = "(\(evaluationTextView.text.count)/200자)"
+
+    }
+
 }

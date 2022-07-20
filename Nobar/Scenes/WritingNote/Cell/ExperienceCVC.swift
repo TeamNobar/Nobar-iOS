@@ -9,6 +9,8 @@ import UIKit
 
 final class ExperienceCVC: UICollectionViewCell {
   
+  private let placeholder = "칵테일을 만들고 마셨던 경험을 자유롭게 기록해주세요"
+  
   private let experienceTextView = TastingNoteTextView()
   
   private let characterNumLabel = UILabel().then {
@@ -20,11 +22,18 @@ final class ExperienceCVC: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     setLayout()
+    initTextView()
+    setDelegate()
   }
   
   @available(*, unavailable)
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  private func initTextView(){
+    experienceTextView.text = placeholder
+    experienceTextView.textColor = Color.gray03.getColor()
   }
   
   private func setLayout() {
@@ -42,4 +51,35 @@ final class ExperienceCVC: UICollectionViewCell {
       $0.trailing.equalToSuperview().inset(40)
     }
   }
+  
+  private func setDelegate(){
+      experienceTextView.delegate = self
+  }
 }
+
+extension ExperienceCVC: UITextViewDelegate{
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+          experienceTextView.textColor = Color.gray03.getColor()
+        }else if textView.text == placeholder {
+          experienceTextView.textColor = Color.black.getColor()
+          experienceTextView.text = nil
+        }
+        
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+          experienceTextView.textColor = Color.gray03.getColor()
+          experienceTextView.text = placeholder
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if experienceTextView.text.count > 200 {
+          experienceTextView.deleteBackward()
+        }
+        characterNumLabel.text = "(\(experienceTextView.text.count)/200자)"
+    }
+}
+

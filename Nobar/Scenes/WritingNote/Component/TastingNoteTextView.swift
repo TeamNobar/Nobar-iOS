@@ -31,7 +31,7 @@ final class TastingNoteTextView: UITextView {
     layer.borderWidth = 1
     layer.borderColor = Color.gray02.getColor().cgColor
     layer.cornerRadius = 10
-    contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+    textContainerInset = UIEdgeInsets(top: 16,left: 16,bottom: 28,right: 16)
     font = Pretendard.size14.medium()
     
   }
