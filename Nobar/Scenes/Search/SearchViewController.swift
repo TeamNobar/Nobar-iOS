@@ -175,6 +175,7 @@ extension SearchViewController {
   private func setDelegation() {
     searchKeywordCollectionView.delegate = self
     searchKeywordCollectionView.dataSource = self
+    searchAutoResultCollectionView.delegate = self
   }
 
   private func setRegistration() {
@@ -316,12 +317,31 @@ extension SearchViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     guard let sectionType = KeywordSectionType(rawValue: indexPath.section) else { return }
 
-    switch sectionType {
-    case .recent:
-      let resultViewController = SearchResultViewController(searchResultText: searchRecentList.safeget(index: indexPath.item) ?? "")
-      navigationController?.pushViewController(resultViewController, animated: false)
-    case .recommend: break
-      // 추천 검색 기능
+    guard let autoSectionType = AutoResultSectionType(rawValue: indexPath.section) else { return }
+
+    if searchAutoResultCollectionView.isHidden {
+      switch sectionType {
+      case .recent:
+        let resultViewController = SearchResultViewController(searchResultText: searchRecentList.safeget(index: indexPath.item) ?? "")
+        navigationController?.pushViewController(resultViewController, animated: false)
+      case .recommend:
+        print("칵테일 상세뷰로 이동 - 추천")
+        // 추천 검색 -> 칵테일 상세뷰로 이동 - 수아 뷰
+        // let item = indexPath.item
+        // if let recipeId = 서버에서 받아온 레시피 모델.safeget(index: item).id {
+        //  let 레시피 상세 뷰 = 레시피상세뷰컨()
+        //  navigationViewController?.pushViewController(레시피 상세뷰컨)
+      }
+    } else {
+      if autoSectionType == .cocktail {
+        // TODO: - 앱잼 내에서는 칵테일 부분만 선택되는 것으로 변경
+        print("칵테일 상세뷰로 이동 - 자동완성")
+        // 칵테일 상세뷰로 이동 - 수아뷰
+        // let item = indexPath.item
+        // if let recipeId = 서버에서 받아온 레시피 모델.safeget(index: item).id {
+        //  let 레시피 상세 뷰 = 레시피상세뷰컨()
+        //  navigationViewController?.pushViewController(레시피 상세뷰컨)
+      }
     }
   }
 }
