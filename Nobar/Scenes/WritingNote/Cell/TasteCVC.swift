@@ -9,6 +9,8 @@ import UIKit
 
 final class TasteCVC: UICollectionViewCell {
   
+  var selectedTagNumList: [Int] = []
+  
   private let dummyPhraseList = ["맛이좋아요","맛이쏘쏘쏘","아주별로야","네번쨰문구","다번째문구","여번째문구","일번째문구","여번쨰문구","아번째문구"]
   private var tagViews: [TastingTagView] = []
   
@@ -88,9 +90,25 @@ extension TasteCVC {
   
   @objc private func didTapTagView(sender: UITapGestureRecognizer) {
     if let tagView = sender.view as? TastingTagView {
-      tagView.isSelected.toggle()
+      if (selectedTagNumList.count < 3){
+        tagView.isSelected.toggle()
+        switch tagView.isSelected{
+        case true:
+          selectedTagNumList.append(tagView.tag)
+        case false:
+          guard let idx = selectedTagNumList.firstIndex(of: tagView.tag) else {return}
+          selectedTagNumList.remove(at: idx)
+        }
+      }else{
+        if tagView.isSelected{
+          tagView.isSelected.toggle()
+          guard let idx = selectedTagNumList.firstIndex(of: tagView.tag) else {return}
+          selectedTagNumList.remove(at: idx)
+        }
+      }
+      }
     }
   }
-}
+
 
 
