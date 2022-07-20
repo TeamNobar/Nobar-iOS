@@ -17,13 +17,13 @@ final class CustomAlert : BaseViewController {
     $0.layer.cornerRadius = 10
   }
 
-  var alertTitleLabel = UILabel().then {
+  private let alertTitleLabel = UILabel().then {
     $0.textColor = Color.black.getColor()
     $0.font = Pretendard.size15.bold()
     $0.sizeToFit()
   }
 
-  lazy var cancleButton = UIButton().then {
+  private lazy var cancleButton = UIButton().then {
     $0.setTitle("취소하기", for: .normal)
     $0.setTitleColor(Color.gray03.getColor(), for: .normal)
     $0.titleLabel?.font = Pretendard.size14.semibold()
@@ -35,7 +35,7 @@ final class CustomAlert : BaseViewController {
     $0.addTarget(self, action: #selector(didClickOnCancleButton(_:)), for: .touchUpInside)
   }
 
-  lazy var confirmButton = UIButton().then {
+  private lazy var confirmButton = UIButton().then {
     $0.setTitle("삭제하기", for: .normal)
     $0.setTitleColor(Color.white.getColor(), for: .normal)
     $0.titleLabel?.font = Pretendard.size14.semibold()
