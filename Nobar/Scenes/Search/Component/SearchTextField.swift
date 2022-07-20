@@ -39,7 +39,7 @@ final class SearchTextField: UITextField {
 // MARK: - UI & Layout
 extension SearchTextField {
   private func setTextField() {
-    placeholder = " 칵테일 이름, 재료 이름"
+    placeholder = " 칵테일 혹은 재료를 검색해보세요"
     setPlaceholderAttributes(Color.gray03.getColor(), Pretendard.size13.bold())
     backgroundColor = Color.gray01.getColor()
     font = Pretendard.size13.bold()

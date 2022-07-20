@@ -55,7 +55,7 @@ final class SearchViewController: BaseViewController {
   }
 
   private lazy var underline = UIView().then {
-    $0.backgroundColor = Color.gray02.getColor()
+    $0.backgroundColor = Color.gray02.withAlphaColor(alpha: 0.5)
     $0.layer.applyShadow(color: .black, alpha: 0.2, x: 1, y: 1, blur: 2, spread: 0)
   }
 
@@ -116,8 +116,8 @@ final class SearchViewController: BaseViewController {
 // MARK: - UI & Layout
 extension SearchViewController {
   private func render() {
-    view.addSubviews([searchView, searchKeywordCollectionView, searchAutoResultCollectionView])
-    searchView.addSubviews([backButton, searchTextField, underline])
+    view.addSubviews([searchView, searchKeywordCollectionView, searchAutoResultCollectionView, underline])
+    searchView.addSubviews([backButton, searchTextField])
     searchKeywordCollectionView.addSubview(emptyLabel)
   }
 
@@ -148,13 +148,13 @@ extension SearchViewController {
     }
 
     underline.snp.makeConstraints {
-      $0.top.equalTo(searchTextField.snp.bottom).offset(20)
+      $0.top.equalTo(searchView.snp.bottom)
       $0.leading.trailing.equalToSuperview()
       $0.height.equalTo(1)
     }
 
     searchKeywordCollectionView.snp.makeConstraints {
-      $0.top.equalTo(underline.snp.bottom)
+      $0.top.equalTo(underline.snp.bottom).offset(2)
       $0.leading.trailing.bottom.equalToSuperview()
     }
 
@@ -353,12 +353,14 @@ extension SearchViewController: UICollectionViewDataSource {
     case .recent:
       let cell = searchKeywordCollectionView.dequeueReusableCell(ofType: RecentCollectionViewCell.self, at: indexPath)
 
-      cell.updateKeyword(searchRecentList[indexPath.row])
+      guard let item = searchRecentList.safeget(index: indexPath.row) else { return cell }
+      cell.updateKeyword(item)
       return cell
     case .recommend:
       let cell = searchKeywordCollectionView.dequeueReusableCell(ofType: RecommendCollectionViewCell.self, at: indexPath)
 
-      cell.updateModel(SearchModel.dummyRecommendList[indexPath.row])
+      guard let item = SearchModel.dummyRecommendList.safeget(index: indexPath.row) else { return cell }
+      cell.updateModel(item)
       return cell
     }
   }

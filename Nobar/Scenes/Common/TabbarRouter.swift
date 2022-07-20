@@ -104,7 +104,7 @@ extension TabbarRouter {
   
   private func setupSearchViewController() {
     let storyboard = TabRouterChild.search.storyboard.instance
-    let viewController = storyboard.instantiateViewController(ofType: SearchViewController.self)
+    let viewController = storyboard.instantiateViewController(ofType: SearchBaseViewController.self)
     let navigationController = UINavigationController(rootViewController: viewController).then {
       $0.tabBarItem.title = TabRouterChild.search.title
       $0.tabBarItem.image = UIImage(systemName: TabRouterChild.search.imageName)
