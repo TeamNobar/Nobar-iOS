@@ -47,6 +47,7 @@ final class SearchResultViewController: BaseViewController {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.showsHorizontalScrollIndicator = false
     collectionView.showsVerticalScrollIndicator = false
+    collectionView.keyboardDismissMode = .onDrag
     return collectionView
   }()
 
@@ -221,7 +222,6 @@ extension SearchResultViewController {
 
 // MARK: - CollectionView Delegate functions
 extension SearchResultViewController: UICollectionViewDelegate {
-
 }
 
 extension SearchResultViewController: UICollectionViewDataSource {
@@ -239,7 +239,6 @@ extension SearchResultViewController: UICollectionViewDataSource {
     case .ingredient:
       return dummyIngredient.count
     }
-
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
