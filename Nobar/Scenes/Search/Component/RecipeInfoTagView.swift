@@ -52,7 +52,7 @@ extension RecipeInfoTagView {
 
   private func configUI() {
     backgroundColor = Color.white.getColor()
-    layer.borderColor = Color.gray02.getColor().cgColor
+    layer.borderColor = Color.gray02.withAlphaColor(alpha: 0.5).cgColor
     layer.borderWidth = 1
     layer.cornerRadius = 8
 
@@ -65,6 +65,13 @@ extension RecipeInfoTagView {
       tagLabel.textColor = Color.navy01.getColor()
     case .kind:
       tagLabel.textColor = Color.pink01.getColor()
+    }
+  }
+
+  func remakeLabelConstraints() {
+    tagLabel.snp.remakeConstraints {
+      $0.top.bottom.equalToSuperview().inset(2)
+      $0.leading.trailing.equalToSuperview().inset(3)
     }
   }
 }
