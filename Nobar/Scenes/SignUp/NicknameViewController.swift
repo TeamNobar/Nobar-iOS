@@ -23,6 +23,7 @@ class NicknameViewController: BaseViewController {
     $0.font = Pretendard.size16.medium()
     $0.textColor = Color.black.getColor()
     $0.tintColor = Color.navy01.getColor()
+    $0.attributedPlaceholder = NSAttributedString(string: "최대 7자까지 입력 가능합니다", attributes: [NSAttributedString.Key.foregroundColor: Color.gray03.getColor(), NSAttributedString.Key.font: Pretendard.size16.medium()])
     $0.layer.cornerRadius = 10
     $0.addLeftPadding(width: 18)
     $0.addRightPadding(width: 18)
@@ -35,7 +36,7 @@ class NicknameViewController: BaseViewController {
   }
 
   private let warningLabel = UILabel().then {
-    $0.text = "최대 7자까지 입력 가능합니다"
+    $0.text = "7자 이내로 입력해주세요"
     $0.font = Pretendard.size10.regular()
     $0.sizeToFit()
     $0.textColor = Color.pink01.getColor()
