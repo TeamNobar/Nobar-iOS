@@ -71,14 +71,14 @@ extension SearchTextField {
   private func setTextFieldLayout() {
     clearTextButton.snp.makeConstraints {
       $0.width.height.equalTo(20)
-      $0.centerY.equalToSuperview()
+      $0.top.equalToSuperview().inset(8)
       $0.leading.equalToSuperview()
       $0.trailing.equalToSuperview().inset(8)
     }
 
     searchIconImage.snp.makeConstraints {
       $0.width.height.equalTo(19)
-      $0.centerY.equalToSuperview()
+      $0.top.equalToSuperview().inset(9)
       $0.leading.equalToSuperview().inset(16)
       $0.trailing.equalToSuperview().inset(8)
     }
