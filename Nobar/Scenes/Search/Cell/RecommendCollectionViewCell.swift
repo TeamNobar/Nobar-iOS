@@ -13,13 +13,11 @@ import SnapKit
 final class RecommendCollectionViewCell: UICollectionViewCell {
 
   private let numberLabel = UILabel().then {
-    $0.text = "1"
     $0.textColor = Color.black.getColor()
     $0.font = Pretendard.size15.regular()
   }
 
   private let keywordLabel = UILabel().then {
-    $0.text = "추천 검색어 어쩌구"
     $0.textColor = Color.black.getColor()
     $0.font = Pretendard.size15.regular()
   }
@@ -66,8 +64,8 @@ extension RecommendCollectionViewCell {
     }
   }
 
-  func updateModel(_ model: SearchModel) {
-    numberLabel.text = "\(model.order)"
-    keywordLabel.text = model.recommendKeyword
+  func updateModel(with number: String, _ model: Recommend) {
+    numberLabel.text = number
+    keywordLabel.text = model.name
   }
 }
