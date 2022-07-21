@@ -119,7 +119,6 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = detailTableView.dequeueReusableCell(
           withIdentifier: identifiers[3], for: indexPath
         ) as? HeaderMakeTableViewCell else {return UITableViewCell()}
-        cell.backgroundColor = .systemGreen.withAlphaComponent(0.4)
       case 4:
         guard let cell = detailTableView.dequeueReusableCell(
           withIdentifier: identifiers[4], for: indexPath
