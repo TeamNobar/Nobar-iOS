@@ -109,6 +109,8 @@
 		4DF28D1A288942F80019C930 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF28D19288942F80019C930 /* SplashViewController.swift */; };
 		4DF28D2128894F810019C930 /* 111529-rocket.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DF28D2028894F810019C930 /* 111529-rocket.json */; };
 		4F4D0CAB8CFF1A5E00E5BABE /* Pods_NobarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE5A0BAC402A3B3DB165A1E7 /* Pods_NobarTests.framework */; };
+		6A3E36492887D36000BBB235 /* HeartRatingUISlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3E36482887D36000BBB235 /* HeartRatingUISlider.swift */; };
+		6A9486EA28851A32003FB1BD /* TastingTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9486E928851A32003FB1BD /* TastingTagView.swift */; };
 		6AAD37DC287C71FA0030646C /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37DB287C71F90030646C /* UIView+Extension.swift */; };
 		6AAD37DE287C75240030646C /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37DD287C75240030646C /* UIScreen+Extension.swift */; };
 		6AAD37E0287C7A720030646C /* UITextfield+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD37DF287C7A720030646C /* UITextfield+Extension.swift */; };
@@ -126,6 +128,14 @@
 		6AAD380228800A4D0030646C /* RecommendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD380128800A4C0030646C /* RecommendModel.swift */; };
 		6AAD3804288012910030646C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD3803288012910030646C /* UIColor+Extension.swift */; };
 		6CD81E2E4E59CD8EA6F6C81A /* Pods_Nobar_NobarUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFEFAACA04DDB3B90D4FE900 /* Pods_Nobar_NobarUITests.framework */; };
+		6AB399682884127500FA7445 /* TastingNoteHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB399672884127500FA7445 /* TastingNoteHeaderView.swift */; };
+		6ABA93E12884A62900084D6D /* ScoreCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABA93E02884A62900084D6D /* ScoreCVC.swift */; };
+		6AD0F82E28849A0C00260574 /* SelectCocktailCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD0F82D28849A0C00260574 /* SelectCocktailCVC.swift */; };
+		6AD0F83028849DFE00260574 /* TasteCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD0F82F28849DFE00260574 /* TasteCVC.swift */; };
+		6AF3806B2885CEA200CB8F3E /* SelectDateCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF3806A2885CEA200CB8F3E /* SelectDateCVC.swift */; };
+		6AF3806D2885E84A00CB8F3E /* TastingNoteTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF3806C2885E84A00CB8F3E /* TastingNoteTextView.swift */; };
+		6AF3806F2885EDE800CB8F3E /* EvaluationCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF3806E2885EDE700CB8F3E /* EvaluationCVC.swift */; };
+		6AF380712885F0ED00CB8F3E /* ExperienceCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF380702885F0ED00CB8F3E /* ExperienceCVC.swift */; };
 		E547D9A3287C778C00806886 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E547D9A2287C778C00806886 /* Detail.storyboard */; };
 		E547D9A5287C779E00806886 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547D9A4287C779E00806886 /* DetailViewController.swift */; };
 		E547D9AF287DEBA000806886 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E547D9AD287DEBA000806886 /* InfoTableViewCell.swift */; };
@@ -257,6 +267,8 @@
 		4DF28D2028894F810019C930 /* 111529-rocket.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "111529-rocket.json"; sourceTree = "<group>"; };
 		4F3374400330F9EB2A23D168 /* Pods-Nobar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nobar.release.xcconfig"; path = "Target Support Files/Pods-Nobar/Pods-Nobar.release.xcconfig"; sourceTree = "<group>"; };
 		67EBA53932B4C9CB0EED94B9 /* Pods-Nobar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nobar.debug.xcconfig"; path = "Target Support Files/Pods-Nobar/Pods-Nobar.debug.xcconfig"; sourceTree = "<group>"; };
+		6A3E36482887D36000BBB235 /* HeartRatingUISlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRatingUISlider.swift; sourceTree = "<group>"; };
+		6A9486E928851A32003FB1BD /* TastingTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastingTagView.swift; sourceTree = "<group>"; };
 		6AAD37DB287C71F90030646C /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		6AAD37DD287C75240030646C /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		6AAD37DF287C7A720030646C /* UITextfield+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextfield+Extension.swift"; sourceTree = "<group>"; };
@@ -298,6 +310,14 @@
 		E547D9D12883F78D00806886 /* HeaderRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderRecordTableViewCell.swift; sourceTree = "<group>"; };
 		E547D9D22883F78D00806886 /* HeaderRecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderRecordTableViewCell.xib; sourceTree = "<group>"; };
 		FFEFAACA04DDB3B90D4FE900 /* Pods_Nobar_NobarUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nobar_NobarUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AB399672884127500FA7445 /* TastingNoteHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastingNoteHeaderView.swift; sourceTree = "<group>"; };
+		6ABA93E02884A62900084D6D /* ScoreCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCVC.swift; sourceTree = "<group>"; };
+		6AD0F82D28849A0C00260574 /* SelectCocktailCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCocktailCVC.swift; sourceTree = "<group>"; };
+		6AD0F82F28849DFE00260574 /* TasteCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteCVC.swift; sourceTree = "<group>"; };
+		6AF3806A2885CEA200CB8F3E /* SelectDateCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateCVC.swift; sourceTree = "<group>"; };
+		6AF3806C2885E84A00CB8F3E /* TastingNoteTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastingNoteTextView.swift; sourceTree = "<group>"; };
+		6AF3806E2885EDE700CB8F3E /* EvaluationCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationCVC.swift; sourceTree = "<group>"; };
+		6AF380702885F0ED00CB8F3E /* ExperienceCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceCVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -574,6 +594,8 @@
 		3CD437042877DC4A0044AE04 /* WritingNote */ = {
 			isa = PBXGroup;
 			children = (
+				6A9486E8288519FB003FB1BD /* Component */,
+				6AB39966288411EA00FA7445 /* Cell */,
 				3CD4370C2877DC910044AE04 /* WritingNote.storyboard */,
 				3CD437122877EC530044AE04 /* WritingNoteViewController.swift */,
 			);
@@ -698,6 +720,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		6A9486E8288519FB003FB1BD /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				6A9486E928851A32003FB1BD /* TastingTagView.swift */,
+				6AF3806C2885E84A00CB8F3E /* TastingNoteTextView.swift */,
+				6A3E36482887D36000BBB235 /* HeartRatingUISlider.swift */,
+			);
+			path = Component;
 		4D6004592887E462008A5226 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -880,6 +910,20 @@
 				AE5A0BAC402A3B3DB165A1E7 /* Pods_NobarTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6AB39966288411EA00FA7445 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6AB399672884127500FA7445 /* TastingNoteHeaderView.swift */,
+				6AD0F82D28849A0C00260574 /* SelectCocktailCVC.swift */,
+				6AD0F82F28849DFE00260574 /* TasteCVC.swift */,
+				6ABA93E02884A62900084D6D /* ScoreCVC.swift */,
+				6AF3806A2885CEA200CB8F3E /* SelectDateCVC.swift */,
+				6AF3806E2885EDE700CB8F3E /* EvaluationCVC.swift */,
+				6AF380702885F0ED00CB8F3E /* ExperienceCVC.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1147,16 +1191,19 @@
 				E547D9D32883F78D00806886 /* HeaderRecordTableViewCell.swift in Sources */,
 				3CDE20112875F23E00680B8C /* Identifiable.swift in Sources */,
 				3C49F0A62885106A00FA1A3D /* TastingNoteViewController.swift in Sources */,
+				6A9486EA28851A32003FB1BD /* TastingTagView.swift in Sources */,
 				3C823002287518C20031C1DA /* Environment.swift in Sources */,
 				6AAD37FB287FFA240030646C /* GuideCVC.swift in Sources */,
 				3C6CBC1C2881D18300294D2A /* NBSegmentedController.swift in Sources */,
 				6AAD37EC287C807E0030646C /* showToastMessage.swift in Sources */,
 				3C01FCC9287E4AA000BE23E6 /* Skill.swift in Sources */,
+				6A3E36492887D36000BBB235 /* HeartRatingUISlider.swift in Sources */,
 				6AAD37E4287C7E9D0030646C /* applyShadow.swift in Sources */,
 				3CD437172877EC860044AE04 /* BaseViewController.swift in Sources */,
 				3CD437022877D4880044AE04 /* NBTabbarController.swift in Sources */,
 				4D05716C287D4D5600CB656A /* RecommendCollectionViewCell.swift in Sources */,
 				3C01FCD4287E505A00BE23E6 /* Networking.swift in Sources */,
+				6AF3806F2885EDE800CB8F3E /* EvaluationCVC.swift in Sources */,
 				4D8D03062888E58B0023288D /* SettingViewController.swift in Sources */,
 				3CF40A79287E42FC00C44A64 /* EndPoint.swift in Sources */,
 				3CD437132877EC530044AE04 /* WritingNoteViewController.swift in Sources */,
@@ -1172,6 +1219,7 @@
 				6AAD37DC287C71FA0030646C /* UIView+Extension.swift in Sources */,
 				4D6004532886EC16008A5226 /* RecentSearchModel.swift in Sources */,
 				4D38B5BB28800C8D00CD33ED /* SearchAutoResultCollectionViewCell.swift in Sources */,
+				6AB399682884127500FA7445 /* TastingNoteHeaderView.swift in Sources */,
 				4D3554B7287DEA670063F725 /* SearchModel.swift in Sources */,
 				3C01FCCF287E4B2800BE23E6 /* TastingNote.swift in Sources */,
 				3CD4370F2877E8310044AE04 /* TabbarRouter.swift in Sources */,
@@ -1191,10 +1239,13 @@
 				3CD437002877D3FD0044AE04 /* BaseRouter.swift in Sources */,
 				E547D9AF287DEBA000806886 /* InfoTableViewCell.swift in Sources */,
 				3C01FCDD287E53BF00BE23E6 /* NetworkLogger.swift in Sources */,
+				6AF3806B2885CEA200CB8F3E /* SelectDateCVC.swift in Sources */,
+				6AD0F83028849DFE00260574 /* TasteCVC.swift in Sources */,
 				6AAD37FE288005940030646C /* GuideModel.swift in Sources */,
 				4DBA151D288458A20068A487 /* SearchTotalResultViewContorller.swift in Sources */,
 				6AAD37DE287C75240030646C /* UIScreen+Extension.swift in Sources */,
 				3CA17C1328789BAE00E67B27 /* ImageFactory.swift in Sources */,
+				6AF3806D2885E84A00CB8F3E /* TastingNoteTextView.swift in Sources */,
 				3CD436F7287738DD0044AE04 /* UIStoryboard+Extensions.swift in Sources */,
 				4D69854128858F7E00763EAC /* BaseCocktailModel.swift in Sources */,
 				3CD436FE2877D11C0044AE04 /* AppRouter.swift in Sources */,
@@ -1220,8 +1271,11 @@
 				6AAD37E2287C7B250030646C /* UILabel+Extension.swift in Sources */,
 				6AAD3804288012910030646C /* UIColor+Extension.swift in Sources */,
 				3CD436CF28771B060044AE04 /* Theme.swift in Sources */,
+				6ABA93E12884A62900084D6D /* ScoreCVC.swift in Sources */,
+				6AF380712885F0ED00CB8F3E /* ExperienceCVC.swift in Sources */,
 				3C01FCDF287E588700BE23E6 /* Data+Extensions.swift in Sources */,
 				6AAD37E6287C7EFE0030646C /* calculatePastTime.swift in Sources */,
+				6AD0F82E28849A0C00260574 /* SelectCocktailCVC.swift in Sources */,
 				3C01FCCD287E4AF800BE23E6 /* Ingredient.swift in Sources */,
 				3C49F0AC288526E700FA1A3D /* MyPageNavigationView.swift in Sources */,
 				3C49F0AA2885145B00FA1A3D /* Array+Extensions.swift in Sources */,
