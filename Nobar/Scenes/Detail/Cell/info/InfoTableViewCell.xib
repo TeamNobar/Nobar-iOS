@@ -154,6 +154,7 @@
                 <outlet property="proofImage" destination="xrh-s0-XDB" id="i3B-3q-RZh"/>
                 <outlet property="proofNameLabel" destination="KNY-QH-pht" id="ThY-Fk-RG3"/>
                 <outlet property="proofTitleLabel" destination="NLn-hB-lsG" id="N8j-Yp-QeG"/>
+                <outlet property="rectBackgroundView" destination="bgX-Tq-hpA" id="K1b-vi-kXJ"/>
                 <outlet property="skillImage" destination="dF2-uB-T7f" id="LcT-lh-zzp"/>
                 <outlet property="skillNameLabel" destination="zTk-25-SCV" id="jAS-mG-SVf"/>
                 <outlet property="skillTitleLabel" destination="pzI-VE-Fyh" id="vtQ-HJ-4LY"/>

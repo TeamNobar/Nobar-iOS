@@ -9,6 +9,10 @@ import UIKit
 
 
 final class DetailViewController: BaseViewController {
+  
+  @IBOutlet weak var cocktailNameLabel: UILabel!
+  @IBOutlet weak var cocktailEngNameLabel: UILabel!
+  
   @IBOutlet weak var cocktailNameHeaderView: UIView!
   @IBOutlet weak var detailTableView: UITableView!
 
@@ -24,7 +28,17 @@ final class DetailViewController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-      
+    // Initialization code
+    cocktailNameLabel.text = "코스모폴리탄"  //Data
+    cocktailNameLabel.font = Pretendard.size20.bold()
+    cocktailNameLabel.textColor = Color.black.getColor()
+    
+    cocktailEngNameLabel.text = "Cosmopolitan"  //Data
+    cocktailEngNameLabel.font = Pretendard.size12.regular()
+    cocktailEngNameLabel.textColor = Color.gray04.getColor()
+    
+    
+    
     setupTableView()
     registerXibs()
   }

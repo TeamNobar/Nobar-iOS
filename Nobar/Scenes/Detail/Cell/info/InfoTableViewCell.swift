@@ -9,6 +9,8 @@ import UIKit
 
 class InfoTableViewCell: UITableViewCell {
     
+  @IBOutlet weak var rectBackgroundView: UIView!
+  
   @IBOutlet weak var baseImage: UIImageView!
   @IBOutlet weak var baseTitleLabel: UILabel!
   @IBOutlet weak var baseNameLabel: UILabel!
@@ -31,6 +33,8 @@ class InfoTableViewCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
+    rectBackgroundView.backgroundColor = Color.gray01.getColor()
+    
     baseImage.image = UIImage(named: "")  // Data
     baseTitleLabel.text = "베이스"
     baseTitleLabel.font = Pretendard.size10.light()
