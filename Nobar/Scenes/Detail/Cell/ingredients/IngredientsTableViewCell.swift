@@ -17,14 +17,15 @@ class IngredientsTableViewCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    // Initialization code
-    // setDelegate()
-    // registerXibs()
   }
 
   override func setSelected(_ selected: Bool, animated: Bool) {
       super.setSelected(selected, animated: animated)
-      // Configure the view for the selected state
+  }
+  /*
+  private func setDelegate(){
+    ingredientsCollectionView.delegate = self
+    ingredientsCollectionView.dataSource = self
   }
   
   private func registerXibs(){
@@ -35,34 +36,33 @@ class IngredientsTableViewCell: UITableViewCell {
       nib.enumerated().forEach{
         ingredientsCollectionView.register($1, forCellWithReuseIdentifier: identifiers[$0])
       }
-      
   }
-}
-  
-  /*
-  private func setDelegate(){
-    ingredientsCollectionView.delegate = self
-    ingredientsCollectionView.dataSource = self
-  }
-  
-  
   
   func collectionViewGetReady(){
     setDelegate()
     registerXibs()
   }
-}
    */
   
+  // ingredientModelList 받아오기
+}
+
 /*
 extension IngredientsTableViewCell : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return FavoriteMusicItemDataModel.sampleData.count
+      return 3  //ingredientModelList.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      guard let cell = favoriteMusicCollectionView.dequeueReusableCell(withReuseIdentifier: FavoriteMusicItemCVC.identifier, for: indexPath) as? FavoriteMusicItemCVC else {return UICollectionViewCell()}
-      cell.setData(favoriteMusicItem: FavoriteMusicItemDataModel.sampleData[indexPath.row])
+      guard let cell = ingredientsCollectionView.dequeueReusableCell(
+        withReuseIdentifier: IngredientItemCollectionViewCell.identifier,
+        for: indexPath
+      ) as? IngredientItemCollectionViewCell
+    else {
+        return UICollectionViewCell()
+      }
+    print("ingredientModelList")
+      cell.setData(IngredientItem: IngredientDataModel.sampleData[indexPath.row])
       return cell
   }
   
@@ -78,5 +78,5 @@ extension IngredientsTableViewCell : UICollectionViewDelegateFlowLayout, UIColle
       return CGSize(width: cellWidth, height: cellHeight)
   }
 }
- */
+*/
 
