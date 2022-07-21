@@ -43,7 +43,7 @@ extension SplashViewController {
     self.view.addSubviews([animationView, logoImageView])
 
     animationView.snp.makeConstraints {
-      $0.top.equalToSuperview().inset(295)
+      $0.top.equalToSuperview().inset(295.adjustedH)
       $0.width.equalTo(99)
       $0.height.equalTo(73)
       $0.centerX.equalToSuperview()
