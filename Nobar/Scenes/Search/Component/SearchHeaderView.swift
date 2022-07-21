@@ -29,14 +29,14 @@ final class SearchHeaderView: UICollectionReusableView {
     $0.font = Pretendard.size17.semibold()
   }
 
-  private lazy var deleteButton = UIButton().then {
+  private(set) lazy var deleteButton = UIButton().then {
     $0.setTitle("전체 삭제", for: .normal)
     $0.setTitleColor(Color.gray03.getColor(), for: .normal)
     $0.titleLabel?.font = Pretendard.size13.medium()
     $0.addTarget(self, action: #selector(didClickOnDeleteButton(_:)), for: .touchUpInside)
   }
 
-  private var dateLabel = UILabel().then {
+  private lazy var dateLabel = UILabel().then {
     $0.text = "2022.07.07 기준"
     $0.textColor = Color.gray03.getColor()
     $0.font = Pretendard.size13.regular()
@@ -103,6 +103,7 @@ extension SearchHeaderView {
       remakeTitleLayout()
     case .recommend:
       titleLabel.text = "추천 검색어"
+      getCurrentDate()
       addDateLabel()
       addSeparateLine()
     case .cocktail:
@@ -136,6 +137,7 @@ extension SearchHeaderView {
       $0.bottom.equalToSuperview().inset(15)
       $0.trailing.equalToSuperview().inset(26)
     }
+    dateLabel.addSpacing(kernValue: -0.78, lineSpacing: 0)
   }
 
   private func addSeparateLine() {
@@ -170,6 +172,15 @@ extension SearchHeaderView {
       $0.top.equalToSuperview().inset(21)
       $0.trailing.equalToSuperview()
     }
+  }
+
+  private func getCurrentDate() {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .long
+    formatter.timeStyle = .medium
+    formatter.dateFormat = "yyyy.MM.dd 기준"
+    let str = formatter.string(from: Date())
+    dateLabel.text = "\(str)"
   }
 }
 

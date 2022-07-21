@@ -7,7 +7,7 @@
 
 import UIKit
 
-
+import RxSwift
 
 final class MyPageViewController: BaseViewController {
   private lazy var pageViewController = NBPageViewController(

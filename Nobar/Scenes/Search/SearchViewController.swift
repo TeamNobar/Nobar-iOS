@@ -9,6 +9,7 @@ import UIKit
 
 import Then
 import SnapKit
+import RealmSwift
 
 final class SearchViewController: BaseViewController {
 
@@ -22,13 +23,20 @@ final class SearchViewController: BaseViewController {
     case ingredient = 1
   }
 
+  var searchRecentList: [String] = [] {
+    didSet {
+      searchKeywordCollectionView.reloadSections([0])
+    }
+  }
+
   private var keywordSectionType: KeywordSectionType?
+
+  let realm = try? Realm()
 
   private var resultDataSource: UICollectionViewDiffableDataSource<AutoResultSectionType, String>!
   private var resultSnapshot: NSDiffableDataSourceSnapshot<AutoResultSectionType, String>!
 
   // TODO: 나중에 서버에서 한꺼번에 리스트로 받아옴
-  private var dummyKeywords: [String] = ["브랜디", "선라이즈피치", "피치크러쉬", "카시스 오렌지", "은비쨩", "칵테일어쩌구", "밀푀유나베", "피치어쩌구", "리큐르", "채원쨩??"]
   private var dummyCocktail: [String] = ["브랜디", "선라이즈피치", "피치크러쉬", "카시스 오렌지", "은비쨩", "칵테일어쩌구", "피치만 나와라", "피치어쩌구", "리큐르", "채원쨩", "피치1", "피치2", "피치3", "피치4"]
   private var dummyIngredient: [String] = ["피피피피", "피치주스도있고요", "재료들이", "오렌지주스", "은비쨩", "재료어쩌구", "리큐르", "채원쨩"]
 
@@ -87,6 +95,7 @@ final class SearchViewController: BaseViewController {
     setRegistration()
     setTextFieldButton()
     setDataSource()
+    setRealmData()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -166,6 +175,7 @@ extension SearchViewController {
   private func setDelegation() {
     searchKeywordCollectionView.delegate = self
     searchKeywordCollectionView.dataSource = self
+    searchAutoResultCollectionView.delegate = self
   }
 
   private func setRegistration() {
@@ -178,7 +188,6 @@ extension SearchViewController {
   }
 
   private func initTextField() {
-    searchTextField.rightViewMode = .never
     searchTextField.becomeFirstResponder()
   }
 
@@ -305,7 +314,36 @@ extension SearchViewController {
 
 // MARK: - CollectionView Delegate functions
 extension SearchViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    guard let sectionType = KeywordSectionType(rawValue: indexPath.section) else { return }
 
+    guard let autoSectionType = AutoResultSectionType(rawValue: indexPath.section) else { return }
+
+    if searchAutoResultCollectionView.isHidden {
+      switch sectionType {
+      case .recent:
+        let resultViewController = SearchResultViewController(searchResultText: searchRecentList.safeget(index: indexPath.item) ?? "")
+        navigationController?.pushViewController(resultViewController, animated: false)
+      case .recommend:
+        print("칵테일 상세뷰로 이동 - 추천")
+        // 추천 검색 -> 칵테일 상세뷰로 이동 - 수아 뷰
+        // let item = indexPath.item
+        // if let recipeId = 서버에서 받아온 레시피 모델.safeget(index: item).id {
+        //  let 레시피 상세 뷰 = 레시피상세뷰컨()
+        //  navigationViewController?.pushViewController(레시피 상세뷰컨)
+      }
+    } else {
+      if autoSectionType == .cocktail {
+        // TODO: - 앱잼 내에서는 칵테일 부분만 선택되는 것으로 변경
+        print("칵테일 상세뷰로 이동 - 자동완성")
+        // 칵테일 상세뷰로 이동 - 수아뷰
+        // let item = indexPath.item
+        // if let recipeId = 서버에서 받아온 레시피 모델.safeget(index: item).id {
+        //  let 레시피 상세 뷰 = 레시피상세뷰컨()
+        //  navigationViewController?.pushViewController(레시피 상세뷰컨)
+      }
+    }
+  }
 }
 
 extension SearchViewController: UICollectionViewDataSource {
@@ -319,7 +357,7 @@ extension SearchViewController: UICollectionViewDataSource {
 
     switch sectionType {
     case .recent:
-      return dummyKeywords.count
+      return searchRecentList.count
     case .recommend:
       return 5
     }
@@ -335,7 +373,7 @@ extension SearchViewController: UICollectionViewDataSource {
     case .recent:
       let cell = searchKeywordCollectionView.dequeueReusableCell(ofType: RecentCollectionViewCell.self, at: indexPath)
 
-      guard let item = dummyKeywords.safeget(index: indexPath.row) else { return cell }
+      guard let item = searchRecentList.safeget(index: indexPath.row) else { return cell }
       cell.updateKeyword(item)
       return cell
     case .recommend:
@@ -361,8 +399,11 @@ extension SearchViewController: UICollectionViewDataSource {
       switch sectionType {
       case .recent:
         headerView.configUI(type: .recent)
+        headerView.deleteButton.isHidden = searchRecentList.isEmpty ? true : false
+        emptyLabel.isHidden = searchRecentList.isEmpty ? false : true
+
         headerView.didClickOnDeleteButtonClosure = {
-          self.dummyKeywords.removeAll()
+          self.deleteRecentSearch()
           self.searchKeywordCollectionView.reloadSections([0])
           self.emptyLabel.isHidden = false
         }
@@ -428,10 +469,40 @@ extension SearchViewController {
 
 extension SearchViewController: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    searchTextField.resignFirstResponder()
+    let searchText = self.searchTextField.text ?? ""
 
-    let resultViewController = SearchResultViewController(searchResultText: self.searchTextField.text ?? "")
+    searchTextField.resignFirstResponder()
+    saveRecentSearch(keyword: searchText)
+
+    let resultViewController = SearchResultViewController(searchResultText: searchText)
     self.navigationController?.pushViewController(resultViewController, animated: false)
     return true
+  }
+}
+
+// MARK: - Realm Manager
+extension SearchViewController {
+  private func setRealmData() {
+    let savedSearchRecent = realm?.objects(RecentSearchModel.self)
+    savedSearchRecent?.forEach { object in
+      searchRecentList.insert(object.keyword, at: 0)
+    }
+  }
+
+  private func saveRecentSearch(keyword: String) {
+    let recentSearchModel = RecentSearchModel()
+    recentSearchModel.keyword = keyword
+    try? realm?.write {
+      realm?.add(recentSearchModel)
+    }
+    searchRecentList.insert(keyword, at: 0)
+    emptyLabel.isHidden = true
+  }
+
+  private func deleteRecentSearch() {
+    try? realm?.write {
+      realm?.deleteAll()
+    }
+    searchRecentList.removeAll()
   }
 }

@@ -47,6 +47,7 @@ final class SearchResultViewController: BaseViewController {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.showsHorizontalScrollIndicator = false
     collectionView.showsVerticalScrollIndicator = false
+    collectionView.keyboardDismissMode = .onDrag
     return collectionView
   }()
 
@@ -222,6 +223,19 @@ extension SearchResultViewController {
 // MARK: - CollectionView Delegate functions
 extension SearchResultViewController: UICollectionViewDelegate {
 
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    guard let sectionType = ResultSecionType(rawValue: indexPath.section) else { return }
+
+    // 이전 뷰와 동일하게 앱잼 내에서는 칵테일만 선택되도록
+    if sectionType == .cocktail {
+      print("칵테일 상세뷰로 이동 - 결과뷰")
+      // 칵테일 상세뷰로 이동 - 수아뷰
+      // let item = indexPath.item
+      // if let recipeId = 서버에서 받아온 레시피 모델.safeget(index: item).id {
+      //  let 레시피 상세 뷰 = 레시피상세뷰컨()
+      //  navigationViewController?.pushViewController(레시피 상세뷰컨)
+    }
+  }
 }
 
 extension SearchResultViewController: UICollectionViewDataSource {
@@ -239,7 +253,6 @@ extension SearchResultViewController: UICollectionViewDataSource {
     case .ingredient:
       return dummyIngredient.count
     }
-
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

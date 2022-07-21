@@ -21,6 +21,7 @@ enum Color {
   case pink01
   case red
   case gray_navigationbar
+  case blue_tabbar
 
   func getColor() -> UIColor {
     switch self {
@@ -38,6 +39,8 @@ enum Color {
     case .red: return .findProperColor(lightModeColor: ._red, darkModeColor: ._red)
     case .gray_navigationbar:
       return .findProperColor(lightModeColor: ._gray_navigationbar, darkModeColor: ._gray_navigationbar)
+    case .blue_tabbar:
+      return .findProperColor(lightModeColor: ._blue_tabbar, darkModeColor: ._blue_tabbar)
     }
   }
 
@@ -57,6 +60,8 @@ enum Color {
     case .red: return .findProperColor(lightModeColor: ._red, darkModeColor: ._red).withAlphaComponent(alpha)
     case .gray_navigationbar:
       return .findProperColor(lightModeColor: ._gray_navigationbar, darkModeColor: ._gray_navigationbar).withAlphaComponent(alpha)
+    case .blue_tabbar:
+      return .findProperColor(lightModeColor: ._blue_tabbar, darkModeColor: ._blue_tabbar).withAlphaComponent(alpha)
     }
   }
 }
@@ -113,6 +118,10 @@ private extension UIColor {
 
   static var _red: UIColor {
     UIColor(red: 0.922, green: 0.341, blue: 0.341, alpha: 1)
+  }
+
+  static var _blue_tabbar: UIColor {
+    UIColor(red: 0.075, green: 0.243, blue: 0.851, alpha: 1)
   }
 }
 

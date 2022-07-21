@@ -22,8 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     appRouter?.start()
     
     window = UIWindow(windowScene: scene)
-    window?.rootViewController = StoryboardRouter.detail.instance.instantiateInitialViewController()
-    
+    window?.rootViewController = appRouter?.tabbarController
     window?.makeKeyAndVisible()
   }
 }
