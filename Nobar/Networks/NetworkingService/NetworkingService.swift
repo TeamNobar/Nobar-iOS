@@ -64,9 +64,9 @@ extension NetworkingService: Networking {
       headers: endpoint.headers
     )
     .responseData()
-    .debug()
     .map { request, data -> Response in
       return try endpoint.decode(data)
     }
+    .debug()
   }
 }
