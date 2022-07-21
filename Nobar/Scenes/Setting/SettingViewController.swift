@@ -124,7 +124,7 @@ extension SettingViewController {
 }
 
 // MARK: - Tap Delegate
-extension SettingViewController: tapSettingViewDelegate {
+extension SettingViewController: TapSettingViewDelegate {
   func presentViewController(type: SettingDetailType) {
     switch type {
     case .inquiry:

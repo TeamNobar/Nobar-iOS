@@ -17,14 +17,14 @@ enum SettingDetailType {
   case resign
 }
 
-protocol tapSettingViewDelegate: AnyObject {
+protocol TapSettingViewDelegate: AnyObject {
   func presentViewController(type: SettingDetailType)
 }
 
 final class SettingDetailView: UIView {
 
   private var type: SettingDetailType
-  weak var tapDelegate: tapSettingViewDelegate?
+  weak var tapDelegate: TapSettingViewDelegate?
 
   private let titleLabel = UILabel().then {
     $0.textColor = Color.black.getColor()
