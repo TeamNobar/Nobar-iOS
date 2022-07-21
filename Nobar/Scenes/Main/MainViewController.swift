@@ -257,7 +257,11 @@ extension MainViewController: UICollectionViewDataSource{
     
     switch sectionType {
     case .archive:
-      return CocktailModel.dummyCocktailList.count
+      if SearchCocktailModel.dummyCocktailList.count>6{
+        return 6
+      }else{
+        return SearchCocktailModel.dummyCocktailList.count
+      }
     case .guide:
       return GuideModel.dummyGuideList.count
     case .recommend:
