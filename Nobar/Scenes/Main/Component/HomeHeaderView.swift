@@ -18,11 +18,6 @@ final class HomeHeaderView: UICollectionReusableView {
     case recommend
   }
   
-  private var subTitleLabel = UILabel().then {
-    $0.textColor = Color.gray03.getColor()
-    $0.font = Pretendard.size12.medium()
-  }
-  
   private var titleLabel = UILabel().then {
     $0.textColor = Color.navy01.getColor()
     $0.font = Pretendard.size20.black()
@@ -49,31 +44,22 @@ final class HomeHeaderView: UICollectionReusableView {
 extension HomeHeaderView {
   
   private func render() {
-    addSubviews([
-      subTitleLabel,
-      titleLabel
-    ])
-    subTitleLabel.snp.makeConstraints {
-      $0.top.equalToSuperview().offset(12)
-      $0.leading.equalToSuperview().offset(31)
-    }
+    addSubview(titleLabel)
+  
     titleLabel.snp.makeConstraints {
-      $0.top.equalTo(subTitleLabel.snp.bottom).offset(2)
-      $0.leading.equalTo(subTitleLabel.snp.leading)
+      $0.centerY.equalToSuperview()
+      $0.leading.equalToSuperview().offset(31)
     }
   }
   
   func configUI(type: HomeHeaderType) {
     switch type {
     case .archive:
-      subTitleLabel.text = "소제목소제목소제목"
-      titleLabel.text = "노바님이 나중에 만들 레시피"
+      titleLabel.text = "나중에 만들 레시피"
       self.addSeeAllButton()
     case .guide:
-      subTitleLabel.text = "소제목소제목소제목"
       titleLabel.text = "칵테일 가이드"
     case .recommend:
-      subTitleLabel.text = "소제목소제목소제목"
       titleLabel.text = "바가 필요 없는 레시피"
       
     }
@@ -82,8 +68,7 @@ extension HomeHeaderView {
   private func addSeeAllButton() {
     addSubview(seeAllButton)
     seeAllButton.snp.makeConstraints {
-      $0.top.equalToSuperview().offset(34)
-      $0.bottom.equalToSuperview()
+      $0.top.equalToSuperview().offset(19)
       $0.trailing.equalToSuperview().offset(-26)
     }
   }

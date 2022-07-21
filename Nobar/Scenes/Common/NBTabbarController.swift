@@ -28,7 +28,7 @@ extension NBTabbarController {
   private func setTabbarAppearance() {
     let appearance = UITabBarAppearance()
     appearance.configureWithOpaqueBackground()
-    appearance.backgroundColor = .white
+    appearance.backgroundColor = Color.skyblue01.getColor()
     self.tabBar.insertSubview(newLine, at: 1)
     self.tabBar.standardAppearance = appearance
     self.tabBar.scrollEdgeAppearance = appearance
