@@ -19,6 +19,8 @@ final class SearchBaseViewController: BaseViewController {
 
   private var resultDataSource: UICollectionViewDiffableDataSource<SectionType, SearchCocktailModel>!
   private var resultSnapshot: NSDiffableDataSourceSnapshot<SectionType, SearchCocktailModel>!
+  private var networkingService = NetworkingService()
+  private var baseList: [BaseRecipe] = []
 
   private let searchView = UIView().then {
     $0.backgroundColor = Color.white.getColor()
@@ -70,6 +72,7 @@ final class SearchBaseViewController: BaseViewController {
     setDelegation()
     setRegistration()
     setDataSource()
+    getSearchTag()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -245,13 +248,13 @@ extension SearchBaseViewController: UICollectionViewDelegate {
 
 extension SearchBaseViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return BaseCocktailModel.dummyBaseList.count
+    return baseList.count
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = baseCollectionView.dequeueReusableCell(ofType: BaseCocktailCollectionViewCell.self, at: indexPath)
 
-    guard let item = BaseCocktailModel.dummyBaseList.safeget(index: indexPath.row) else { return cell }
+    guard let item = baseList.safeget(index: indexPath.row) else { return cell }
     cell.updateModel(item)
     return cell
   }
@@ -285,5 +288,24 @@ extension SearchBaseViewController {
   }
 }
 
+// MARK: - Networking
+extension SearchBaseViewController {
 
+  private func getSearchTag() {
+    let endPoint = Endpoint<Search>(apiRouter: .searchTag)
+
+    networkingService.request(endPoint) { [weak self] result in
+      switch result {
+      case .success(let search):
+        guard let base = search.base else { return }
+        self?.baseList = base
+        DispatchQueue.main.async {
+          self?.baseCollectionView.reloadData()
+        }
+      case .failure(let error):
+        print(String(describing: error), #line)
+      }
+    }
+  }
+}
 
