@@ -108,13 +108,11 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
           guard let cell = detailTableView.dequeueReusableCell(
             withIdentifier: identifiers[1], for: indexPath
           ) as? HeaderReadyTableViewCell else {return UITableViewCell()}
-        cell.backgroundColor = .systemBlue.withAlphaComponent(0.4)
           return cell
       case 2:
         guard let cell = detailTableView.dequeueReusableCell(
           withIdentifier: identifiers[2], for: indexPath
           ) as? IngredientsTableViewCell else { return UITableViewCell()}
-        cell.backgroundColor = .systemRed.withAlphaComponent(0.4)
       case 3:
         guard let cell = detailTableView.dequeueReusableCell(
           withIdentifier: identifiers[3], for: indexPath
@@ -123,17 +121,15 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = detailTableView.dequeueReusableCell(
           withIdentifier: identifiers[4], for: indexPath
         ) as? StepsTableViewCell else {return UITableViewCell()}
-        cell.backgroundColor = .systemRed.withAlphaComponent(0.4)
       case 5:
         guard let cell = detailTableView.dequeueReusableCell(
           withIdentifier: identifiers[5], for: indexPath
         ) as? HeaderRecordTableViewCell else {return UITableViewCell()}
-        cell.backgroundColor = .systemYellow.withAlphaComponent(0.4)
+        
       case 6:
         guard let cell = detailTableView.dequeueReusableCell(
           withIdentifier: identifiers[6], for: indexPath
         ) as? RecordTableViewCell else {return UITableViewCell()}
-        cell.backgroundColor = .systemBlue.withAlphaComponent(0.4)
         
       default:
           let cell = UITableViewCell()
