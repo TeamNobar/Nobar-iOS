@@ -25,19 +25,19 @@ private enum TabRouterChild: Int {
   
   var imageName: String {
     switch self {
-    case .main: return "icnHome"
-    case .search: return "icnSearch"
+    case .main: return "icn_home_gray"
+    case .search: return "icn_search_gray"
     case .writingNote: return "writingNote"
-    case .mypage: return "icnMypage"
+    case .mypage: return "icn_mypage_gray"
     }
   }
   
   var selectedImageName: String {
     switch self {
-    case .main: return "icnHomeFill"
-    case .search: return "icnSearchFill"
+    case .main: return "icn_home_blue"
+    case .search: return "icn_search_blue"
     case .writingNote: return "writingNote"
-    case .mypage: return "icnMypageFill"
+    case .mypage: return "icn_mypage_blue"
     }
   }
   
