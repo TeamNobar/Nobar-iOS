@@ -7,13 +7,8 @@
 
 import Foundation
 
-// TODO: BaseURL 나오면 교체 - 승호, 2022. 07. 13 -
 struct Environment {
   enum URL {
-    #if DEBUG
-    static let baseUrl = "https://api.itbook.store/1.0"
-    #else
-    static let baseUrl = ""
-    #endif
+    static let baseUrl = "https://fe667e6b-7b31-4951-9278-de104ecb9c3a.mock.pstmn.io"
   }
 }
