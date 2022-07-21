@@ -313,6 +313,12 @@ extension MainViewController: UICollectionViewDataSource{
       switch sectionType {
       case .archive:
         headerView.configUI(type: .archive)
+        headerView.didClickOnSeeAllButtonClosure = {
+          let laterRecipeAllViewController = LaterRecipeAllViewController()
+          let laterRecipehNavigationController = UINavigationController(rootViewController: laterRecipeAllViewController)
+          laterRecipehNavigationController.modalPresentationStyle = .fullScreen
+          self.present(laterRecipehNavigationController, animated: true)
+        }
       case .guide:
         headerView.configUI(type: .guide)
       case .recommend:
