@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 final class DetailViewController: BaseViewController {
   @IBOutlet weak var cocktailNameHeaderView: UIView!
   @IBOutlet weak var detailTableView: UITableView!
@@ -54,26 +55,42 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return identifiers.count
     }
+  
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
       if indexPath.row == 0 {
           let width = tableView.bounds.width
-          let tableHeight = width * (100/375)
+          let tableHeight = width * (112/375)
           return tableHeight
       }
       else if indexPath.row == 1{
           let width = tableView.bounds.width
-          let tableHeight = width * (100/375)
+          let tableHeight = width * (63/375)
           return tableHeight
       }
-      else if indexPath.row == 2{
+      else if indexPath.row == 2{ //반응형
           let width = tableView.bounds.width
-          let tableHeight = width * (150/375)
+          let tableHeight = width * (194/375)
           return tableHeight
       }
       else if indexPath.row == 3{
           let width = tableView.bounds.width
-          let tableHeight = width * (150/375)
+          let tableHeight = width * (79/375)
+          return tableHeight
+      }
+      else if indexPath.row == 4{
+          let width = tableView.bounds.width
+          let tableHeight = width * (110/375)
+          return tableHeight
+      }
+      else if indexPath.row == 5{
+          let width = tableView.bounds.width
+          let tableHeight = width * (73/375)
+          return tableHeight
+      }
+      else if indexPath.row == 6{
+          let width = tableView.bounds.width
+          let tableHeight = width * (216/375)
           return tableHeight
       }
 
@@ -83,23 +100,42 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       switch indexPath.row{
       case 0:
-          guard let cell = detailTableView.dequeueReusableCell(withIdentifier: identifiers[0], for: indexPath) as? InfoTableViewCell else {return UITableViewCell()}
+          guard let cell = detailTableView.dequeueReusableCell(
+            withIdentifier: identifiers[0], for: indexPath
+          ) as? InfoTableViewCell else {return UITableViewCell()}
           return cell
       case 1:
-          guard let cell = detailTableView.dequeueReusableCell(withIdentifier: identifiers[1], for: indexPath) as? HeaderReadyTableViewCell else {return UITableViewCell()}
+          guard let cell = detailTableView.dequeueReusableCell(
+            withIdentifier: identifiers[1], for: indexPath
+          ) as? HeaderReadyTableViewCell else {return UITableViewCell()}
+        cell.backgroundColor = .systemBlue.withAlphaComponent(0.4)
           return cell
       case 2:
-        guard let cell = detailTableView.dequeueReusableCell(withIdentifier: identifiers[2], for: indexPath) as? IngredientsTableViewCell else { return UITableViewCell() }
-        
+        guard let cell = detailTableView.dequeueReusableCell(
+          withIdentifier: identifiers[2], for: indexPath
+          ) as? IngredientsTableViewCell else { return UITableViewCell()}
         cell.backgroundColor = .systemRed.withAlphaComponent(0.4)
       case 3:
-          guard let cell = detailTableView.dequeueReusableCell(withIdentifier: identifiers[3], for: indexPath) as? HeaderMakeTableViewCell else {return UITableViewCell()}
+        guard let cell = detailTableView.dequeueReusableCell(
+          withIdentifier: identifiers[3], for: indexPath
+        ) as? HeaderMakeTableViewCell else {return UITableViewCell()}
+        cell.backgroundColor = .systemGreen.withAlphaComponent(0.4)
       case 4:
-          guard let cell = detailTableView.dequeueReusableCell(withIdentifier: identifiers[4], for: indexPath) as? StepsTableViewCell else {return UITableViewCell()}
+        guard let cell = detailTableView.dequeueReusableCell(
+          withIdentifier: identifiers[4], for: indexPath
+        ) as? StepsTableViewCell else {return UITableViewCell()}
+        cell.backgroundColor = .systemRed.withAlphaComponent(0.4)
       case 5:
-          guard let cell = detailTableView.dequeueReusableCell(withIdentifier: identifiers[5], for: indexPath) as? HeaderRecordTableViewCell else {return UITableViewCell()}
+        guard let cell = detailTableView.dequeueReusableCell(
+          withIdentifier: identifiers[5], for: indexPath
+        ) as? HeaderRecordTableViewCell else {return UITableViewCell()}
+        cell.backgroundColor = .systemYellow.withAlphaComponent(0.4)
       case 6:
-          guard let cell = detailTableView.dequeueReusableCell(withIdentifier: identifiers[6], for: indexPath) as? RecordTableViewCell else {return UITableViewCell()}
+        guard let cell = detailTableView.dequeueReusableCell(
+          withIdentifier: identifiers[6], for: indexPath
+        ) as? RecordTableViewCell else {return UITableViewCell()}
+        cell.backgroundColor = .systemBlue.withAlphaComponent(0.4)
+        
       default:
           let cell = UITableViewCell()
           return cell

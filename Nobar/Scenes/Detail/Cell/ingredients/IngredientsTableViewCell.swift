@@ -8,23 +8,75 @@
 import UIKit
 
 class IngredientsTableViewCell: UITableViewCell {
+
+  @IBOutlet weak var ingredientsCollectionView: UICollectionView!
   
-    @IBOutlet weak var ingredientsCollectionView: UICollectionView!
-    var selectIngredients: (() -> ())?
-    static let identifier = "IngredientsTableViewCell"
-    var identifiers = [IngredientItemCollectionViewCell.identifier]
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+  //var selectIngredients: (() -> ())?
+  static let identifier = "IngredientsTableViewCell"
+  var identifiers = [IngredientItemCollectionViewCell.identifier]
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    // Initialization code
+    // setDelegate()
+    // registerXibs()
+  }
+
+  override func setSelected(_ selected: Bool, animated: Bool) {
+      super.setSelected(selected, animated: animated)
+      // Configure the view for the selected state
+  }
+  
+  private func registerXibs(){
+      var nib : [UINib] = []
+      identifiers.forEach{
+          nib.append(UINib(nibName: $0, bundle: nil))
+      }
+      nib.enumerated().forEach{
+        ingredientsCollectionView.register($1, forCellWithReuseIdentifier: identifiers[$0])
+      }
       
-      self.backgroundColor = .systemRed.withAlphaComponent(0.4)
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
+  }
 }
+  
+  /*
+  private func setDelegate(){
+    ingredientsCollectionView.delegate = self
+    ingredientsCollectionView.dataSource = self
+  }
+  
+  
+  
+  func collectionViewGetReady(){
+    setDelegate()
+    registerXibs()
+  }
+}
+   */
+  
+/*
+extension IngredientsTableViewCell : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+      return FavoriteMusicItemDataModel.sampleData.count
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+      guard let cell = favoriteMusicCollectionView.dequeueReusableCell(withReuseIdentifier: FavoriteMusicItemCVC.identifier, for: indexPath) as? FavoriteMusicItemCVC else {return UICollectionViewCell()}
+      cell.setData(favoriteMusicItem: FavoriteMusicItemDataModel.sampleData[indexPath.row])
+      return cell
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+      return 10
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+      let width = UIScreen.main.bounds.width
+      let cellWidth = width * (200/375)
+      let cellHeight = cellWidth * (226/200)
+      
+      return CGSize(width: cellWidth, height: cellHeight)
+  }
+}
+ */
+

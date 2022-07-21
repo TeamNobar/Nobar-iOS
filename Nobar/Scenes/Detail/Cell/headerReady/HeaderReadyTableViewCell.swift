@@ -14,9 +14,25 @@ class HeaderReadyTableViewCell: UITableViewCell {
     static let identifier = "HeaderReadyTableViewCell"
     
     override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+      super.awakeFromNib()
+      // Initialization code
+      headerTitleLabel.text = "우선, 준비해볼까요?"
+      headerTitleLabel.font = Pretendard.size18.bold()
+      
+      // NSMutableAttributedString Type으로 바꾼 text를 저장
+      let attributedStr = NSMutableAttributedString(string: headerTitleLabel.text!)
+
+      // text의 range 중에서 "Bonus"라는 글자는 UIColor를 blue로 변경
+      attributedStr.addAttribute(.foregroundColor, value: Color.black.getColor(), range: (headerTitleLabel.text! as NSString).range(of: "우선,"))
+      // text의 range 중에서 "Point"라는 글자는 UIColor를 orange로 변경
+      attributedStr.addAttribute(.foregroundColor, value: Color.navy01.getColor(), range: (headerTitleLabel.text! as NSString).range(of: "준비해볼까요?"))
+
+      // 설정이 적용된 text를 label의 attributedText에 저장
+      headerTitleLabel.attributedText = attributedStr
     }
+    
+  
+  
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

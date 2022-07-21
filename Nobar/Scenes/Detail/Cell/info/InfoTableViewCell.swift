@@ -26,16 +26,41 @@ class InfoTableViewCell: UITableViewCell {
   @IBOutlet weak var glassNameLabel: UILabel!
   
   static let identifier = "InfoTableViewCell"
+  
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    // Initialization code
+    baseImage.image = UIImage(named: "")  // Data
+    baseTitleLabel.text = "베이스"
+    baseTitleLabel.font = Pretendard.size10.light()
+    baseTitleLabel.textColor = Color.gray04.getColor()
+    baseNameLabel.text = "보드카"  // Data
+    baseNameLabel.font = Pretendard.size14.medium()
+    baseNameLabel.textColor = Color.black.getColor()
     
+    proofImage.image = UIImage(named: "")  // Data
+    proofTitleLabel.text = "도수"
+    proofTitleLabel.font = Pretendard.size10.light()
+    proofTitleLabel.textColor = Color.gray04.getColor()
+    proofNameLabel.text = "21%"  // Data
+    proofNameLabel.font = Pretendard.size14.medium()
+    proofNameLabel.textColor = Color.black.getColor()
+    
+    skillImage.image = UIImage(named: "")  // Data
+    skillTitleLabel.text = "만드는 법"
+    skillTitleLabel.font = Pretendard.size10.light()
+    skillTitleLabel.textColor = Color.gray04.getColor()
+    skillNameLabel.text = "셰이킹"  // Data
+    skillNameLabel.font = Pretendard.size14.medium()
+    skillNameLabel.textColor = Color.black.getColor()
+    
+    glassImage.image = UIImage(named: "")  // Data
+    glassTitleLabel.text = "글라스"
+    glassTitleLabel.font = Pretendard.size10.light()
+    glassTitleLabel.textColor = Color.gray04.getColor()
+    glassNameLabel.text = "칵테일"  // Data
+    glassNameLabel.font = Pretendard.size14.medium()
+    glassNameLabel.textColor = Color.black.getColor()
+  }
 }
