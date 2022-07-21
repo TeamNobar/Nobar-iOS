@@ -75,6 +75,7 @@ extension MainViewController {
   }
   
   private func setLayout() {
+    grayLine.isHidden = true
     navigationController?.navigationBar.isHidden = true
     
     logoView.snp.makeConstraints {
@@ -95,7 +96,7 @@ extension MainViewController {
       $0.height.equalTo(1)
     }
     homeCollectionView.snp.makeConstraints {
-      $0.top.equalTo(logoView.snp.bottom)
+      $0.top.equalTo(grayLine.snp.bottom)
       $0.leading.trailing.bottom.equalToSuperview()
     }
   }
@@ -228,9 +229,19 @@ extension MainViewController {
   }
 }
 
+
+extension MainViewController: UIScrollViewDelegate{
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    if scrollView.contentOffset.y > 0{
+      grayLine.isHidden = false
+    }else{
+      grayLine.isHidden = true
+    }
+  }
+}
 // MARK: - CollectionViewDelegate
 extension MainViewController: UICollectionViewDelegate{
-  
+
 }
 
 // MARK: - CollectionViewDataSource
