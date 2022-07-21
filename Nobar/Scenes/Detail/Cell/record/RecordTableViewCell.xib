@@ -16,18 +16,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="168"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKx-80-TtN">
-                        <rect key="frame" x="26" y="0.0" width="300.5" height="57.5"/>
-                        <string key="text">같은 칵테일을 마셔도 테이스팅 노트는 여러 번 기록할 수 있어요
-어제의 홈텐딩과 오늘의 홈텐딩은 다르니까요
-오늘 마신 칵테일로 오늘을 기억해보는 것은 어때요?
-당신의 하루가 더 오래 기억되길 바라요</string>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contentLabel" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKx-80-TtN">
+                        <rect key="frame" x="26" y="0.0" width="74" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8T-dM-ZaI">
-                        <rect key="frame" x="111" y="75.5" width="153" height="31"/>
+                        <rect key="frame" x="111" y="32.5" width="153" height="31"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title="테이스팅 노트 작성하기"/>
                     </button>
