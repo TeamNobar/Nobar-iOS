@@ -6,19 +6,9 @@
 //
 
 import UIKit
-import SnapKit
-import Then
 
 final class WritingNoteViewController: BaseViewController {
   
-  enum SectionType:Int, CaseIterable {
-    case cocktail = 0
-    case date = 1
-    case taste = 2
-    case score = 3
-    case evaluation = 4
-    case experience = 5
-  }
   
   var writingstatus = WritingStatus.viewing
   
