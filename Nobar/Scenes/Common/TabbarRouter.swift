@@ -77,7 +77,7 @@ extension TabbarRouter {
       .sorted(by: { $0.0.rawValue < $1.0.rawValue })
       .compactMap { $0.value }
     self.tabbarController.selectedIndex = 0
-    self.tabbarController.tabBar.tintColor = Color.navy01.getColor()
+    self.tabbarController.tabBar.tintColor = Color.blue_tabbar.getColor()
   }
   
   private func store(with navigationController: UINavigationController, as type: TabRouterChild) {
