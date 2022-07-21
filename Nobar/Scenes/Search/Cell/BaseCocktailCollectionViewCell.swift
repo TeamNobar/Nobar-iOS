@@ -9,6 +9,7 @@ import UIKit
 
 import Then
 import SnapKit
+import Kingfisher
 
 final class BaseCocktailCollectionViewCell: UICollectionViewCell {
 
@@ -64,8 +65,10 @@ extension BaseCocktailCollectionViewCell {
     }
   }
 
-  func updateModel(_ model: BaseCocktailModel) {
-    baseImageView.image = model.baseImage
-    baseLabel.text = model.baseName
+  func updateModel(_ model: BaseRecipe) {
+    if let url = URL(string: model.url) {
+      baseImageView.kf.setImage(with: url)
+    }
+    baseLabel.text = model.name
   }
 }
