@@ -19,24 +19,24 @@ class IngredientItemCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
       super.awakeFromNib()
       // Initialization code
-      ingredientsTitle.text = "자몽주스"  //Data
+      //ingredientsTitle.text = "자몽주스"  //Data
       ingredientsTitle.font = Pretendard.size12.semibold()
       ingredientsTitle.textColor = Color.black.getColor()
       
       categoryImage.image = UIImage(named: "")
       
-      categoryLabel.text = "카테고리" // Data
+      //categoryLabel.text = "카테고리" // Data
       categoryLabel.font = Pretendard.size10.medium()
       categoryLabel.textColor = Color.pink01.getColor()
       
-      categoryLabel.text = "자몽주스" // Data
+      //categoryLabel.text = "자몽주스" // Data
       categoryLabel.font = Pretendard.size10.medium()
       categoryLabel.textColor = Color.pink01.getColor()
 
     }
     
     // 각 Cell 별로 다른 정보가 표시되어야 하므로, 값을 넣어주는 함수를 생성
-    func setData(_ cocktailData: IngredientDataModel) {
+    func setData(cocktailData: IngredientDataModel) {
         ingredientsTitle.text = cocktailData.IngredientName
         categoryLabel.text = cocktailData.IngredientCategory
         proofLabel.text = cocktailData.IngredientQuantity

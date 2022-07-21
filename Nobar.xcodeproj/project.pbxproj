@@ -709,10 +709,10 @@
 		E547D9A1287C775500806886 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				E554DDB82889B950004FD971 /* Model */,
 				E547D9A6287C868000806886 /* Cell */,
 				E547D9A2287C778C00806886 /* Detail.storyboard */,
 				E547D9A4287C779E00806886 /* DetailViewController.swift */,
-				E547D9C22882B85B00806886 /* DetailDataModel.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -802,6 +802,14 @@
 				E547D9D22883F78D00806886 /* HeaderRecordTableViewCell.xib */,
 			);
 			path = headerRecord;
+			sourceTree = "<group>";
+		};
+		E554DDB82889B950004FD971 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E547D9C22882B85B00806886 /* DetailDataModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FE2C118A1DDDEEA41553DA7E /* Frameworks */ = {
