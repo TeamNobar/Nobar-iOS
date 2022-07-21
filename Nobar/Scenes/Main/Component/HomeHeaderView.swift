@@ -12,6 +12,8 @@ import SnapKit
 
 final class HomeHeaderView: UICollectionReusableView {
   
+  var didClickOnSeeAllButtonClosure: (() -> Void)?
+  
   enum HomeHeaderType {
     case archive
     case guide
@@ -23,10 +25,11 @@ final class HomeHeaderView: UICollectionReusableView {
     $0.font = Pretendard.size20.black()
   }
   
-  private var seeAllButton = UIButton().then {
+  private lazy var seeAllButton = UIButton().then {
     $0.setTitle("전체 보기", for: .normal)
     $0.setTitleColor(Color.gray03.getColor(), for: .normal)
     $0.titleLabel?.font = Pretendard.size13.medium()
+    $0.addTarget(self, action: #selector(didClickOnSeeAlllButton(_:)), for: .touchUpInside)
   }
   
   override init(frame: CGRect) {
@@ -73,5 +76,11 @@ extension HomeHeaderView {
     }
   }
   
+}
+
+extension HomeHeaderView {
+  @objc private func didClickOnSeeAlllButton(_ sender: UIButton) {
+    self.didClickOnSeeAllButtonClosure?()
+  }
 }
 
