@@ -12,6 +12,7 @@ final class ExperienceCVC: UICollectionViewCell {
   private let placeholder = "칵테일을 만들고 마셨던 경험을 자유롭게 기록해주세요"
   
   private let experienceTextView = TastingNoteTextView()
+  private let experienceText = "너무 재밌당"
   
   private let characterNumLabel = UILabel().then {
     $0.font = Pretendard.size10.medium()
@@ -81,5 +82,21 @@ extension ExperienceCVC: UITextViewDelegate{
         }
         characterNumLabel.text = "(\(experienceTextView.text.count)/200자)"
     }
+  
+  func setLayout(for status: WritingStatus){
+    switch status{
+    case .newWriting,.revising:
+      experienceTextView.isEditable = true
+      characterNumLabel.isHidden = false
+      
+    case .viewing:
+      experienceTextView.isEditable = false
+      characterNumLabel.isHidden = true
+      experienceTextView.text = experienceText
+      experienceTextView.textColor = .black
+    }
+
+  }
+
 }
 

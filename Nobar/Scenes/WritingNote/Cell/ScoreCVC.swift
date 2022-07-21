@@ -8,6 +8,7 @@
 import UIKit
 
 final class ScoreCVC: UICollectionViewCell {
+  private let score = 4.5
   
   private let heartSlider = HeartRatingUISlider().then {
     $0.minimumValue = 0
@@ -89,6 +90,35 @@ extension ScoreCVC {
 
     }
 
+  }
+  
+  func setLayout(for status: WritingStatus){
+    switch status{
+    case .newWriting,.revising: heartSlider.isHidden = false
+    case .viewing: heartSlider.isHidden = true
+      setHeartScore(score: score)
+    }
+
+  }
+  
+  //TODO:
+  func setHeartScore(score: Double){
+    var value = score
+    for idx in 0..<5 {
+      if value > 0.5 {
+        value -= 1
+        let imageView = heartStackView.subviews[idx] as? UIImageView ?? UIImageView()
+        imageView.image = ImageFactory.btnScoreFill
+      } else if 0 < value && value < 0.5 {
+        value -= 0.5
+        let imageView = heartStackView.subviews[idx] as? UIImageView ?? UIImageView()
+        imageView.image = ImageFactory.btnScoreHalf
+      }else {
+        let imageView = heartStackView.subviews[idx] as? UIImageView ?? UIImageView()
+        imageView.image = ImageFactory.btnScoreEmpty
+      }
+
+    }
   }
   
 }

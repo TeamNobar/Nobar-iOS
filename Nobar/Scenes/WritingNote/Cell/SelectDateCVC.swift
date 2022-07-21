@@ -9,12 +9,16 @@ import UIKit
 
 final class SelectDateCVC: UICollectionViewCell {
   
+  private let selectedDate = "2022년 3월 2일"
+  
   private let grayView = UIView().then {
-    $0.backgroundColor = Color.white.getColor()
+    $0.backgroundColor = Color.gray01.getColor()
+    $0.layer.cornerRadius = 5
+    
   }
   
-  private let selectDateLabel = UILabel().then {
-    $0.textColor = Color.gray03.getColor()
+  private let selectedDateLabel = UILabel().then {
+    $0.textColor = Color.black.getColor()
     $0.font = Pretendard.size13.semibold()
   }
   
@@ -44,14 +48,14 @@ extension SelectDateCVC {
   
   private func render() {
   
-    addSubview(grayView)
-    grayView.addSubviews([selectDateLabel,datePicker])
+    addSubviews([grayView,datePicker])
+    grayView.addSubview(selectedDateLabel)
     
     grayView.snp.makeConstraints {
       $0.leading.trailing.equalToSuperview().inset(26)
       $0.height.equalTo(42)
     }
-    selectDateLabel.snp.makeConstraints{
+    selectedDateLabel.snp.makeConstraints{
       $0.leading.equalToSuperview().offset(13)
       $0.centerY.equalToSuperview()
     }
@@ -64,5 +68,19 @@ extension SelectDateCVC {
     
   }
   
+ func setLayout(for status: WritingStatus){
+    switch status{
+    case .newWriting,.revising:
+      datePicker.isHidden = false
+      grayView.isHidden = true
+      selectedDateLabel.isHidden = true
+    case .viewing:
+      datePicker.isHidden = true
+      grayView.isHidden = false
+      selectedDateLabel.isHidden = false
+      selectedDateLabel.text = selectedDate
+    }
+
+  }
 }
 

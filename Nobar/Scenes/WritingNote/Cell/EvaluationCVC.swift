@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import SwiftUI
 
 final class EvaluationCVC: UICollectionViewCell {
   
   private let placeholder = "맛에 대한 주관적인 평가를 들려주세요"
+  private let evaluationText = "너무 맛있땅"
   
   private let evaluationTextView = TastingNoteTextView()
   private let characterNumLabel = UILabel().then {
@@ -81,5 +83,20 @@ extension EvaluationCVC: UITextViewDelegate{
         characterNumLabel.text = "(\(evaluationTextView.text.count)/200자)"
 
     }
+  
+  func setLayout(for status: WritingStatus){
+    switch status{
+    case .newWriting,.revising:
+      evaluationTextView.isEditable = true
+      characterNumLabel.isHidden = false
+      
+    case .viewing:
+      evaluationTextView.isEditable = false
+      characterNumLabel.isHidden = true
+      evaluationTextView.text = evaluationText
+      evaluationTextView.textColor = .black
+    }
+
+  }
 
 }

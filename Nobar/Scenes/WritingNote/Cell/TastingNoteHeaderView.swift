@@ -8,6 +8,9 @@
 import UIKit
 
 final class TastingNoteHeaderView: UICollectionReusableView {
+  
+   var cocktailName = ""
+  
   enum TastingNoteHeaderType {
     case cocktail
     case date
@@ -49,22 +52,59 @@ extension TastingNoteHeaderView {
     }
   }
   
- func configUI(type: TastingNoteHeaderType) {
+  func configUI(type: TastingNoteHeaderType,status: WritingStatus) {
     switch type {
     case .cocktail:
-      titleLabel.text = "기록하고 싶은 칵테일을 알려주세요"
+      switch status{
+      case .newWriting,.revising:
+        titleLabel.text = "어떤 칵테일을 기록할까요?"
+      case .viewing:
+        titleLabel.text = "\(cocktailName)의 노트"
+      }
+      
     case .date:
-      titleLabel.text = "칵테일을 만든 날짜를 알려주세요"
+      switch status{
+      case .newWriting,.revising:
+        titleLabel.text = "언제 칵테일을 마셨나요?"
+      case .viewing:
+        titleLabel.text = "칵테일을 만든 날짜"
+      }
+      
     case .taste:
-      titleLabel.text = "맛은 어땠나요?"
-      notiLabel.text = "최대 3개까지 선택 가능합니다"
-      self.addNotiLabel()
+      switch status{
+      case .newWriting,.revising:
+        titleLabel.text = "맛은 어땠나요?"
+        notiLabel.text = "최대 3개까지 선택 가능합니다"
+        self.addNotiLabel()
+      case .viewing:
+        titleLabel.text = "내가 고른 맛 태그"
+      }
+      
     case .score:
-      titleLabel.text = "제 점수는요!"
+      switch status{
+      case .newWriting,.revising:
+        titleLabel.text = "칵테일이 얼마나 마음에 들었나요?"
+      case .viewing:
+        titleLabel.text = "칵테일 만족도"
+      }
+      
     case .evaluation:
-      titleLabel.text = "자세한 평가를 듣고 싶어요"
+      switch status{
+      case .newWriting,.revising:
+        titleLabel.text = "자세한 평가를 듣고 싶어요"
+      case .viewing:
+        titleLabel.text = "칵테일 맛 평가"
+      }
+      
+      
     case .experience:
-      titleLabel.text = "당신의 경험을 기억하고 싶어요"
+      switch status{
+      case .newWriting,.revising:
+        titleLabel.text = "당신의 경험을 기억하고 싶어요"
+      case .viewing:
+        titleLabel.text = "당신의 경험을 기억하고 싶어요"
+      }
+      
     }
   }
   

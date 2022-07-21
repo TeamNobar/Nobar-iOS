@@ -2,7 +2,7 @@
 //  WritingNoteViewController.swift
 //  Nobar
 //
-//  Created by Ian on 2022/07/08. // 작업자 이름 쓰세용
+//  Created by 이유진 on 2022/07/08.
 //
 
 import UIKit
@@ -19,6 +19,8 @@ final class WritingNoteViewController: BaseViewController {
     case evaluation = 4
     case experience = 5
   }
+  
+  var writingstatus = WritingStatus.viewing
   
   private let headerBarView = UIView()
   
@@ -38,10 +40,17 @@ final class WritingNoteViewController: BaseViewController {
     $0.titleLabel?.font = Pretendard.size17.medium()
   }
   
+  private let deleteButton = UIButton().then {
+    $0.setImage(UIImage(systemName: "trash"), for: .normal)
+  }
+  private let reviseButton = UIButton().then {
+    $0.setImage(UIImage(systemName: "pencil"), for: .normal)
+  }
+  
   private let grayLine = UIView().then {
     $0.backgroundColor = Color.gray02.getColor()
   }
-  
+
   private let tastingCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
     let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     layout.scrollDirection = .vertical
@@ -65,6 +74,7 @@ extension WritingNoteViewController {
     render()
     setDelegation()
     setRegistration()
+    setTitleViewLayout()
     
   }
   
@@ -74,16 +84,66 @@ extension WritingNoteViewController {
 extension WritingNoteViewController {
   
   private func render() {
-    view.addSubviews([grayLine,tastingCollectionView])
+    view.addSubviews([headerBarView,grayLine,tastingCollectionView])
+  }
+  private func setTitleViewLayout() {
+    headerBarView.addSubviews([closeButton,titleLabel,applyButton,reviseButton,deleteButton])
+    
+    closeButton.snp.makeConstraints{
+      $0.leading.equalToSuperview().offset(15)
+      $0.centerY.equalToSuperview()
+      $0.width.height.equalTo(42)
+    }
+    titleLabel.snp.makeConstraints{
+      $0.centerX.centerY.equalToSuperview()
+    }
+    applyButton.snp.makeConstraints{
+      $0.trailing.equalToSuperview().offset(-25)
+      $0.centerY.equalToSuperview()
+    }
+    reviseButton.snp.makeConstraints{
+      $0.trailing.equalTo(deleteButton.snp.leading).offset(-10)
+      $0.centerY.equalToSuperview()
+      $0.width.height.equalTo(30)
+    }
+    deleteButton.snp.makeConstraints{
+      $0.trailing.equalToSuperview().offset(-10)
+      $0.centerY.equalToSuperview()
+      $0.width.height.equalTo(30)
+    }
+    
+    switch writingstatus{
+    case .newWriting:
+      titleLabel.text = "테이스팅 노트 기록하기"
+      applyButton.isHidden = false
+      reviseButton.isHidden = true
+      deleteButton.isHidden = true
+    case .revising:
+      titleLabel.text = "테이스팅 노트 수정하기"
+      applyButton.isHidden = false
+      reviseButton.isHidden = true
+      deleteButton.isHidden = true
+    case .viewing:
+      titleLabel.text = "작성한 테이스팅 노트"
+      applyButton.isHidden = true
+      reviseButton.isHidden = false
+      deleteButton.isHidden = false
+    }
+    
+    
   }
   
   private func setLayout() {
-    navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
-    navigationItem.titleView = titleLabel
-    navigationItem.rightBarButtonItem = UIBarButtonItem(customView: applyButton)
+    self.navigationController?.navigationBar.isHidden = true
+    view.backgroundColor = .white
+    headerBarView.snp.makeConstraints{
+      $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+      $0.leading.trailing.equalToSuperview()
+      $0.height.equalTo(44)
+    }
     
     grayLine.snp.makeConstraints{
-      $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+      $0.top.equalTo(headerBarView.snp.bottom)
       $0.leading.trailing.equalToSuperview()
       $0.height.equalTo(1)
     }
@@ -92,7 +152,6 @@ extension WritingNoteViewController {
       $0.top.equalTo(grayLine.snp.bottom)
       $0.leading.bottom.trailing.equalToSuperview()
     }
-    
   }
   
   private func setDelegation(){
@@ -144,28 +203,34 @@ extension WritingNoteViewController: UICollectionViewDataSource{
     
     switch sectionType {
     case .cocktail:
-      let cell = collectionView.dequeueReusableCell(ofType: SelectCocktailCVC.self,
-                                                    at: indexPath)
+      guard let cell = collectionView.dequeueReusableCell(ofType: SelectCocktailCVC.self,
+                                                          at: indexPath) as? SelectCocktailCVC else {return UICollectionViewCell()}
+      cell.setLayout(for: writingstatus)
       return cell
     case .date:
-      let cell = tastingCollectionView.dequeueReusableCell(ofType: SelectDateCVC.self,
-                                                           at: indexPath)
+      guard let cell = tastingCollectionView.dequeueReusableCell(ofType: SelectDateCVC.self,
+                                                                 at: indexPath) as? SelectDateCVC else { return UICollectionViewCell()}
+      cell.setLayout(for: writingstatus)
       return cell
     case .taste:
-      let cell = tastingCollectionView.dequeueReusableCell(ofType: TasteCVC.self,
-                                                           at: indexPath)
+      guard let cell = tastingCollectionView.dequeueReusableCell(ofType: TasteCVC.self,
+                                                                 at: indexPath) as? TasteCVC else {return UICollectionViewCell()}
+      cell.setLayout(for: writingstatus)
       return cell
     case .score:
-      let cell = tastingCollectionView.dequeueReusableCell(ofType: ScoreCVC.self,
-                                                           at: indexPath)
+      guard let cell = tastingCollectionView.dequeueReusableCell(ofType: ScoreCVC.self,
+                                                                 at: indexPath) as? ScoreCVC else {return UICollectionViewCell()}
+      cell.setLayout(for: writingstatus)
       return cell
     case .evaluation:
-      let cell = tastingCollectionView.dequeueReusableCell(ofType: EvaluationCVC.self,
-                                                           at: indexPath)
+      guard let cell = tastingCollectionView.dequeueReusableCell(ofType: EvaluationCVC.self,
+                                                                 at: indexPath) as? EvaluationCVC else {return UICollectionViewCell()}
+      cell.setLayout(for: writingstatus)
       return cell
     case .experience:
-      let cell = tastingCollectionView.dequeueReusableCell(ofType: ExperienceCVC.self,
-                                                           at: indexPath)
+      guard let cell = tastingCollectionView.dequeueReusableCell(ofType: ExperienceCVC.self,
+                                                                 at: indexPath) as? ExperienceCVC else {return UICollectionViewCell()}
+      cell.setLayout(for: writingstatus)
       return cell
     }
   }
@@ -187,17 +252,18 @@ extension WritingNoteViewController: UICollectionViewDataSource{
       
       switch sectionType {
       case .cocktail:
-        headerView.configUI(type: .cocktail)
+        headerView.cocktailName = "마티니"
+        headerView.configUI(type: .cocktail, status: writingstatus)
       case .date:
-        headerView.configUI(type: .date)
+        headerView.configUI(type: .date, status: writingstatus)
       case .taste:
-        headerView.configUI(type: .taste)
+        headerView.configUI(type: .taste, status: writingstatus)
       case .score:
-        headerView.configUI(type: .score)
+        headerView.configUI(type: .score, status: writingstatus)
       case .evaluation:
-        headerView.configUI(type: .evaluation)
+        headerView.configUI(type: .evaluation, status: writingstatus)
       case .experience:
-        headerView.configUI(type: .experience)
+        headerView.configUI(type: .experience, status: writingstatus)
       }
       return headerView
     } else {

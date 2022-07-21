@@ -22,7 +22,7 @@ final class SelectCocktailCVC: UICollectionViewCell {
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-    
+  
 }
 
 // MARK: - UI & Layout
@@ -36,6 +36,14 @@ extension SelectCocktailCVC {
     searchCockTailTextField.snp.makeConstraints {
       $0.top.bottom.equalToSuperview().inset(5)
       $0.leading.trailing.equalToSuperview().inset(26)
+    }
+    
+  }
+  
+  func setLayout(for status: WritingStatus){
+    switch status{
+    case .newWriting,.revising: searchCockTailTextField.isHidden = false
+    case .viewing: searchCockTailTextField.isHidden = true
     }
     
   }

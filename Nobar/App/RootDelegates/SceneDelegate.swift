@@ -22,7 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     appRouter?.start()
     
     window = UIWindow(windowScene: scene)
-    window?.rootViewController = appRouter?.tabbarController
+//    window?.rootViewController = appRouter?.tabbarController
+    window?.rootViewController = UINavigationController(rootViewController: WritingNoteViewController())
     window?.makeKeyAndVisible()
   }
 }

@@ -41,7 +41,7 @@ final class TasteCVC: UICollectionViewCell {
     super.init(frame: frame)
     bind()
     render()
-    
+
   }
   
   @available(*, unavailable)
@@ -67,13 +67,21 @@ extension TasteCVC {
     }
     
   }
+
+  func setLayout(for status: WritingStatus){
+    switch status{
+    case .newWriting,.revising: addTagGesture()
+    case .viewing: removeTagGesture()
+    }
+
+  }
   
   private func bind() {
     
     for i in 0..<9 {
       let tagView = TastingTagView()
       tagView.setTasteLabel(with: dummyPhraseList[i])
-      tagView.tag = i
+      tagView.tag = i+1
       tagViews += [tagView]
       switch i {
       case 0..<3: topStackView.addArrangedSubview(tagView)
@@ -81,13 +89,28 @@ extension TasteCVC {
       case 6..<9: bottomStackView.addArrangedSubview(tagView)
       default: return
       }
-      
-      let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.didTapTagView(sender:)))
-      tagView.addGestureRecognizer(gesture)
+  
     }
   }
   
+  private func addTagGesture(){
+    for i in 1..<10 {
+      if let tag = viewWithTag(i) as? TastingTagView{
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.didTapTagView(sender:)))
+        tag.addGestureRecognizer(gesture)
+      }
+    }
+  }
   
+  private func removeTagGesture(){
+    for i in 1..<10 {
+      if let tag = viewWithTag(i) as? TastingTagView{
+        tag.gestureRecognizers?.removeLast()
+
+      }
+    }
+  }
+
   @objc private func didTapTagView(sender: UITapGestureRecognizer) {
     if let tagView = sender.view as? TastingTagView {
       if (selectedTagNumList.count < 3){
