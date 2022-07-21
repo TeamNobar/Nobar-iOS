@@ -24,7 +24,9 @@ final class MainViewController: BaseViewController {
   private let logoImageView = UIImageView().then {
     $0.image = ImageFactory.logo
   }
-  
+  private let grayLine = UIView().then{
+    $0.backgroundColor = Color.gray02.getColor()
+  }
   private lazy var homeCollectionView: UICollectionView = {
     let layout = getLayout()
     layout.configuration.interSectionSpacing = 0
@@ -35,8 +37,8 @@ final class MainViewController: BaseViewController {
     collectionView.showsHorizontalScrollIndicator = false
     collectionView.showsVerticalScrollIndicator = false
     collectionView.register(
-      CocktailCVC.self,
-      forCellWithReuseIdentifier: CocktailCVC.identifier)
+      SearchTotalResultCollectionViewCell.self,
+      forCellWithReuseIdentifier: SearchTotalResultCollectionViewCell.identifier)
     return collectionView
   }()
   
@@ -67,7 +69,7 @@ extension MainViewController {
   
   private func render() {
     view.addSubviews(
-      [logoView,
+      [logoView,grayLine,
        homeCollectionView])
     logoView.addSubview(logoImageView)
   }
@@ -87,7 +89,11 @@ extension MainViewController {
       $0.width.equalTo(120)
       $0.height.equalTo(24)
     }
-    
+    grayLine.snp.makeConstraints{
+      $0.top.equalTo(logoView.snp.bottom)
+      $0.leading.trailing.equalToSuperview()
+      $0.height.equalTo(1)
+    }
     homeCollectionView.snp.makeConstraints {
       $0.top.equalTo(logoView.snp.bottom)
       $0.leading.trailing.bottom.equalToSuperview()
@@ -103,8 +109,8 @@ extension MainViewController {
     homeCollectionView.register(HomeHeaderView.self,
                                 forSupplementaryViewOfKind: "HomeHeaderView",
                                 withReuseIdentifier: "HomeHeaderView")
-    homeCollectionView.register(CocktailCVC.self,
-                                forCellWithReuseIdentifier: "CocktailCVC")
+    homeCollectionView.register(SearchTotalResultCollectionViewCell.self,
+                                forCellWithReuseIdentifier: "SearchTotalResultCollectionViewCell")
     homeCollectionView.register(GuideCVC.self,
                                 forCellWithReuseIdentifier: "GuideCVC")
     homeCollectionView.register(RecommendCVC.self,
@@ -117,33 +123,23 @@ extension MainViewController {
 
 extension MainViewController {
   private func getArchiveSectionLayout() -> NSCollectionLayoutSection {
-    //        let itemInset: CGFloat = 2.5
     
-    let itemSize = NSCollectionLayoutSize(
-      widthDimension: .fractionalWidth(0.5),
-      heightDimension: .fractionalHeight(1)
-    )
+    let columns = 2
+    let spacing = CGFloat(9)
+
+    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                          heightDimension: .estimated(75))
     let item = NSCollectionLayoutItem(layoutSize: itemSize)
-    item.contentInsets = NSDirectionalEdgeInsets(
-      top: 4.5,
-      leading: 4.5,
-      bottom: 4.5,
-      trailing: 4.5)
-    
-    let groupSize = NSCollectionLayoutSize(
-      widthDimension: .fractionalWidth(1.0),
-      heightDimension: .estimated(120.0)
-    )
-    let group = NSCollectionLayoutGroup.horizontal(
-      layoutSize: groupSize,
-      subitems: [item])
-    
+
+    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                           heightDimension: .absolute(75))
+    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columns)
+    group.interItemSpacing = .fixed(spacing)
+
     var section = NSCollectionLayoutSection(group: group)
-    section.contentInsets = NSDirectionalEdgeInsets(
-      top: 12,
-      leading: 26,
-      bottom: 12,
-      trailing: 26)
+    section.interGroupSpacing = spacing
+    section.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 26, bottom: 30, trailing: 26)
+    
     
     section = self.addHeaderView(section: section)
     
@@ -168,10 +164,10 @@ extension MainViewController {
     var section = NSCollectionLayoutSection(group: group)
     section.interGroupSpacing = 12
     section.contentInsets = NSDirectionalEdgeInsets(
-      top: 12,
+      top: 0,
       leading: 26,
       bottom: 12,
-      trailing: 26)
+      trailing: 32)
     section.orthogonalScrollingBehavior = .continuous
     
     section = self.addHeaderView(section: section)
@@ -221,7 +217,7 @@ extension MainViewController {
   private func addHeaderView(section: NSCollectionLayoutSection) -> NSCollectionLayoutSection{
     let headerSize = NSCollectionLayoutSize(
       widthDimension: .fractionalWidth(1.0),
-      heightDimension: .absolute(50))
+      heightDimension: .absolute(47))
     let headerSupplementary = NSCollectionLayoutBoundarySupplementaryItem(
       layoutSize: headerSize,
       elementKind: "HomeHeaderView",
@@ -267,9 +263,9 @@ extension MainViewController: UICollectionViewDataSource{
     
     switch sectionType {
     case .archive:
-      let cell = homeCollectionView.dequeueReusableCell(ofType: CocktailCVC.self,
+      let cell = homeCollectionView.dequeueReusableCell(ofType: SearchTotalResultCollectionViewCell.self,
                                                         at: indexPath)
-      cell.setData(with: CocktailModel.dummyCocktailList[indexPath.row])
+      cell.updateModel(SearchCocktailModel.dummyCocktailList[indexPath.row])
       return cell
     case .guide:
       let cell = homeCollectionView.dequeueReusableCell(ofType: GuideCVC.self,
