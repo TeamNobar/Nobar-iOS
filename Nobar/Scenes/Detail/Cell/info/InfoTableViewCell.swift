@@ -34,6 +34,7 @@ class InfoTableViewCell: UITableViewCell {
     super.awakeFromNib()
     // Initialization code
     rectBackgroundView.backgroundColor = Color.gray01.getColor()
+    rectBackgroundView.layer.cornerRadius = 10
     
     baseImage.image = UIImage(named: "")  // Data
     baseTitleLabel.text = "베이스"
