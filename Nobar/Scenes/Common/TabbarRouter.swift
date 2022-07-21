@@ -25,19 +25,19 @@ private enum TabRouterChild: Int {
   
   var imageName: String {
     switch self {
-    case .main: return "airtag"
-    case .search: return "ipod"
+    case .main: return "icnHome"
+    case .search: return "icnSearch"
     case .writingNote: return "writingNote"
-    case .mypage: return "face.smiling"
+    case .mypage: return "icnMypage"
     }
   }
   
   var selectedImageName: String {
     switch self {
-    case .main: return "airtag.fill"
-    case .search: return "ipod.fill"
+    case .main: return "icnHomeFill"
+    case .search: return "icnSearchFill"
     case .writingNote: return "writingNote"
-    case .mypage: return "face.smiling.fill"
+    case .mypage: return "icnMypageFill"
     }
   }
   
@@ -77,7 +77,7 @@ extension TabbarRouter {
       .sorted(by: { $0.0.rawValue < $1.0.rawValue })
       .compactMap { $0.value }
     self.tabbarController.selectedIndex = 0
-    self.tabbarController.tabBar.tintColor = Color.navy01.getColor()
+    self.tabbarController.tabBar.tintColor = Color.blue_tabbar.getColor()
   }
   
   private func store(with navigationController: UINavigationController, as type: TabRouterChild) {
@@ -96,8 +96,8 @@ extension TabbarRouter {
     let viewController = storyboard.instantiateViewController(ofType: MainViewController.self)
     let navigationController = UINavigationController(rootViewController: viewController).then {
       $0.tabBarItem.title = TabRouterChild.main.title
-      $0.tabBarItem.image = UIImage(systemName: TabRouterChild.main.imageName)
-      $0.tabBarItem.selectedImage = UIImage(systemName: TabRouterChild.main.selectedImageName)
+      $0.tabBarItem.image = UIImage(named: TabRouterChild.main.imageName)
+      $0.tabBarItem.selectedImage = UIImage(named: TabRouterChild.main.selectedImageName)
     }
     store(with: navigationController, as: .main)
   }
@@ -107,8 +107,8 @@ extension TabbarRouter {
     let viewController = storyboard.instantiateViewController(ofType: SearchBaseViewController.self)
     let navigationController = UINavigationController(rootViewController: viewController).then {
       $0.tabBarItem.title = TabRouterChild.search.title
-      $0.tabBarItem.image = UIImage(systemName: TabRouterChild.search.imageName)
-      $0.tabBarItem.selectedImage = UIImage(systemName: TabRouterChild.search.selectedImageName)
+      $0.tabBarItem.image = UIImage(named: TabRouterChild.search.imageName)
+      $0.tabBarItem.selectedImage = UIImage(named: TabRouterChild.search.selectedImageName)
 //      $0.tabBarItem.
     }
     store(with: navigationController, as: .search)
@@ -120,7 +120,7 @@ extension TabbarRouter {
     let navigationController = UINavigationController(rootViewController: viewController).then {
       $0.tabBarItem.title = TabRouterChild.writingNote.title
       $0.tabBarItem.image = UIImage(named: TabRouterChild.writingNote.imageName)
-      $0.tabBarItem.selectedImage = UIImage(systemName: TabRouterChild.writingNote.selectedImageName)
+      $0.tabBarItem.selectedImage = UIImage(named: TabRouterChild.writingNote.selectedImageName)
     }
     store(with: navigationController, as: .writingNote)
   }
@@ -130,8 +130,8 @@ extension TabbarRouter {
     let viewController = storyboard.instantiateViewController(ofType: MyPageViewController.self)
     let navigationController = UINavigationController(rootViewController: viewController).then {
       $0.tabBarItem.title = TabRouterChild.mypage.title
-      $0.tabBarItem.image = UIImage(systemName: TabRouterChild.mypage.imageName)
-      $0.tabBarItem.selectedImage = UIImage(systemName: TabRouterChild.mypage.selectedImageName)
+      $0.tabBarItem.image = UIImage(named: TabRouterChild.mypage.imageName)
+      $0.tabBarItem.selectedImage = UIImage(named: TabRouterChild.mypage.selectedImageName)
     }
     store(with: navigationController, as: .mypage)
   }

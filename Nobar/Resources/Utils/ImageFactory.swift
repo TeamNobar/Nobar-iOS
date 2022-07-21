@@ -27,5 +27,22 @@ enum ImageFactory {
   static var dummy2: UIImage? {UIImage(named: "dummy2")}
   static var tagIconGray: UIImage? {UIImage(named: "tagIconGray")}
   static var tagIconPink: UIImage? {UIImage(named: "tagIconPink")}
+  static var icnWarning: UIImage? { UIImage(named: "icnWarning") }
+  static var splashLogo: UIImage? { UIImage(named: "splashLogo") }
+
+    static var logo: UIImage? {
+      UIImage(named: "logo")
+    }
     
+    static var icnTag: UIImage? {
+      UIImage(named: "icnTag")
+    }
+    
+    static var dummy1: UIImage? {
+      UIImage(named: "dummy1")
+    }
+    
+    static var dummy2: UIImage? {
+      UIImage(named: "dummy2")
+    }
 }

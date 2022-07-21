@@ -9,6 +9,6 @@ struct BaseRecipe: Decodable {
   let id: String
   var name: String
   var url: String
-  var recipes: [String]
+  var recipes: [String]?
 }
 

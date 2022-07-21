@@ -16,10 +16,10 @@ final class NetworkLogger: EventMonitor {
     
     print(
       "[URL] : " + (request.request?.url?.absoluteString ?? "")  + "\n"
-      + "Method : " + (request.request?.httpMethod ?? "") + "\n"
-      + "Headers : " + "\(request.request?.allHTTPHeaderFields ?? [:])" + "\n"
+      + "[Method] : " + (request.request?.httpMethod ?? "") + "\n"
+      + "[Headers] : " + "\(request.request?.allHTTPHeaderFields ?? [:])" + "\n"
     )
-    print("Body : " + (request.request?.httpBody?.toPrettyPrintedString ?? "nil"))
+    print("[Body] : " + (request.request?.httpBody?.toPrettyPrintedString ?? "nil"))
   }
   
   func request<Value>(
