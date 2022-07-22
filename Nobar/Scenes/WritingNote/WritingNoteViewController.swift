@@ -24,6 +24,16 @@ final class WritingNoteViewController: BaseViewController {
   
   var selectedCocktail = ""
   
+  init(status: WritingStatus) {
+    self.writingstatus = status
+    
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
   private var cocktailNameList: [String] =  ["피치크러쉬","피노키오","가나슈","말리부","커피","우유","모히또","와인","피머시기","피"]
   private var filterdCoctailNameList: [String] = []
   
@@ -160,12 +170,12 @@ extension WritingNoteViewController {
     tastingCollectionView.snp.makeConstraints{
       $0.top.equalTo(grayLine.snp.bottom)
       $0.leading.trailing.bottom.equalToSuperview()
-//      $0.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top)
-                    
+      //      $0.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top)
+      
     }
-//    view.keyboardLayoutGuide.snp.makeConstraints{
-//      $0.top.equalTo(tastingCollectionView.snp.bottom)
-//    }
+    //    view.keyboardLayoutGuide.snp.makeConstraints{
+    //      $0.top.equalTo(tastingCollectionView.snp.bottom)
+    //    }
     
   }
   
