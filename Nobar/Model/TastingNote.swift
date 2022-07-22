@@ -13,8 +13,8 @@ struct TastingNote: Decodable {
   var rate: Double
   var experienceContent: String
   var tag: [Tag]
-  var tasteContent: String
-  var createdAt: Int
+  var tasteContent: String?
+  var createdAt: String
 }
 
 extension Date {
@@ -28,9 +28,9 @@ extension Date {
 }
 
 extension TastingNote {
-  var readableCreatedAt: String {
-    let date = Date(timeIntervalSince1970: TimeInterval(createdAt))
-
-    return date.getReadableDateString()
-  }
+  var readableCreatedAt: String { return createdAt }
+//    let date = Date(timeIntervalSince1970: TimeInterval(createdAt))
+//
+//    return date.getReadableDateString()
+//  }
 }

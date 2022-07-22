@@ -7,7 +7,7 @@
 
 struct TastingTag: Decodable {
   let id: String
-  var category: Int
+  var category: String
   var content: String
   var isSelected: Bool
 }

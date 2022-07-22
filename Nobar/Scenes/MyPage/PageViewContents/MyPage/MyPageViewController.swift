@@ -66,7 +66,7 @@ extension MyPageViewController {
       .myPageResponse
       .asDriver { _ in .never() }
       .drive { [weak self] myPageResponse in
-        self?.setupNavigationBar(with: myPageResponse.nickName)
+        self?.setupNavigationBar(with: myPageResponse.nickname)
       }.disposed(by: self.disposeBag)
   }
 }

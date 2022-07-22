@@ -6,7 +6,7 @@
 //
 
 struct MyPageResponse: Decodable {
-  let nickName: String
+  let nickname: String
   let laterRecipes: [Recipe]
   let tastingNotes: [TastingNote]
 }

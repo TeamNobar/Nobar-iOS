@@ -8,6 +8,7 @@
 import UIKit
 
 import RxSwift
+import RxGesture
 
 final class TastingNoteViewController: BaseViewController {
   private enum Metric {
@@ -60,6 +61,17 @@ final class TastingNoteViewController: BaseViewController {
     
     view.addSubview(collectionView)
     collectionView.addSubview(addNewTastingNoteButton)
+    
+    addNewTastingNoteButton
+      .rx
+      .tapGesture()
+      .skip(1)
+      .asDriver { _ in .never() }
+      .drive { [weak self] _ in
+        let viewController = WritingNoteViewController(status: .newWriting)
+        viewController.modalPresentationStyle = .fullScreen
+        self?.present(viewController, animated: true)
+      }.disposed(by: self.disposeBag)
 
     bind()
   }
