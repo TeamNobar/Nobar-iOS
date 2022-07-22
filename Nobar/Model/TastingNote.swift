@@ -7,30 +7,12 @@
 
 import Foundation
 
-struct TastingNote: Decodable {
+struct TastingNote: Decodable {  
   let id: String
   var recipe: Recipe
-  var rate: Int
+  var rate: Double
   var experienceContent: String
-  var tag: [Int]
-  var tasteContent: String
-  var createdAt: Int
-}
-
-extension Date {
-  func getReadableDateString() -> String {
-    let formatter = DateFormatter().then {
-      $0.dateFormat = "yyyy-MM-dd"
-    }
-    
-    return formatter.string(from: self)
-  }
-}
-
-extension TastingNote {
-  var readableCreatedAt: String {
-    let date = Date(timeIntervalSince1970: TimeInterval(createdAt))
-
-    return date.getReadableDateString()
-  }
+  var tag: [Tag]
+  var tasteContent: String?
+  var createdAt: String
 }

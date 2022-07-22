@@ -12,6 +12,7 @@ enum StoryboardRouter: String {
   case search = "Search"
   case writingNote = "WritingNote"
   case mypage = "MyPage"
+  case detail = "Detail"
   
   var instance: UIStoryboard {
     return UIStoryboard(name: rawValue, bundle: .main)

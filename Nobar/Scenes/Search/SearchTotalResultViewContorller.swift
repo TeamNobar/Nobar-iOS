@@ -44,6 +44,7 @@ final class SearchTotalResultViewController: BaseViewController {
     collectionView.showsHorizontalScrollIndicator = false
     collectionView.showsVerticalScrollIndicator = true
     collectionView.register(cell: SearchTotalResultCollectionViewCell.self)
+    collectionView.delegate = self
     return collectionView
   }()
 
@@ -152,5 +153,16 @@ extension SearchTotalResultViewController {
     resultSnapshot.appendSections([.recipe])
     resultSnapshot.appendItems(recipeList, toSection: .recipe)
     resultDataSource.apply(resultSnapshot, animatingDifferences: true)
+  }
+}
+
+extension SearchTotalResultViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let storyboard = StoryboardRouter.detail.instance
+
+    let detailViewController = storyboard.instantiateViewController(ofType: DetailViewController.self)
+
+
+    navigationController?.pushViewController(detailViewController, animated: true)
   }
 }

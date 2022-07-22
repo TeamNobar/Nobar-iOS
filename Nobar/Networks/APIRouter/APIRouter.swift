@@ -10,6 +10,7 @@ import Alamofire
 enum APIRouter {
   case getMyPage
   case writeTastingNote(parameters: Parameters)
+  case auth(Parameters)
   case searchTag
   case searchBase(base: String)
   case searchMain
@@ -21,6 +22,7 @@ enum APIRouter {
     switch self {
     case .getMyPage: return "/mypage"
     case .writeTastingNote: return "/note"
+    case .auth: return "/auth"
     case .searchTag: return "/search/tag"
     case .searchBase: return "/search/base"
     case .searchMain: return "/search"
@@ -37,7 +39,8 @@ enum APIRouter {
         .searchKeyword:
       return .get
       
-    case .writeTastingNote:
+    case .writeTastingNote,
+        .auth:
       return .post
     }
   }
@@ -49,7 +52,8 @@ enum APIRouter {
         .searchMain:
       return nil
       
-    case .writeTastingNote(let parameters):
+    case .writeTastingNote(let parameters),
+        .auth(let parameters):
       return parameters
 
     case .searchBase(let base):
@@ -66,6 +70,8 @@ enum APIRouter {
   var encoding: ParameterEncoding {
     switch self {
     case .getMyPage,
+         .writeTastingNote,
+         .auth:
         .writeTastingNote,
         .searchTag,
         .searchMain:
@@ -80,15 +86,20 @@ enum APIRouter {
   var headers: HTTPHeaders {
     switch self {
     case .getMyPage,
-         .writeTastingNote,
-         .searchTag,
-         .searchBase,
-         .searchMain,
-         .searchKeyword:
+        .writeTastingNote:
+      
+      guard
+        let token = UserDefaultStorage.accessToken
+      else {
+        return ["Content-type": "application/json"]
+      }
+      
       return [
-        "Content-type": "application/json",
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjJkOWRkYmFkYmI1NDBiODhjZDVlZGM4In0sImlhdCI6MTY1ODQ3NjAwMCwiZXhwIjo0NzgyNjc4NDAwfQ.PDvodnxCJrq8XTxoZIcYdNheK9FSB-wjjfe2_t8-D-Q"
+          "Content-type": "application/json",
+          "token": token
       ]
+
+    case .auth: return ["Content-type": "application/json"]
     }
   }
 }

@@ -10,13 +10,12 @@ struct Recipe: Decodable, Hashable {
   var name: String
   var enName: String
   var version: [String]?
-  var base: BaseRecipe?
+  var base: BaseRecipe
   var defaultRecipes: String?
+  var proofIcon: String
   var proof: Int
   var skill: Skill
   var glass: Glass
   var ingredients: [Ingredient]
   var steps: [String]
 }
-
-

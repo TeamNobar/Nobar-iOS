@@ -25,19 +25,19 @@ private enum TabRouterChild: Int {
   
   var imageName: String {
     switch self {
-    case .main: return "icnHome"
-    case .search: return "icnSearch"
+    case .main: return "icn_home_gray"
+    case .search: return "icn_search_gray"
     case .writingNote: return "writingNote"
-    case .mypage: return "icnMypage"
+    case .mypage: return "icn_mypage_gray"
     }
   }
   
   var selectedImageName: String {
     switch self {
-    case .main: return "icnHomeFill"
-    case .search: return "icnSearchFill"
+    case .main: return "icn_home_blue"
+    case .search: return "icn_search_blue"
     case .writingNote: return "writingNote"
-    case .mypage: return "icnMypageFill"
+    case .mypage: return "icn_mypage_blue"
     }
   }
   
@@ -126,8 +126,9 @@ extension TabbarRouter {
   }
   
   private func setupMyPageViewController() {
-    let storyboard = TabRouterChild.mypage.storyboard.instance
-    let viewController = storyboard.instantiateViewController(ofType: MyPageViewController.self)
+    let repository = MyPageRepository(networkService: NetworkingService())
+    let viewModel = MyPageViewModel(repository: repository)
+    let viewController = MyPageViewController(viewModel: viewModel)
     let navigationController = UINavigationController(rootViewController: viewController).then {
       $0.tabBarItem.title = TabRouterChild.mypage.title
       $0.tabBarItem.image = UIImage(named: TabRouterChild.mypage.imageName)
@@ -136,4 +137,3 @@ extension TabbarRouter {
     store(with: navigationController, as: .mypage)
   }
 }
-

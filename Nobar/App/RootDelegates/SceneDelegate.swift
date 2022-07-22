@@ -18,11 +18,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   ) {
     guard let scene = (scene as? UIWindowScene) else { return }
 
+    window = UIWindow(windowScene: scene)
+    window?.rootViewController = SplashViewController()
+    window?.overrideUserInterfaceStyle = .light
+    window?.makeKeyAndVisible()
+  }
+}
+
+// MARK: - Public functions
+extension SceneDelegate {
+  func startTabbar() {
     appRouter = AppRouter(tabbarController: NBTabbarController())
     appRouter?.start()
     
-    window = UIWindow(windowScene: scene)
     window?.rootViewController = appRouter?.tabbarController
-    window?.makeKeyAndVisible()
+  }
+  
+  func startSignIn() {
+    window?.rootViewController = OnboardingViewController()
   }
 }

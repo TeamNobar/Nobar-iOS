@@ -16,7 +16,7 @@
 default_platform(:ios)
 
 #ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = "julz-mjej-effz-gxr"
-ENV["SLACK_WEBHOOK_URL"] = "https://hooks.slack.com/services/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"
+ENV["SLACK_WEBHOOK_URL"] = "https://hooks.slack.com/services/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"
 
 
 platform :ios do

@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/abseil-cpp-SwiftPM.git",
       "state" : {
-        "revision" : "d302de612e3d57c6f4afaf087da18fba8eac72a7",
-        "version" : "0.20220203.1"
+        "revision" : "583de9bd60f66b40e78d08599cc92036c2e7e4e1",
+        "version" : "0.20220203.2"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/boringssl-SwiftPM.git",
       "state" : {
-        "revision" : "79db6516894a932d0ddaff3b05b9da1e4f6c4069",
-        "version" : "0.9.0"
+        "revision" : "dd3eda2b05a3f459fc3073695ad1b28659066eab",
+        "version" : "0.9.1"
       }
     },
     {

@@ -1,6 +1,8 @@
 ![Group 33781 copy](https://user-images.githubusercontent.com/51031771/178424193-9c7bf16d-3597-43cf-b71b-5460181dc795.png)
+![팀원 별 담당뷰 설명](https://user-images.githubusercontent.com/72644361/180460545-340c739b-feca-4f4d-8383-d766169a0b46.png)
 
 ![Slide 16_9 - 7](https://user-images.githubusercontent.com/51031771/178426643-b89914d5-99f5-49a7-84ca-4b29bccecba4.png)
+
 
 
 
