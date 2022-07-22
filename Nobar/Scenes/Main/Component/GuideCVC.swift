@@ -69,9 +69,12 @@ extension GuideCVC {
       spread: 0)
   }
   
- func setData(with data: GuideModel){
-    thumbnailImageView.image = UIImage(named: data.thumbnailImageName)
-    titleLabel.text = data.titleName
+ func setData(with data: Guide){
+   if let url = URL(string: data.thumbnail ?? "") {
+     thumbnailImageView.kf.setImage(with: url)
+   }
+   
+   titleLabel.text = data.title
   }
 
 }

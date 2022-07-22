@@ -15,7 +15,7 @@ final class SearchTextField: UITextField {
   var didClickOnClearButtonClosure: (() -> Void)?
 
   private let searchIconImage = UIImageView().then {
-    $0.image = ImageFactory.icnSearchText
+    $0.image = ImageFactory.icnSearch
   }
 
   private lazy var clearTextButton = UIButton().then {
