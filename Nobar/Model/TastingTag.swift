@@ -5,9 +5,11 @@
 //  Created by Ian on 2022/07/13.
 //
 
-struct TastingTag: Decodable {
-  let id: String
-  var category: String
-  var content: String
-  var isSelected: Bool
+// MARK: - MainElement
+struct TastingTag: Codable {
+    let id: Int
+    let content: String
+    let activeIcon, inActiveIcon: String
+    let isSelected: Bool
 }
+

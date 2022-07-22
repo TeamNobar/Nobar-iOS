@@ -87,7 +87,7 @@ extension SearchTotalResultCollectionViewCell {
   func updateModel(_ model: Recipe) {
     cocktailLabel.text = model.name
     cocktailEngLabel.text = model.enName
-    baseTagView.tagLabel.text = model.base?.name
+//    baseTagView.tagLabel.text = model.base.name
     percentTagView.tagLabel.text = "\(model.proof)도"
     skillTagView.tagLabel.text = model.skill.name
 

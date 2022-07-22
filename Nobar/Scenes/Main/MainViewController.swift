@@ -305,7 +305,7 @@ extension MainViewController: UICollectionViewDataSource{
     case .archive:
       let cell = homeCollectionView.dequeueReusableCell(ofType: SearchTotalResultCollectionViewCell.self,
                                                         at: indexPath)
-      cell.updateModel(SearchCocktailModel.dummyCocktailList[indexPath.row])
+//      cell.updateModel(SearchCocktailModel.dummyCocktailList[indexPath.row])
       return cell
     case .guide:
       let cell = homeCollectionView.dequeueReusableCell(ofType: GuideCVC.self,

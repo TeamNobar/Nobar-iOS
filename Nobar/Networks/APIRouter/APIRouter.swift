@@ -15,6 +15,7 @@ enum APIRouter {
   case searchBase(base: String)
   case searchMain
   case searchKeyword(keyword: String)
+  case getTastingTag
   
   var baseURL: String { Environment.URL.baseUrl }
   
@@ -27,6 +28,7 @@ enum APIRouter {
     case .searchBase: return "/search/base"
     case .searchMain: return "/search"
     case .searchKeyword: return "/search/keyword"
+    case .getTastingTag: return "/note/tag"
     }
   }
   
@@ -36,7 +38,8 @@ enum APIRouter {
         .searchTag,
         .searchBase,
         .searchMain,
-        .searchKeyword:
+        .searchKeyword,
+        .getTastingTag:
       return .get
       
     case .writeTastingNote,
@@ -49,7 +52,8 @@ enum APIRouter {
     switch self {
     case .getMyPage,
         .searchTag,
-        .searchMain:
+        .searchMain,
+        .getTastingTag:
       return nil
       
     case .writeTastingNote(let parameters),
@@ -72,9 +76,9 @@ enum APIRouter {
     case .getMyPage,
         .writeTastingNote,
         .auth,
-        .writeTastingNote,
         .searchTag,
-        .searchMain:
+        .searchMain,
+        .getTastingTag:
       return JSONEncoding.default
 
     case .searchBase,
@@ -90,7 +94,8 @@ enum APIRouter {
         .searchTag,
         .searchMain,
         .searchBase,
-        .searchKeyword:
+        .searchKeyword,
+        .getTastingTag:
       
       guard
         let token = UserDefaultStorage.accessToken

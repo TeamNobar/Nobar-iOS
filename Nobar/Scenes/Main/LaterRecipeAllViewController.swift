@@ -133,7 +133,7 @@ extension LaterRecipeAllViewController {
 
       guard let cell = self.laterRecipeCollectionView.dequeueReusableCell(withReuseIdentifier: SearchTotalResultCollectionViewCell.className, for: indexPath) as? SearchTotalResultCollectionViewCell else { preconditionFailure() }
 
-      cell.updateModel(keyword)
+//      cell.updateModel(keyword)
       return cell
     }
 

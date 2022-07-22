@@ -6,13 +6,19 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class TasteCVC: UICollectionViewCell {
   
   var selectedTagNumList: [Int] = []
   
   private let dummyPhraseList = ["맛이좋아요","맛이쏘쏘쏘","아주별로야","네번쨰문구","다번째문구","여번째문구","일번째문구","여번쨰문구","아번째문구"]
+  
   private var tagViews: [TastingTagView] = []
+  
+  private var networkingService = NetworkingService()
+  
+  private var tagModelList: [TastingTag] = []
   
   private let wholeStackView = UIStackView().then{
     $0.axis = .vertical
@@ -73,6 +79,10 @@ extension TasteCVC {
     case .newWriting,.revising: addTagGesture()
     case .viewing: removeTagGesture()
     }
+    
+    func setData(data: Tag){
+      
+    }
 
   }
   
@@ -80,7 +90,7 @@ extension TasteCVC {
     
     for i in 0..<9 {
       let tagView = TastingTagView()
-      tagView.setTasteLabel(with: dummyPhraseList[i])
+      tagView.setData(with: tagModelList[i])
       tagView.tag = i+1
       tagViews += [tagView]
       switch i {
@@ -133,5 +143,22 @@ extension TasteCVC {
   }
 }
 
+// MARK: - Networking
+extension TasteCVC {
+  private func getTag() {
+    let endPoint = Endpoint<TastingTag>(apiRouter: .getTastingTag)
+
+    networkingService.request(endPoint) { [weak self] result in
+      switch result {
+      case .success(let tag):
+        self?.tagModelList = [tag]
+    
+      case .failure(let error): break
+      }
+    }
+  }
+
+ 
+}
 
 

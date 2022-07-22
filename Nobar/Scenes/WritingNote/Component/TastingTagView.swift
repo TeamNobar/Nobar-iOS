@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class TastingTagView: UIView {
   
@@ -62,9 +63,12 @@ final class TastingTagView: UIView {
     }
     
   }
-  public func setTasteLabel(with phrase: String){
-    self.tasteLabel.text = phrase
-    self.tastePhrase = phrase
+  public func setData(with data: TastingTag){
+    self.tasteLabel.text = data.content
+    if let url = URL(string: data.inActiveIcon){
+      self.iconImageView.kf.setImage(with: url)
+    }
+   
   }
   
   private func layoutSelectedTag(){
