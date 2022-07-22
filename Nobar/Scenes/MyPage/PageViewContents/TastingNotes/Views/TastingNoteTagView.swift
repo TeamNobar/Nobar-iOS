@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class TastingNoteTagView: BaseView {
   private let contentView = UIView()
@@ -15,7 +16,14 @@ final class TastingNoteTagView: BaseView {
     $0.font = Pretendard.size11.bold()
   }
   
-  init(tagName: String, contentSize: CGRect) {
+  init(
+    tagName: String,
+    tagURL: String,
+    contentSize: CGRect
+  ) {
+    if let url = URL(string: tagURL) {
+      tagImage.kf.setImage(with: url)
+    }
     tagNameLabel.text = tagName
     super.init(frame: contentSize)
   }

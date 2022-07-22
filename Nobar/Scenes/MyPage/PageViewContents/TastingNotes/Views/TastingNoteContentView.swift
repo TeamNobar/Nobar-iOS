@@ -96,7 +96,11 @@ extension TastingNoteContentView {
     heartRateView.updateHeartRate(with: tastingNote.rate)
     tastingNote.tag.prefix(3).forEach {
       tagsStackView.addArrangedSubview(
-        TastingNoteTagView(tagName: $0.content, contentSize: .zero)
+        TastingNoteTagView(
+          tagName: $0.content,
+          tagURL: $0.icon,
+          contentSize: self.bounds
+        )
       )
     }
   }

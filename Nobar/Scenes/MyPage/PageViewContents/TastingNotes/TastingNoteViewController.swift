@@ -61,17 +61,6 @@ final class TastingNoteViewController: BaseViewController {
     
     view.addSubview(collectionView)
     collectionView.addSubview(addNewTastingNoteButton)
-    
-    addNewTastingNoteButton
-      .rx
-      .tapGesture()
-      .skip(1)
-      .asDriver { _ in .never() }
-      .drive { [weak self] _ in
-        let viewController = WritingNoteViewController(status: .newWriting)
-        viewController.modalPresentationStyle = .fullScreen
-        self?.present(viewController, animated: true)
-      }.disposed(by: self.disposeBag)
 
     bind()
   }
@@ -90,7 +79,7 @@ extension TastingNoteViewController {
     )
     
     let output = viewModel.transform(to: input)
-    
+
     output
       .myPageResponse
       .drive(
@@ -100,6 +89,38 @@ extension TastingNoteViewController {
         )
       ) { row, item, cell in
         cell.bind(with: item)
+      }.disposed(by: self.disposeBag)
+    
+    viewModel
+      .signalForErrorStream()
+      .subscribe(onNext: { [weak self] _ in
+      }).disposed(by: self.disposeBag)
+    
+    addNewTastingNoteButton
+      .rx
+      .tapGesture()
+      .skip(1)
+      .asDriver { _ in .never() }
+      .drive { [weak self] _ in
+        let viewController = WritingNoteViewController(status: .newWriting)
+        viewController.modalPresentationStyle = .fullScreen
+        self?.present(viewController, animated: true)
+      }.disposed(by: self.disposeBag)
+    
+    collectionView
+      .rx
+      .modelSelected(TastingNoteSectionType.self)
+      .asDriver { _ in .never() }
+      .drive { [weak self] sectionType in
+        guard
+          let self = self,
+          case let .content(_) = sectionType
+        else {
+          return
+        }
+        
+        let writingViewController = WritingNoteViewController(status: .viewing)
+        self.navigationController?.pushViewController(writingViewController, animated: true)
       }.disposed(by: self.disposeBag)
   }
 }

@@ -41,6 +41,12 @@ final class MyPageViewController: BaseViewController {
     bind()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    self.navigationController?.navigationBar.isHidden = false
+  }
+  
   override func setupConstraints() {
     super.setupConstraints()
     
@@ -68,6 +74,11 @@ extension MyPageViewController {
       .drive { [weak self] myPageResponse in
         self?.setupNavigationBar(with: myPageResponse.nickname)
       }.disposed(by: self.disposeBag)
+    
+    viewModel
+      .signalForErrorStream()
+      .subscribe(onNext: { [weak self] _ in
+      }).disposed(by: self.disposeBag)
   }
 }
 

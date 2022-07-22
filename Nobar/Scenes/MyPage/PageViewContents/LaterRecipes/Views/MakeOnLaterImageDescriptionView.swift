@@ -13,6 +13,7 @@ final class MakeOnLaterImageDescriptionView: BaseView {
   private let contentsView = UIStackView().then {
     $0.axis = .vertical
     $0.spacing = 8.f
+    $0.alignment = .center
   }
   
   private let imageView = UIImageView().then {
@@ -64,4 +65,3 @@ extension MakeOnLaterImageDescriptionView {
     descriptionLabel.text = description
   }
 }
-

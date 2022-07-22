@@ -77,7 +77,7 @@ final class TastingNoteHeartRateView: BaseView {
       ].compactMap { $0 }
       case .fourFive: return [
         ImageFactory.property11Point, ImageFactory.property11Point, ImageFactory.property11Point,
-        ImageFactory.property105Point, ImageFactory.property10Point
+        ImageFactory.property11Point, ImageFactory.property105Point
       ].compactMap { $0 }
       case .five: return [
         ImageFactory.property11Point, ImageFactory.property11Point, ImageFactory.property11Point,
@@ -115,7 +115,12 @@ extension TastingNoteHeartRateView {
     
     containerStackView.removeAllSubViews()
     layoutViews()
+    setNeedsLayout()
     layoutIfNeeded()
+  }
+  
+  func prepareForReuse() {
+    containerStackView.removeAllSubViews()
   }
 }
 

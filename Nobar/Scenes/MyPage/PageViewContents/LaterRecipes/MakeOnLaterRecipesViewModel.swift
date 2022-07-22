@@ -12,6 +12,7 @@ protocol MakeOnLaterRecipesViewModelType {
   var repository: MakeOnLaterRecipiesRepositoryType { get }
   
   func transform(to input: MakeOnLaterRecipesViewModel.Input) -> MakeOnLaterRecipesViewModel.Output
+  func signalForErrorStream() -> Observable<Error>
 }
 
 final class MakeOnLaterRecipesViewModel {
@@ -23,8 +24,8 @@ final class MakeOnLaterRecipesViewModel {
     let myPageResponse: Driver<MyPageResponse>
   }
   
-  
   let repository: MakeOnLaterRecipiesRepositoryType
+  let errorSubject = PublishSubject<Error>()
   
   init(repository: MakeOnLaterRecipiesRepositoryType) {
     self.repository = repository
@@ -40,9 +41,15 @@ extension MakeOnLaterRecipesViewModel: MakeOnLaterRecipesViewModelType {
       .flatMapLatest { [weak self] _ -> Observable<MyPageResponse> in
         guard let self = self else { return .error(NBError.weakReferenceError) }
         
-        return self.repository.fetchMyPageInfo()
+        return self.repository
+          .fetchMyPageInfo()
+          .suppressAndFeedError(into: self.errorSubject)
       }
     
     return .init(myPageResponse: myPageResponse.asDriver { _ in .never() })
+  }
+  
+  func signalForErrorStream() -> Observable<Error> {
+    return errorSubject.asObserver()
   }
 }

@@ -7,10 +7,13 @@
 
 import UIKit
 
-
 final class TastingNoteCollectionViewCell: UICollectionViewCell {
-  private let tastingNoteDividerView = TastingNoteDividerView()
-  private let tastingNoteContentView = TastingNoteContentView()
+  private let tastingNoteDividerView = TastingNoteDividerView().then {
+    $0.isHidden = true
+  }
+  private let tastingNoteContentView = TastingNoteContentView().then {
+    $0.isHidden = true
+  }
   private let containerStackView = UIStackView().then {
     $0.axis = .vertical
   }
@@ -40,6 +43,8 @@ final class TastingNoteCollectionViewCell: UICollectionViewCell {
     super.prepareForReuse()
     
     tastingNoteContentView.prepareForReuse()
+    tastingNoteContentView.isHidden = true
+    tastingNoteDividerView.isHidden = true
   }
 }
 
@@ -48,13 +53,12 @@ extension TastingNoteCollectionViewCell {
   func bind(with cellModel: TastingNoteSectionType) {
     switch cellModel {
     case .date(let dateString):
+      tastingNoteDividerView.isHidden = false
       tastingNoteDividerView.updateDateString(to: dateString)
       
-      tastingNoteContentView.isHidden = true
     case .content(let tastingNote):
+      tastingNoteContentView.isHidden = false
       tastingNoteContentView.updateContent(with: tastingNote)
-
-      tastingNoteDividerView.isHidden = true
     }
   }
 }

@@ -42,12 +42,12 @@ extension TastingNoteRepository: TastingNoteRepositoryType {
               .getIsDiffCreatedAt(with: element) == true
             
             if isDiffCreatedAtWithBefore || index == 0 {
-              sectionElement.append(TastingNoteSectionType.date(element.readableCreatedAt))
+              sectionElement.append(TastingNoteSectionType.date(element.createdAt))
             }
             
             sectionElement.append(TastingNoteSectionType.content(element))
           }
-        
+
         return sectionElement
       }
   }
@@ -68,6 +68,6 @@ extension Array where Element == TastingNote {
 
 extension TastingNote {
   func getIsDiffCreatedAt(with before: TastingNote) -> Bool {
-    return before.readableCreatedAt != self.readableCreatedAt
+    return before.createdAt != self.createdAt
   }
 }
