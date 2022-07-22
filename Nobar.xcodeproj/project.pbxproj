@@ -129,7 +129,6 @@
 		4DBA1521288458FB0068A487 /* SearchCocktailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBA1520288458FB0068A487 /* SearchCocktailModel.swift */; };
 		4DBA152328845A630068A487 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBA152228845A630068A487 /* UIStackView+Extension.swift */; };
 		4DF28D1A288942F80019C930 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF28D19288942F80019C930 /* SplashViewController.swift */; };
-		4DF28D2128894F810019C930 /* 111529-rocket.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DF28D2028894F810019C930 /* 111529-rocket.json */; };
 		4DF8ED69288A71C40029E942 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF8ED68288A71C40029E942 /* OnboardingViewController.swift */; };
 		4DF8ED6B288A77410029E942 /* OnboardingPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF8ED6A288A77410029E942 /* OnboardingPageControl.swift */; };
 		4DF8ED6D288A7B450029E942 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF8ED6C288A7B450029E942 /* OnboardingCollectionViewCell.swift */; };
@@ -240,8 +239,9 @@
 		3C5C67D5288999E500011D80 /* TastingNoteContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastingNoteContentView.swift; sourceTree = "<group>"; };
 		3C5C67D72889A19E00011D80 /* TastingNoteHeartRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastingNoteHeartRateView.swift; sourceTree = "<group>"; };
 		3C6CBC1B2881D18300294D2A /* NBSegmentedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBSegmentedController.swift; sourceTree = "<group>"; };
-		3C7A96D8288AC7A4007D68F0 /* ObservableType+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Error.swift"; sourceTree = "<group>"; };
 		3C7A96D6288A7D84007D68F0 /* NBUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBUtils.swift; sourceTree = "<group>"; };
+		3C7A96D8288AC7A4007D68F0 /* ObservableType+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Error.swift"; sourceTree = "<group>"; };
+		3C81B2C7288AE8C6005ED9CD /* Nobar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nobar.entitlements; sourceTree = "<group>"; };
 		3C823001287518C20031C1DA /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		3C82300B28751AF90031C1DA /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		3C8F52B52889B06700E87623 /* TastingNoteTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastingNoteTagView.swift; sourceTree = "<group>"; };
@@ -316,7 +316,6 @@
 		4DBA1520288458FB0068A487 /* SearchCocktailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCocktailModel.swift; sourceTree = "<group>"; };
 		4DBA152228845A630068A487 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		4DF28D19288942F80019C930 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		4DF28D2028894F810019C930 /* 111529-rocket.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "111529-rocket.json"; sourceTree = "<group>"; };
 		4DF8ED68288A71C40029E942 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		4DF8ED6A288A77410029E942 /* OnboardingPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageControl.swift; sourceTree = "<group>"; };
 		4DF8ED6C288A7B450029E942 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -801,6 +800,7 @@
 		3CE5989D28748092004AFD05 /* Nobar */ = {
 			isa = PBXGroup;
 			children = (
+				3C81B2C7288AE8C6005ED9CD /* Nobar.entitlements */,
 				3C822FFA2875171C0031C1DA /* App */,
 				3C8230042875199E0031C1DA /* Utils */,
 				3C822FFD2875177F0031C1DA /* Scenes */,
@@ -1665,6 +1665,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Nobar/Nobar.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1687,7 +1688,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match Development kr.teamnobar.nobar-ios-debug";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1697,6 +1698,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Nobar/Nobar.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1719,7 +1721,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore kr.teamnobar.nobar-ios-release";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

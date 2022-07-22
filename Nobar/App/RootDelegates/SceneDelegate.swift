@@ -35,6 +35,6 @@ extension SceneDelegate {
   }
   
   func startSignIn() {
-    window?.rootViewController = NicknameViewController()
+    window?.rootViewController = OnboardingViewController()
   }
 }
