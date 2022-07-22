@@ -90,10 +90,10 @@ extension CocktailCVC {
       spread: 0.0)
   }
   
-  func setData(with data: CocktailModel){
-    cocktailNameLabel.text = data.cocktailName
-    cocktailEngNameLabel.text = data.cocktailEngName
-    baseLabel.text = data.base
+  func setData(with data: Recipe) {
+    cocktailNameLabel.text = data.name
+    cocktailEngNameLabel.text = data.enName
+    baseLabel.text = data.base.name
   }
   
 }
