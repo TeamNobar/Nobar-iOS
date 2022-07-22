@@ -10,6 +10,7 @@ import Foundation
 struct Tag: Decodable {
   let id: Int
   var isSelected: Bool
-  var icon: String
+  var activeIcon: String
+  var inActiveIcon: String
   var content: String
 }

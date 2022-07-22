@@ -7,10 +7,11 @@
 
 import UIKit
 
+import Kingfisher
 import SnapKit
 
 class InfoTableViewCell: UITableViewCell {
-    
+  
   @IBOutlet weak var rectBackgroundView: UIView!
   
   @IBOutlet weak var baseImage: UIImageView!
@@ -29,12 +30,50 @@ class InfoTableViewCell: UITableViewCell {
   @IBOutlet weak var glassTitleLabel: UILabel!
   @IBOutlet weak var glassNameLabel: UILabel!
   
-  static let identifier = "InfoTableViewCell"
-  
-
   override func awakeFromNib() {
     super.awakeFromNib()
-    // Initialization code
+    
+    layoutViews()
+    setupConstraint()
+  }
+  
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    
+  }
+}
+
+extension InfoTableViewCell {
+  func updateCocktailInfo(with response: RecipeDetailResponse) {
+    if let imageURL = URL(string: response.base.url) {
+      baseImage.kf.setImage(with: imageURL)
+    }
+    baseTitleLabel.text = "베이스"
+    baseNameLabel.text = response.base.name
+    
+    if let imageURL = URL(string: response.proofIcon) {
+      proofImage.kf.setImage(with: imageURL)
+    }
+    proofTitleLabel.text = "도수"
+    proofNameLabel.text = "\(response.proof)%"
+    
+    if let imageURL = URL(string: response.skill.url) {
+      skillImage.kf.setImage(with: imageURL)
+    }
+    skillTitleLabel.text = "만드는 법"
+    skillNameLabel.text = response.skill.name
+    
+    if let imageURL = URL(string: response.glass.url) {
+      glassImage.kf.setImage(with: imageURL)
+    }
+    skillTitleLabel.text = "글라스"
+    skillNameLabel.text = response.glass.name
+  }
+}
+
+// MARK: - Private functions
+extension InfoTableViewCell {
+  private func layoutViews() {
     rectBackgroundView.backgroundColor = Color.gray01.getColor()
     rectBackgroundView.layer.cornerRadius = 10
     
@@ -69,7 +108,9 @@ class InfoTableViewCell: UITableViewCell {
     glassNameLabel.text = "칵테일"  // Data
     glassNameLabel.font = Pretendard.size14.medium()
     glassNameLabel.textColor = Color.black.getColor()
-
+  }
+  
+  private func setupConstraint() {
     [baseTitleLabel, baseNameLabel].forEach {
       $0.snp.makeConstraints {
         $0.centerX.equalTo(baseImage.snp.centerX)
@@ -90,19 +131,19 @@ class InfoTableViewCell: UITableViewCell {
         $0.centerX.equalTo(glassImage.snp.centerX)
       }
     }
-
+    
     [baseImage, proofImage, skillImage, glassImage].forEach {
       $0.snp.makeConstraints {
         $0.height.equalTo(42)
         $0.width.equalTo(42)
       }
     }
-
+    
     baseImage.snp.makeConstraints {
       $0.leading.equalToSuperview().inset(35)
       $0.top.equalToSuperview().inset(12)
     }
-
+    
     [proofImage, skillImage, glassImage].forEach {
       $0.snp.makeConstraints {
         $0.top.equalTo(baseImage.snp.top)
@@ -117,7 +158,7 @@ class InfoTableViewCell: UITableViewCell {
     glassImage.snp.makeConstraints {
       $0.leading.equalTo(skillImage.snp.trailing).offset(32)
     }
-
+    
     [baseImage, proofImage, skillImage, glassImage].forEach {
       $0.snp.makeConstraints {
         $0.bottom.equalToSuperview().inset(46)

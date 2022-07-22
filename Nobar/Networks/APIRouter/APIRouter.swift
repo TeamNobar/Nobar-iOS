@@ -16,6 +16,7 @@ enum APIRouter {
   case searchMain
   case searchKeyword(keyword: String)
   case home
+  case getRecipe(id: String)
   
   var baseURL: String { Environment.URL.baseUrl }
   
@@ -29,6 +30,7 @@ enum APIRouter {
     case .searchMain: return "/search"
     case .searchKeyword: return "/search/keyword"
     case .home: return "/home"
+    case .getRecipe(let id): return "/recipe/\(id)"
     }
   }
   
@@ -39,7 +41,8 @@ enum APIRouter {
         .searchBase,
         .searchMain,
         .searchKeyword,
-        .home:
+        .home,
+        .getRecipe:
       return .get
       
     case .writeTastingNote,
@@ -53,7 +56,8 @@ enum APIRouter {
     case .getMyPage,
         .searchTag,
         .searchMain,
-        .home:
+        .home,
+        .getRecipe:
       return nil
       
     case .writeTastingNote(let parameters),
@@ -78,7 +82,8 @@ enum APIRouter {
         .auth,
         .searchTag,
         .searchMain,
-        .home:
+        .home,
+        .getRecipe:
       return JSONEncoding.default
 
     case .searchBase,
@@ -95,12 +100,16 @@ enum APIRouter {
         .searchMain,
         .searchBase,
         .searchKeyword,
-        .home:
+        .home,
+        .getRecipe:
       
       guard
         let token = UserDefaultStorage.accessToken
       else {
-        return ["Content-type": "application/json"]
+        return [
+          "Content-type": "application/json",
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjJkOWRkYmFkYmI1NDBiODhjZDVlZGM4In0sImlhdCI6MTY1ODQ3NjAwMCwiZXhwIjo0NzgyNjc4NDAwfQ.PDvodnxCJrq8XTxoZIcYdNheK9FSB-wjjfe2_t8-D-Q"
+        ]
       }
       
       return [

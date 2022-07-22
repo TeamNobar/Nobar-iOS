@@ -120,7 +120,8 @@ extension TastingNoteViewController {
         }
         
         let writingViewController = WritingNoteViewController(status: .viewing)
-        self.navigationController?.pushViewController(writingViewController, animated: true)
+        writingViewController.modalPresentationStyle = .fullScreen
+        self.present(writingViewController, animated: true)
       }.disposed(by: self.disposeBag)
   }
 }

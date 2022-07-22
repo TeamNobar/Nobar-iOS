@@ -98,7 +98,7 @@ extension TastingNoteContentView {
       tagsStackView.addArrangedSubview(
         TastingNoteTagView(
           tagName: $0.content,
-          tagURL: $0.icon,
+          tagURL: $0.inActiveIcon,
           contentSize: self.bounds
         )
       )
