@@ -12,6 +12,11 @@ import RxSwift
 final class MakeOnLaterRecipesViewController: BaseViewController {
   typealias Input = MakeOnLaterRecipesViewModel.Input
   typealias Output = MakeOnLaterRecipesViewModel.Output
+  
+  private enum Metric {
+    static let collectionColumnSpacing = 16.f
+    static let collectionRowSpacing = 16.f
+  }
 
   private let viewModel: MakeOnLaterRecipesViewModelType
   private let disposeBag = DisposeBag()
@@ -19,8 +24,8 @@ final class MakeOnLaterRecipesViewController: BaseViewController {
   private lazy var flowLayout = UICollectionViewFlowLayout().then {
     $0.scrollDirection = .vertical
     $0.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-    $0.minimumInteritemSpacing = 0.f
-    $0.minimumLineSpacing = 0.f
+    $0.minimumInteritemSpacing = Metric.collectionColumnSpacing
+    $0.minimumLineSpacing = Metric.collectionRowSpacing
   }
   
   private lazy var collectionView = UICollectionView(

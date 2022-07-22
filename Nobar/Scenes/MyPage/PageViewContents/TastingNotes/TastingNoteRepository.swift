@@ -26,18 +26,9 @@ extension TastingNoteRepository: TastingNoteRepositoryType {
   func fetchMyPageInfo() -> Observable<[TastingNoteSectionType]> {
     let endpoint = Endpoint<MyPageResponse>(apiRouter: .getMyPage)
     var sectionElement: [TastingNoteSectionType] = []
-    
-    var mypageResponse: MyPageResponse?
-    if let path = Bundle.main.path(forResource: "mypagejson", ofType: "json"),
-       let jsonData = try? String(contentsOfFile: path).data(using: .utf8) {
-      mypageResponse = try? JSONDecoder().decode(MyPageResponse.self, from: jsonData)
-    } else {
-      mypageResponse = nil
-    }
   
-//    return networkService
-//      .requestObservable(endpoint)
-    return Observable.just(mypageResponse!)
+    return networkService
+      .requestObservable(endpoint)
       .map { myPageResponse -> [TastingNoteSectionType] in
         let sortedTastingNotesByCreatedAt = myPageResponse
           .tastingNotes
