@@ -6,7 +6,6 @@
 //
 
 struct Skill: Decodable {
-  let id: String
   var name: String
   var url: String
 }

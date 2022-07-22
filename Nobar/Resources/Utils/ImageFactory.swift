@@ -18,6 +18,8 @@ enum ImageFactory {
   static var icnFilterDown: UIImage? { UIImage(named: "icnFilterDown") }
   static var icnUp: UIImage? { UIImage(named: "icnUp") }
   static var icnX: UIImage? { UIImage(named: "icnX") }
+  static var icnWarning: UIImage? { UIImage(named: "icnWarning") }
+  static var splashLogo: UIImage? { UIImage(named: "splashLogo") }
   static var btnScoreEmpty: UIImage? { UIImage(named: "btnScoreEmpty") }
   static var btnScoreFill: UIImage? { UIImage(named: "btnScoreFill") }
   static var btnScoreHalf: UIImage? { UIImage(named: "btnScoreHalf") }
