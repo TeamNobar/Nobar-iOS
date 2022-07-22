@@ -72,8 +72,8 @@ extension IngredientsTableViewCell : UICollectionViewDelegateFlowLayout, UIColle
     else {
         return UICollectionViewCell()
       }
-    print("재료")
-    cell.setData(cocktailData: IngredientDataModel.sampleData[indexPath.row])
+    print("ingredient 넣는다 뿅")
+    cell.setData(ingredientData: IngredientDataModel.sampleData[indexPath.row])
       return cell
   }
   

@@ -41,10 +41,10 @@ class IngredientItemCollectionViewCell: UICollectionViewCell {
     }
     
     // 각 Cell 별로 다른 정보가 표시되어야 하므로, 값을 넣어주는 함수를 생성
-    func setData(cocktailData: IngredientDataModel) {
-        ingredientsTitle.text = cocktailData.IngredientName
-        categoryLabel.text = cocktailData.IngredientCategory
-        proofLabel.text = cocktailData.IngredientQuantity
+    func setData(ingredientData: IngredientDataModel) {
+        ingredientsTitle.text = ingredientData.Name
+        categoryLabel.text = ingredientData.Category
+        proofLabel.text = ingredientData.Quantity
     }
 }
 

@@ -23,54 +23,10 @@ struct CocktailDetailDataModel {
      */
 }
 
-struct IngredientDataModel {
-    let IngredientName: String
-    let IngredientQuantity: String
-    let IngredientCategory: String
-}
 
 extension CocktailDetailDataModel {
     static let sampleData: [CocktailDetailDataModel] = [
         CocktailDetailDataModel(CocktailId:"1", CocktailName: "칵테일", CocktailEnName: "Cocktail"),
     ]
 }
-    
-extension IngredientDataModel {
-    static let sampleData: [IngredientDataModel] = [
-        IngredientDataModel(
-            IngredientName:"다크럼",
-            IngredientQuantity:"40ml",
-            IngredientCategory:"보드카"
-        ),
-        IngredientDataModel(
-            IngredientName:"자몽주스",
-            IngredientQuantity:"300ml",
-            IngredientCategory:"주스"
-        ),
-        IngredientDataModel(
-            IngredientName:"소금",
-            IngredientQuantity:"0ml",  // 이 경우 어떻게 처리하는지?
-            IngredientCategory:"기타"
-        ),
-        IngredientDataModel(
-            IngredientName:"소금",
-            IngredientQuantity:"50",  // 이 경우 어떻게 처리하는지?
-            IngredientCategory:"기타"
-        ),
-        IngredientDataModel(
-            IngredientName:"소금",
-            IngredientQuantity:"43",  // 이 경우 어떻게 처리하는지?
-            IngredientCategory:"밍미임"
-        ),
-        IngredientDataModel(
-            IngredientName:"소금",
-            IngredientQuantity:"10",  // 이 경우 어떻게 처리하는지?
-            IngredientCategory:"기타"
-        ),
-        IngredientDataModel(
-            IngredientName:"소금",
-            IngredientQuantity:"200",  // 이 경우 어떻게 처리하는지?
-            IngredientCategory:"랄라라"
-        )
-    ]
-}
+
