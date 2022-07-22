@@ -261,7 +261,7 @@ extension WritingNoteViewController: UICollectionViewDataSource{
     case .score:
       guard let cell = tastingCollectionView.dequeueReusableCell(ofType: ScoreCVC.self,
                                                                  at: indexPath) as? ScoreCVC else {return UICollectionViewCell()}
-//      cell.setLayout(for: writingstatus)
+      cell.setLayout(for: writingstatus)
       return cell
     case .evaluation:
       guard let cell = tastingCollectionView.dequeueReusableCell(ofType: EvaluationCVC.self,
