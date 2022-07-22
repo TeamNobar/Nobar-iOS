@@ -12,9 +12,9 @@ class IngredientsTableViewCell: UITableViewCell {
   @IBOutlet weak var ingredientsCollectionView: UICollectionView!
   
   //var selectIngredients: (() -> ())?
-  static let identifier = "IngredientsTableViewCell"
-  var identifiers = [IngredientItemCollectionViewCell.identifier]
-  let flowlayout = UICollectionViewFlowLayout()
+  private var identifiers = [IngredientItemCollectionViewCell.identifier]
+  private let flowlayout = UICollectionViewFlowLayout()
+  private var ingredients: [Ingredient] = []
 
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -36,10 +36,10 @@ class IngredientsTableViewCell: UITableViewCell {
   
   private func registerXibs(){
       var nib : [UINib] = []
-      identifiers.forEach{
+      identifiers.forEach {
           nib.append(UINib(nibName: $0, bundle: nil))
       }
-      nib.enumerated().forEach{
+      nib.enumerated().forEach {
         ingredientsCollectionView.register($1, forCellWithReuseIdentifier: identifiers[$0])
       }
   }
@@ -54,27 +54,33 @@ class IngredientsTableViewCell: UITableViewCell {
     ingredientsCollectionView.showsVerticalScrollIndicator = false
     ingredientsCollectionView.showsHorizontalScrollIndicator = false
   }
-  
-  // ingredientModelList 받아오기
 }
 
+extension IngredientsTableViewCell {
+  func updateIngredientInfo(_ ingredients: [Ingredient]) {
+    self.ingredients = ingredients
+    self.ingredientsCollectionView.reloadData()
+  }
+}
 
 extension IngredientsTableViewCell : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return 7  //ingredientModelList.count
+    return ingredients.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      guard let cell = collectionView.dequeueReusableCell(
-        withReuseIdentifier: IngredientItemCollectionViewCell.identifier,
-        for: indexPath
-      ) as? IngredientItemCollectionViewCell
+    guard let cell = collectionView.dequeueReusableCell(
+      withReuseIdentifier: IngredientItemCollectionViewCell.identifier,
+      for: indexPath
+    ) as? IngredientItemCollectionViewCell
     else {
-        return UICollectionViewCell()
-      }
-    print("ingredientModelList")
-    cell.setData(cocktailData: IngredientDataModel.sampleData[indexPath.row])
-      return cell
+      return UICollectionViewCell()
+    }
+    
+    guard let item = ingredients.safeget(index: indexPath.row) else { return cell }
+    
+    cell.setData(cocktailData: item)
+    return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
