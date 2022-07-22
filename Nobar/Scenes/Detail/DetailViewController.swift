@@ -174,7 +174,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension DetailViewController: RecordTapDelegate {
   func didClickOnWriteButton() {
-    let writingNoteViewController = WritingNoteViewController()
+    let writingNoteViewController = WritingNoteViewController(status: .viewing)
 
     self.present(writingNoteViewController, animated: true)
   }
