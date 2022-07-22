@@ -16,6 +16,10 @@ final class MainViewController: BaseViewController {
     case guide = 1
     case recommend = 2
   }
+
+  private var networkingService = NetworkingService()
+  private var laterRecipeList: [Recipe] = []
+  private var guideList: [Guide] = []
   
   private let logoView = UIView().then {
     $0.backgroundColor = .white
@@ -59,6 +63,7 @@ extension MainViewController {
     render()
     setDelegation()
     setRegistration()
+    getHomeData()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -282,13 +287,13 @@ extension MainViewController: UICollectionViewDataSource{
     
     switch sectionType {
     case .archive:
-      if SearchCocktailModel.dummyCocktailList.count>6{
+      if laterRecipeList.count>6{
         return 6
       }else{
-        return SearchCocktailModel.dummyCocktailList.count
+        return laterRecipeList.count
       }
     case .guide:
-      return GuideModel.dummyGuideList.count
+      return guideList.count
     case .recommend:
       return RecommendModel.dummyRecommendList.count
     }
@@ -305,12 +310,15 @@ extension MainViewController: UICollectionViewDataSource{
     case .archive:
       let cell = homeCollectionView.dequeueReusableCell(ofType: SearchTotalResultCollectionViewCell.self,
                                                         at: indexPath)
-      cell.updateModel(SearchCocktailModel.dummyCocktailList[indexPath.row])
+
+      guard let item = laterRecipeList.safeget(index: indexPath.row) else { return cell }
+      cell.updateModel(item)
       return cell
     case .guide:
       let cell = homeCollectionView.dequeueReusableCell(ofType: GuideCVC.self,
                                                         at: indexPath)
-      cell.setData(with: GuideModel.dummyGuideList[indexPath.row])
+      guard let item = guideList.safeget(index: indexPath.row) else { return cell }
+      cell.setData(with: item)
       return cell
     case .recommend:
       let cell = homeCollectionView.dequeueReusableCell(ofType: RecommendCVC.self,
@@ -339,7 +347,7 @@ extension MainViewController: UICollectionViewDataSource{
       case .archive:
         headerView.configUI(type: .archive)
         headerView.didClickOnSeeAllButtonClosure = {
-          let laterRecipeAllViewController = LaterRecipeAllViewController()
+          let laterRecipeAllViewController = LaterRecipeAllViewController(laterRecipeList: self.laterRecipeList)
           let laterRecipehNavigationController = UINavigationController(rootViewController: laterRecipeAllViewController)
           laterRecipehNavigationController.modalPresentationStyle = .fullScreen
           self.present(laterRecipehNavigationController, animated: true)
@@ -353,6 +361,31 @@ extension MainViewController: UICollectionViewDataSource{
       return headerView
     } else {
       return UICollectionReusableView()
+    }
+  }
+}
+
+extension MainViewController {
+  private func getHomeData() {
+    let endPoint = Endpoint<Home>(apiRouter: .home)
+
+    networkingService.request(endPoint) { [weak self] result in
+      switch result {
+      case .success(let homeData):
+        guard let laterRecipeList = homeData.laterRecipeList,
+              let guideList = homeData.guideList
+        else { return }
+
+        self?.laterRecipeList = laterRecipeList
+        self?.guideList = guideList
+
+        DispatchQueue.main.async {
+          self?.homeCollectionView.collectionViewLayout.invalidateLayout()
+        }
+
+      case .failure(let error):
+        print(String(describing: error), #line)
+      }
     }
   }
 }
