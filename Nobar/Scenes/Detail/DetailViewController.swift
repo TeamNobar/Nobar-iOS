@@ -56,7 +56,6 @@ final class DetailViewController: BaseViewController {
     private func setupTableView() {
       detailTableView.delegate = self
       detailTableView.dataSource = self
-//      detailTableView.separatorStyle = .none
     }
     
     // 셀 등록 관련 함수 정의
@@ -96,11 +95,11 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
           let tableHeight = width * (63/375)
           return tableHeight
       }
-      else if indexPath.row == 2{ //반응형
+      else if indexPath.row == 2 { //반응형
           let width = tableView.bounds.width
           let tableHeight = width * (194/375)
-        return UITableView.automaticDimension
-,      }
+        return tableHeight
+      }
       else if indexPath.row == 3{
           let width = tableView.bounds.width
           let tableHeight = width * (79/375)

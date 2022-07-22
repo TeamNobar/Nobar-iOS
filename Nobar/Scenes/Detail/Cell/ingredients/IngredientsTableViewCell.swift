@@ -82,9 +82,6 @@ extension IngredientsTableViewCell : UICollectionViewDelegateFlowLayout, UIColle
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//      let width = UIScreen.main.bounds.width
-//      let cellWidth = width * (200/375)
-//      let cellHeight = cellWidth * (226/200)
     let cellWidth = 98.adjustedW
     let cellHeight = 90.adjustedH
       
