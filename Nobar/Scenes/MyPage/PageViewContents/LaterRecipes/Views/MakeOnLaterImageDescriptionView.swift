@@ -25,6 +25,19 @@ final class MakeOnLaterImageDescriptionView: BaseView {
     $0.textColor = Color.black.getColor()
   }
   
+  init(imageURL: String, description: String, frame: CGRect) {
+    super.init(frame: frame)
+    
+    if let url = URL(string: imageURL) {
+      imageView.kf.setImage(with: url)
+    }
+    descriptionLabel.text = description
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
   override func initialize() {
     super.initialize()
     

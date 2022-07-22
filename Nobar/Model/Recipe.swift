@@ -12,6 +12,7 @@ struct Recipe: Decodable {
   var version: [String]?
   var base: BaseRecipe
   var defaultRecipes: String?
+  var proofIcon: String
   var proof: Int
   var skill: Skill
   var glass: Glass

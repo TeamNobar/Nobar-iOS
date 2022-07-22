@@ -203,9 +203,11 @@ extension WritingNoteViewController {
   }
   @objc private func didTapApplyButton(_ sender: UIButton){
     print("tapped")
+    self.dismiss(animated: true)
   }
   @objc private func didTapCancelButton(_ sender: UIButton){
     print("closetapped")
+    self.dismiss(animated: true)
   }
 }
 

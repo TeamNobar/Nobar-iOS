@@ -8,7 +8,8 @@
 import Foundation
 
 struct Tag: Decodable {
-  let id: String
-  var category: Int
+  let id: Int
+  var isSelected: Bool
+  var icon: String
   var content: String
 }
