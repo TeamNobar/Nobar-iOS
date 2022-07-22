@@ -47,6 +47,13 @@ enum ImageFactory {
   static var property105Point: UIImage? { UIImage(named: "property105Point") }
   
   static var btn_plusnote: UIImage? { UIImage(named: "btn_plusnote") }
+  
   static var tagIconGray: UIImage? { UIImage(named: "btn_plusnote") }
 //  ImageFactory.tagIconGray
+  
+  static var imgOnboarding1: UIImage? { UIImage(named: "imgOnboarding1") }
+  
+  static var imgOnboarding2: UIImage? { UIImage(named: "imgOnboarding2") }
+  
+  static var imgOnboarding3: UIImage? { UIImage(named: "imgOnboarding3") }
 }
