@@ -10,7 +10,9 @@ import UIKit
 import Then
 import SnapKit
 
-class NicknameViewController: BaseViewController {
+final class NicknameViewController: BaseViewController {
+  
+  private let networkService = NetworkingService()
 
   private let titleLabel = UILabel().then {
     $0.text = "닉네임을 정해볼까요?"
@@ -50,7 +52,6 @@ class NicknameViewController: BaseViewController {
     $0.layer.cornerRadius = 20
     $0.addTarget(self, action: #selector(didClickOnStartButton(_:)), for: .touchUpInside)
   }
-
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -115,12 +116,25 @@ extension NicknameViewController {
 // MARK: - Action Function
 extension NicknameViewController {
   @objc private func didClickOnStartButton(_ sender: UIButton) {
-    let mainViewController = MainViewController()
-    let mainNavigationController = UINavigationController(rootViewController: mainViewController)
-
-    mainNavigationController.modalPresentationStyle = .overFullScreen
-    mainNavigationController.modalTransitionStyle = .crossDissolve
-    self.present(mainNavigationController, animated: true)
+    guard let text = nicknameTextField.text else { return }
+    
+    let params: [String: Any] = [
+      "nickname": text
+    ]
+    
+    let endpoint = Endpoint<NicknameResponse>(apiRouter: .auth(params))
+    
+    networkService.request(endpoint) { result in
+      switch result {
+      case .success(let data):
+        UserDefaultHelper<String>.set(data.accesstoken, forKey: .accessToken)
+        DispatchQueue.main.async {
+          NBUtils.getSceneDelegate()?.startTabbar()
+        }
+      case .failure(let error):
+        print("[\(#file) \(#line)번째 줄, \(#function):]", String(describing: error))
+      }
+    }
   }
 }
 
@@ -169,4 +183,8 @@ extension NicknameViewController: UITextFieldDelegate {
 
     return updatedText.count <= maxCategoryTitleLength
   }
+}
+
+struct NicknameResponse: Decodable {
+  var accesstoken: String
 }
