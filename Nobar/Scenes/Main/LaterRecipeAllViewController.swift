@@ -42,6 +42,7 @@ final class LaterRecipeAllViewController: BaseViewController {
     collectionView.showsHorizontalScrollIndicator = false
     collectionView.showsVerticalScrollIndicator = true
     collectionView.register(cell: SearchTotalResultCollectionViewCell.self)
+    collectionView.delegate = self
     return collectionView
   }()
 
@@ -140,5 +141,16 @@ extension LaterRecipeAllViewController {
     recipeSnapshot.appendSections([.recipe])
     recipeSnapshot.appendItems(SearchCocktailModel.dummyCocktailList, toSection: .recipe)
     recipeDataSource.apply(recipeSnapshot, animatingDifferences: true)
+  }
+}
+
+extension LaterRecipeAllViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let storyboard = StoryboardRouter.detail.instance
+
+    let detailViewController = storyboard.instantiateViewController(ofType: DetailViewController.self)
+
+
+    navigationController?.pushViewController(detailViewController, animated: true)
   }
 }

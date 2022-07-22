@@ -8,6 +8,5 @@
 import UIKit
 
 final class WritingNoteViewController: BaseViewController {
-  
-  
+
 }
