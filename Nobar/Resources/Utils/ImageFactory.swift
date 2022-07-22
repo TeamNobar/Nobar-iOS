@@ -20,6 +20,7 @@ enum ImageFactory {
   static var icnX: UIImage? { UIImage(named: "icnX") }
   static var icnWarning: UIImage? { UIImage(named: "icnWarning") }
   static var splashLogo: UIImage? { UIImage(named: "splashLogo") }
+  static var guide1: UIImage? { UIImage(named: "guide1") }
   static var iconHeart: UIImage? { UIImage(named: "iconHeart") }
 
     static var logo: UIImage? {

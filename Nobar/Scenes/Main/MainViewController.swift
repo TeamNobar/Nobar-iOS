@@ -116,7 +116,7 @@ extension MainViewController {
                                 forCellWithReuseIdentifier: "GuideCVC")
     homeCollectionView.register(RecommendCVC.self,
                                 forCellWithReuseIdentifier: "RecommendCVC")
-    }
+  }
   
 }
 
@@ -127,16 +127,16 @@ extension MainViewController {
     
     let columns = 2
     let spacing = CGFloat(9)
-
+    
     let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                           heightDimension: .estimated(75))
     let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
+    
     let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                            heightDimension: .absolute(75))
     let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columns)
     group.interItemSpacing = .fixed(spacing)
-
+    
     var section = NSCollectionLayoutSection(group: group)
     section.interGroupSpacing = spacing
     section.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 26, bottom: 30, trailing: 26)
@@ -241,7 +241,22 @@ extension MainViewController: UIScrollViewDelegate{
 }
 // MARK: - CollectionViewDelegate
 extension MainViewController: UICollectionViewDelegate{
-
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    guard let sectionType = SectionType(rawValue: indexPath.section) else {return}
+    
+    switch sectionType {
+    case .archive:
+      return
+    case .guide:
+      let guideVC = GuideDetailViewController()
+      let guideNavigationController = UINavigationController(rootViewController: guideVC)
+      guideNavigationController.modalPresentationStyle = .fullScreen
+      self.present(guideNavigationController, animated: false)
+    case .recommend:
+      return
+    }
+  }
+  
 }
 
 // MARK: - CollectionViewDataSource
