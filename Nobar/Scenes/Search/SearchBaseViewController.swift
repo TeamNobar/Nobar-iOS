@@ -257,6 +257,12 @@ extension SearchBaseViewController: UICollectionViewDelegate {
       let detailViewController = storyboard.instantiateViewController(ofType: DetailViewController.self)
 
       navigationController?.pushViewController(detailViewController, animated: true)
+    } else {
+      let item = indexPath.item
+
+      if let base = baseList.safeget(index: item) {
+        getSearchBase(baseName: base.name)
+      }
     }
   }
 }
