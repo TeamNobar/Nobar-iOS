@@ -48,7 +48,6 @@ class NicknameViewController: BaseViewController {
     $0.setTitleColor(Color.gray03.getColor(), for: .disabled)
     $0.titleLabel?.font = Pretendard.size14.bold()
     $0.layer.cornerRadius = 20
-    $0.addTarget(self, action: #selector(didClickOnStartButton(_:)), for: .touchUpInside)
   }
 
 

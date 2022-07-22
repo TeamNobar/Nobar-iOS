@@ -20,7 +20,12 @@ final class WritingNoteViewController: BaseViewController {
     case experience = 5
   }
   
-  var writingstatus = WritingStatus.viewing
+  var writingstatus = WritingStatus.newWriting
+  
+  var selectedCocktail = ""
+  
+  private var cocktailNameList: [String] =  ["피치크러쉬","피노키오","가나슈","말리부","커피","우유","모히또","와인","피머시기","피"]
+  private var filterdCoctailNameList: [String] = []
   
   private let headerBarView = UIView()
   
@@ -111,6 +116,7 @@ extension WritingNoteViewController {
       $0.centerY.equalToSuperview()
       $0.width.height.equalTo(30)
     }
+   
     
     switch writingstatus{
     case .newWriting:
@@ -152,6 +158,7 @@ extension WritingNoteViewController {
       $0.top.equalTo(grayLine.snp.bottom)
       $0.leading.bottom.trailing.equalToSuperview()
     }
+   
   }
   
   private func setDelegation(){
@@ -205,6 +212,11 @@ extension WritingNoteViewController: UICollectionViewDataSource{
     case .cocktail:
       guard let cell = collectionView.dequeueReusableCell(ofType: SelectCocktailCVC.self,
                                                           at: indexPath) as? SelectCocktailCVC else {return UICollectionViewCell()}
+      cell.didTapSearchTextfieldClosure = {
+        let searchTotalViewController = CocktailNameSearchViewController()
+        searchTotalViewController.modalPresentationStyle = .fullScreen
+        self.present(searchTotalViewController, animated: false)
+      }
       cell.setLayout(for: writingstatus)
       return cell
     case .date:

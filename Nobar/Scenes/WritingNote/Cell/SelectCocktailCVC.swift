@@ -9,6 +9,8 @@ import UIKit
 
 final class SelectCocktailCVC: UICollectionViewCell {
   
+  var didTapSearchTextfieldClosure: (() -> Void)?
+  
   private let searchCockTailTextField = SearchTextField().then {
     $0.placeholder = "칵테일 이름을 검색해보세요"
   }
@@ -16,6 +18,7 @@ final class SelectCocktailCVC: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     render()
+    setDelegate()
   }
   
   @available(*, unavailable)
@@ -48,5 +51,18 @@ extension SelectCocktailCVC {
     
   }
   
-}
+  func setDelegate(){
+    searchCockTailTextField.delegate = self
+  }
+  
+  
 
+  
+}
+extension SelectCocktailCVC: UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+      self.didTapSearchTextfieldClosure?()
+      print("GKA")
+    }
+
+}
