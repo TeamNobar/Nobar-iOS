@@ -16,6 +16,14 @@ final class DetailViewController: BaseViewController {
   @IBOutlet weak var cocktailNameHeaderView: UIView!
   @IBOutlet weak var detailTableView: UITableView!
 
+  private lazy var backButton = UIButton().then {
+    $0.setImage(ImageFactory.btnBackSearch, for: .normal)
+  }
+
+  private lazy var heartButton = UIButton().then {
+    $0.setImage(ImageFactory.iconHeart, for: .normal)
+  }
+
   let identifiers = [
     InfoTableViewCell.identifier,
     HeaderReadyTableViewCell.identifier,
@@ -41,13 +49,13 @@ final class DetailViewController: BaseViewController {
     
     setupTableView()
     registerXibs()
+    setNavigationBar()
   }
     
     // 테이블 뷰 세팅 관련 함수 정의
     private func setupTableView() {
       detailTableView.delegate = self
       detailTableView.dataSource = self
-//      detailTableView.separatorStyle = .none
     }
     
     // 셀 등록 관련 함수 정의
@@ -61,7 +69,12 @@ final class DetailViewController: BaseViewController {
           detailTableView.register($1, forCellReuseIdentifier: identifiers[$0])
       }
     }
-  
+
+  private func setNavigationBar() {
+    navigationController?.navigationBar.isHidden = false
+    navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+    navigationItem.rightBarButtonItem = UIBarButtonItem(customView: heartButton)
+  }
 }
     
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -82,10 +95,10 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
           let tableHeight = width * (63/375)
           return tableHeight
       }
-      else if indexPath.row == 2{ //반응형
+      else if indexPath.row == 2 { //반응형
           let width = tableView.bounds.width
           let tableHeight = width * (194/375)
-          return tableHeight
+        return tableHeight
       }
       else if indexPath.row == 3{
           let width = tableView.bounds.width
@@ -144,6 +157,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = detailTableView.dequeueReusableCell(
           withIdentifier: identifiers[6], for: indexPath
         ) as? RecordTableViewCell else {return UITableViewCell()}
+        cell.delegate = self
         
       default:
           let cell = UITableViewCell()
@@ -151,4 +165,12 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
       }
     return UITableViewCell()
     }
+}
+
+extension DetailViewController: RecordTapDelegate {
+  func didClickOnWriteButton() {
+//    let writingNoteViewController = WritingNoteViewController()
+//
+//    self.present(writingNoteViewController, animated: true)
+  }
 }

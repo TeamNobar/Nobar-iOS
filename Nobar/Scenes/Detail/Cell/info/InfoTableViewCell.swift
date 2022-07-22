@@ -7,6 +7,8 @@
 
 import UIKit
 
+import SnapKit
+
 class InfoTableViewCell: UITableViewCell {
     
   @IBOutlet weak var rectBackgroundView: UIView!
@@ -36,7 +38,7 @@ class InfoTableViewCell: UITableViewCell {
     rectBackgroundView.backgroundColor = Color.gray01.getColor()
     rectBackgroundView.layer.cornerRadius = 10
     
-    baseImage.image = UIImage(named: "")  // Data
+    baseImage.image = UIImage(named: "AppIcon")  // Data
     baseTitleLabel.text = "베이스"
     baseTitleLabel.font = Pretendard.size10.light()
     baseTitleLabel.textColor = Color.gray04.getColor()
@@ -44,7 +46,7 @@ class InfoTableViewCell: UITableViewCell {
     baseNameLabel.font = Pretendard.size14.medium()
     baseNameLabel.textColor = Color.black.getColor()
     
-    proofImage.image = UIImage(named: "")  // Data
+    proofImage.image = UIImage(named: "AppIcon")  // Data
     proofTitleLabel.text = "도수"
     proofTitleLabel.font = Pretendard.size10.light()
     proofTitleLabel.textColor = Color.gray04.getColor()
@@ -52,7 +54,7 @@ class InfoTableViewCell: UITableViewCell {
     proofNameLabel.font = Pretendard.size14.medium()
     proofNameLabel.textColor = Color.black.getColor()
     
-    skillImage.image = UIImage(named: "")  // Data
+    skillImage.image = UIImage(named: "AppIcon")  // Data
     skillTitleLabel.text = "만드는 법"
     skillTitleLabel.font = Pretendard.size10.light()
     skillTitleLabel.textColor = Color.gray04.getColor()
@@ -60,12 +62,66 @@ class InfoTableViewCell: UITableViewCell {
     skillNameLabel.font = Pretendard.size14.medium()
     skillNameLabel.textColor = Color.black.getColor()
     
-    glassImage.image = UIImage(named: "")  // Data
+    glassImage.image = UIImage(named: "AppIcon")  // Data
     glassTitleLabel.text = "글라스"
     glassTitleLabel.font = Pretendard.size10.light()
     glassTitleLabel.textColor = Color.gray04.getColor()
     glassNameLabel.text = "칵테일"  // Data
     glassNameLabel.font = Pretendard.size14.medium()
     glassNameLabel.textColor = Color.black.getColor()
+
+    [baseTitleLabel, baseNameLabel].forEach {
+      $0.snp.makeConstraints {
+        $0.centerX.equalTo(baseImage.snp.centerX)
+      }
+    }
+    [proofTitleLabel, proofNameLabel].forEach {
+      $0.snp.makeConstraints {
+        $0.centerX.equalTo(proofImage.snp.centerX)
+      }
+    }
+    [skillTitleLabel, skillNameLabel].forEach {
+      $0.snp.makeConstraints {
+        $0.centerX.equalTo(skillImage.snp.centerX)
+      }
+    }
+    [glassTitleLabel, glassNameLabel].forEach {
+      $0.snp.makeConstraints {
+        $0.centerX.equalTo(glassImage.snp.centerX)
+      }
+    }
+
+    [baseImage, proofImage, skillImage, glassImage].forEach {
+      $0.snp.makeConstraints {
+        $0.height.equalTo(42)
+        $0.width.equalTo(42)
+      }
+    }
+
+    baseImage.snp.makeConstraints {
+      $0.leading.equalToSuperview().inset(35)
+      $0.top.equalToSuperview().inset(12)
+    }
+
+    [proofImage, skillImage, glassImage].forEach {
+      $0.snp.makeConstraints {
+        $0.top.equalTo(baseImage.snp.top)
+      }
+    }
+    proofImage.snp.makeConstraints {
+      $0.leading.equalTo(baseImage.snp.trailing).offset(32)
+    }
+    skillImage.snp.makeConstraints {
+      $0.leading.equalTo(proofImage.snp.trailing).offset(32)
+    }
+    glassImage.snp.makeConstraints {
+      $0.leading.equalTo(skillImage.snp.trailing).offset(32)
+    }
+
+    [baseImage, proofImage, skillImage, glassImage].forEach {
+      $0.snp.makeConstraints {
+        $0.bottom.equalToSuperview().inset(46)
+      }
+    }
   }
 }

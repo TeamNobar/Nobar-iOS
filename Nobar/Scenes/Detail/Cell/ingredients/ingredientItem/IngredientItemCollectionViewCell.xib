@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="한줄한줄한줄한" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0G-eo-6wZ">
-                        <rect key="frame" x="12.5" y="12" width="73" height="15"/>
+                        <rect key="frame" x="12" y="12" width="73" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="86R-eu-rIV"/>
                             <constraint firstAttribute="width" constant="73" id="vfx-1Q-Nea"/>
@@ -59,12 +59,14 @@
             <constraints>
                 <constraint firstItem="OU6-0e-NJO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="420-jk-MJg"/>
                 <constraint firstAttribute="bottom" secondItem="2Qg-e4-T2g" secondAttribute="bottom" constant="8" id="48K-wy-2O1"/>
+                <constraint firstItem="e0G-eo-6wZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="5va-xx-0tL"/>
                 <constraint firstItem="e0G-eo-6wZ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="78U-EZ-voD"/>
                 <constraint firstItem="OU6-0e-NJO" firstAttribute="top" secondItem="e0G-eo-6wZ" secondAttribute="bottom" constant="5" id="EKT-f8-BYE"/>
-                <constraint firstItem="e0G-eo-6wZ" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="RCe-HX-Qpa"/>
                 <constraint firstItem="2Qg-e4-T2g" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="SKe-Va-WHP"/>
                 <constraint firstItem="VW3-ct-T8Z" firstAttribute="top" secondItem="e0G-eo-6wZ" secondAttribute="bottom" constant="2" id="Sko-49-h4m"/>
+                <constraint firstItem="2Qg-e4-T2g" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="akW-nm-ehk"/>
                 <constraint firstItem="VW3-ct-T8Z" firstAttribute="leading" secondItem="OU6-0e-NJO" secondAttribute="trailing" constant="4" id="hWO-im-7h8"/>
+                <constraint firstAttribute="bottom" secondItem="2Qg-e4-T2g" secondAttribute="bottom" constant="8" id="syS-j2-lSt"/>
             </constraints>
             <size key="customSize" width="83" height="84"/>
             <connections>

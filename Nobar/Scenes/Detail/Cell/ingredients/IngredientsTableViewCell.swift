@@ -14,18 +14,24 @@ class IngredientsTableViewCell: UITableViewCell {
   //var selectIngredients: (() -> ())?
   static let identifier = "IngredientsTableViewCell"
   var identifiers = [IngredientItemCollectionViewCell.identifier]
-  
+  let flowlayout = UICollectionViewFlowLayout()
+
   override func awakeFromNib() {
     super.awakeFromNib()
+    collectionViewGetReady()
   }
 
   override func setSelected(_ selected: Bool, animated: Bool) {
       super.setSelected(selected, animated: animated)
   }
-  /*
-  private func setDelegate(){
+
+  private func setDelegate() {
     ingredientsCollectionView.delegate = self
     ingredientsCollectionView.dataSource = self
+    flowlayout.sectionInset = UIEdgeInsets(top: 8, left: 26, bottom: 8, right: 27)
+    flowlayout.minimumLineSpacing = 14
+    flowlayout.minimumInteritemSpacing = 14
+    ingredientsCollectionView.collectionViewLayout = flowlayout
   }
   
   private func registerXibs(){
@@ -38,23 +44,28 @@ class IngredientsTableViewCell: UITableViewCell {
       }
   }
   
-  func collectionViewGetReady(){
+  func collectionViewGetReady() {
     setDelegate()
     registerXibs()
+    setCollectionView()
   }
-   */
+
+  func setCollectionView() {
+    ingredientsCollectionView.showsVerticalScrollIndicator = false
+    ingredientsCollectionView.showsHorizontalScrollIndicator = false
+  }
   
   // ingredientModelList 받아오기
 }
 
-/*
+
 extension IngredientsTableViewCell : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return 3  //ingredientModelList.count
+      return 7  //ingredientModelList.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      guard let cell = ingredientsCollectionView.dequeueReusableCell(
+      guard let cell = collectionView.dequeueReusableCell(
         withReuseIdentifier: IngredientItemCollectionViewCell.identifier,
         for: indexPath
       ) as? IngredientItemCollectionViewCell
@@ -62,21 +73,20 @@ extension IngredientsTableViewCell : UICollectionViewDelegateFlowLayout, UIColle
         return UICollectionViewCell()
       }
     print("ingredientModelList")
-      cell.setData(IngredientItem: IngredientDataModel.sampleData[indexPath.row])
+    cell.setData(cocktailData: IngredientDataModel.sampleData[indexPath.row])
       return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-      return 10
+      return 14
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-      let width = UIScreen.main.bounds.width
-      let cellWidth = width * (200/375)
-      let cellHeight = cellWidth * (226/200)
+    let cellWidth = 98.adjustedW
+    let cellHeight = 90.adjustedH
       
       return CGSize(width: cellWidth, height: cellHeight)
   }
 }
-*/
+
 

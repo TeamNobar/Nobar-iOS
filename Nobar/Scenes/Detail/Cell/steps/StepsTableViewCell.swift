@@ -18,6 +18,8 @@ class StepsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+      stepBox.layer.cornerRadius = 12
+      stepBox.backgroundColor = Color.pink01.withAlphaColor(alpha: 0.2)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
