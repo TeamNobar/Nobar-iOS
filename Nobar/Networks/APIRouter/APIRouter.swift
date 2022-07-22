@@ -86,7 +86,11 @@ enum APIRouter {
   var headers: HTTPHeaders {
     switch self {
     case .getMyPage,
-        .writeTastingNote:
+        .writeTastingNote,
+        .searchTag,
+        .searchMain,
+        .searchBase,
+        .searchKeyword:
       
       guard
         let token = UserDefaultStorage.accessToken
