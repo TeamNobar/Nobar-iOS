@@ -326,7 +326,7 @@ extension SearchViewController: UICollectionViewDelegate {
     if searchAutoResultCollectionView.isHidden {
       switch sectionType {
       case .recent:
-        let resultViewController = SearchResultViewController(searchResultText: searchRecentList.safeget(index: indexPath.item) ?? "")
+        let resultViewController = SearchResultViewController(searchResultText: searchRecentList.safeget(index: indexPath.item) ?? "", ingredientList: self.ingredientList)
         navigationController?.pushViewController(resultViewController, animated: false)
       case .recommend:
         print("칵테일 상세뷰로 이동 - 추천")
@@ -486,11 +486,12 @@ extension SearchViewController {
 extension SearchViewController: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     let searchText = self.searchTextField.text ?? ""
+    let ingredientList: [Ingredient] = []
 
     searchTextField.resignFirstResponder()
     saveRecentSearch(keyword: searchText)
 
-    let resultViewController = SearchResultViewController(searchResultText: searchText)
+    let resultViewController = SearchResultViewController(searchResultText: searchText, ingredientList: ingredientList)
     self.navigationController?.pushViewController(resultViewController, animated: false)
     return true
   }
