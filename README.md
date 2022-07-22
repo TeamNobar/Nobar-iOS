@@ -2,6 +2,7 @@
 
 ![Slide 16_9 - 7](https://user-images.githubusercontent.com/51031771/178426643-b89914d5-99f5-49a7-84ca-4b29bccecba4.png)
 
+![image](https://user-images.githubusercontent.com/51031771/180452544-ce95e48f-120f-432c-9c95-61c7adecbe45.png)
 
 
 
