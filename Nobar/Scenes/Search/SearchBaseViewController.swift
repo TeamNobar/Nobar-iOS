@@ -17,8 +17,12 @@ final class SearchBaseViewController: BaseViewController {
     case result = 1
   }
 
-  private var resultDataSource: UICollectionViewDiffableDataSource<SectionType, SearchCocktailModel>!
-  private var resultSnapshot: NSDiffableDataSourceSnapshot<SectionType, SearchCocktailModel>!
+  private var resultDataSource: UICollectionViewDiffableDataSource<SectionType, Recipe>!
+  private var resultSnapshot: NSDiffableDataSourceSnapshot<SectionType, Recipe>!
+
+  private var networkingService = NetworkingService()
+  private var baseList: [BaseRecipe] = []
+  private var recipeList: [Recipe] = []
 
   private let searchView = UIView().then {
     $0.backgroundColor = Color.white.getColor()
@@ -71,6 +75,7 @@ final class SearchBaseViewController: BaseViewController {
     setDelegation()
     setRegistration()
     setDataSource()
+    getSearchTag()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -258,13 +263,13 @@ extension SearchBaseViewController: UICollectionViewDelegate {
 
 extension SearchBaseViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return BaseCocktailModel.dummyBaseList.count
+    return baseList.count
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = baseCollectionView.dequeueReusableCell(ofType: BaseCocktailCollectionViewCell.self, at: indexPath)
 
-    guard let item = BaseCocktailModel.dummyBaseList.safeget(index: indexPath.row) else { return cell }
+    guard let item = baseList.safeget(index: indexPath.row) else { return cell }
     cell.updateModel(item)
     return cell
   }
@@ -273,11 +278,11 @@ extension SearchBaseViewController: UICollectionViewDataSource {
 // MARK: - Diffable DataSource
 extension SearchBaseViewController {
   private func setDataSource() {
-    self.resultDataSource = UICollectionViewDiffableDataSource<SectionType, SearchCocktailModel>(collectionView: self.resultCollectionView) { (collectionview, indexPath, keyword) -> UICollectionViewCell? in
+    self.resultDataSource = UICollectionViewDiffableDataSource<SectionType, Recipe>(collectionView: self.resultCollectionView) { (collectionview, indexPath, recipe) -> UICollectionViewCell? in
 
       guard let cell = self.resultCollectionView.dequeueReusableCell(withReuseIdentifier: SearchTotalResultCollectionViewCell.className, for: indexPath) as? SearchTotalResultCollectionViewCell else { preconditionFailure() }
 
-      cell.updateModel(keyword)
+      cell.updateModel(recipe)
       return cell
     }
 
@@ -290,11 +295,50 @@ extension SearchBaseViewController {
       view?.configUI(type: .baseResult)
       return view
     }
+  }
 
-    resultSnapshot = NSDiffableDataSourceSnapshot<SectionType, SearchCocktailModel>()
+  private func applySnapshot() {
+    resultSnapshot = NSDiffableDataSourceSnapshot<SectionType, Recipe>()
     resultSnapshot.appendSections([.result])
-    resultSnapshot.appendItems(SearchCocktailModel.dummyCocktailList, toSection: .result)
+    resultSnapshot.appendItems(recipeList, toSection: .result)
     resultDataSource.apply(resultSnapshot, animatingDifferences: true)
+  }
+}
+
+// MARK: - Networking
+extension SearchBaseViewController {
+  private func getSearchBase(baseName: String) {
+    let endPoint = Endpoint<Search>(apiRouter: .searchBase(base: baseName))
+
+    networkingService.request(endPoint) { [weak self] result in
+      switch result {
+      case .success(let search):
+        guard let recipe = search.recipes else { return }
+        self?.recipeList = recipe
+        DispatchQueue.main.async {
+          self?.applySnapshot()
+        }
+
+      case .failure(let error): break
+      }
+    }
+  }
+
+  private func getSearchTag() {
+    let endPoint = Endpoint<Search>(apiRouter: .searchTag)
+
+    networkingService.request(endPoint) { [weak self] result in
+      switch result {
+      case .success(let search):
+        guard let base = search.base else { return }
+        self?.baseList = base
+        DispatchQueue.main.async {
+          self?.baseCollectionView.reloadData()
+        }
+      case .failure(let error):
+        print(String(describing: error), #line)
+      }
+    }
   }
 }
 

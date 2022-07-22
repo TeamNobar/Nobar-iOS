@@ -16,8 +16,10 @@ final class SearchTotalResultViewController: BaseViewController {
     case recipe
   }
 
-  private var resultDataSource: UICollectionViewDiffableDataSource<Section, SearchCocktailModel>!
-  private var resultSnapshot: NSDiffableDataSourceSnapshot<Section, SearchCocktailModel>!
+  private var resultDataSource: UICollectionViewDiffableDataSource<Section, Recipe>!
+  private var resultSnapshot: NSDiffableDataSourceSnapshot<Section, Recipe>!
+
+  private var recipeList: [Recipe] = []
 
   private lazy var closeButton = UIButton().then {
     $0.setImage(ImageFactory.btnCancel, for: .normal)
@@ -45,6 +47,16 @@ final class SearchTotalResultViewController: BaseViewController {
     collectionView.delegate = self
     return collectionView
   }()
+
+  init(recipeList: [Recipe]) {
+    self.recipeList = recipeList
+
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -129,17 +141,17 @@ extension SearchTotalResultViewController {
 // MARK: - Diffable DataSource
 extension SearchTotalResultViewController {
   private func setDataSource() {
-    self.resultDataSource = UICollectionViewDiffableDataSource<Section, SearchCocktailModel>(collectionView: self.searchTotalResultCollectionView) { (collectionview, indexPath, keyword) -> UICollectionViewCell? in
+    self.resultDataSource = UICollectionViewDiffableDataSource<Section, Recipe>(collectionView: self.searchTotalResultCollectionView) { (collectionview, indexPath, recipe) -> UICollectionViewCell? in
 
       guard let cell = self.searchTotalResultCollectionView.dequeueReusableCell(withReuseIdentifier: SearchTotalResultCollectionViewCell.className, for: indexPath) as? SearchTotalResultCollectionViewCell else { preconditionFailure() }
 
-      cell.updateModel(keyword)
+      cell.updateModel(recipe)
       return cell
     }
 
-    resultSnapshot = NSDiffableDataSourceSnapshot<Section, SearchCocktailModel>()
+    resultSnapshot = NSDiffableDataSourceSnapshot<Section, Recipe>()
     resultSnapshot.appendSections([.recipe])
-    resultSnapshot.appendItems(SearchCocktailModel.dummyCocktailList, toSection: .recipe)
+    resultSnapshot.appendItems(recipeList, toSection: .recipe)
     resultDataSource.apply(resultSnapshot, animatingDifferences: true)
   }
 }

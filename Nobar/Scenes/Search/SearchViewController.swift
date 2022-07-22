@@ -29,6 +29,8 @@ final class SearchViewController: BaseViewController {
     }
   }
 
+  private var recommendList: [Recommend] = []
+
   private var keywordSectionType: KeywordSectionType?
 
   let realm = try? Realm()
@@ -36,9 +38,10 @@ final class SearchViewController: BaseViewController {
   private var resultDataSource: UICollectionViewDiffableDataSource<AutoResultSectionType, String>!
   private var resultSnapshot: NSDiffableDataSourceSnapshot<AutoResultSectionType, String>!
 
-  // TODO: 나중에 서버에서 한꺼번에 리스트로 받아옴
-  private var dummyCocktail: [String] = ["브랜디", "선라이즈피치", "피치크러쉬", "카시스 오렌지", "은비쨩", "칵테일어쩌구", "피치만 나와라", "피치어쩌구", "리큐르", "채원쨩", "피치1", "피치2", "피치3", "피치4"]
-  private var dummyIngredient: [String] = ["피피피피", "피치주스도있고요", "재료들이", "오렌지주스", "은비쨩", "재료어쩌구", "리큐르", "채원쨩"]
+  private var networkingService = NetworkingService()
+
+  private var recipeList: [Recipe] = []
+  private var ingredientList: [Ingredient] = []
 
   private let searchView = UIView().then {
     $0.backgroundColor = Color.white.getColor()
@@ -96,6 +99,7 @@ final class SearchViewController: BaseViewController {
     setTextFieldButton()
     setDataSource()
     setRealmData()
+    getSearchMain()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -323,7 +327,7 @@ extension SearchViewController: UICollectionViewDelegate {
     if searchAutoResultCollectionView.isHidden {
       switch sectionType {
       case .recent:
-        let resultViewController = SearchResultViewController(searchResultText: searchRecentList.safeget(index: indexPath.item) ?? "")
+        let resultViewController = SearchResultViewController(searchResultText: searchRecentList.safeget(index: indexPath.item) ?? "", ingredientList: self.ingredientList)
         navigationController?.pushViewController(resultViewController, animated: false)
       case .recommend:
         print("칵테일 상세뷰로 이동 - 추천")
@@ -398,8 +402,8 @@ extension SearchViewController: UICollectionViewDataSource {
     case .recommend:
       let cell = searchKeywordCollectionView.dequeueReusableCell(ofType: RecommendCollectionViewCell.self, at: indexPath)
 
-      guard let item = SearchModel.dummyRecommendList.safeget(index: indexPath.row) else { return cell }
-      cell.updateModel(item)
+      guard let item = recommendList.safeget(index: indexPath.row) else { return cell }
+      cell.updateModel(with: "\(indexPath.row + 1)" ,item)
       return cell
     }
   }
@@ -468,8 +472,20 @@ extension SearchViewController {
   private func performQuery(with searchText: String?) {
     guard let searchText = searchText else { return }
 
-    let filteredCocktail = self.dummyCocktail.filter { $0.hasPrefix(searchText) }
-    let filteredIngredient = self.dummyIngredient.filter { $0.hasPrefix(searchText) }
+    var recipeNameList: [String] = []
+    var ingredientNameList: [String] = []
+
+    for i in 0..<recipeList.count {
+      recipeNameList.append(recipeList.safeget(index: i)?.name ?? "")
+    }
+
+    for i in 0..<ingredientList.count {
+      ingredientNameList.append(ingredientList.safeget(index: i)?.name ?? "")
+    }
+
+
+    let filteredCocktail = recipeNameList.filter { $0.hasPrefix(searchText) }
+    let filteredIngredient = ingredientNameList.filter { $0.hasPrefix(searchText) }
 
     var fiveCocktail = Array(filteredCocktail.prefix(5))
     let fiveIngredient = Array(filteredIngredient.prefix(5))
@@ -489,11 +505,12 @@ extension SearchViewController {
 extension SearchViewController: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     let searchText = self.searchTextField.text ?? ""
+    let ingredientList: [Ingredient] = []
 
     searchTextField.resignFirstResponder()
     saveRecentSearch(keyword: searchText)
 
-    let resultViewController = SearchResultViewController(searchResultText: searchText)
+    let resultViewController = SearchResultViewController(searchResultText: searchText, ingredientList: ingredientList)
     self.navigationController?.pushViewController(resultViewController, animated: false)
     return true
   }
@@ -523,5 +540,33 @@ extension SearchViewController {
       realm?.deleteAll()
     }
     searchRecentList.removeAll()
+  }
+}
+
+// MARK: - Networking
+extension SearchViewController {
+  private func getSearchMain() {
+    let endPoint = Endpoint<Search>(apiRouter: .searchMain)
+
+    networkingService.request(endPoint) { [weak self] result in
+      switch result {
+      case .success(let search):
+        guard let recommends = search.recommends,
+              let recipes = search.recipes,
+              let ingredients = search.ingredients
+        else { return }
+
+        self?.recommendList = recommends
+        self?.recipeList = recipes
+        self?.ingredientList = ingredients
+
+        DispatchQueue.main.async {
+          self?.searchKeywordCollectionView.reloadSections([1])
+        }
+
+      case .failure(let error):
+        print(String(describing: error), #line)
+      }
+    }
   }
 }

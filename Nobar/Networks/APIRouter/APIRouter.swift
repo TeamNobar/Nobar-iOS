@@ -11,6 +11,10 @@ enum APIRouter {
   case getMyPage
   case writeTastingNote(parameters: Parameters)
   case auth(Parameters)
+  case searchTag
+  case searchBase(base: String)
+  case searchMain
+  case searchKeyword(keyword: String)
   
   var baseURL: String { Environment.URL.baseUrl }
   
@@ -19,12 +23,20 @@ enum APIRouter {
     case .getMyPage: return "/mypage"
     case .writeTastingNote: return "/note"
     case .auth: return "/auth"
+    case .searchTag: return "/search/tag"
+    case .searchBase: return "/search/base"
+    case .searchMain: return "/search"
+    case .searchKeyword: return "/search/keyword"
     }
   }
   
   var method: HTTPMethod {
     switch self {
-    case .getMyPage:
+    case .getMyPage,
+        .searchTag,
+        .searchBase,
+        .searchMain,
+        .searchKeyword:
       return .get
       
     case .writeTastingNote,
@@ -35,28 +47,50 @@ enum APIRouter {
   
   var parameters: Parameters? {
     switch self {
-    case .getMyPage:
+    case .getMyPage,
+        .searchTag,
+        .searchMain:
       return nil
       
     case .writeTastingNote(let parameters),
         .auth(let parameters):
       return parameters
+
+    case .searchBase(let base):
+      return [
+        "base": base
+      ]
+    case .searchKeyword(let keyword):
+      return [
+        "keyword": keyword
+      ]
     }
   }
   
   var encoding: ParameterEncoding {
     switch self {
     case .getMyPage,
-         .writeTastingNote,
-         .auth:
+        .writeTastingNote,
+        .auth,
+        .writeTastingNote,
+        .searchTag,
+        .searchMain:
       return JSONEncoding.default
+
+    case .searchBase,
+        .searchKeyword:
+      return URLEncoding.queryString
     }
   }
   
   var headers: HTTPHeaders {
     switch self {
     case .getMyPage,
-        .writeTastingNote:
+        .writeTastingNote,
+        .searchTag,
+        .searchMain,
+        .searchBase,
+        .searchKeyword:
       
       guard
         let token = UserDefaultStorage.accessToken

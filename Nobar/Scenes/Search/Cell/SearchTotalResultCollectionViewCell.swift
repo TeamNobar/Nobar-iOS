@@ -84,16 +84,16 @@ extension SearchTotalResultCollectionViewCell {
                       spread: 0)
   }
 
-  func updateModel(_ model: SearchCocktailModel) {
-    cocktailLabel.text = model.cocktailko
-    cocktailEngLabel.text = model.cocktaileng
-    baseTagView.tagLabel.text = model.base
-    percentTagView.tagLabel.text = "\(model.percent)도"
-    skillTagView.tagLabel.text = model.skill
+  func updateModel(_ model: Recipe) {
+    cocktailLabel.text = model.name
+    cocktailEngLabel.text = model.enName
+    baseTagView.tagLabel.text = model.base?.name
+    percentTagView.tagLabel.text = "\(model.proof)도"
+    skillTagView.tagLabel.text = model.skill.name
 
-    if model.kind.count == 5 {
+    if model.glass.name.count == 5 {
       kindTagView.remakeLabelConstraints()
     }
-    kindTagView.tagLabel.text = model.kind
+    kindTagView.tagLabel.text = model.glass.name
   }
 }
