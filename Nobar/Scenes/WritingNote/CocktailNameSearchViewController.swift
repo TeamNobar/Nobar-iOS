@@ -9,8 +9,11 @@ import UIKit
 
 class CocktailNameSearchViewController: BaseViewController {
   
+  var didTapNameCellClosure: (() -> Void)?
+  var selectedCocktailName = ""
+  
   private var cocktailNameList: [String] =  ["피치크러쉬","피노키오","가나슈","말리부","커피","우유","모히또","와인","피머시기","피"]
-  private var filteredCoctailNameList: [String] = ["피치크러쉬","피노키오","가나슈","말리부","커피","우유","모히또","와인","피머시기","피"]
+  private var filteredCoctailNameList: [String] = []
   
   private let headerBarView = UIView()
   
@@ -19,7 +22,7 @@ class CocktailNameSearchViewController: BaseViewController {
     $0.addTarget(self, action: #selector(didTapPreviousButton(_:)), for: .touchUpInside)
   }
   
-  private let searchTextField = UISearchTextField().then{
+  private let searchTextField = SearchTextField().then{
     $0.placeholder = "칵테일을 검색하세요"
   }
   private let searchTableView: UITableView = {
@@ -42,8 +45,7 @@ extension CocktailNameSearchViewController {
     super.viewDidLoad()
     render()
     setDelegation()
-    
-    
+    setGesture()
   }
   private func render() {
     view.addSubviews([headerBarView,searchTableView])
@@ -78,7 +80,6 @@ extension CocktailNameSearchViewController {
       $0.top.equalTo(headerBarView.snp.bottom)
       $0.leading.bottom.trailing.equalToSuperview()
     }
-    
   }
   
   private func setDelegation(){
@@ -116,37 +117,22 @@ extension CocktailNameSearchViewController: UITableViewDelegate{
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    guard let vc = self.presentingViewController as? WritingNoteViewController else {return}
-    vc.selectedCocktail = filteredCoctailNameList[indexPath.row]
+    selectedCocktailName = filteredCoctailNameList[indexPath.row]
+    self.didTapNameCellClosure?()
     self.dismiss(animated: false)
+    
   }
 }
 
 extension CocktailNameSearchViewController: UITextFieldDelegate{
   
-  func textFieldDidBeginEditing(_ textField: UITextField) {
-    
-    
-    filteredCoctailNameList = cocktailNameList
-    print("하냐?!!?")
-    searchTableView.reloadData()
-    
-    
-  }
-  
   @objc func textFieldDidChange(_ sender: Any?) {
-    if searchTextField.text == ""{
-        filteredCoctailNameList = cocktailNameList
-        searchTableView.reloadData()
-        
-    }else{
     filteredCoctailNameList = cocktailNameList.filter { $0.lowercased().prefix(searchTextField.text!.count) == searchTextField.text!.lowercased() }
     searchTableView.reloadData()
-    }
   }
   
+  
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    
     textField.resignFirstResponder()
     searchTableView.isHidden = true
     return true

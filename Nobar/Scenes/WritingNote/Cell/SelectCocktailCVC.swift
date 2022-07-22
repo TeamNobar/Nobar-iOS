@@ -55,6 +55,9 @@ extension SelectCocktailCVC {
     searchCockTailTextField.delegate = self
   }
   
+  func setPlacholder(placeholder: String){
+    searchCockTailTextField.placeholder = placeholder
+  }
   
 
   
@@ -62,7 +65,6 @@ extension SelectCocktailCVC {
 extension SelectCocktailCVC: UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
       self.didTapSearchTextfieldClosure?()
-      print("GKA")
     }
 
 }
