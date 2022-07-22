@@ -41,7 +41,7 @@ enum APIRouter {
         .searchBase,
         .searchMain,
         .searchKeyword,
-        .home:
+        .home,
         .getRecipe:
       return .get
       
@@ -56,7 +56,7 @@ enum APIRouter {
     case .getMyPage,
         .searchTag,
         .searchMain,
-        .home:
+        .home,
         .getRecipe:
       return nil
       
@@ -82,7 +82,7 @@ enum APIRouter {
         .auth,
         .searchTag,
         .searchMain,
-        .home:
+        .home,
         .getRecipe:
       return JSONEncoding.default
 
@@ -100,7 +100,7 @@ enum APIRouter {
         .searchMain,
         .searchBase,
         .searchKeyword,
-        .home:
+        .home,
         .getRecipe:
       
       guard

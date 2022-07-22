@@ -94,7 +94,7 @@ extension TabbarRouter {
   private func setupMainViewController() {
     let storyboard = TabRouterChild.main.storyboard.instance
     let viewController = storyboard.instantiateViewController(ofType: MainViewController.self)
-    let navigationController = UINavigationController(rootViewController: viewController).then {
+    let navigationController = BaseNavigationController(rootViewController: viewController).then {
       $0.tabBarItem.title = TabRouterChild.main.title
       $0.tabBarItem.image = UIImage(named: TabRouterChild.main.imageName)
       $0.tabBarItem.selectedImage = UIImage(named: TabRouterChild.main.selectedImageName)
@@ -105,7 +105,7 @@ extension TabbarRouter {
   private func setupSearchViewController() {
     let storyboard = TabRouterChild.search.storyboard.instance
     let viewController = storyboard.instantiateViewController(ofType: SearchBaseViewController.self)
-    let navigationController = UINavigationController(rootViewController: viewController).then {
+    let navigationController = BaseNavigationController(rootViewController: viewController).then {
       $0.tabBarItem.title = TabRouterChild.search.title
       $0.tabBarItem.image = UIImage(named: TabRouterChild.search.imageName)
       $0.tabBarItem.selectedImage = UIImage(named: TabRouterChild.search.selectedImageName)
@@ -117,7 +117,7 @@ extension TabbarRouter {
   private func setupWritingNoteViewController() {
     let storyboard = TabRouterChild.writingNote.storyboard.instance
     let viewController = storyboard.instantiateViewController(ofType: WritingNoteViewController.self)
-    let navigationController = UINavigationController(rootViewController: viewController).then {
+    let navigationController = BaseNavigationController(rootViewController: viewController).then {
       $0.tabBarItem.title = TabRouterChild.writingNote.title
       $0.tabBarItem.image = UIImage(named: TabRouterChild.writingNote.imageName)
       $0.tabBarItem.selectedImage = UIImage(named: TabRouterChild.writingNote.selectedImageName)
@@ -129,7 +129,7 @@ extension TabbarRouter {
     let repository = MyPageRepository(networkService: NetworkingService())
     let viewModel = MyPageViewModel(repository: repository)
     let viewController = MyPageViewController(viewModel: viewModel)
-    let navigationController = UINavigationController(rootViewController: viewController).then {
+    let navigationController = BaseNavigationController(rootViewController: viewController).then {
       $0.tabBarItem.title = TabRouterChild.mypage.title
       $0.tabBarItem.image = UIImage(named: TabRouterChild.mypage.imageName)
       $0.tabBarItem.selectedImage = UIImage(named: TabRouterChild.mypage.selectedImageName)
