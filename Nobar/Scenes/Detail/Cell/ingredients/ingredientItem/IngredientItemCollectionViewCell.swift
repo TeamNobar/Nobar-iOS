@@ -13,17 +13,19 @@ class IngredientItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var proofLabel: UILabel!
     
-    static let identifier = "ingredientItemCollectionViewCell"
+    static let identifier = "IngredientItemCollectionViewCell"
     
     // 초기화 해주는 작업을 해당 메서드 안에서 진행
     override func awakeFromNib() {
       super.awakeFromNib()
+      backgroundColor = Color.gray01.getColor()
+      layer.cornerRadius = 8
       // Initialization code
       //ingredientsTitle.text = "자몽주스"  //Data
       ingredientsTitle.font = Pretendard.size12.semibold()
       ingredientsTitle.textColor = Color.black.getColor()
       
-      categoryImage.image = UIImage(named: "")
+      categoryImage.image = ImageFactory.icnTag
       
       //categoryLabel.text = "카테고리" // Data
       categoryLabel.font = Pretendard.size10.medium()
@@ -32,6 +34,9 @@ class IngredientItemCollectionViewCell: UICollectionViewCell {
       //categoryLabel.text = "자몽주스" // Data
       categoryLabel.font = Pretendard.size10.medium()
       categoryLabel.textColor = Color.pink01.getColor()
+
+      proofLabel.textColor = Color.navy01.getColor()
+      proofLabel.font = Pretendard.size20.bold()
 
     }
     
