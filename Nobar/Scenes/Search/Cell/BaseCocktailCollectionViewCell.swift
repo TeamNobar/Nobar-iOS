@@ -23,7 +23,6 @@ final class BaseCocktailCollectionViewCell: UICollectionViewCell {
   }
 
   private let baseImageView = UIImageView().then {
-    $0.backgroundColor = Color.skyblue01.getColor()
     $0.clipsToBounds = true
     $0.layer.cornerRadius = 10
   }
