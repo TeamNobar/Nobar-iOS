@@ -126,8 +126,9 @@ extension TabbarRouter {
   }
   
   private func setupMyPageViewController() {
-    let storyboard = TabRouterChild.mypage.storyboard.instance
-    let viewController = storyboard.instantiateViewController(ofType: MyPageViewController.self)
+    let repository = MyPageRepository(networkService: NetworkingService())
+    let viewModel = MyPageViewModel(repository: repository)
+    let viewController = MyPageViewController(viewModel: viewModel)
     let navigationController = UINavigationController(rootViewController: viewController).then {
       $0.tabBarItem.title = TabRouterChild.mypage.title
       $0.tabBarItem.image = UIImage(named: TabRouterChild.mypage.imageName)
@@ -136,4 +137,3 @@ extension TabbarRouter {
     store(with: navigationController, as: .mypage)
   }
 }
-

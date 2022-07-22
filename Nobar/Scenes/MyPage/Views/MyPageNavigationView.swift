@@ -8,14 +8,24 @@
 import UIKit
 
 final class MyPageNavigationView: BaseView {
-  private let titleLabel = UILabel().then {
-    $0.text = "텍스트더미텍스트를 이렇게할줄은몰랐죠?"
+  private lazy var titleLabel = UILabel().then {
+    $0.text = self.nickName
     $0.font = Pretendard.size18.extraBold()
     $0.textColor = Color.navy01.getColor()
   }
 
   private let containerView = UIView()
-
+  private let nickName: String
+  
+  init(nickName: String) {
+    self.nickName = nickName
+    super.init(frame: .zero)
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
   override func initialize() {
     super.initialize()
 
