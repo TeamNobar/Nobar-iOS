@@ -10,9 +10,15 @@ import UIKit
 import Then
 import SnapKit
 
+protocol RecordTapDelegate: AnyObject {
+  func didClickOnWriteButton()
+}
+
 class RecordTableViewCell: UITableViewCell {
 
     @IBOutlet weak var contentLabel: UILabel!
+
+  weak var delegate: RecordTapDelegate?
 
   private lazy var writeNoteButton = UIButton().then {
     $0.setTitle("테이스팅 노트 작성하기", for: .normal)
@@ -22,6 +28,7 @@ class RecordTableViewCell: UITableViewCell {
     $0.layer.cornerRadius = 20
     $0.layer.borderWidth = 0.5
     $0.layer.borderColor = Color.gray02.getColor().cgColor
+    $0.addTarget(self, action: #selector(didClickOnWriteButton(_:)), for: .touchUpInside)
   }
     
     static let identifier = "RecordTableViewCell"
@@ -48,5 +55,9 @@ class RecordTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
+  @objc private func didClickOnWriteButton(_ sender: UIButton) {
+    delegate?.didClickOnWriteButton()
+  }
     
 }
