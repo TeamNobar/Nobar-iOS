@@ -9,8 +9,8 @@ import UIKit
 
 final class SelectDateCVC: UICollectionViewCell {
   
-  private let selectedDate = "2022년 3월 2일"
   
+  var selectedDate = Date()
   private let grayView = UIView().then {
     $0.backgroundColor = Color.gray01.getColor()
     $0.layer.cornerRadius = 5
@@ -22,12 +22,11 @@ final class SelectDateCVC: UICollectionViewCell {
     $0.font = Pretendard.size13.semibold()
   }
   
-  private let datePicker = UIDatePicker().then {
+  private lazy var datePicker = UIDatePicker().then {
     $0.tintColor = Color.pink01.getColor()
     $0.datePickerMode = .date
     $0.locale = Locale(identifier: "ko_KR")
-
-    
+    $0.addTarget(self, action: #selector(valueChangedDatePicker(_:)), for: .valueChanged)
   }
   
   override init(frame: CGRect) {
@@ -68,6 +67,17 @@ extension SelectDateCVC {
     
   }
   
+  private func setDayLabel(){
+      let formatter = DateFormatter()
+      formatter.dateFormat = "YYYY년 M월 d일"
+      formatter.locale = Locale(identifier: "ko_KR")
+      formatter.timeZone = NSTimeZone(name: "ko_KR") as TimeZone?
+      
+      let dateText = formatter.string(from: selectedDate)
+      
+    selectedDateLabel.text  = dateText
+  }
+  
  func setLayout(for status: WritingStatus){
     switch status{
     case .newWriting,.revising:
@@ -78,9 +88,15 @@ extension SelectDateCVC {
       datePicker.isHidden = true
       grayView.isHidden = false
       selectedDateLabel.isHidden = false
-      selectedDateLabel.text = selectedDate
+      setDayLabel()
     }
 
   }
+  
+  @objc func valueChangedDatePicker(_ sender: UIDatePicker){
+    selectedDate = sender.date
+    print(selectedDate)
+  }
+  
 }
 

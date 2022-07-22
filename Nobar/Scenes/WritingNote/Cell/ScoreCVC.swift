@@ -66,6 +66,7 @@ extension ScoreCVC {
       
     }
   }
+  
 
   private func addSliderGesture() {
     heartSlider.addTarget(self, action: #selector(slideHeartSlider), for: UIControl.Event.valueChanged)
@@ -142,8 +143,6 @@ extension ScoreCVC {
 
     }
   }
-  
-
 }
 
 
