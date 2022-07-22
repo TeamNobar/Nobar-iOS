@@ -13,7 +13,7 @@ import Lottie
 
 final class SplashViewController: BaseViewController {
 
-  private let animationView = AnimationView(name: "111529-rocket").then {
+  private let animationView = AnimationView(name: "nobar").then {
     $0.contentMode = .scaleAspectFit
   }
 
@@ -23,7 +23,13 @@ final class SplashViewController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     configUI()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
     playAnimation()
   }
 
@@ -44,8 +50,8 @@ extension SplashViewController {
 
     animationView.snp.makeConstraints {
       $0.top.equalToSuperview().inset(295.adjustedH)
-      $0.width.equalTo(99)
-      $0.height.equalTo(73)
+      $0.width.equalTo(140)
+      $0.height.equalTo(110)
       $0.centerX.equalToSuperview()
     }
 
@@ -58,12 +64,19 @@ extension SplashViewController {
   }
 
   private func playAnimation() {
-    animationView.play(completion: { _ in
-      let mainViewController = MainViewController()
+    animationView.play { [weak self] _ in
+      self?.processOnboardingIfNeeded()
+    }
+  }
+  
+  private func processOnboardingIfNeeded() {
+    guard let sceneDelegate = NBUtils.getSceneDelegate() else { return }
+    
+    let isFirstUser = UserDefaultHelper<String>.value(forKey: .accessToken) == nil
 
-      mainViewController.modalPresentationStyle = .overFullScreen
-      mainViewController.modalTransitionStyle = .crossDissolve
-      self.present(mainViewController, animated: true)
-    })
+    switch isFirstUser {
+    case true: sceneDelegate.startSignIn()
+    case false: sceneDelegate.startTabbar()
+    }
   }
 }
