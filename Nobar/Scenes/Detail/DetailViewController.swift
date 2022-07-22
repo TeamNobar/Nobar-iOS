@@ -18,6 +18,7 @@ final class DetailViewController: BaseViewController {
 
   private lazy var backButton = UIButton().then {
     $0.setImage(ImageFactory.btnBackSearch, for: .normal)
+    $0.addTarget(self, action: #selector(didClickOnBackButton(_:)), for: .touchUpInside)
   }
 
   private lazy var heartButton = UIButton().then {
@@ -74,6 +75,10 @@ final class DetailViewController: BaseViewController {
     navigationController?.navigationBar.isHidden = false
     navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
     navigationItem.rightBarButtonItem = UIBarButtonItem(customView: heartButton)
+  }
+
+  @objc func didClickOnBackButton(_ sender: UIButton) {
+    self.navigationController?.popViewController(animated: true)
   }
 }
     
@@ -169,8 +174,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension DetailViewController: RecordTapDelegate {
   func didClickOnWriteButton() {
-//    let writingNoteViewController = WritingNoteViewController()
-//
-//    self.present(writingNoteViewController, animated: true)
+    let writingNoteViewController = WritingNoteViewController()
+
+    self.present(writingNoteViewController, animated: true)
   }
 }

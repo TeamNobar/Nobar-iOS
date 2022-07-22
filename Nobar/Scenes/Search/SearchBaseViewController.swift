@@ -60,6 +60,7 @@ final class SearchBaseViewController: BaseViewController {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.showsHorizontalScrollIndicator = false
     collectionView.showsVerticalScrollIndicator = false
+    collectionView.delegate = self
     return collectionView
   }()
 
@@ -75,6 +76,7 @@ final class SearchBaseViewController: BaseViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     resignSearchTextField()
+    configUI()
   }
 
   override func setupConstraints() {
@@ -241,6 +243,15 @@ extension SearchBaseViewController: UICollectionViewDelegate {
     
     return false
   }
+
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let storyboard = StoryboardRouter.detail.instance
+
+    let detailViewController = storyboard.instantiateViewController(ofType: DetailViewController.self)
+
+
+    navigationController?.pushViewController(detailViewController, animated: true)
+  }
 }
 
 extension SearchBaseViewController: UICollectionViewDataSource {
@@ -284,6 +295,4 @@ extension SearchBaseViewController {
     resultDataSource.apply(resultSnapshot, animatingDifferences: true)
   }
 }
-
-
 

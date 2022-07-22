@@ -60,7 +60,11 @@ extension MainViewController {
     setDelegation()
     setRegistration()
   }
-  
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    navigationController?.navigationBar.isHidden = true
+  }
 }
 
 // MARK: - Private functions
@@ -246,14 +250,20 @@ extension MainViewController: UICollectionViewDelegate{
     
     switch sectionType {
     case .archive:
-      return
+      let storyboard = StoryboardRouter.detail.instance
+      let detailViewController = storyboard.instantiateViewController(ofType: DetailViewController.self)
+      navigationController?.pushViewController(detailViewController, animated: true)
+
     case .guide:
       let guideVC = GuideDetailViewController()
       let guideNavigationController = UINavigationController(rootViewController: guideVC)
       guideNavigationController.modalPresentationStyle = .fullScreen
       self.present(guideNavigationController, animated: false)
     case .recommend:
-      return
+      let storyboard = StoryboardRouter.detail.instance
+      let detailViewController = storyboard.instantiateViewController(ofType: DetailViewController.self)
+      navigationController?.pushViewController(detailViewController, animated: true)
+
     }
   }
   

@@ -70,6 +70,11 @@ final class SearchResultViewController: BaseViewController {
     setRegistration()
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    configUI()
+  }
+
   override func setupConstraints() {
     super.setupConstraints()
     setLayout()
@@ -229,6 +234,12 @@ extension SearchResultViewController: UICollectionViewDelegate {
     // 이전 뷰와 동일하게 앱잼 내에서는 칵테일만 선택되도록
     if sectionType == .cocktail {
       print("칵테일 상세뷰로 이동 - 결과뷰")
+      let storyboard = StoryboardRouter.detail.instance
+
+      let detailViewController = storyboard.instantiateViewController(ofType: DetailViewController.self)
+
+
+      navigationController?.pushViewController(detailViewController, animated: true)
       // 칵테일 상세뷰로 이동 - 수아뷰
       // let item = indexPath.item
       // if let recipeId = 서버에서 받아온 레시피 모델.safeget(index: item).id {

@@ -101,6 +101,7 @@ final class SearchViewController: BaseViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     initTextField()
+    configUI()
   }
 
   override func setupConstraints() {
@@ -326,6 +327,16 @@ extension SearchViewController: UICollectionViewDelegate {
         navigationController?.pushViewController(resultViewController, animated: false)
       case .recommend:
         print("칵테일 상세뷰로 이동 - 추천")
+        let item = indexPath.item
+
+        let storyboard = StoryboardRouter.detail.instance
+
+        let detailViewController = storyboard.instantiateViewController(ofType: DetailViewController.self)
+
+
+        navigationController?.pushViewController(detailViewController, animated: true)
+
+
         // 추천 검색 -> 칵테일 상세뷰로 이동 - 수아 뷰
         // let item = indexPath.item
         // if let recipeId = 서버에서 받아온 레시피 모델.safeget(index: item).id {
@@ -336,6 +347,14 @@ extension SearchViewController: UICollectionViewDelegate {
       if autoSectionType == .cocktail {
         // TODO: - 앱잼 내에서는 칵테일 부분만 선택되는 것으로 변경
         print("칵테일 상세뷰로 이동 - 자동완성")
+
+        let storyboard = StoryboardRouter.detail.instance
+
+        let detailViewController = storyboard.instantiateViewController(ofType: DetailViewController.self)
+
+
+        navigationController?.pushViewController(detailViewController, animated: true)
+        
         // 칵테일 상세뷰로 이동 - 수아뷰
         // let item = indexPath.item
         // if let recipeId = 서버에서 받아온 레시피 모델.safeget(index: item).id {

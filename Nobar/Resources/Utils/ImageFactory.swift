@@ -12,7 +12,7 @@ enum ImageFactory {
   
   static var btnCancel: UIImage? { UIImage(named: "btnCancel") }
   
-  static var icnSearch: UIImage? { UIImage(named: "icnSearch") }
+  static var icnSearch: UIImage? { UIImage(named: "icn_search") }
   
   static var icnFilterDown: UIImage? { UIImage(named: "icnFilterDown") }
   
