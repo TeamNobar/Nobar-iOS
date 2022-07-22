@@ -70,8 +70,8 @@ enum APIRouter {
   var encoding: ParameterEncoding {
     switch self {
     case .getMyPage,
-         .writeTastingNote,
-         .auth:
+        .writeTastingNote,
+        .auth,
         .writeTastingNote,
         .searchTag,
         .searchMain:
