@@ -29,8 +29,11 @@ extension NetworkingService: Networking {
     _ endpoint: Endpoint<Response>,
     then completion: @escaping (Result<Response, Error>) -> Void
   ) {
+    let urlString = endpoint.url.absoluteString
+      .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+
     let request = self.sessionManager.request(
-      endpoint.url,
+      URL(string: urlString)!,
       method: endpoint.method,
       parameters: endpoint.parameters,
       encoding: endpoint.encoding,
