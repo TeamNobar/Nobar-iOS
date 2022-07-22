@@ -85,5 +85,26 @@ extension MakeOnLaterRecipesViewController {
         )
       ) { row, item, cell in
         cell.updateContent(with: item)
-      }.disposed(by: self.disposeBag)  }
+      }.disposed(by: self.disposeBag)
+    
+    viewModel
+      .signalForErrorStream()
+      .subscribe(onNext: { [weak self] _ in
+      }).disposed(by: self.disposeBag)
+    
+    collectionView
+      .rx
+      .modelSelected(Recipe.self)
+      .observe(on: MainScheduler.instance)
+      .bind(onNext: { [weak self] response in
+        let storyboard = StoryboardRouter.detail.instance
+        let viewController = storyboard.instantiateViewController(
+          identifier: DetailViewController.identifier,
+          creator: { coder in
+            DetailViewController(coder: coder)
+          })
+        
+        self?.navigationController?.pushViewController(viewController, animated: true)
+      }).disposed(by: self.disposeBag)
+  }
 }

@@ -13,7 +13,11 @@ final class MakeOnLaterRecipesCollectionViewCell: UICollectionViewCell {
   private enum Metric {
     static let contentViewTopBottom = 16.f
     static let contentViewLeadingTrailing = 26.f
+    static let contentSpacing = 2.f
+
     static let containerRadius = 10.f
+    
+    static let imageDescriptionItemSpacing = 26.f
   }
   
   private let containerView = UIView().then {
@@ -24,7 +28,7 @@ final class MakeOnLaterRecipesCollectionViewCell: UICollectionViewCell {
   
   private let contentStackView = UIStackView().then {
     $0.axis = .vertical
-    $0.spacing = 2.f
+    $0.spacing = Metric.contentSpacing
     $0.alignment = .leading
   }
 
@@ -39,7 +43,7 @@ final class MakeOnLaterRecipesCollectionViewCell: UICollectionViewCell {
   }
   
   private let imageDescriptionStackView = UIStackView().then {
-    $0.spacing = 26.f
+    $0.spacing = Metric.imageDescriptionItemSpacing
     $0.axis = .horizontal
   }
   
@@ -53,6 +57,11 @@ final class MakeOnLaterRecipesCollectionViewCell: UICollectionViewCell {
       subtitleLabel,
       imageDescriptionStackView
     ])
+    
+    contentStackView.setCustomSpacing(
+      24.f,
+      after: subtitleLabel
+    )
     
     setLayouts()
   }
@@ -88,7 +97,6 @@ extension MakeOnLaterRecipesCollectionViewCell {
     contentTitleLabel.text = recipes.name
     subtitleLabel.text = recipes.enName
     imageDescriptionStackView.addArrangedSubviews([
-//      베이스 도수 만드는 법 잔
       MakeOnLaterImageDescriptionView(
         imageURL: recipes.base.url,
         description: recipes.base.name,
