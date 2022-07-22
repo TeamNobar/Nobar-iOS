@@ -49,7 +49,27 @@ enum ImageFactory {
   static var btn_plusnote: UIImage? { UIImage(named: "btn_plusnote") }
   
   static var tagIconGray: UIImage? { UIImage(named: "btn_plusnote") }
-//  ImageFactory.tagIconGray
+  
+  static var btnScoreEmpty: UIImage? { UIImage(named: "btnScoreEmpty") }
+  
+  static var btnScoreFill: UIImage? { UIImage(named: "btnScoreFill") }
+  
+  static var btnScoreHalf: UIImage? { UIImage(named: "btnScoreHalf") }
+  
+  static var icnDelete: UIImage? { UIImage(named: "icnDelete") }
+  
+  static var icnModify: UIImage? {
+    UIImage(named: "icnModify")}
+  
+  static var icn_tastetag_baby_inactive: UIImage? { UIImage(named: "btn_plusnote") }
+  
+  static var icn_tastetag_baby: UIImage? { UIImage(named: "btn_plusnote") }
+  
+  static var icn_tastetag_burn_inactive: UIImage? { UIImage(named: "icn_tastetag_burn_inactive") }
+  
+  static var icn_tastetag_cream_inactive: UIImage? { UIImage(named: "btnScoreFill") }
+  
+  static var icn_tastetag_cream: UIImage? { UIImage(named: "btnScoreHalf") }
   
   static var imgOnboarding1: UIImage? { UIImage(named: "imgOnboarding1") }
   

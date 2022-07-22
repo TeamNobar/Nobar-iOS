@@ -8,7 +8,7 @@
 import UIKit
 
 final class ScoreCVC: UICollectionViewCell {
-  private let score = 4.5
+  var score = 5.0
   
   private let heartSlider = HeartRatingUISlider().then {
     $0.minimumValue = 0
@@ -31,7 +31,7 @@ final class ScoreCVC: UICollectionViewCell {
     super.init(frame: frame)
     render()
     initStackView()
-    initSlider()
+
   }
   
   @available(*, unavailable)
@@ -61,31 +61,52 @@ extension ScoreCVC {
   private func initStackView() {
     
     for i in 0..<5 {
-//      let imageView = UIImageView(image:ImageFactory.btnScoreEmpty)
-//      heartStackView.addArrangedSubview(imageView)
+      let imageView = UIImageView(image:ImageFactory.btnScoreEmpty)
+      heartStackView.addArrangedSubview(imageView)
       
     }
   }
+  
 
-  private func initSlider() {
+  private func addSliderGesture() {
     heartSlider.addTarget(self, action: #selector(slideHeartSlider), for: UIControl.Event.valueChanged)
+  }
+  
+  private func deleteSliderGesture() {
+    heartSlider.removeTarget(self, action: #selector(slideHeartSlider), for: UIControl.Event.valueChanged)
   }
 
   @objc func slideHeartSlider(){
     var value = heartSlider.value
+    score = Double(value)
+
+    switch value{
+    case 0..<0.5: score = 0.5
+    case 0.5..<1: score = 1.0
+    case 1..<1.5: score = 1.5
+    case 1.5..<2: score = 2.0
+    case 2..<2.5: score = 2.5
+    case 2.5..<3: score = 3.0
+    case 3..<3.5: score = 3.5
+    case 3.5..<4: score = 4.0
+    case 4..<4.5: score = 4.5
+    case 4.5...5: score = 5.0
+    default: score = 0.0
+    }
+    print(score)
     
     for idx in 0..<5 {
       if value > 0.5 {
         value -= 1
         let imageView = heartStackView.subviews[idx] as? UIImageView ?? UIImageView()
-//        imageView.image = ImageFactory.btnScoreFill
+        imageView.image = ImageFactory.btnScoreFill
       } else if 0 < value && value < 0.5 {
         value -= 0.5
         let imageView = heartStackView.subviews[idx] as? UIImageView ?? UIImageView()
-//        imageView.image = ImageFactory.btnScoreHalf
+        imageView.image = ImageFactory.btnScoreHalf
       }else {
         let imageView = heartStackView.subviews[idx] as? UIImageView ?? UIImageView()
-//        imageView.image = ImageFactory.btnScoreEmpty
+        imageView.image = ImageFactory.btnScoreEmpty
       }
 
     }
@@ -95,8 +116,10 @@ extension ScoreCVC {
   func setLayout(for status: WritingStatus){
     switch status{
     case .newWriting,.revising: heartSlider.isHidden = false
+      addSliderGesture()
     case .viewing: heartSlider.isHidden = true
       setHeartScore(score: score)
+      deleteSliderGesture()
     }
 
   }
@@ -108,20 +131,18 @@ extension ScoreCVC {
       if value > 0.5 {
         value -= 1
         let imageView = heartStackView.subviews[idx] as? UIImageView ?? UIImageView()
-//        imageView.image = ImageFactory.btnScoreFill
-      } else if 0 < value && value < 0.5 {
+        imageView.image = ImageFactory.btnScoreFill
+      } else if 0 < value && value <= 0.5 {
         value -= 0.5
         let imageView = heartStackView.subviews[idx] as? UIImageView ?? UIImageView()
-//        imageView.image = ImageFactory.btnScoreHalf
+        imageView.image = ImageFactory.btnScoreHalf
       }else {
         let imageView = heartStackView.subviews[idx] as? UIImageView ?? UIImageView()
-//        imageView.image = ImageFactory.btnScoreEmpty
+        imageView.image = ImageFactory.btnScoreEmpty
       }
 
     }
   }
-  
-
 }
 
 

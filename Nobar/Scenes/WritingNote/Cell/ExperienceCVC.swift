@@ -25,6 +25,7 @@ final class ExperienceCVC: UICollectionViewCell {
     setLayout()
     initTextView()
     setDelegate()
+    dismissKeyboardWhenTappedAround()
   }
   
   @available(*, unavailable)

@@ -25,6 +25,7 @@ final class EvaluationCVC: UICollectionViewCell {
     setLayout()
     initTextView()
     setDelegate()
+    dismissKeyboardWhenTappedAround()
   }
   
   @available(*, unavailable)

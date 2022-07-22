@@ -58,10 +58,10 @@ final class WritingNoteViewController: BaseViewController {
   }
   
   private let deleteButton = UIButton().then {
-    $0.setImage(UIImage(systemName: "trash"), for: .normal)
+    $0.setImage(ImageFactory.icnDelete, for: .normal)
   }
   private let reviseButton = UIButton().then {
-    $0.setImage(UIImage(systemName: "pencil"), for: .normal)
+    $0.setImage(ImageFactory.icnModify, for: .normal)
   }
   
   private let grayLine = UIView().then {
@@ -76,6 +76,7 @@ final class WritingNoteViewController: BaseViewController {
     $0.backgroundColor = .none
     $0.bounces = true
     $0.showsVerticalScrollIndicator = false
+    $0.keyboardDismissMode = .onDrag
   }
   
   override func setupConstraints() {
@@ -92,7 +93,8 @@ extension WritingNoteViewController {
     setDelegation()
     setRegistration()
     setTitleViewLayout()
-    
+    setNotification()
+
   }
   
 }
@@ -121,12 +123,12 @@ extension WritingNoteViewController {
     reviseButton.snp.makeConstraints{
       $0.trailing.equalTo(deleteButton.snp.leading).offset(-10)
       $0.centerY.equalToSuperview()
-      $0.width.height.equalTo(30)
+      $0.width.height.equalTo(42)
     }
     deleteButton.snp.makeConstraints{
       $0.trailing.equalToSuperview().offset(-10)
       $0.centerY.equalToSuperview()
-      $0.width.height.equalTo(30)
+      $0.width.height.equalTo(42)
     }
     
     
@@ -170,12 +172,7 @@ extension WritingNoteViewController {
     tastingCollectionView.snp.makeConstraints{
       $0.top.equalTo(grayLine.snp.bottom)
       $0.leading.trailing.bottom.equalToSuperview()
-      //      $0.bottom.equalTo(self.view.keyboardLayoutGuide.snp.top)
-      
     }
-    //    view.keyboardLayoutGuide.snp.makeConstraints{
-    //      $0.top.equalTo(tastingCollectionView.snp.bottom)
-    //    }
     
   }
   
@@ -201,6 +198,39 @@ extension WritingNoteViewController {
                                    forCellWithReuseIdentifier: "ExperienceCVC")
     
   }
+  
+  
+  
+  
+    private func setNotification(){
+      NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+  
+      NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+  
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+      view.endEditing(true)
+  }
+  
+    @objc func keyboardWillShow(noti: Notification){
+      if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+          if self.view.frame.origin.y == 0 {
+              
+            self.view.frame.origin.y -= keyboardFrame.cgRectValue.size.height
+          }
+      }
+      }
+
+     @objc func keyboardWillHide(_ noti: NSNotification){
+         // 키보드의 높이만큼 화면을 내려준다.
+         if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+             if self.view.frame.origin.y != 0 {
+
+                 /// naviBar 만큼 내림
+                 self.view.frame.origin.y += keyboardFrame.cgRectValue.size.height
+             }
+         }
+     }
   @objc private func didTapApplyButton(_ sender: UIButton){
     print("tapped")
     self.dismiss(animated: true)
@@ -261,7 +291,7 @@ extension WritingNoteViewController: UICollectionViewDataSource{
     case .score:
       guard let cell = tastingCollectionView.dequeueReusableCell(ofType: ScoreCVC.self,
                                                                  at: indexPath) as? ScoreCVC else {return UICollectionViewCell()}
-//      cell.setLayout(for: writingstatus)
+      cell.setLayout(for: writingstatus)
       return cell
     case .evaluation:
       guard let cell = tastingCollectionView.dequeueReusableCell(ofType: EvaluationCVC.self,
