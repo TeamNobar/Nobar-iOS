@@ -61,8 +61,8 @@ extension ScoreCVC {
   private func initStackView() {
     
     for i in 0..<5 {
-//      let imageView = UIImageView(image:ImageFactory.btnScoreEmpty)
-//      heartStackView.addArrangedSubview(imageView)
+      let imageView = UIImageView(image:ImageFactory.btnScoreEmpty)
+      heartStackView.addArrangedSubview(imageView)
       
     }
   }
@@ -78,14 +78,14 @@ extension ScoreCVC {
       if value > 0.5 {
         value -= 1
         let imageView = heartStackView.subviews[idx] as? UIImageView ?? UIImageView()
-//        imageView.image = ImageFactory.btnScoreFill
+        imageView.image = ImageFactory.btnScoreFill
       } else if 0 < value && value < 0.5 {
         value -= 0.5
         let imageView = heartStackView.subviews[idx] as? UIImageView ?? UIImageView()
-//        imageView.image = ImageFactory.btnScoreHalf
+        imageView.image = ImageFactory.btnScoreHalf
       }else {
         let imageView = heartStackView.subviews[idx] as? UIImageView ?? UIImageView()
-//        imageView.image = ImageFactory.btnScoreEmpty
+        imageView.image = ImageFactory.btnScoreEmpty
       }
 
     }
@@ -108,14 +108,14 @@ extension ScoreCVC {
       if value > 0.5 {
         value -= 1
         let imageView = heartStackView.subviews[idx] as? UIImageView ?? UIImageView()
-//        imageView.image = ImageFactory.btnScoreFill
+        imageView.image = ImageFactory.btnScoreFill
       } else if 0 < value && value < 0.5 {
         value -= 0.5
         let imageView = heartStackView.subviews[idx] as? UIImageView ?? UIImageView()
-//        imageView.image = ImageFactory.btnScoreHalf
+        imageView.image = ImageFactory.btnScoreHalf
       }else {
         let imageView = heartStackView.subviews[idx] as? UIImageView ?? UIImageView()
-//        imageView.image = ImageFactory.btnScoreEmpty
+        imageView.image = ImageFactory.btnScoreEmpty
       }
 
     }

@@ -58,10 +58,10 @@ final class WritingNoteViewController: BaseViewController {
   }
   
   private let deleteButton = UIButton().then {
-    $0.setImage(UIImage(systemName: "trash"), for: .normal)
+    $0.setImage(ImageFactory.icnDelete, for: .normal)
   }
   private let reviseButton = UIButton().then {
-    $0.setImage(UIImage(systemName: "pencil"), for: .normal)
+    $0.setImage(ImageFactory.icnModify, for: .normal)
   }
   
   private let grayLine = UIView().then {
@@ -121,12 +121,12 @@ extension WritingNoteViewController {
     reviseButton.snp.makeConstraints{
       $0.trailing.equalTo(deleteButton.snp.leading).offset(-10)
       $0.centerY.equalToSuperview()
-      $0.width.height.equalTo(30)
+      $0.width.height.equalTo(42)
     }
     deleteButton.snp.makeConstraints{
       $0.trailing.equalToSuperview().offset(-10)
       $0.centerY.equalToSuperview()
-      $0.width.height.equalTo(30)
+      $0.width.height.equalTo(42)
     }
     
     
