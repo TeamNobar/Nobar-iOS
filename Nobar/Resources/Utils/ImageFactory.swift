@@ -71,4 +71,9 @@ enum ImageFactory {
   
   static var icn_tastetag_cream: UIImage? { UIImage(named: "btnScoreHalf") }
   
+  static var imgOnboarding1: UIImage? { UIImage(named: "imgOnboarding1") }
+  
+  static var imgOnboarding2: UIImage? { UIImage(named: "imgOnboarding2") }
+  
+  static var imgOnboarding3: UIImage? { UIImage(named: "imgOnboarding3") }
 }

@@ -5,7 +5,7 @@
 //  Created by Ian on 2022/07/13.
 //
 
-struct Recipe: Decodable {
+struct Recipe: Decodable, Hashable {
   let id: String
   var name: String
   var enName: String

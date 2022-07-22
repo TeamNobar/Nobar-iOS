@@ -19,9 +19,12 @@ final class SearchResultViewController: BaseViewController {
 
   var searchText: String?
   private var resultSectionType: ResultSecionType?
+  
+  private var networkingService = NetworkingService()
 
-  // TODO: 이전 뷰에서 필터링 된 재료 리스트 전달 filterIngredient 어쩌구
-  private var dummyIngredient: [String] = ["피피피피", "피치주스도있고요", "재료들이", "오렌지주스", "은비쨩", "재료어쩌구", "리큐르", "채원쨩"]
+  private var recipeList: [Recipe] = []
+  
+  private var ingredientList: [Ingredient] = []
 
   private let searchView = UIView().then {
     $0.backgroundColor = .white
@@ -51,8 +54,9 @@ final class SearchResultViewController: BaseViewController {
     return collectionView
   }()
 
-  init(searchResultText: String) {
+  init(searchResultText: String, ingredientList: [Ingredient]) {
     self.searchText = searchResultText
+    self.ingredientList = ingredientList
 
     super.init(nibName: nil, bundle: nil)
   }
@@ -68,6 +72,7 @@ final class SearchResultViewController: BaseViewController {
     setTextField()
     setDelegation()
     setRegistration()
+    getSearchKeyword(keyword: self.searchText ?? "")
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -260,9 +265,9 @@ extension SearchResultViewController: UICollectionViewDataSource {
 
     switch sectionType {
     case .cocktail:
-      return SearchCocktailModel.dummyCocktailList.count
+      return recipeList.count
     case .ingredient:
-      return dummyIngredient.count
+      return ingredientList.count
     }
   }
 
@@ -275,15 +280,15 @@ extension SearchResultViewController: UICollectionViewDataSource {
     case .cocktail:
       let cell = searchTotalResultCollectionView.dequeueReusableCell(ofType: SearchTotalResultCollectionViewCell.self, at: indexPath)
 
-      guard let item = SearchCocktailModel.dummyCocktailList.safeget(index: indexPath.row) else { return cell }
+      guard let item = recipeList.safeget(index: indexPath.row) else { return cell }
       cell.updateModel(item)
       return cell
     case .ingredient:
       let cell = searchTotalResultCollectionView.dequeueReusableCell(ofType: SearchAutoResultCollectionViewCell.self, at: indexPath)
 
 
-      guard let item = dummyIngredient.safeget(index: indexPath.row) else { return cell }
-      cell.updateResult(item)
+      guard let item = ingredientList.safeget(index: indexPath.row) else { return cell }
+      cell.updateIngredientResult(item)
       cell.updateAttributedText(self.searchText ?? "")
       return cell
     }
@@ -304,7 +309,7 @@ extension SearchResultViewController: UICollectionViewDataSource {
       case .cocktail:
         headerView.configUI(type: .total)
         headerView.didClickOnTotalButtonClosure = {
-          let searchTotalViewController = SearchTotalResultViewController()
+          let searchTotalViewController = SearchTotalResultViewController(recipeList: self.recipeList)
           let searchNavigationController = UINavigationController(rootViewController: searchTotalViewController)
           searchNavigationController.modalPresentationStyle = .fullScreen
           self.present(searchNavigationController, animated: true)
@@ -320,4 +325,23 @@ extension SearchResultViewController: UICollectionViewDataSource {
   }
 }
 
+// MARK: - Networking
+extension SearchResultViewController {
+  func getSearchKeyword(keyword: String) {
+    let endPoint = Endpoint<Search>(apiRouter: .searchKeyword(keyword: keyword))
 
+    networkingService.request(endPoint) { [weak self] result in
+      switch result {
+      case .success(let search):
+        guard let recipe = search.recipes else { return }
+        self?.recipeList = recipe
+        DispatchQueue.main.async {
+          self?.searchTotalResultCollectionView.reloadSections([0])
+        }
+
+      case .failure(let error):
+        break
+      }
+    }
+  }
+}
