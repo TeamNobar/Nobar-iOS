@@ -76,4 +76,14 @@ enum ImageFactory {
   static var imgOnboarding2: UIImage? { UIImage(named: "imgOnboarding2") }
   
   static var imgOnboarding3: UIImage? { UIImage(named: "imgOnboarding3") }
+
+  static var imgBluehawaii: UIImage? { UIImage(named: "img_bluehawaii") }
+
+  static var imgCinderella: UIImage? { UIImage(named: "img_cinderella") }
+
+  static var imgMojito: UIImage? { UIImage(named: "img_mojito") }
+
+  static var imgPeachcrush: UIImage? { UIImage(named: "img_peachcrush") }
+
+  static var imgSexonthebeach: UIImage? { UIImage(named: "img_sexonthebeach") }
 }
