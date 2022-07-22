@@ -17,12 +17,13 @@ import UIKit
 */
 extension CALayer {
   func applyShadow(
-    color: UIColor = .black,
+    color: UIColor = .black.withAlphaComponent(0.05),
     alpha: Float = 0.5,
-    x: CGFloat = 0,
+    x: CGFloat = 2,
     y: CGFloat = 2,
-    blur: CGFloat = 4,
-    spread: CGFloat = 0) {
+    blur: CGFloat = 2,
+    spread: CGFloat = 0
+  ) {
     
     masksToBounds = false
     shadowColor = color.cgColor

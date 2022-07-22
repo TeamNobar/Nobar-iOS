@@ -10,9 +10,9 @@ import Foundation
 struct TastingNote: Decodable {
   let id: String
   var recipe: Recipe
-  var rate: Int
+  var rate: Double
   var experienceContent: String
-  var tag: [Int]
+  var tag: [Tag]
   var tasteContent: String
   var createdAt: Int
 }

@@ -1,0 +1,240 @@
+{
+    "nickName": "진수노바디노바디벗츄",
+    "laterRecipes": [
+        {
+            "id": "아이디값이들어갑니다",
+            "name": "블루하와이",
+            "enName": "Blue Hawaii",
+            "base": {
+                "id": "베이스 술의 id",
+                "name": "럼",
+                "url": "이미지url이들어갑니다"
+            },
+            "proof": 2,
+            "proofIcon": "image",
+            "skill": {
+                "name": "쉐이킹",
+                "url": "이미지url이들어갑니다"
+            },
+            "glass": {
+                "name": "와인잔",
+                "url": "이미지url이들어갑니다"
+            },
+            "ingredients": [
+                {
+                    "id": "ingredient의 id",
+                    "name": "보드카",
+                    "enName": "Vodka",
+                    "proof": 10,
+                    "category": "보드카",
+                    "quantity": "10ml"
+                },
+                {
+                    "id": "ingredient의 id",
+                    "name": "레몬",
+                    "enName": "lemon",
+                    "proof": 0,
+                    "category": "과일",
+                    "quantity": "하프컷"
+                },
+                {
+                    "id": "ingredient의 id",
+                    "name": "오렌지주스",
+                    "enName": "Orange juice",
+                    "proof": 0,
+                    "category": "주스",
+                    "quantity": "100ml"
+                }
+            ],
+            "steps": [
+                "어쩌구를 저쩌구해서 이렇게 한다",
+                "어쩌구를 저쩌구해서 이렇게 한다",
+                "어쩌구를 저쩌구해서 이렇게 한다",
+                "안드분들 화이팅!!",
+                "아요분들도 화이팅!!!"
+            ]
+        },
+        {
+            "id": "아이디값이들어갑니다",
+            "name": "피치크러쉬",
+            "enName": "Peach crush",
+            "version": [
+                "기본",
+                "편의점"
+            ],
+            "base": {
+                "id": "베이스 술의 id",
+                "name": "보드카",
+                "url": "이미지url이들어갑니다",
+                "recipes": [
+                    "이 베이스로 만들 수 있는 레시피 id",
+                    "이 베이스로 만들 수 있는 레시피 id"
+                ]
+            },
+            "proof": 2,
+            "skill": {
+                "name": "쉐이킹",
+                "url": "이미지url이들어갑니다"
+            },
+            "glass": {
+                "name": "예쁜잔",
+                "url": "이미지url이들어갑니다"
+            },
+            "ingredients": [
+                {
+                    "id": "ingredient의 id",
+                    "name": "럼",
+                    "enName": "Rum",
+                    "proof": 5,
+                    "category": "럼",
+                    "quantity": "10ml"
+                },
+                {
+                    "id": "ingredient의 id",
+                    "name": "레몬",
+                    "enName": "Lemon",
+                    "proof": 0,
+                    "category": "과일",
+                    "quantity": "하프컷"
+                },
+                {
+                    "id": "ingredient의 id",
+                    "name": "블루베리",
+                    "enName": "Blueberry",
+                    "proof": 0,
+                    "category": "과일",
+                    "quantity": "하프컷"
+                },
+                {
+                    "id": "ingredient의 id",
+                    "name": "오렌지주스",
+                    "enName": "Orange juice",
+                    "proof": 0,
+                    "category": "주스",
+                    "quantity": "200ml"
+                }
+            ],
+            "steps": [
+                "어쩌구를 저쩌구해서 이렇게 한다",
+                "어쩌구를 저쩌구해서 이렇게 한다",
+                "어쩌구를 저쩌구해서 이렇게 한다",
+                "안드분들 화이팅!!",
+                "아요분들도 화이팅!!!"
+            ]
+        }
+    ],
+    "tastingNotes": [
+        {
+            "id": "테이스팅노트아이디",
+            "rate": 4,
+            "recipe": {
+                "id": "아이디값이들어갑니다",
+                "name": "블루하와이",
+                "enName": "Blue Hawaii",
+                "base": {
+                    "id": "베이스 술의 id",
+                    "name": "럼",
+                    "url": "이미지url이들어갑니다"
+                },
+                "proof": 2,
+                "proofIcon": "url",
+                "skill": {
+                    "name": "쉐이킹",
+                    "url": "이미지url이들어갑니다"
+                },
+                "glass": {
+                    "name": "와인잔",
+                    "url": "이미지url이들어갑니다"
+                },
+                "ingredients": [
+                    {
+                        "id": "ingredient의 id",
+                        "name": "보드카",
+                        "enName": "Vodka",
+                        "proof": 10,
+                        "category": "보드카",
+                        "quantity": "10ml"
+                    },
+                    {
+                        "id": "ingredient의 id",
+                        "name": "레몬",
+                        "enName": "lemon",
+                        "proof": 0,
+                        "category": "과일",
+                        "quantity": "하프컷"
+                    },
+                    {
+                        "id": "ingredient의 id",
+                        "name": "오렌지주스",
+                        "enName": "Orange juice",
+                        "proof": 0,
+                        "category": "주스",
+                        "quantity": "100ml"
+                    }
+                ],
+                "steps": [
+                    "어쩌구를 저쩌구해서 이렇게 한다",
+                    "어쩌구를 저쩌구해서 이렇게 한다",
+                    "어쩌구를 저쩌구해서 이렇게 한다",
+                    "안드분들 화이팅!!",
+                    "아요분들도 화이팅!!!"
+                ]
+            },
+            "tasteContent": "야미",
+            "experienceContent": "재미",
+            "tag": [
+                {
+                    "id": "tag id",
+                    "category": 0,
+                    "content": "태그 내용"
+                },
+                {
+                    "id": "tag id",
+                    "category": 0,
+                    "content": "태그 내용"
+                },
+                {
+                    "id": "tag id",
+                    "category": 1,
+                    "content": "태그 내용"
+                },
+                {
+                    "id": "tag id",
+                    "category": 1,
+                    "content": "태그 내용"
+                },
+                {
+                    "id": "tag id",
+                    "category": 2,
+                    "content": "태그 내용"
+                },
+                {
+                    "id": "tag id",
+                    "category": 2,
+                    "content": "태그 내용"
+                },
+                {
+                    "id": "tag id",
+                    "category": 3,
+                    "content": "태그 내용"
+                },
+                {
+                    "id": "tag id",
+                    "category": 3,
+                    "content": "태그 내용"
+                },
+                {
+                    "id": "tag id",
+                    "category": 4,
+                    "content": "태그 내용"
+                },
+                {
+                    "id": "tag id",
+                    "category": 4,
+                    "content": "태그 내용"
+                }
+            ],
+            "createdAt": 1657334111
+        }
+    ]
+}

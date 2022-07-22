@@ -10,7 +10,7 @@ struct Recipe: Decodable {
   var name: String
   var enName: String
   var version: [String]?
-  var base: BaseRecipe?
+  var base: BaseRecipe
   var defaultRecipes: String?
   var proof: Int
   var skill: Skill
@@ -18,5 +18,3 @@ struct Recipe: Decodable {
   var ingredients: [Ingredient]
   var steps: [String]
 }
-
-

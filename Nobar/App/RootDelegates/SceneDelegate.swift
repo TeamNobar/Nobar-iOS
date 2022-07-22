@@ -23,6 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     window = UIWindow(windowScene: scene)
     window?.rootViewController = appRouter?.tabbarController
+    window?.overrideUserInterfaceStyle = .light
     window?.makeKeyAndVisible()
   }
 }
