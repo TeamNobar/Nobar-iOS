@@ -12,7 +12,6 @@ class IngredientsTableViewCell: UITableViewCell {
   @IBOutlet weak var ingredientsCollectionView: UICollectionView!
   
   //var selectIngredients: (() -> ())?
-  static let identifier = "IngredientsTableViewCell"
   var identifiers = [IngredientItemCollectionViewCell.identifier]
   let flowlayout = UICollectionViewFlowLayout()
 
@@ -65,20 +64,16 @@ extension IngredientsTableViewCell : UICollectionViewDelegateFlowLayout, UIColle
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      guard let cell = collectionView.dequeueReusableCell(
-        withReuseIdentifier: IngredientItemCollectionViewCell.identifier,
-        for: indexPath
-      ) as? IngredientItemCollectionViewCell
-    else {
-        return UICollectionViewCell()
-      }
-    print("ingredient 넣는다 뿅")
-    cell.setData(ingredientData: IngredientDataModel.sampleData[indexPath.row])
-      return cell
+    let cell = collectionView.dequeueReusableCell(ofType: IngredientItemCollectionViewCell.self, at: indexPath)
+    
+    guard let item = IngredientDataModel.sampleData.safeget(index: indexPath.row) else { return cell }
+    
+    cell.setData(ingredientData: item)
+    return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-      return 14
+    return 14
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -88,5 +83,3 @@ extension IngredientsTableViewCell : UICollectionViewDelegateFlowLayout, UIColle
       return CGSize(width: cellWidth, height: cellHeight)
   }
 }
-
-
