@@ -245,12 +245,14 @@ extension SearchBaseViewController: UICollectionViewDelegate {
   }
 
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let storyboard = StoryboardRouter.detail.instance
 
-    let detailViewController = storyboard.instantiateViewController(ofType: DetailViewController.self)
+    if collectionView == resultCollectionView {
+      let storyboard = StoryboardRouter.detail.instance
 
+      let detailViewController = storyboard.instantiateViewController(ofType: DetailViewController.self)
 
-    navigationController?.pushViewController(detailViewController, animated: true)
+      navigationController?.pushViewController(detailViewController, animated: true)
+    }
   }
 }
 
