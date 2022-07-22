@@ -25,6 +25,7 @@ final class RecommendCVC: UICollectionViewCell {
   }
   private let thumbImage = UIImageView().then {
     $0.image = ImageFactory.dummy1
+    $0.contentMode = .scaleAspectFit
     $0.layer.cornerRadius = 12
   }
 
@@ -63,7 +64,7 @@ extension RecommendCVC {
     }
     thumbImage.snp.makeConstraints{
       $0.top.bottom.trailing.equalToSuperview()
-      $0.width.equalTo(80)
+      $0.width.equalTo(119)
     }
                  
   }
@@ -75,7 +76,7 @@ extension RecommendCVC {
   func setData(with data: RecommendModel){
     titleLabel.text = data.title
     backgroundColor = UIColor(hex: data.color)
-    thumbImage.image = UIImage(named: data.imageName)
+    thumbImage.image = data.image
   }
   
 }
