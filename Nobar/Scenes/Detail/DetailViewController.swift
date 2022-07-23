@@ -274,6 +274,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 extension DetailViewController: RecordTapDelegate {
   func didClickOnWriteButton() {
     let writingNoteViewController = WritingNoteViewController(status: .newWriting)
+    writingNoteViewController.selectedCocktail = cocktailNameLabel.text ?? ""
     writingNoteViewController.modalPresentationStyle = .fullScreen
     self.present(writingNoteViewController, animated: true)
   }
