@@ -37,7 +37,7 @@ final class DetailViewController: BaseViewController {
     RecordTableViewCell.identifier
   ]
   
-  private let recipeId: String
+  var recipeId: String
   
   init?(
     recipeId: String = "62d9dd8e660f5dfade9a4f77",
