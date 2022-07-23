@@ -271,6 +271,20 @@ extension MainViewController: UICollectionViewDelegate{
     case .recommend:
       let storyboard = StoryboardRouter.detail.instance
       let detailViewController = storyboard.instantiateViewController(ofType: DetailViewController.self)
+      
+      switch indexPath.item {
+      case 0:
+        detailViewController.recipeId = "62dafdc9c146e2cc2d52f3e8"
+      case 1:
+        detailViewController.recipeId = "62dafdc9c146e2cc2d52f3e2"
+      case 2:
+        detailViewController.recipeId = "62dafdc9c146e2cc2d52f3d8"
+      case 3:
+        detailViewController.recipeId = "62dafdc9c146e2cc2d52f422"
+      case 4:
+        detailViewController.recipeId = "62dafdc9c146e2cc2d52f417"
+      default: break
+      }
       navigationController?.pushViewController(detailViewController, animated: true)
 
     }
