@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum WritingStatus:Int, CaseIterable {
+enum WritingStatus: Int, CaseIterable {
   case newWriting = 0
   case revising = 1
   case viewing = 2
