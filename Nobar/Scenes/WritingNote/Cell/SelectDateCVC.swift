@@ -9,7 +9,7 @@ import UIKit
 
 final class SelectDateCVC: UICollectionViewCell {
   
-  
+  var dateClosure: ((String) -> ())?
   var selectedDate = Date()
   private let grayView = UIView().then {
     $0.backgroundColor = Color.gray01.getColor()
@@ -67,15 +67,15 @@ extension SelectDateCVC {
     
   }
   
-  private func setDayLabel(){
-      let formatter = DateFormatter()
-      formatter.dateFormat = "YYYY년 M월 d일"
-      formatter.locale = Locale(identifier: "ko_KR")
-      formatter.timeZone = NSTimeZone(name: "ko_KR") as TimeZone?
-      
-      let dateText = formatter.string(from: selectedDate)
-      
-    selectedDateLabel.text  = dateText
+  private func setDayLabel() {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "YYYY년 M월 d일"
+    formatter.locale = Locale(identifier: "ko_KR")
+    formatter.timeZone = NSTimeZone(name: "ko_KR") as TimeZone?
+    
+    let dateText = formatter.string(from: selectedDate)
+    
+    selectedDateLabel.text = dateText
   }
   
  func setLayout(for status: WritingStatus){
@@ -93,8 +93,14 @@ extension SelectDateCVC {
 
   }
   
-  @objc func valueChangedDatePicker(_ sender: UIDatePicker){
+  @objc func valueChangedDatePicker(_ sender: UIDatePicker) {
     selectedDate = sender.date
+    let dateFormatter = DateFormatter().then {
+      $0.dateFormat = "yyyy-MM-dd"
+      $0.locale = Locale(identifier: "ko_KR")
+      $0.timeZone = NSTimeZone(name: "ko_KR") as TimeZone?
+    }
+    dateClosure?(dateFormatter.string(from: sender.date))
     print(selectedDate)
   }
   

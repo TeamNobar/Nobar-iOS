@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class TastingTagView: UIView {
   
@@ -24,6 +25,7 @@ final class TastingTagView: UIView {
 
   private let iconImageView = UIImageView().then{
     $0.image = ImageFactory.tagIconGray
+    $0.layer.cornerRadius = 8.f
   }
   
   private let tasteLabel = UILabel().then {
@@ -54,17 +56,36 @@ final class TastingTagView: UIView {
     iconImageView.snp.makeConstraints{
       $0.centerX.equalToSuperview().offset(-33)
       $0.centerY.equalToSuperview()
+      $0.size.equalTo(16.f)
     }
     
     tasteLabel.snp.makeConstraints{
       $0.leading.equalTo(iconImageView.snp.trailing).offset(6)
       $0.centerY.equalToSuperview()
     }
-    
   }
-  public func setTasteLabel(with phrase: String){
-    self.tasteLabel.text = phrase
-    self.tastePhrase = phrase
+  
+  public func setTastingTagView(with tag: Tag) {
+    self.tasteLabel.text = tag.content
+
+    guard
+      let activeIconUrl = URL(string: tag.activeIcon),
+      let inActiveIconUrl = URL(string: tag.inActiveIcon)
+    else {
+      return
+    }
+      
+    self.iconImageView.kf.setImage(with: tag.isSelected ? activeIconUrl : inActiveIconUrl)
+    if tag.isSelected {
+      layoutSelectedTag()
+      print("[\(#file) \(#line)번째 줄, \(#function):]", "이거 댐")
+    } else {
+      print("[\(#file) \(#line)번째 줄, \(#function):]", "이거 댐")
+      layoutUnselectedTag()
+    }
+    
+    setNeedsLayout()
+    layoutIfNeeded()
   }
   
   private func layoutSelectedTag(){
