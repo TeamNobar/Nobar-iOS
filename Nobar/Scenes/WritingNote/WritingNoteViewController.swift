@@ -334,7 +334,7 @@ extension WritingNoteViewController: UICollectionViewDataSource{
     switch sectionType {
     case .cocktail:
       let cell = collectionView.dequeueReusableCell(ofType: SelectCocktailCVC.self, at: indexPath)
-      
+      cell.setPlacholder(placeholder: self.selectedCocktail)
       cell.didTapSearchTextfieldClosure = {
         let searchTotalViewController = CocktailNameSearchViewController()
         searchTotalViewController.modalPresentationStyle = .fullScreen
