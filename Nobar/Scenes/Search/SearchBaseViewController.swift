@@ -252,11 +252,14 @@ extension SearchBaseViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
     if collectionView == resultCollectionView {
-      let storyboard = StoryboardRouter.detail.instance
+      let item = indexPath.item
+      if let recipeId = recipeList.safeget(index: item)?.id {
+        let storyboard = StoryboardRouter.detail.instance
 
-      let detailViewController = storyboard.instantiateViewController(ofType: DetailViewController.self)
-
-      navigationController?.pushViewController(detailViewController, animated: true)
+        let detailViewController = storyboard.instantiateViewController(ofType: DetailViewController.self)
+        detailViewController.recipeId = recipeId
+        navigationController?.pushViewController(detailViewController, animated: true)
+      }
     } else {
       let item = indexPath.item
 
