@@ -124,12 +124,25 @@ extension NicknameViewController {
     
     let endpoint = Endpoint<NicknameResponse>(apiRouter: .auth(params))
     
-    networkService.request(endpoint) { result in
+    networkService.request(endpoint) { [weak self] result in
       switch result {
       case .success(let data):
-        UserDefaultHelper<String>.set(data.accesstoken, forKey: .accessToken)
-        DispatchQueue.main.async {
-          NBUtils.getSceneDelegate()?.startTabbar()
+        if data.accesstoken.isEmpty {
+          self?.networkService.request(endpoint) { _ in
+            UserDefaultHelper<String>.set(data.accesstoken, forKey: .accessToken)
+            DispatchQueue.main.async {
+              NBUtils.getSceneDelegate()?.startTabbar()
+            }
+          }
+          
+          return
+        }
+        
+        self?.networkService.request(endpoint) { _ in
+          UserDefaultHelper<String>.set(data.accesstoken, forKey: .accessToken)
+          DispatchQueue.main.async {
+            NBUtils.getSceneDelegate()?.startTabbar()
+          }
         }
       case .failure(let error):
         print("[\(#file) \(#line)번째 줄, \(#function):]", String(describing: error))

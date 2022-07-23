@@ -101,7 +101,10 @@ extension MakeOnLaterRecipesViewController {
         let viewController = storyboard.instantiateViewController(
           identifier: DetailViewController.identifier,
           creator: { coder in
-            DetailViewController(coder: coder)
+            DetailViewController(
+              recipeId: response.id,
+              coder: coder
+            )
           })
         
         self?.navigationController?.pushViewController(viewController, animated: true)
