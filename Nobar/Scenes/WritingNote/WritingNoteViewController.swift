@@ -22,7 +22,7 @@ final class WritingNoteViewController: BaseViewController {
   
   private(set) var writingstatus = WritingStatus.newWriting
   private let networkService = NetworkingService()
-  private var selectedCocktail = ""
+  var selectedCocktail = ""
   private var selectedDate = ""
   private var tagOptions: [Tag] = []
   private var selectedTags: [TastingTagDTO] = []
@@ -334,7 +334,7 @@ extension WritingNoteViewController: UICollectionViewDataSource{
     switch sectionType {
     case .cocktail:
       let cell = collectionView.dequeueReusableCell(ofType: SelectCocktailCVC.self, at: indexPath)
-      
+      cell.setPlacholder(placeholder: self.selectedCocktail)
       cell.didTapSearchTextfieldClosure = {
         let searchTotalViewController = CocktailNameSearchViewController()
         searchTotalViewController.modalPresentationStyle = .fullScreen

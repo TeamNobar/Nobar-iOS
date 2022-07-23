@@ -37,7 +37,7 @@ final class DetailViewController: BaseViewController {
     RecordTableViewCell.identifier
   ]
   
-  private let recipeId: String
+  var recipeId: String
   
   init?(
     recipeId: String = "62d9dd8e660f5dfade9a4f77",
@@ -274,6 +274,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 extension DetailViewController: RecordTapDelegate {
   func didClickOnWriteButton() {
     let writingNoteViewController = WritingNoteViewController(status: .newWriting)
+    writingNoteViewController.selectedCocktail = cocktailNameLabel.text ?? ""
     writingNoteViewController.modalPresentationStyle = .fullScreen
     self.present(writingNoteViewController, animated: true)
   }
