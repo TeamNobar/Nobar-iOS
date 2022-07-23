@@ -10,6 +10,7 @@ import UIKit
 final class ScoreCVC: UICollectionViewCell {
   var score = 5.0
   
+  var scoreClosure: ((Double) -> Void)?
   private let heartSlider = HeartRatingUISlider().then {
     $0.minimumValue = 0
     $0.maximumValue = 5
@@ -94,6 +95,7 @@ extension ScoreCVC {
     default: score = 0.0
     }
     print(score)
+    scoreClosure?(score)
     
     for idx in 0..<5 {
       if value > 0.5 {

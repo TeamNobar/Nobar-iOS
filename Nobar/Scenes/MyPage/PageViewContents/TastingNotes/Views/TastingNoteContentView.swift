@@ -94,15 +94,18 @@ extension TastingNoteContentView {
     contentTitleLabel.text = tastingNote.recipe.name
     subtitleLabel.text = tastingNote.recipe.enName
     heartRateView.updateHeartRate(with: tastingNote.rate)
-    tastingNote.tag.prefix(3).forEach {
-      tagsStackView.addArrangedSubview(
-        TastingNoteTagView(
-          tagName: $0.content,
-          tagURL: $0.inActiveIcon,
-          contentSize: self.bounds
+    tastingNote.tag
+      .filter { $0.isSelected }
+      .prefix(3)
+      .forEach {
+        tagsStackView.addArrangedSubview(
+          TastingNoteTagView(
+            tagName: $0.content,
+            tagURL: $0.inActiveIcon,
+            contentSize: self.bounds
+          )
         )
-      )
-    }
+      }
   }
   
   func prepareForReuse() {

@@ -11,7 +11,7 @@ import Then
 
 final class WritingNoteViewController: BaseViewController {
   
-  enum SectionType:Int, CaseIterable {
+  enum SectionType: Int, CaseIterable {
     case cocktail = 0
     case date = 1
     case taste = 2
@@ -20,22 +20,30 @@ final class WritingNoteViewController: BaseViewController {
     case experience = 5
   }
   
-  var writingstatus = WritingStatus.newWriting
+  private(set) var writingstatus = WritingStatus.newWriting
+  private let networkService = NetworkingService()
+  private var selectedCocktail = ""
+  private var selectedDate = ""
+  private var tagOptions: [Tag] = []
+  private var selectedTags: [TastingTagDTO] = []
+  private var score: Double = 0
+  private var evaluationText = ""
+  private var exprienceText = ""
   
-  var selectedCocktail = ""
+  private var id: String
   
-  init(status: WritingStatus) {
+  init(
+    id: String = "62dafdc9c146e2cc2d52f3e2",
+    status: WritingStatus
+  ) {
+    self.id = id
     self.writingstatus = status
-    
     super.init(nibName: nil, bundle: nil)
   }
-  
+
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
-  private var cocktailNameList: [String] =  ["피치크러쉬","피노키오","가나슈","말리부","커피","우유","모히또","와인","피머시기","피"]
-  private var filterdCoctailNameList: [String] = []
   
   private let headerBarView = UIView()
   
@@ -94,9 +102,8 @@ extension WritingNoteViewController {
     setRegistration()
     setTitleViewLayout()
     setNotification()
-
+    fetchTastingNoteTags()
   }
-  
 }
 
 // MARK: - Private functions
@@ -149,8 +156,6 @@ extension WritingNoteViewController {
       reviseButton.isHidden = false
       deleteButton.isHidden = false
     }
-    
-    
   }
   
   private func setLayout() {
@@ -199,45 +204,107 @@ extension WritingNoteViewController {
     
   }
   
-  
-  
-  
-    private func setNotification(){
-      NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-  
-      NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
+  private func setNotification(){
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(keyboardWillShow),
+      name: UIResponder.keyboardWillShowNotification,
+      object: nil
+    )
+    
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(keyboardWillHide),
+      name: UIResponder.keyboardWillHideNotification,
+      object: nil
+    )
+  }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-      view.endEditing(true)
+    view.endEditing(true)
   }
   
-    @objc func keyboardWillShow(noti: Notification){
-      if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-          if self.view.frame.origin.y == 0 {
-              
-            self.view.frame.origin.y -= keyboardFrame.cgRectValue.size.height
-          }
+  @objc func keyboardWillShow(noti: Notification){
+    if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+      if self.view.frame.origin.y == 0 {
+        
+        self.view.frame.origin.y -= keyboardFrame.cgRectValue.size.height
       }
-      }
-
-     @objc func keyboardWillHide(_ noti: NSNotification){
-         // 키보드의 높이만큼 화면을 내려준다.
-         if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-             if self.view.frame.origin.y != 0 {
-
-                 /// naviBar 만큼 내림
-                 self.view.frame.origin.y += keyboardFrame.cgRectValue.size.height
-             }
-         }
-     }
-  @objc private func didTapApplyButton(_ sender: UIButton){
-    print("tapped")
-    self.dismiss(animated: true)
+    }
   }
+  
+  @objc func keyboardWillHide(_ noti: NSNotification){
+    // 키보드의 높이만큼 화면을 내려준다.
+    if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+      if self.view.frame.origin.y != 0 {
+        
+        /// naviBar 만큼 내림
+        self.view.frame.origin.y += keyboardFrame.cgRectValue.size.height
+      }
+    }
+  }
+  
+  @objc private func didTapApplyButton(_ sender: UIButton) {
+    let param: [String: Any] = [
+      "recipeId": "62dafdc9c146e2cc2d52f417",
+      "rate": self.score,
+      "tagList": self.selectedTags.map { $0.toDictionary() },
+      "tasteContent": self.evaluationText,
+      "experienceContent": self.exprienceText,
+      "createdAt": self.selectedDate
+    ]
+
+    let endpoint = Endpoint<WritingNoteResponse>(apiRouter: .writeTastingNote(parameters: param))
+    
+    networkService.request(endpoint) { result in
+      switch result {
+      case .success(_):
+        DispatchQueue.main.async {
+          self.dismiss(animated: true)
+        }
+      case .failure(let error):
+        print("[\(#file) \(#line)번째 줄, \(#function):]", String(describing: error))
+      }
+    }
+  }
+  
   @objc private func didTapCancelButton(_ sender: UIButton){
     print("closetapped")
     self.dismiss(animated: true)
+  }
+}
+
+struct TastingTagDTO {
+  let id: Int
+  let isSelected: Bool = true
+  
+  func toDictionary() -> [String: Any] {
+    return [
+      "id": id,
+      "isSelected": isSelected
+    ]
+  }
+}
+
+struct WritingNoteResponse: Decodable {
+  
+}
+
+extension WritingNoteViewController {
+  private func fetchTastingNoteTags() {
+    let endpoint = Endpoint<[Tag]>(apiRouter: .getTastingTagList)
+    
+    networkService.request(endpoint) { result in
+      switch result {
+      case .success(let response):
+        self.tagOptions = response
+        DispatchQueue.main.async {
+          self.tastingCollectionView.reloadData()
+        }
+      case .failure(let error):
+        print("[\(#file) \(#line)번째 줄, \(#function):]", String(describing: error))
+      }
+    }
   }
 }
 
@@ -266,41 +333,59 @@ extension WritingNoteViewController: UICollectionViewDataSource{
     
     switch sectionType {
     case .cocktail:
-      guard let cell = collectionView.dequeueReusableCell(ofType: SelectCocktailCVC.self,
-                                                          at: indexPath) as? SelectCocktailCVC else {return UICollectionViewCell()}
+      let cell = collectionView.dequeueReusableCell(ofType: SelectCocktailCVC.self, at: indexPath)
+      
       cell.didTapSearchTextfieldClosure = {
         let searchTotalViewController = CocktailNameSearchViewController()
         searchTotalViewController.modalPresentationStyle = .fullScreen
-        searchTotalViewController.didTapNameCellClosure = { self.selectedCocktail = searchTotalViewController.selectedCocktailName
+        searchTotalViewController.didTapNameCellClosure = {
+          self.selectedCocktail = searchTotalViewController.selectedCocktailName
           cell.setPlacholder(placeholder: self.selectedCocktail)
         }
+        
         self.present(searchTotalViewController, animated: false)
       }
       cell.setLayout(for: writingstatus)
       return cell
     case .date:
-      guard let cell = tastingCollectionView.dequeueReusableCell(ofType: SelectDateCVC.self,
-                                                                 at: indexPath) as? SelectDateCVC else { return UICollectionViewCell()}
+      let cell = tastingCollectionView.dequeueReusableCell(ofType: SelectDateCVC.self, at: indexPath)
+      cell.dateClosure = { [weak self] dateString in
+        self?.selectedDate = dateString
+      }
       cell.setLayout(for: writingstatus)
       return cell
     case .taste:
-      guard let cell = tastingCollectionView.dequeueReusableCell(ofType: TasteCVC.self,
-                                                                 at: indexPath) as? TasteCVC else {return UICollectionViewCell()}
+      let cell = tastingCollectionView.dequeueReusableCell(ofType: TasteCVC.self, at: indexPath)
+      
+      cell.selectedTagListClosure = { [weak self] indexArray in
+        self?.selectedTags = indexArray.map { TastingTagDTO(id: $0) }
+      }
+      cell.bind(with: self.tagOptions)
       cell.setLayout(for: writingstatus)
       return cell
     case .score:
-      guard let cell = tastingCollectionView.dequeueReusableCell(ofType: ScoreCVC.self,
-                                                                 at: indexPath) as? ScoreCVC else {return UICollectionViewCell()}
+      let cell = tastingCollectionView.dequeueReusableCell(ofType: ScoreCVC.self, at: indexPath)
+      
+      cell.scoreClosure = { [weak self] score in
+        self?.score = score
+      }
       cell.setLayout(for: writingstatus)
       return cell
     case .evaluation:
-      guard let cell = tastingCollectionView.dequeueReusableCell(ofType: EvaluationCVC.self,
-                                                                 at: indexPath) as? EvaluationCVC else {return UICollectionViewCell()}
+      let cell = tastingCollectionView.dequeueReusableCell(ofType: EvaluationCVC.self, at: indexPath)
+      
+      cell.textCotentClosure = { [weak self] text in
+        self?.evaluationText = text
+      }
+      
       cell.setLayout(for: writingstatus)
       return cell
     case .experience:
-      guard let cell = tastingCollectionView.dequeueReusableCell(ofType: ExperienceCVC.self,
-                                                                 at: indexPath) as? ExperienceCVC else {return UICollectionViewCell()}
+      let cell = tastingCollectionView.dequeueReusableCell(ofType: ExperienceCVC.self, at: indexPath)
+      
+      cell.textContent = { [weak self] text in
+        self?.exprienceText = text
+      }
       cell.setLayout(for: writingstatus)
       return cell
     }

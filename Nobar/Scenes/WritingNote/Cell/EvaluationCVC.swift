@@ -20,6 +20,8 @@ final class EvaluationCVC: UICollectionViewCell {
     $0.text = "(0/200자)"
   }
   
+  var textCotentClosure: ((String) -> Void)?
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     setLayout()
@@ -66,24 +68,25 @@ extension EvaluationCVC: UITextViewDelegate{
           evaluationTextView.textColor = Color.black.getColor()
           evaluationTextView.text = nil
         }
-        
+      
     }
-
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            evaluationTextView.textColor = Color.gray03.getColor()
-          evaluationTextView.text = placeholder
-        }
+  
+  func textViewDidEndEditing(_ textView: UITextView) {
+    if textView.text.isEmpty {
+      evaluationTextView.textColor = Color.gray03.getColor()
+      evaluationTextView.text = placeholder
+    }
+  }
+  
+  func textViewDidChange(_ textView: UITextView) {
+    if evaluationTextView.text.count > 200 {
+      evaluationTextView.deleteBackward()
     }
     
-    func textViewDidChange(_ textView: UITextView) {
-        if evaluationTextView.text.count > 200 {
-          evaluationTextView.deleteBackward()
-        }
-        
-        characterNumLabel.text = "(\(evaluationTextView.text.count)/200자)"
-
-    }
+    textCotentClosure?(evaluationTextView.text ?? "")
+    characterNumLabel.text = "(\(evaluationTextView.text.count)/200자)"
+    
+  }
   
   func setLayout(for status: WritingStatus){
     switch status{

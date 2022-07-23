@@ -9,9 +9,10 @@ import UIKit
 
 final class TasteCVC: UICollectionViewCell {
   
+  var selectedTagListClosure: (([Int]) -> Void)?
   var selectedTagNumList: [Int] = []
   
-  private let dummyPhraseList = ["맛이좋아요","맛이쏘쏘쏘","아주별로야","네번쨰문구","다번째문구","여번째문구","일번째문구","여번쨰문구","아번째문구"]
+  private var tags: [Tag] = []
   private var tagViews: [TastingTagView] = []
   
   private let wholeStackView = UIStackView().then{
@@ -36,12 +37,10 @@ final class TasteCVC: UICollectionViewCell {
     $0.backgroundColor = .white
   }
   
-  
   override init(frame: CGRect) {
     super.init(frame: frame)
-    bind()
+    
     render()
-
   }
   
   @available(*, unavailable)
@@ -76,11 +75,14 @@ extension TasteCVC {
 
   }
   
-  private func bind() {
+  func bind(with tags: [Tag]) {
+    self.tags = tags
+    
+    guard tags.count == 9 else { return }
     
     for i in 0..<9 {
       let tagView = TastingTagView()
-      tagView.setTasteLabel(with: dummyPhraseList[i])
+      tagView.setTastingTagView(with: tags[i])
       tagView.tag = i+1
       tagViews += [tagView]
       switch i {
@@ -89,8 +91,10 @@ extension TasteCVC {
       case 6..<9: bottomStackView.addArrangedSubview(tagView)
       default: return
       }
-  
     }
+    
+    setNeedsLayout()
+    layoutIfNeeded()
   }
   
   private func addTagGesture(){
@@ -118,15 +122,18 @@ extension TasteCVC {
         switch tagView.isSelected{
         case true:
           selectedTagNumList.append(tagView.tag)
+          selectedTagListClosure?(selectedTagNumList)
         case false:
           guard let idx = selectedTagNumList.firstIndex(of: tagView.tag) else {return}
           selectedTagNumList.remove(at: idx)
+          selectedTagListClosure?(selectedTagNumList)
         }
       }else{
         if tagView.isSelected{
           tagView.isSelected.toggle()
           guard let idx = selectedTagNumList.firstIndex(of: tagView.tag) else {return}
           selectedTagNumList.remove(at: idx)
+          selectedTagListClosure?(selectedTagNumList)
         }
       }
     }

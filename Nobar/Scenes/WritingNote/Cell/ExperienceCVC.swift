@@ -20,6 +20,8 @@ final class ExperienceCVC: UICollectionViewCell {
     $0.text = "(0/200자)"
   }
   
+  var textContent: ((String) -> Void)?
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     setLayout()
@@ -70,19 +72,22 @@ extension ExperienceCVC: UITextViewDelegate{
         
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-          experienceTextView.textColor = Color.gray03.getColor()
-          experienceTextView.text = placeholder
-        }
+  func textViewDidEndEditing(_ textView: UITextView) {
+    if textView.text.isEmpty {
+      experienceTextView.textColor = Color.gray03.getColor()
+      experienceTextView.text = placeholder
+    }
+  }
+  
+  func textViewDidChange(_ textView: UITextView) {
+    if experienceTextView.text.count > 200 {
+      experienceTextView.deleteBackward()
     }
     
-    func textViewDidChange(_ textView: UITextView) {
-        if experienceTextView.text.count > 200 {
-          experienceTextView.deleteBackward()
-        }
-        characterNumLabel.text = "(\(experienceTextView.text.count)/200자)"
-    }
+    textContent?(experienceTextView.text ?? "")
+    
+    characterNumLabel.text = "(\(experienceTextView.text.count)/200자)"
+  }
   
   func setLayout(for status: WritingStatus){
     switch status{

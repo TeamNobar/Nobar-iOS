@@ -114,12 +114,16 @@ extension TastingNoteViewController {
       .drive { [weak self] sectionType in
         guard
           let self = self,
-          case let .content(_) = sectionType
+          case let .content(tastingNote) = sectionType
         else {
           return
         }
         
-        let writingViewController = WritingNoteViewController(status: .viewing)
+        let writingViewController = WritingNoteViewController(
+          id: tastingNote.id,
+          status: .viewing
+        )
+        
         writingViewController.modalPresentationStyle = .fullScreen
         self.present(writingViewController, animated: true)
       }.disposed(by: self.disposeBag)
