@@ -22,7 +22,7 @@ final class WritingNoteViewController: BaseViewController {
   
   private(set) var writingstatus = WritingStatus.newWriting
   private let networkService = NetworkingService()
-  private var selectedCocktail = ""
+  var selectedCocktail = ""
   private var selectedDate = ""
   private var tagOptions: [Tag] = []
   private var selectedTags: [TastingTagDTO] = []

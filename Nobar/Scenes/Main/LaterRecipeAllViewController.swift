@@ -159,7 +159,7 @@ extension LaterRecipeAllViewController {
 extension LaterRecipeAllViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let item = indexPath.item
-    if let recipeId = recipeList.safeget(index: item)?.id {
+    if let recipeId = laterRecipeList.safeget(index: item)?.id {
       let storyboard = StoryboardRouter.detail.instance
 
       let detailViewController = storyboard.instantiateViewController(ofType: DetailViewController.self)
