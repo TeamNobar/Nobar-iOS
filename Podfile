@@ -6,6 +6,7 @@ target 'Nobar' do
   use_frameworks!
 
   # Pods for Nobar
+  pod 'RealmSwift', '~>10'
 
   target 'NobarTests' do
     inherit! :search_paths

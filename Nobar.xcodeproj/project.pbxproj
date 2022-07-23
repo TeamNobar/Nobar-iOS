@@ -110,8 +110,6 @@
 		4D3554B9287E56280063F725 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3554B8287E56280063F725 /* NSObject+Extension.swift */; };
 		4D3554BB287EAAE60063F725 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3554BA287EAAE60063F725 /* SearchTextField.swift */; };
 		4D38B5BB28800C8D00CD33ED /* SearchAutoResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D38B5BA28800C8D00CD33ED /* SearchAutoResultCollectionViewCell.swift */; };
-		4D60044F2886E6D5008A5226 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 4D60044E2886E6D5008A5226 /* Realm */; };
-		4D6004512886E6D5008A5226 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4D6004502886E6D5008A5226 /* RealmSwift */; };
 		4D6004532886EC16008A5226 /* RecentSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6004522886EC16008A5226 /* RecentSearchModel.swift */; };
 		4D6004582887C86A008A5226 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6004572887C86A008A5226 /* CustomAlert.swift */; };
 		4D60045B2887E4A2008A5226 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D60045A2887E4A2008A5226 /* NicknameViewController.swift */; };
@@ -395,9 +393,7 @@
 				3C01FCD8287E50C500BE23E6 /* RxAlamofire in Frameworks */,
 				3CD436E4287730D70044AE04 /* RxCocoa in Frameworks */,
 				3CD436EB2877312F0044AE04 /* Then in Frameworks */,
-				4D6004512886E6D5008A5226 /* RealmSwift in Frameworks */,
 				3CD436EE287731530044AE04 /* Lottie in Frameworks */,
-				4D60044F2886E6D5008A5226 /* Realm in Frameworks */,
 				3CD436D728772EE90044AE04 /* SnapKit in Frameworks */,
 				3CD436E1287730AF0044AE04 /* RxGesture in Frameworks */,
 				3CD436E6287730D70044AE04 /* RxRelay in Frameworks */,
@@ -1122,6 +1118,7 @@
 				3CE5989728748092004AFD05 /* Sources */,
 				3CE5989828748092004AFD05 /* Frameworks */,
 				3CE5989928748092004AFD05 /* Resources */,
+				84AF6101836C16A67A3636E8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1139,8 +1136,6 @@
 				3CD436ED287731530044AE04 /* Lottie */,
 				3CD436F02877317C0044AE04 /* Kingfisher */,
 				3C01FCD7287E50C500BE23E6 /* RxAlamofire */,
-				4D60044E2886E6D5008A5226 /* Realm */,
-				4D6004502886E6D5008A5226 /* RealmSwift */,
 			);
 			productName = Nobar;
 			productReference = 3CE5989B28748092004AFD05 /* Nobar.app */;
@@ -1173,6 +1168,7 @@
 				3CE598B728748093004AFD05 /* Sources */,
 				3CE598B828748093004AFD05 /* Frameworks */,
 				3CE598B928748093004AFD05 /* Resources */,
+				B2DA7A8EC224409E4EDAB988 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1225,7 +1221,6 @@
 				3CD436EC287731530044AE04 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				3CD436EF2877317C0044AE04 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				3C01FCD6287E50C500BE23E6 /* XCRemoteSwiftPackageReference "RxAlamofire" */,
-				4D60044D2886E6D4008A5226 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 3CE5989C28748092004AFD05 /* Products */;
 			projectDirPath = "";
@@ -1333,6 +1328,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		84AF6101836C16A67A3636E8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Nobar/Pods-Nobar-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Nobar/Pods-Nobar-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Nobar/Pods-Nobar-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AF39DF6DDC359B109C1E3317 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1353,6 +1365,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2DA7A8EC224409E4EDAB988 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Nobar-NobarUITests/Pods-Nobar-NobarUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Nobar-NobarUITests/Pods-Nobar-NobarUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Nobar-NobarUITests/Pods-Nobar-NobarUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1917,14 +1946,6 @@
 				minimumVersion = 7.3.0;
 			};
 		};
-		4D60044D2886E6D4008A5226 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.28.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1977,16 +1998,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3CD436EF2877317C0044AE04 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		4D60044E2886E6D5008A5226 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4D60044D2886E6D4008A5226 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		4D6004502886E6D5008A5226 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4D60044D2886E6D4008A5226 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
