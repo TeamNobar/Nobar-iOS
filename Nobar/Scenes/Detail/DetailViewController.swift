@@ -273,7 +273,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension DetailViewController: RecordTapDelegate {
   func didClickOnWriteButton() {
-    let writingNoteViewController = WritingNoteViewController(status: .viewing)
+    let writingNoteViewController = WritingNoteViewController(status: .newWriting)
     writingNoteViewController.modalPresentationStyle = .fullScreen
     self.present(writingNoteViewController, animated: true)
   }
