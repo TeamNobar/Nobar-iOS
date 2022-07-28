@@ -77,6 +77,9 @@ extension TasteCVC {
   
   func bind(with tags: [Tag]) {
     self.tags = tags
+    topStackView.removeAllSubViews()
+    middleStackView.removeAllSubViews()
+    bottomStackView.removeAllSubViews()
     
     guard tags.count == 9 else { return }
     
@@ -84,13 +87,13 @@ extension TasteCVC {
       let tagView = TastingTagView()
       tagView.setTastingTagView(with: tags[i])
       tagView.tag = i+1
-      tagViews += [tagView]
       switch i {
       case 0..<3: topStackView.addArrangedSubview(tagView)
       case 3..<6: middleStackView.addArrangedSubview(tagView)
       case 6..<9: bottomStackView.addArrangedSubview(tagView)
       default: return
       }
+
     }
     
     setNeedsLayout()

@@ -66,6 +66,7 @@ extension TastingNoteHeaderView {
       switch status{
       case .newWriting,.revising:
         titleLabel.text = "언제 칵테일을 마셨나요?"
+        notiLabel.text = ""
       case .viewing:
         titleLabel.text = "칵테일을 만든 날짜"
       }

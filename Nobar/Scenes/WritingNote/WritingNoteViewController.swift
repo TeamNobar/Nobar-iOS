@@ -68,8 +68,9 @@ final class WritingNoteViewController: BaseViewController {
   private let deleteButton = UIButton().then {
     $0.setImage(ImageFactory.icnDelete, for: .normal)
   }
-  private let reviseButton = UIButton().then {
+  private lazy var reviseButton = UIButton().then {
     $0.setImage(ImageFactory.icnModify, for: .normal)
+    $0.addTarget(self, action: #selector(didTapReviseButton(_:)), for: .touchUpInside)
   }
   
   private let grayLine = UIView().then {
@@ -100,7 +101,8 @@ extension WritingNoteViewController {
     render()
     setDelegation()
     setRegistration()
-    setTitleViewLayout()
+    initHeaderBarLayout()
+    setHeaderBarLayout()
     setNotification()
     fetchTastingNoteTags()
   }
@@ -112,7 +114,7 @@ extension WritingNoteViewController {
   private func render() {
     view.addSubviews([headerBarView,grayLine,tastingCollectionView])
   }
-  private func setTitleViewLayout() {
+  private func initHeaderBarLayout() {
     headerBarView.addSubviews([closeButton,titleLabel,applyButton,reviseButton,deleteButton])
     
     closeButton.snp.makeConstraints{
@@ -139,23 +141,7 @@ extension WritingNoteViewController {
     }
     
     
-    switch writingstatus{
-    case .newWriting:
-      titleLabel.text = "테이스팅 노트 기록하기"
-      applyButton.isHidden = false
-      reviseButton.isHidden = true
-      deleteButton.isHidden = true
-    case .revising:
-      titleLabel.text = "테이스팅 노트 수정하기"
-      applyButton.isHidden = false
-      reviseButton.isHidden = true
-      deleteButton.isHidden = true
-    case .viewing:
-      titleLabel.text = "작성한 테이스팅 노트"
-      applyButton.isHidden = true
-      reviseButton.isHidden = false
-      deleteButton.isHidden = false
-    }
+  
   }
   
   private func setLayout() {
@@ -238,7 +224,6 @@ extension WritingNoteViewController {
     if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
       if self.view.frame.origin.y != 0 {
         
-        /// naviBar 만큼 내림
         self.view.frame.origin.y += keyboardFrame.cgRectValue.size.height
       }
     }
@@ -271,6 +256,32 @@ extension WritingNoteViewController {
   @objc private func didTapCancelButton(_ sender: UIButton){
     print("closetapped")
     self.dismiss(animated: true)
+  }
+  @objc private func didTapReviseButton(_ sender: UIButton){
+    print("revisetapped")
+    writingstatus = .revising
+    setHeaderBarLayout()
+    tastingCollectionView.reloadData()
+    
+  }
+  private func setHeaderBarLayout(){
+    switch writingstatus{
+    case .newWriting:
+      titleLabel.text = "테이스팅 노트 기록하기"
+      applyButton.isHidden = false
+      reviseButton.isHidden = true
+      deleteButton.isHidden = true
+    case .revising:
+      titleLabel.text = "테이스팅 노트 수정하기"
+      applyButton.isHidden = false
+      reviseButton.isHidden = true
+      deleteButton.isHidden = true
+    case .viewing:
+      titleLabel.text = "작성한 테이스팅 노트"
+      applyButton.isHidden = true
+      reviseButton.isHidden = false
+      deleteButton.isHidden = false
+    }
   }
 }
 
@@ -360,6 +371,7 @@ extension WritingNoteViewController: UICollectionViewDataSource{
       cell.selectedTagListClosure = { [weak self] indexArray in
         self?.selectedTags = indexArray.map { TastingTagDTO(id: $0) }
       }
+
       cell.bind(with: self.tagOptions)
       cell.setLayout(for: writingstatus)
       return cell
