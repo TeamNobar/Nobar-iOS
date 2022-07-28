@@ -750,6 +750,7 @@
 				6AD777C9288A9AD500424585 /* Component */,
 				6AD777C8288A9ACF00424585 /* Model */,
 				3CD4370C2877DC910044AE04 /* WritingNote.storyboard */,
+				6AD777CC288A9B1A00424585 /* CocktailNameSearchViewController.swift */,
 				3CD437122877EC530044AE04 /* WritingNoteViewController.swift */,
 			);
 			path = WritingNote;
@@ -948,7 +949,6 @@
 			isa = PBXGroup;
 			children = (
 				6AD777CA288A9AF200424585 /* Status.swift */,
-				6AD777CC288A9B1A00424585 /* CocktailNameSearchViewController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1734,7 +1734,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Nobar/Nobar.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BWM6S332K8;
@@ -1753,7 +1753,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "kr.teamnobar.nobar-ios-release";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore kr.teamnobar.nobar-ios-release";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development kr.teamnobar.nobar-ios-release";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

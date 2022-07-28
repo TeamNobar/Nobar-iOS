@@ -238,7 +238,6 @@ extension WritingNoteViewController {
     if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
       if self.view.frame.origin.y != 0 {
         
-        /// naviBar 만큼 내림
         self.view.frame.origin.y += keyboardFrame.cgRectValue.size.height
       }
     }
@@ -360,6 +359,7 @@ extension WritingNoteViewController: UICollectionViewDataSource{
       cell.selectedTagListClosure = { [weak self] indexArray in
         self?.selectedTags = indexArray.map { TastingTagDTO(id: $0) }
       }
+
       cell.bind(with: self.tagOptions)
       cell.setLayout(for: writingstatus)
       return cell
